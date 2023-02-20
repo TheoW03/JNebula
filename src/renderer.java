@@ -10,6 +10,7 @@ import org.w3c.dom.Text;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
@@ -19,6 +20,7 @@ import java.io.*;
 
 import static com.jogamp.opengl.GL.*;
 import static com.jogamp.opengl.GL2ES3.GL_QUADS;
+import javax.swing.Timer;
 
 /**
  * @author Theo willis
@@ -37,6 +39,9 @@ public class renderer implements GLEventListener {
 
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
+//        int DELAY = 10;
+//        Timer timer = new Timer(DELAY, (ActionListener) this); //yes
+
         GL2 gl = glAutoDrawable.getGL().getGL2();
         try {
             TextureData data = TextureIO.newTextureData(GLProfile.getDefault(),new File("src/maxwell.png"), true, "png");
@@ -58,7 +63,7 @@ public class renderer implements GLEventListener {
         gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
+//        timer.start();
     }
 
     @Override
@@ -77,6 +82,7 @@ public class renderer implements GLEventListener {
                 -1.0f, 1.0f, 0.0f,    // Top-left vertex
                 1.0f, 1.0f, 0.0f      // Top-right vertex
         };
+
 
 
         float[] textureCoords = {
@@ -118,16 +124,16 @@ public class renderer implements GLEventListener {
 
         int positionAttrib = gl.glGetAttribLocation(shaderProgram, "vPos");
         System.out.println("pos: "+positionAttrib);
-        gl.glBindBuffer(GL2.GL_ARRAY_BUFFER, buffers[0]);
+        gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
         gl.glEnableVertexAttribArray(positionAttrib);
         gl.glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, false, 0, 0);
-        gl.glBindBuffer(GL2.GL_ARRAY_BUFFER, 0);
-        gl.glBindBuffer(GL2.GL_ARRAY_BUFFER, buffers[0]);
+        gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
+        gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
         int texCoordAttrib = gl.glGetAttribLocation(shaderProgram, "vTex");
         System.out.println("vtex : "+texCoordAttrib);
         gl.glEnableVertexAttribArray(texCoordAttrib);
         gl.glVertexAttribPointer(texCoordAttrib, 2, GL_FLOAT, false, 0, vertices.length * 4);
-        gl.glBindBuffer(GL2.GL_ARRAY_BUFFER, 0);
+        gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
 // Enable texture mapping
 
 

@@ -85,10 +85,22 @@ public class loadShader {
         gl.glGenBuffers(vboLength, buffers, 0);
         return buffers;
     }
-    public String setUnformVar(String name, float[] vector){
 
-        return "";
+    /**
+     *
+     * @param buffer clears buffer
+     */
+    public void clearBuffer(GL gl,int[] buffer){
+
     }
+    public void bindBuffer(GL gl,int[] buffer){
+
+    }
+    public String setUnformVar(String name, float[] vector){
+        return "";
+
+    }
+
 
 
 }
