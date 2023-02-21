@@ -9,6 +9,15 @@ uniform mat4 viewMatrix;
 
 out vec2 tCoord;
 
+//mat4 getRotationMatrix(float angle) {
+//    float c = cos(radians(angle));
+//    float s = sin(radians(angle));
+//    return mat4(c, -s, 0.0, 0.0,
+//    s, c, 0.0, 0.0,
+//    0.0, 0.0, 1.0, 0.0,
+//    0.0, 0.0, 0.0, 1.0);
+//}
+
 void main() {
     gl_Position =  projectMatrix* viewMatrix * vec4(vPos, 1.0);
     tCoord = vTex;
