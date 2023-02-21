@@ -3,6 +3,7 @@ import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.awt.GLCanvas;
 import com.jogamp.opengl.awt.GLJPanel;
+import com.jogamp.opengl.util.FPSAnimator;
 
 import javax.swing.*;
 import java.util.*;
@@ -38,6 +39,12 @@ public class main {
                 jFrame.getContentPane().add(glJPanel);
 
                 jFrame.setVisible(true);
+                // create an FPSAnimator with a target frame rate of 60 FPS
+                FPSAnimator animator = new FPSAnimator(glJPanel, 60);
+
+// start the animator
+                animator.start();
+
             }
         });
 
