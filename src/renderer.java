@@ -75,7 +75,7 @@ public class renderer implements GLEventListener {
 
     public void setupTex(GL gl) {
         try {
-            TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File("src/google-stadia-logo-hd4.png"), true, "png");
+            TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File("src/maxwell.png"), true, "png");
             texture = TextureIO.newTexture(data);
             System.out.println("hi");
             if (texture == null) {

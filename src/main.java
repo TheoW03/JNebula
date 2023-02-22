@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.util.*;
 import java.io.*;
 
+import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
+
 
 /**
  * @author Theo willis
@@ -41,8 +43,7 @@ public class main {
                 jFrame.setVisible(true);
                 // create an FPSAnimator with a target frame rate of 60 FPS
                 FPSAnimator animator = new FPSAnimator(glJPanel, 60);
-
-// start the animator
+                jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 animator.start();
 
             }
