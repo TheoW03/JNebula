@@ -75,7 +75,7 @@ public class renderer implements GLEventListener {
 
     public void setupTex(GL gl) {
         try {
-            TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File("src/maxwell.png"), true, "png");
+            TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File("src/google-stadia-logo-hd4.png"), true, "png");
             texture = TextureIO.newTexture(data);
             System.out.println("hi");
             if (texture == null) {
@@ -123,6 +123,8 @@ public class renderer implements GLEventListener {
                 0.0f, 1.0f,           // Top-left texture coordinate
                 1.0f, 1.0f            // Top-right texture coordinate
         };
+        gl.glClear(GL.GL_COLOR_BUFFER_BIT); // Clear the color buffer to the clear color
+
         for (int i = 0; i < vertices.length; i++) {
             vertices[i] = vertices[i] * 100.0f;
         }
@@ -199,8 +201,8 @@ public class renderer implements GLEventListener {
 
         gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
         gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-//        gl.glClear(GL.GL_COLOR_BUFFER_BIT); // Clear the color buffer to the clear color
-        frames--;frames2--;
+        frames--;
+        frames2--;
 
     }
 
