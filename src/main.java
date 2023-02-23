@@ -31,7 +31,7 @@ public class main {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
 
-                JFrame jFrame = new JFrame("Triangle Example");
+                JFrame jFrame = new JFrame("maxwell >:3");
                 jFrame.setSize(640, 480);
 
                 GLJPanel glJPanel = new GLJPanel(glCapabilities);
@@ -41,7 +41,6 @@ public class main {
                 jFrame.getContentPane().add(glJPanel);
 
                 jFrame.setVisible(true);
-                // create an FPSAnimator with a target frame rate of 60 FPS
                 FPSAnimator animator = new FPSAnimator(glJPanel, 60);
                 jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 animator.start();

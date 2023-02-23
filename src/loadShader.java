@@ -1,12 +1,18 @@
+import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.math.Matrix4;
+import org.joml.Matrix4f;
 
 import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.io.*;
+
+import static com.jogamp.opengl.GL.GL_ARRAY_BUFFER;
 
 
 /**
@@ -80,25 +86,29 @@ public class loadShader {
         return shaderProgram;
 
     }
-    public int[] setVBO(GL gl, int vboLength){
-        int[] buffers = new int[vboLength];
-        gl.glGenBuffers(vboLength, buffers, 0);
-        return buffers;
-    }
 
+
+    public void uploadMatrice(Matrix4f matrix, int location, GL2 gl){
+        FloatBuffer matBufferP = Buffers.newDirectFloatBuffer(1024);
+        matrix.get(matBufferP);
+        gl.glUniformMatrix4fv(location, 1, false, matBufferP);
+        matBufferP.clear();
+    }
     /**
      *
      * @param buffer clears buffer
      */
-    public void clearBuffer(GL gl,int[] buffer){
-
+    public void clearBuffer(GL gl,int GL_CONSTANT,int[] buffer){
+        gl.glBindBuffer(GL_CONSTANT, 0);
+        if(gl.glGetError() != GL.GL_NO_ERROR){
+            throw new RuntimeException("Wrong GL constant passed in "+GL_CONSTANT);
+        }
     }
     public void bindBuffer(GL gl,int[] buffer){
-
+        gl.glGenBuffers(buffer.length, buffer, 0);
     }
-    public String setUnformVar(String name, float[] vector){
+    public String setUniformVar(String name, float[] vector){
         return "";
-
     }
 
 

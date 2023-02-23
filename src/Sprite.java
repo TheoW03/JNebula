@@ -5,6 +5,7 @@ import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureData;
 import com.jogamp.opengl.util.texture.TextureIO;
+import org.joml.Matrix4f;
 import org.w3c.dom.Text;
 
 import java.nio.FloatBuffer;
@@ -14,6 +15,7 @@ import java.io.*;
 
 import static com.jogamp.opengl.GL.*;
 import static com.jogamp.opengl.GL.GL_CLAMP_TO_EDGE;
+
 import math.Vector;
 
 /**
@@ -23,81 +25,74 @@ import math.Vector;
  * @Javadoc
  */
 public class Sprite {
-    private GL2 gl;
-    private float[] vertices;
-    private Texture spriteImage;
-    private float[] textureCoords;
-    private int[] indices;
-    private Texture texture;
+    public Texture spriteTexture;
+    private Vector location;
+    private Camera camera;
+    private GL gl;
+    public float[] vertices, textureCoords;
+    public int[] indicies;
+    public int textureID;
+    /**
+     * @param file     picture ex: blank.png
+     * @param location xyz
+     * @param type     png or JPG
+     * @param gl       GL ref
+     */
+    public Sprite(String file, String type, Vector location, GL gl) {
+        this.location = location;
+        this.camera = new Camera(location);
+        this.vertices = new float[]{
+                -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
+                1.0f, -1.0f, 0.0f,    // Bottom-right vertex
+                -1.0f, 1.0f, 0.0f,    // Top-left vertex
+                1.0f, 1.0f, 0.0f      // Top-right vertex
+        };
+        this.indicies = new int[]{0, 1, 2, 3};  // Index buffer for a quad
 
-    public Sprite(float[] vertices,float[] textureCoords, int[] indices) {
-        this.vertices = vertices;
-        this.textureCoords = textureCoords;
-        this.indices = indices;
+        this.textureCoords = new float[]{
+                0.0f, 0.0f,           // Bottom-left texture coordinate
+                1.0f, 0.0f,           // Bottom-right texture coordinate
+                0.0f, 1.0f,           // Top-left texture coordinate
+                1.0f, 1.0f
+        };// Top-right texture coordinate
+        loadTexture(file,type);
     }
 
-    /**
-     *
-     * @param fileName file being the file location
-     * @param type .png or .jpg
-     * @return textire else null
-     */
-    public Texture loadSprite(GL gl, String fileName, String type){
-
+    private boolean loadTexture(String file, String type) {
         try {
-            TextureData data = TextureIO.newTextureData(GLProfile.getDefault(),new File(fileName), true, type);
-            texture = TextureIO.newTexture(data);
-            if (texture == null) {
+            TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File(file), true, type);
+            this.spriteTexture = TextureIO.newTexture(data);
+            System.out.println("hi");
+            if (spriteTexture == null) {
                 System.err.println("Error loading texture");
-                return null;
+                return false;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         gl.glEnable(GL_TEXTURE_2D);
-        assert texture != null;
-        texture.bind(gl);
+        spriteTexture.bind(gl);
+
+        textureID = spriteTexture.getTextureObject();
+        System.out.println(textureID);
+// Set texture parameters
         gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        gl.glEnable(GL_TEXTURE_2D);
-        return texture;
+        return true;
     }
 
-    public Texture getTexture(){
-        return texture;
-    }
-    public int getID(){
-        return texture.getTextureObject();
+    public Matrix4f getProjectionMatrix() {
+        return camera.getProjection();
     }
 
-    /**
-     *
-     * @param buffers buffered array and sets up the indices, vertices and texture coords.
-     * @return
-     */
-    public int[] setBuffer(GL gl,int[] buffers){
-
-        gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
-        gl.glBufferData(GL_ARRAY_BUFFER, vertices.length * 4 + textureCoords.length * 4, null, GL_STATIC_DRAW);
-
-        gl.glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.length * 4, FloatBuffer.wrap(vertices));
-        gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
-
-        gl.glBufferSubData(GL_ARRAY_BUFFER, vertices.length * 4, textureCoords.length * 4, FloatBuffer.wrap(textureCoords));
-        gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[2]);
-
-        gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4, IntBuffer.wrap(indices), GL_STATIC_DRAW);
-        return buffers;
+    public Matrix4f getViewMatrix() {
+        return camera.viewMatrix();
     }
 
-    /**
-     *
-     * @return just do average
-     */
-    public Vector getLocation(){
-        return new Vector(0,0,0);
+    public void updateLocation(Vector location) {
+        this.camera = new Camera(location);
     }
 
 
