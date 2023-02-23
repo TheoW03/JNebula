@@ -32,6 +32,7 @@ public class Sprite {
     public float[] vertices, textureCoords;
     public int[] indicies;
     public int textureID;
+    private float velocity;
     /**
      * @param file     picture ex: blank.png
      * @param location xyz
