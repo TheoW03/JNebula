@@ -31,7 +31,7 @@ public class main {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
 
-                JFrame jFrame = new JFrame("maxwell >:3");
+                JFrame jFrame = new JFrame("naya 2D graphics inDev edition");
                 jFrame.setSize(640, 480);
 
                 GLJPanel glJPanel = new GLJPanel(glCapabilities);

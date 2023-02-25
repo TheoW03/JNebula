@@ -6,13 +6,14 @@ import org.joml.Matrix4f;
 
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.io.*;
 
-import static com.jogamp.opengl.GL.GL_ARRAY_BUFFER;
+import static com.jogamp.opengl.GL.*;
 
 
 /**
@@ -107,7 +108,28 @@ public class loadShader {
     public void bindBuffer(GL gl,int[] buffer){
         gl.glGenBuffers(buffer.length, buffer, 0);
     }
-    public String setUniformVar(String name, float[] vector){
+    public void uplaodTextureCoords(float[] vertices, int[] indices, float[] textureCoords, int[] buffer, GL gl){
+
+        gl.glBindBuffer(GL_ARRAY_BUFFER, buffer[0]);
+        gl.glBufferData(GL_ARRAY_BUFFER, vertices.length * 4 + textureCoords.length * 4, null, GL_STATIC_DRAW);
+
+        gl.glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.length * 4, FloatBuffer.wrap(vertices));
+        gl.glBindBuffer(GL_ARRAY_BUFFER, buffer[0]);
+
+        gl.glBufferSubData(GL_ARRAY_BUFFER, vertices.length * 4, textureCoords.length * 4, FloatBuffer.wrap(textureCoords));
+        gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer[2]);
+
+        gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+
+    }
+
+    /**
+     *
+     * @param fileLocation
+     * @param vector
+     * @return
+     */
+    public String setUniformVar(int fileLocation, float[] vector){
         return "";
     }
 
