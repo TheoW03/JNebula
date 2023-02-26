@@ -39,6 +39,12 @@ public class Camera {
                 cameraFront.add(location.x,location.y,0),cameraUp);
         return view;
     }
+    public Matrix4f initModel(Vector3 location){
+        Matrix4f modelViewMatrix = new Matrix4f();
+        modelViewMatrix.identity();
+        return modelViewMatrix.translate(location.x/100.0f, location.y/100.0f,0);
+
+    }
     public Matrix4f getProjection() {
         return projection;
     }

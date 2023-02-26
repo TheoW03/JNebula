@@ -6,6 +6,7 @@ layout (location = 2) in vec3 color;
 
 uniform mat4 projectMatrix;
 uniform mat4 viewMatrix;
+uniform mat4 model;
 
 out vec2 tCoord;
 
@@ -19,6 +20,6 @@ out vec2 tCoord;
 //}
 
 void main() {
-    gl_Position =  projectMatrix* viewMatrix * vec4(vPos, 1.0);
+    gl_Position =  model*projectMatrix* viewMatrix * vec4(vPos, 1.0);
     tCoord = vTex;
 }

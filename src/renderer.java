@@ -63,7 +63,7 @@ public class renderer implements GLEventListener {
 
     public void setupTex(GL gl) {
         try {
-            TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File("src/sprites/maxwell.png"), true, "png");
+            TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File("src/sprites/test.jpg"), true, "jpg");
             texture = TextureIO.newTexture(data);
             System.out.println("hi");
             if (texture == null) {
@@ -175,9 +175,10 @@ public class renderer implements GLEventListener {
 //
         int matriceLocation = gl.glGetUniformLocation(shaderProgram, "viewMatrix");
         int projectionLocation = gl.glGetUniformLocation(shaderProgram, "projectMatrix");
+        int modelMartrix = gl.glGetUniformLocation(shaderProgram, "model");
 
         //allocate matrix.
-        Camera c = new Camera(new Vector3(frames, frames2, 0));
+        Camera c = new Camera(new Vector3(0, 0, 0));
         FloatBuffer matBufferP = Buffers.newDirectFloatBuffer(1024);
         c.getProjection().get(matBufferP);
         gl.glUniformMatrix4fv(projectionLocation, 1, false, matBufferP);
@@ -187,14 +188,19 @@ public class renderer implements GLEventListener {
         c.viewMatrix().get(matBufferV);
         gl.glUniformMatrix4fv(matriceLocation, 1, false, matBufferV);
         matBufferV.clear();
+
+        FloatBuffer matBufferM = Buffers.newDirectFloatBuffer(1024);
+        c.initModel(new Vector3(frames,frames2,0)).get(matBufferM);
+        gl.glUniformMatrix4fv(modelMartrix, 1, false, matBufferM);
+        matBufferM.clear();
 // Draw the quad
         gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[2]);
         gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
 
         gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
         gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-        frames--;
-        frames2--;
+        frames++;
+        frames2++;
 
     }
 
