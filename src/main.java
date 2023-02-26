@@ -1,21 +1,25 @@
-import com.jogamp.opengl.GL2;
+import Tooling.loadShader;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
-import com.jogamp.opengl.awt.GLCanvas;
 import com.jogamp.opengl.awt.GLJPanel;
 import com.jogamp.opengl.util.FPSAnimator;
 
 import javax.swing.*;
-import java.util.*;
 import java.io.*;
-
-import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 
 
 /**
  * @author Theo willis
  * @version 1.0.0
  * ~ project outline here ~
+ *
+ *
+ * this is how it would work
+ *
+ * you would spawn an object you would like, SPrite which would be a sprite Object or GameObject
+ * they will be default compenets, like transform, sprite renderer
+ * you will have to code your own shaders.
+ *
  * @Javadoc
  */
 public class main {

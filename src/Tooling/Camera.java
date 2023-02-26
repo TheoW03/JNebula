@@ -1,14 +1,8 @@
-import com.jogamp.opengl.fixedfunc.GLMatrixFunc;
-import com.jogamp.opengl.glu.GLU;
+package Tooling;
 
-import com.jogamp.opengl.math.Matrix4;
-import math.Vector;
+import math.NVector;
 import org.joml.Matrix4f;
-import org.joml.Vector3d;
 import org.joml.Vector3f;
-
-import java.util.*;
-import java.io.*;
 
 
 /**
@@ -22,9 +16,9 @@ public class Camera {
     private Matrix4f projection, view;
 
     private Matrix4f ortho;
-    private Vector location;
+    private NVector location;
 
-    public Camera(Vector location) {
+    public Camera(NVector location) {
         this.location = location;
         this.projection = new Matrix4f();
         this.view = new Matrix4f();

@@ -1,8 +1,5 @@
 package math;
 
-import java.util.*;
-import java.io.*;
-
 
 /**
  * @author Theo willis
@@ -10,17 +7,17 @@ import java.io.*;
  * ~ project outline here ~
  * @Javadoc
  */
-public class Vector {
+public class NVector {
 
     public float x, y, z;
 
-    public Vector(float x, float y, float z) {
+    public NVector(float x, float y, float z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public Vector(float x, float y) {
+    public NVector(float x, float y) {
         this.x = x;
         this.y = y;
         this.z = 0;

@@ -1,29 +1,17 @@
+import Tooling.Camera;
+import Tooling.loadShader;
 import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.*;
-import com.jogamp.opengl.awt.GLCanvas;
-import com.jogamp.opengl.util.awt.ImageUtil;
 import com.jogamp.opengl.util.texture.Texture;
-import com.jogamp.opengl.util.texture.TextureCoords;
 import com.jogamp.opengl.util.texture.TextureData;
 import com.jogamp.opengl.util.texture.TextureIO;
-import math.Vector;
-import org.w3c.dom.Text;
+import math.NVector;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
-import java.util.*;
 import java.io.*;
 
 import static com.jogamp.opengl.GL.*;
-import static com.jogamp.opengl.GL2ES3.GL_QUADS;
-
-import javax.swing.Timer;
 
 /**
  * @author Theo willis
@@ -165,6 +153,8 @@ public class renderer implements GLEventListener {
         gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
         gl.glEnableVertexAttribArray(positionAttrib);
         gl.glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, false, 0, 0);
+
+
         gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
         gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
         int texCoordAttrib = gl.glGetAttribLocation(shaderProgram, "vTex");
@@ -181,11 +171,13 @@ public class renderer implements GLEventListener {
         int textureSamplerLoc = gl.glGetUniformLocation(shaderProgram, "tSample");
         System.out.println("texture: " + textureSamplerLoc);
         gl.glUniform1i(textureSamplerLoc, 0);
-        gl.glUseProgram(shaderProgram);
+//        gl.glUseProgram(shaderProgram);
 //
         int matriceLocation = gl.glGetUniformLocation(shaderProgram, "viewMatrix");
         int projectionLocation = gl.glGetUniformLocation(shaderProgram, "projectMatrix");
-        Camera c = new Camera(new Vector(frames, frames2, 0));
+
+        //allocate matrix.
+        Camera c = new Camera(new NVector(frames, frames2, 0));
         FloatBuffer matBufferP = Buffers.newDirectFloatBuffer(1024);
         c.getProjection().get(matBufferP);
         gl.glUniformMatrix4fv(projectionLocation, 1, false, matBufferP);
