@@ -1,10 +1,10 @@
-package NayaEngine.GameObjects;
+package org.NayaEngine.GameObjects;
 
-import NayaEngine.Compenents.ManageCompenents;
-import NayaEngine.Compenents.DifferentCompenents.SpriteCompenet;
-import NayaEngine.Compenents.DifferentCompenents.TranformCompenet;
-import NayaEngine.Compenents.iCompenet;
-import NayaEngine.math.NVector;
+import org.NayaEngine.Compenents.ManageCompenents;
+import org.NayaEngine.Compenents.DifferentCompenents.SpriteCompenet;
+import org.NayaEngine.Compenents.DifferentCompenents.TranformCompenet;
+import org.NayaEngine.Compenents.iCompenet;
+import org.NayaEngine.math.NVector;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.texture.Texture;
@@ -26,7 +26,7 @@ import static com.jogamp.opengl.GL.*;
 public class SpriteObject implements GameBehavior {
     public Texture spriteTexture;
     private NVector location;
-//    private NayaEngine.Tooling.Camera camera;
+//    private com.NayaEngine.Tooling.Camera camera;
     private GL gl;
     public float[] vertices, textureCoords;
     public int[] indicies;
@@ -41,7 +41,7 @@ public class SpriteObject implements GameBehavior {
      */
     public SpriteObject(String fileName, String type, NVector location, GL gl) {
         this.location = location;
-//        this.camera = new NayaEngine.Tooling.Camera(location);
+//        this.camera = new com.NayaEngine.Tooling.Camera(location);
         this.vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex
@@ -117,7 +117,7 @@ public class SpriteObject implements GameBehavior {
 //    }
 //
 //    public void updateLocation(NVector location) {
-//        this.camera = new NayaEngine.Tooling.Camera(location);
+//        this.camera = new com.NayaEngine.Tooling.Camera(location);
 //    }
 
 

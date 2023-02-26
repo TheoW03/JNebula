@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/2D_GameEngine.iml" filepath="$PROJECT_DIR$/2D_GameEngine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Nayaengine.iml" filepath="$PROJECT_DIR$/Nayaengine.iml" />
     </modules>
   </component>
 </project>

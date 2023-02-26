@@ -1,4 +1,4 @@
-package NayaEngine.physics;
+package org.NayaEngine.physics;
 
 
 /**

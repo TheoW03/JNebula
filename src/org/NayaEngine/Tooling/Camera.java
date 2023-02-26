@@ -1,6 +1,6 @@
-package NayaEngine.Tooling;
+package org.NayaEngine.Tooling;
 
-import NayaEngine.math.NVector;
+import org.NayaEngine.math.NVector;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 

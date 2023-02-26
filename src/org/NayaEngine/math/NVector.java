@@ -1,4 +1,4 @@
-package NayaEngine.math;
+package org.NayaEngine.math;
 
 
 /**

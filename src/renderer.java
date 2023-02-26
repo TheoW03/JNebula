@@ -1,6 +1,6 @@
-import NayaEngine.Tooling.Camera;
-import NayaEngine.Tooling.loadShader;
-import NayaEngine.math.NVector;
+import org.NayaEngine.Tooling.Camera;
+import org.NayaEngine.Tooling.loadShader;
+import org.NayaEngine.math.NVector;
 import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.util.texture.Texture;

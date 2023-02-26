@@ -1,7 +1,7 @@
-package NayaEngine.Compenents.DifferentCompenents;
+package org.NayaEngine.Compenents.DifferentCompenents;
 
-import NayaEngine.Compenents.iCompenet;
-import NayaEngine.Tooling.Camera;
+import org.NayaEngine.Compenents.iCompenet;
+import org.NayaEngine.Tooling.Camera;
 import org.joml.Matrix4f;
 
 

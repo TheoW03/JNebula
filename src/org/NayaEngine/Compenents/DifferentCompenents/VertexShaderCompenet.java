@@ -1,9 +1,8 @@
-package NayaEngine.Compenents.DifferentCompenents;
+package org.NayaEngine.Compenents.DifferentCompenents;
 
 
-import NayaEngine.Compenents.iCompenet;
+import org.NayaEngine.Compenents.iCompenet;
 import com.jogamp.common.nio.Buffers;
-import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 
 import java.nio.FloatBuffer;

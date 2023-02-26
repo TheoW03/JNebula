@@ -1,10 +1,10 @@
-package NayaEngine.GameObjects;
+package org.NayaEngine.GameObjects;
 
-import NayaEngine.Compenents.DifferentCompenents.CameraCompenent;
-import NayaEngine.Compenents.ManageCompenents;
-import NayaEngine.Compenents.iCompenet;
-import NayaEngine.Tooling.Camera;
-import NayaEngine.math.NVector;
+import org.NayaEngine.Compenents.DifferentCompenents.CameraCompenent;
+import org.NayaEngine.Compenents.ManageCompenents;
+import org.NayaEngine.Compenents.iCompenet;
+import org.NayaEngine.Tooling.Camera;
+import org.NayaEngine.math.NVector;
 
 
 /**

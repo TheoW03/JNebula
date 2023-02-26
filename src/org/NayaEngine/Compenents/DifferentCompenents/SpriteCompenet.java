@@ -1,6 +1,6 @@
-package NayaEngine.Compenents.DifferentCompenents;
+package org.NayaEngine.Compenents.DifferentCompenents;
 
-import NayaEngine.Compenents.iCompenet;
+import org.NayaEngine.Compenents.iCompenet;
 import com.jogamp.opengl.util.texture.Texture;
 
 

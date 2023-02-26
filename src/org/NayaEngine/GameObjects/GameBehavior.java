@@ -1,6 +1,6 @@
-package NayaEngine.GameObjects;
+package org.NayaEngine.GameObjects;
 
-import NayaEngine.Compenents.iCompenet;
+import org.NayaEngine.Compenents.iCompenet;
 
 
 /**

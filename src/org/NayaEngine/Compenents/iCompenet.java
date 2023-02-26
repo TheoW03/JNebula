@@ -1,7 +1,5 @@
-package NayaEngine.Compenents;
+package org.NayaEngine.Compenents;
 
-
-import com.jogamp.opengl.GL;
 
 /**
  * @author Theo willis
