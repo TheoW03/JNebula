@@ -1,6 +1,8 @@
 package NayaEngine.Compenents;
 
 
+import com.jogamp.opengl.GL;
+
 /**
  * @author Theo willis
  * @version 1.0.0
@@ -8,6 +10,7 @@ package NayaEngine.Compenents;
  * @Javadoc
  */
 public interface iCompenet {
+
     String toString();
 
 

@@ -100,7 +100,7 @@ public class SpriteObject implements GameBehavior {
 
     @Override
     public void AddCompenent(String name, iCompenet compenet) {
-        compenents.AddCompenet(name,compenet);
+        compenents.AddCompenet(compenet.toString(),compenet);
     }
 
     @Override

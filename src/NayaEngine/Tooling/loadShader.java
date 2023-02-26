@@ -9,6 +9,8 @@ import java.nio.file.Path;
 import java.util.*;
 import java.io.*;
 
+import static com.jogamp.opengl.GL.GL_ARRAY_BUFFER;
+
 
 /**
  * @author Theo willis
@@ -39,8 +41,8 @@ public class loadShader {
     }
 
     public int loadShaders(String vertexShaderS, String fragShader, GL2 gl2) {
-        if(vertexShaderS.length() == "error getting file".length()){
-           return 0;
+        if (vertexShaderS.length() == "error getting file".length()) {
+            return 0;
         }
         int shaderProgram = gl2.glCreateProgram();
         int vertexShader = gl2.glCreateShader(GL2.GL_VERTEX_SHADER);
@@ -82,6 +84,18 @@ public class loadShader {
         gl2.glUseProgram(shaderProgram);
 
         return shaderProgram;
+
+    }
+
+    public void genBuffer(int[] buffer, GL2 gl) {
+
+        gl.glGenBuffers(buffer.length, buffer, 0);
+    }
+    public void bindBuffer(int[] buffer,int GL_CONSTANT,GL2 gl){
+        gl.glBindBuffer(GL_CONSTANT, buffer[0]);
+    }
+    public void freeBuffer(int[] buffer,int GL_CONSTANT,GL2 gl){
+        gl.glBindBuffer(GL_CONSTANT, 0);
 
     }
 }
