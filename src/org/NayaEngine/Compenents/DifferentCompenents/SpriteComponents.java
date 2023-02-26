@@ -1,6 +1,6 @@
 package org.NayaEngine.Compenents.DifferentCompenents;
 
-import org.NayaEngine.Compenents.iCompenet;
+import org.NayaEngine.Compenents.iComponent;
 import com.jogamp.opengl.util.texture.Texture;
 
 
@@ -10,11 +10,11 @@ import com.jogamp.opengl.util.texture.Texture;
  * ~ project outline here ~
  * @Javadoc
  */
-public class SpriteCompenet implements iCompenet {
+public class SpriteComponents implements iComponent {
     public Texture texture;
     public int[] indicies;
     public float[] textureCoords;
-    public SpriteCompenet(Texture texture) {
+    public SpriteComponents(Texture texture) {
         this.indicies = new int[]{0, 1, 2, 3};  // Index buffer for a quad
 
         this.textureCoords = new float[]{

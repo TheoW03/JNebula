@@ -7,8 +7,8 @@ package org.NayaEngine.Compenents.DifferentCompenents;
  * ~ project outline here ~
  * @Javadoc
  */
-public class FragmentShaderCompenet {
-    public FragmentShaderCompenet(int shaderProgram) {
+public class FragmentShaderComponent {
+    public FragmentShaderComponent(int shaderProgram) {
 
     }
     public void bindTexture(){

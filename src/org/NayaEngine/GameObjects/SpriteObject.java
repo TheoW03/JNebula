@@ -1,10 +1,10 @@
 package org.NayaEngine.GameObjects;
 
-import org.NayaEngine.Compenents.ManageCompenents;
-import org.NayaEngine.Compenents.DifferentCompenents.SpriteCompenet;
-import org.NayaEngine.Compenents.DifferentCompenents.TranformCompenet;
-import org.NayaEngine.Compenents.iCompenet;
-import org.NayaEngine.math.NVector;
+import org.NayaEngine.Compenents.ManageCmponent;
+import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
+import org.NayaEngine.Compenents.DifferentCompenents.TranformComponent;
+import org.NayaEngine.Compenents.iComponent;
+import org.NayaEngine.math.Vector3;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.texture.Texture;
@@ -25,21 +25,21 @@ import static com.jogamp.opengl.GL.*;
  */
 public class SpriteObject implements GameBehavior {
     public Texture spriteTexture;
-    private NVector location;
+    private Vector3 location;
 //    private com.NayaEngine.Tooling.Camera camera;
     private GL gl;
     public float[] vertices, textureCoords;
     public int[] indicies;
     public int textureID;
     private float velocity;
-    private ManageCompenents compenents;
+    private ManageCmponent compenents;
     public ArrayList<String> compenetsString;
     /**
      * @param location xyz
      * @param type     png or JPG
      * @param gl       GL ref
      */
-    public SpriteObject(String fileName, String type, NVector location, GL gl) {
+    public SpriteObject(String fileName, String type, Vector3 location, GL gl) {
         this.location = location;
 //        this.camera = new com.NayaEngine.Tooling.Camera(location);
         this.vertices = new float[]{
@@ -58,13 +58,13 @@ public class SpriteObject implements GameBehavior {
         };// Top-right texture coordinate
         loadTexture(fileName,type);
         addDefuaultCompenets();
-        compenents = new ManageCompenents();
+        compenents = new ManageCmponent();
     }
 
     private void addDefuaultCompenets(){
 
-        compenents.AddCompenet("TransformComponent", new TranformCompenet(location));
-        compenents.AddCompenet("SpriteComponent", new SpriteCompenet(spriteTexture));
+        compenents.AddCompenet("TransformComponent", new TranformComponent(location));
+        compenents.AddCompenet("SpriteComponent", new SpriteComponents(spriteTexture));
     }
 
 //
@@ -94,17 +94,17 @@ public class SpriteObject implements GameBehavior {
     }
 
     @Override
-    public iCompenet GetCompenent(String name) {
+    public iComponent GetCompenent(String name) {
         return compenents.GetCompenent(name);
     }
 
     @Override
-    public void AddCompenent(String name, iCompenet compenet) {
+    public void AddCompenent(String name, iComponent compenet) {
         compenents.AddCompenet(compenet.toString(),compenet);
     }
 
     @Override
-    public void GetCompenentList(String name, iCompenet compenet) {
+    public void GetCompenentList(String name, iComponent compenet) {
 
     }
 //
@@ -116,7 +116,7 @@ public class SpriteObject implements GameBehavior {
 //        return camera.viewMatrix();
 //    }
 //
-//    public void updateLocation(NVector location) {
+//    public void updateLocation(Vector3 location) {
 //        this.camera = new com.NayaEngine.Tooling.Camera(location);
 //    }
 

@@ -1,6 +1,6 @@
 import org.NayaEngine.Tooling.Camera;
 import org.NayaEngine.Tooling.loadShader;
-import org.NayaEngine.math.NVector;
+import org.NayaEngine.math.Vector3;
 import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.util.texture.Texture;
@@ -177,7 +177,7 @@ public class renderer implements GLEventListener {
         int projectionLocation = gl.glGetUniformLocation(shaderProgram, "projectMatrix");
 
         //allocate matrix.
-        Camera c = new Camera(new NVector(frames, frames2, 0));
+        Camera c = new Camera(new Vector3(frames, frames2, 0));
         FloatBuffer matBufferP = Buffers.newDirectFloatBuffer(1024);
         c.getProjection().get(matBufferP);
         gl.glUniformMatrix4fv(projectionLocation, 1, false, matBufferP);

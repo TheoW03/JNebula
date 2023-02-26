@@ -1,7 +1,7 @@
 package org.NayaEngine.Compenents.DifferentCompenents;
 
 
-import org.NayaEngine.Compenents.iCompenet;
+import org.NayaEngine.Compenents.iComponent;
 import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.GL2;
 
@@ -13,11 +13,11 @@ import java.nio.FloatBuffer;
  * ~ project outline here ~
  * @Javadoc
  */
-public class VertexShaderCompenet implements iCompenet {
+public class VertexShaderComponent implements iComponent {
     private final GL2 gl;
     public int shaderProgram;
 
-    public VertexShaderCompenet(int shaderProgram, GL2 gl) {
+    public VertexShaderComponent(int shaderProgram, GL2 gl) {
         this.gl = gl;
 
         this.shaderProgram = shaderProgram;
@@ -27,7 +27,7 @@ public class VertexShaderCompenet implements iCompenet {
         gl.glEnableVertexAttribArray(attrib);
     }
 
-    public void allocateMatrices(CameraCompenent c, int matLoc) {
+    public void allocateMatrices(CameraComponent c, int matLoc) {
         FloatBuffer matBufferP = Buffers.newDirectFloatBuffer(1024);
         c.projectMatrix.get(matBufferP);
         gl.glUniformMatrix4fv(matLoc, 1, false, matBufferP);

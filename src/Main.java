@@ -22,11 +22,7 @@ import java.io.*;
  *
  * @Javadoc
  */
-public class main {
-    public main() {
-
-    }
-
+public class Main {
     public static void main(String[] args) throws IOException {
 
         final GLProfile glProfile = GLProfile.getDefault();

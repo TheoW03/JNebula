@@ -1,5 +1,5 @@
 import org.NayaEngine.GameObjects.SpriteObject;
-import org.NayaEngine.math.NVector;
+import org.NayaEngine.math.Vector3;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
@@ -17,8 +17,8 @@ public class RendererTest implements GLEventListener {
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
         GL gl = glAutoDrawable.getGL().getGL2();
-        s = new SpriteObject("src/maxwell.png", "png", new NVector(0, 0, 0), gl);
-        s2 = new SpriteObject("src/test.jpg", "jpg", new NVector(10, 10, 0), gl);
+        s = new SpriteObject("src/maxwell.png", "png", new Vector3(0, 0, 0), gl);
+        s2 = new SpriteObject("src/test.jpg", "jpg", new Vector3(10, 10, 0), gl);
     }
 
     @Override

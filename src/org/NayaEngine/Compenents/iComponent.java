@@ -7,7 +7,7 @@ package org.NayaEngine.Compenents;
  * ~ project outline here ~
  * @Javadoc
  */
-public interface iCompenet {
+public interface iComponent {
 
     String toString();
 

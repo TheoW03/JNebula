@@ -13,16 +13,16 @@ import java.util.*;
  * we then add the compenets in the constructor of the method.
  *
  */
-public class ManageCompenents {
-    private HashMap<String, iCompenet> a;
-    public ManageCompenents() {
+public class ManageCmponent {
+    private HashMap<String, iComponent> a;
+    public ManageCmponent() {
         a = new HashMap<>();
     }
 
-    public iCompenet GetCompenent(String className){
+    public iComponent GetCompenent(String className){
         return a.get(className);
     }
-    public iCompenet AddCompenet(String className, iCompenet compenet){
+    public iComponent AddCompenet(String className, iComponent compenet){
         return a.put(className,compenet);
     }
 }

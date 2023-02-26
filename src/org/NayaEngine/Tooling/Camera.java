@@ -1,6 +1,6 @@
 package org.NayaEngine.Tooling;
 
-import org.NayaEngine.math.NVector;
+import org.NayaEngine.math.Vector3;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
@@ -16,9 +16,9 @@ public class Camera {
     private Matrix4f projection, view;
 
     private Matrix4f ortho;
-    private NVector location;
+    private Vector3 location;
 
-    public Camera(NVector location) {
+    public Camera(Vector3 location) {
         this.location = location;
         this.projection = new Matrix4f();
         this.view = new Matrix4f();

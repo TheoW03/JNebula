@@ -1,10 +1,10 @@
 package org.NayaEngine.GameObjects;
 
-import org.NayaEngine.Compenents.DifferentCompenents.CameraCompenent;
-import org.NayaEngine.Compenents.ManageCompenents;
-import org.NayaEngine.Compenents.iCompenet;
+import org.NayaEngine.Compenents.DifferentCompenents.CameraComponent;
+import org.NayaEngine.Compenents.ManageCmponent;
+import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.Tooling.Camera;
-import org.NayaEngine.math.NVector;
+import org.NayaEngine.math.Vector3;
 
 
 /**
@@ -14,28 +14,28 @@ import org.NayaEngine.math.NVector;
  * @Javadoc
  */
 public class GlobalCompenet implements GameBehavior{
-    private ManageCompenents compenents;
-    private NVector position;
-    public GlobalCompenet(NVector position) {
+    private ManageCmponent compenents;
+    private Vector3 position;
+    public GlobalCompenet(Vector3 position) {
         this.position = position;
         addDefualtCompenets();
     }
     private void addDefualtCompenets(){
-        compenents.AddCompenet("mainCamera", new CameraCompenent(new Camera(position)));
+        compenents.AddCompenet("mainCamera", new CameraComponent(new Camera(position)));
     }
 
     @Override
-    public iCompenet GetCompenent(String name) {
+    public iComponent GetCompenent(String name) {
         return null;
     }
 
     @Override
-    public void AddCompenent(String name, iCompenet compenet) {
+    public void AddCompenent(String name, iComponent compenet) {
 
     }
 
     @Override
-    public void GetCompenentList(String name, iCompenet compenet) {
+    public void GetCompenentList(String name, iComponent compenet) {
 
     }
 }

@@ -7,17 +7,17 @@ package org.NayaEngine.math;
  * ~ project outline here ~
  * @Javadoc
  */
-public class NVector {
+public class Vector3 {
 
     public float x, y, z;
 
-    public NVector(float x, float y, float z) {
+    public Vector3(float x, float y, float z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public NVector(float x, float y) {
+    public Vector3(float x, float y) {
         this.x = x;
         this.y = y;
         this.z = 0;

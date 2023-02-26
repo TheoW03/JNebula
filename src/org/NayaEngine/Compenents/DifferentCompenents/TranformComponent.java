@@ -1,7 +1,7 @@
 package org.NayaEngine.Compenents.DifferentCompenents;
 
-import org.NayaEngine.Compenents.iCompenet;
-import org.NayaEngine.math.NVector;
+import org.NayaEngine.Compenents.iComponent;
+import org.NayaEngine.math.Vector3;
 import org.joml.Matrix4f;
 
 
@@ -11,13 +11,13 @@ import org.joml.Matrix4f;
  * ~ project outline here ~
  * @Javadoc
  */
-public class TranformCompenet implements iCompenet {
-    public NVector location;
+public class TranformComponent implements iComponent {
+    public Vector3 location;
     public Matrix4f modelViewMatrix;
-    public TranformCompenet(NVector location) {
+    public TranformComponent(Vector3 location) {
         this.location =location;
     }
-    public void translate(NVector vector){
+    public void translate(Vector3 vector){
         modelViewMatrix = new Matrix4f();
         modelViewMatrix.identity();
         modelViewMatrix.translate(location.x, location.y,0);

@@ -1,6 +1,6 @@
 package org.NayaEngine.GameObjects;
 
-import org.NayaEngine.Compenents.iCompenet;
+import org.NayaEngine.Compenents.iComponent;
 
 
 /**
@@ -10,9 +10,9 @@ import org.NayaEngine.Compenents.iCompenet;
  * @Javadoc
  */
 public interface GameBehavior {
-    public iCompenet GetCompenent(String name);
-    public void AddCompenent(String name, iCompenet compenet);
-    public void GetCompenentList(String name, iCompenet compenet);
+    public iComponent GetCompenent(String name);
+    public void AddCompenent(String name, iComponent compenet);
+    public void GetCompenentList(String name, iComponent compenet);
 
 
 

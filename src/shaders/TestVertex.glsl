@@ -2,7 +2,7 @@
 //layout(location = 0) in vec3 a_position;
 //varying vec2 vTexCoord;
 //
-//void main()
+//void Main()
 //{
 //    gl_Position = vec4(a_position, 1.0);
 //    vTextCoord = a_position;

@@ -1,9 +1,9 @@
 package org.NayaEngine.GameObjects;
 
-import org.NayaEngine.Compenents.ManageCompenents;
-import org.NayaEngine.Compenents.DifferentCompenents.TranformCompenet;
-import org.NayaEngine.Compenents.iCompenet;
-import org.NayaEngine.math.NVector;
+import org.NayaEngine.Compenents.ManageCmponent;
+import org.NayaEngine.Compenents.DifferentCompenents.TranformComponent;
+import org.NayaEngine.Compenents.iComponent;
+import org.NayaEngine.math.Vector3;
 
 import java.util.ArrayList;
 
@@ -15,13 +15,13 @@ import java.util.ArrayList;
  * @Javadoc
  */
 public class GameObject implements GameBehavior {
-    ManageCompenents compenents;
-    NVector location;
+    ManageCmponent compenents;
+    Vector3 location;
     public ArrayList<String> compenetsString;
     public float[] vertices;
-    public GameObject(NVector location) {
+    public GameObject(Vector3 location) {
         this.location =  location;
-        this.compenents = new ManageCompenents();
+        this.compenents = new ManageCmponent();
         this.vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex
@@ -32,7 +32,7 @@ public class GameObject implements GameBehavior {
     }
     private void addDefuaultCompenets(){
 
-        compenents.AddCompenet("TransformComponent", new TranformCompenet(location));
+        compenents.AddCompenet("TransformComponent", new TranformComponent(location));
     }
 
     public void scaleVertices(float scale){
@@ -42,17 +42,17 @@ public class GameObject implements GameBehavior {
     }
 
     @Override
-    public iCompenet GetCompenent(String name) {
+    public iComponent GetCompenent(String name) {
         return compenents.GetCompenent(name);
     }
 
     @Override
-    public void AddCompenent(String name, iCompenet compenet) {
+    public void AddCompenent(String name, iComponent compenet) {
         compenents.AddCompenet(compenet.toString(), compenet);
     }
 
     @Override
-    public void GetCompenentList(String name, iCompenet compenet) {
+    public void GetCompenentList(String name, iComponent compenet) {
 
     }
 }
