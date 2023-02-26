@@ -1,7 +1,4 @@
-package Compenents.DifferentCompenents;
-
-import java.util.*;
-import java.io.*;
+package NayaEngine.Compenents.DifferentCompenents;
 
 /**
  * @author Theo willis

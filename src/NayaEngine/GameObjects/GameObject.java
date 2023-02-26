@@ -1,9 +1,9 @@
-package GameObjects;
+package NayaEngine.GameObjects;
 
-import Compenents.ManageCompenents;
-import Compenents.DifferentCompenents.TranformCompenet;
-import Compenents.iCompenet;
-import math.NVector;
+import NayaEngine.Compenents.ManageCompenents;
+import NayaEngine.Compenents.DifferentCompenents.TranformCompenet;
+import NayaEngine.Compenents.iCompenet;
+import NayaEngine.math.NVector;
 
 import java.util.ArrayList;
 

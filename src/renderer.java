@@ -1,11 +1,11 @@
-import Tooling.Camera;
-import Tooling.loadShader;
+import NayaEngine.Tooling.Camera;
+import NayaEngine.Tooling.loadShader;
+import NayaEngine.math.NVector;
 import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureData;
 import com.jogamp.opengl.util.texture.TextureIO;
-import math.NVector;
 
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -63,7 +63,7 @@ public class renderer implements GLEventListener {
 
     public void setupTex(GL gl) {
         try {
-            TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File("src/maxwell.png"), true, "png");
+            TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File("src/sprites/maxwell.png"), true, "png");
             texture = TextureIO.newTexture(data);
             System.out.println("hi");
             if (texture == null) {

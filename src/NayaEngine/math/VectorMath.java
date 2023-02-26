@@ -1,7 +1,4 @@
-package math;
-
-import java.util.*;
-import java.io.*;
+package NayaEngine.math;
 
 
 /**

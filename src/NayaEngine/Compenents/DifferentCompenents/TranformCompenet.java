@@ -1,11 +1,8 @@
-package Compenents.DifferentCompenents;
+package NayaEngine.Compenents.DifferentCompenents;
 
-import Compenents.iCompenet;
-import math.NVector;
+import NayaEngine.Compenents.iCompenet;
+import NayaEngine.math.NVector;
 import org.joml.Matrix4f;
-
-import java.util.*;
-import java.io.*;
 
 
 /**

@@ -1,10 +1,7 @@
-package Compenents.DifferentCompenents;
+package NayaEngine.Compenents.DifferentCompenents;
 
-import Compenents.iCompenet;
-import Tooling.Camera;
-
-import java.util.*;
-import java.io.*;
+import NayaEngine.Compenents.iCompenet;
+import NayaEngine.Tooling.Camera;
 
 
 /**

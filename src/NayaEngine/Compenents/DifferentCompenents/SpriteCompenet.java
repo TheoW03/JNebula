@@ -1,11 +1,7 @@
-package Compenents.DifferentCompenents;
+package NayaEngine.Compenents.DifferentCompenents;
 
-import Compenents.iCompenet;
+import NayaEngine.Compenents.iCompenet;
 import com.jogamp.opengl.util.texture.Texture;
-import com.jogamp.opengl.util.texture.TextureData;
-
-import java.util.*;
-import java.io.*;
 
 
 /**

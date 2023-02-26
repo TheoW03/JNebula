@@ -1,4 +1,4 @@
-import Tooling.loadShader;
+import NayaEngine.Tooling.loadShader;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.awt.GLJPanel;

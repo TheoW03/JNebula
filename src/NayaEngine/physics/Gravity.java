@@ -1,7 +1,4 @@
-package physics;
-
-import java.util.*;
-import java.io.*;
+package NayaEngine.physics;
 
 
 /**

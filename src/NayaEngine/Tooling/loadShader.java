@@ -1,21 +1,13 @@
-package Tooling;
+package NayaEngine.Tooling;
 
-import com.jogamp.common.nio.Buffers;
-import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.math.Matrix4;
-import org.joml.Matrix4f;
 
 import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.io.*;
-
-import static com.jogamp.opengl.GL.*;
 
 
 /**

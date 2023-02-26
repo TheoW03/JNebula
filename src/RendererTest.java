@@ -1,8 +1,8 @@
-import GameObjects.SpriteObject;
+import NayaEngine.GameObjects.SpriteObject;
+import NayaEngine.math.NVector;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
-import math.NVector;
 
 
 /**
@@ -29,7 +29,7 @@ public class RendererTest implements GLEventListener {
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
 //        GL2 gl = glAutoDrawable.getGL().getGL2();
-//        Tooling.loadShader sh = new Tooling.loadShader();
+//        NayaEngine.Tooling.loadShader sh = new NayaEngine.Tooling.loadShader();
 //        int[] buffer = new int[3];
 //        int[] buffer2 = new int[3];
 //        sh.bindBuffer(gl, buffer);

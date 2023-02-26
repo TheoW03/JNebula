@@ -1,9 +1,6 @@
-package GameObjects;
+package NayaEngine.GameObjects;
 
-import Compenents.iCompenet;
-
-import java.util.*;
-import java.io.*;
+import NayaEngine.Compenents.iCompenet;
 
 
 /**

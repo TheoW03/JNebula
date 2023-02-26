@@ -1,14 +1,10 @@
-package GameObjects;
+package NayaEngine.GameObjects;
 
-import Compenents.DifferentCompenents.CameraCompenent;
-import Compenents.DifferentCompenents.TranformCompenet;
-import Compenents.ManageCompenents;
-import Compenents.iCompenet;
-import Tooling.Camera;
-import math.NVector;
-
-import java.util.*;
-import java.io.*;
+import NayaEngine.Compenents.DifferentCompenents.CameraCompenent;
+import NayaEngine.Compenents.ManageCompenents;
+import NayaEngine.Compenents.iCompenet;
+import NayaEngine.Tooling.Camera;
+import NayaEngine.math.NVector;
 
 
 /**

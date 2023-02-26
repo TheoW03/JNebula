@@ -1,9 +1,6 @@
-package Compenents;
-
-import Compenents.iCompenet;
+package NayaEngine.Compenents;
 
 import java.util.*;
-import java.io.*;
 
 /**
  * @author Theo willis
