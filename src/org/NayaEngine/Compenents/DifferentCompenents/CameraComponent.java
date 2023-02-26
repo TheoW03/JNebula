@@ -19,4 +19,9 @@ public class CameraComponent implements iComponent {
         this.projectMatrix = camera.getProjection();
         this.viewMatrix = camera.viewMatrix();
     }
+
+    @Override
+    public String toString() {
+        return "CameraComponent";
+    }
 }

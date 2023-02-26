@@ -11,10 +11,10 @@ import org.joml.Matrix4f;
  * ~ project outline here ~
  * @Javadoc
  */
-public class TranformComponent implements iComponent {
+public class TransformComponent implements iComponent {
     public Vector3 location;
     public Matrix4f modelViewMatrix;
-    public TranformComponent(Vector3 location) {
+    public TransformComponent(Vector3 location) {
         this.location =location;
     }
     public void translate(Vector3 vector){
@@ -25,6 +25,11 @@ public class TranformComponent implements iComponent {
     public Matrix4f getModelViewMatrix(){
         modelViewMatrix = new Matrix4f();
         modelViewMatrix.identity();
-        return modelViewMatrix.translate(location.x, location.y,0);
+        return modelViewMatrix.translate(location.x/100, location.y/100,0);
+    }
+
+    @Override
+    public String toString() {
+        return "TransformComponent";
     }
 }

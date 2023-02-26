@@ -13,4 +13,9 @@ public class LightingComponent implements iComponent {
     public LightingComponent() {
 
     }
+
+    @Override
+    public String toString() {
+        return "LightingComponent";
+    }
 }

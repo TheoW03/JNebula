@@ -42,6 +42,7 @@ public class Camera {
     public Matrix4f initModel(Vector3 location){
         Matrix4f modelViewMatrix = new Matrix4f();
         modelViewMatrix.identity();
+
         return modelViewMatrix.translate(location.x/100.0f, location.y/100.0f,0);
 
     }

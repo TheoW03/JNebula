@@ -1,7 +1,7 @@
 package org.NayaEngine.GameObjects;
 
 import org.NayaEngine.Compenents.ManageCmponent;
-import org.NayaEngine.Compenents.DifferentCompenents.TranformComponent;
+import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
 import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.math.Vector3;
 
@@ -32,7 +32,7 @@ public class GameObject implements GameBehavior {
     }
     private void addDefuaultCompenets(){
 
-        compenents.AddCompenet("TransformComponent", new TranformComponent(location));
+        compenents.AddCompenet("TransformComponent", new TransformComponent(location));
     }
 
     public void scaleVertices(float scale){

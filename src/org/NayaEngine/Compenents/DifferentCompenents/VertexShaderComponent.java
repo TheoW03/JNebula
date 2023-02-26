@@ -35,4 +35,8 @@ public class VertexShaderComponent implements iComponent {
 
     }
 
+    @Override
+    public String toString() {
+        return "VertexShaderComponent";
+    }
 }

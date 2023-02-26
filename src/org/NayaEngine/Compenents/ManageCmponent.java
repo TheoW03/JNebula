@@ -20,6 +20,9 @@ public class ManageCmponent {
     }
 
     public iComponent GetCompenent(String className){
+        if(a.get(className) == null){
+            System.err.println(className+" doesn't exist");
+        }
         return a.get(className);
     }
     public iComponent AddCompenet(String className, iComponent compenet){

@@ -3,6 +3,8 @@ package org.NayaEngine.Compenents.DifferentCompenents;
 import org.NayaEngine.Compenents.iComponent;
 import com.jogamp.opengl.util.texture.Texture;
 
+import java.util.Arrays;
+
 
 /**
  * @author Theo willis
@@ -27,5 +29,10 @@ public class SpriteComponents implements iComponent {
     }
     public int getID(){
         return texture.getTextureObject();
+    }
+
+    @Override
+    public String toString() {
+        return "SpriteComponent";
     }
 }
