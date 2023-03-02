@@ -9,22 +9,15 @@ import org.NayaEngine.Compenents.iComponent;
  * ~ project outline here ~
  * @Javadoc
  */
-public class FragmentShaderComponent implements iComponent {
-    public FragmentShaderComponent(int shaderProgram) {
-
-    }
-    public void bindTexture(){
-
-    }
-    public void setColor(){
-
-    }
-    public int getUniformVar(){
-        return 0;
-    }
+public class FragmentShaderComponent extends iComponent {
 
     @Override
     public String toString() {
         return "FragmentShaderComponent";
+    }
+
+    @Override
+    public void update(float dt) {
+
     }
 }

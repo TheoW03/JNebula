@@ -93,7 +93,8 @@ public class renderer implements GLEventListener {
 
     int frames = 0;
     int frames2 = 0;
-
+    int frames3 = 0;
+    int frames4 = 0;
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
         GL2 gl = glAutoDrawable.getGL().getGL2();
@@ -190,7 +191,7 @@ public class renderer implements GLEventListener {
         matBufferV.clear();
 
         FloatBuffer matBufferM = Buffers.newDirectFloatBuffer(1024);
-        c.initModel(new Vector3(frames,frames2,0)).get(matBufferM);
+        c.initModel(new Vector3(0,frames,0)).get(matBufferM);
         gl.glUniformMatrix4fv(modelMartrix, 1, false, matBufferM);
         matBufferM.clear();
 // Draw the quad
@@ -201,6 +202,8 @@ public class renderer implements GLEventListener {
         gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         frames++;
         frames2++;
+//        frames3--;
+//        frames4--;
 
     }
 

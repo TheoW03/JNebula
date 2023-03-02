@@ -1,11 +1,14 @@
 package org.NayaEngine.GameObjects;
 
+import com.jogamp.opencl.llb.CL;
 import org.NayaEngine.Compenents.ManageCmponent;
 import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
 import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.math.Vector3;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -14,45 +17,46 @@ import java.util.ArrayList;
  * ~ project outline here ~
  * @Javadoc
  */
-public class GameObject implements GameBehavior {
-    ManageCmponent compenents;
-    Vector3 location;
-    public ArrayList<String> compenetsString;
-    public float[] vertices;
-    public GameObject(Vector3 location) {
-        this.location =  location;
-        this.compenents = new ManageCmponent();
-        this.vertices = new float[]{
-                -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
-                1.0f, -1.0f, 0.0f,    // Bottom-right vertex
-                -1.0f, 1.0f, 0.0f,    // Top-left vertex
-                1.0f, 1.0f, 0.0f      // Top-right vertex
-        };
-        addDefuaultCompenets();
-    }
-    private void addDefuaultCompenets(){
+public class GameObject  {
 
-        compenents.AddCompenet("TransformComponent", new TransformComponent(location));
+    public ArrayList<iComponent> compenets;
+    public GameObject(String name){
+        compenets = new ArrayList<>();
+
     }
 
-    public void scaleVertices(float scale){
-        for (int i = 0; i < vertices.length;i++){
-            vertices[i] *= scale;
+    public <T extends iComponent> T GetCompenent( Class<T>compenet) {
+        for(iComponent c:compenets){
+            if(compenet.isAssignableFrom(c.getClass())){
+                return compenet.cast(c);
+            }
+        }
+        return null;
+    }
+
+
+
+    public void AddCompenent(iComponent compenet) {
+        compenets.add(compenet);
+        compenet.gameObject = this;
+    }
+    public void update(float dt){
+        for(int i = 0; i < compenets.size();i++){
+            compenets.get(i).update(1);
+        }
+    }
+    public void start(float dt){
+        for(int i = 0; i < compenets.size();i++){
+            compenets.get(i).init(1);
         }
     }
 
-    @Override
-    public iComponent GetCompenent(String name) {
-        return compenents.GetCompenent(name);
-    }
-
-    @Override
-    public void AddCompenent(String name, iComponent compenet) {
-        compenents.AddCompenet(compenet.toString(), compenet);
-    }
-
-    @Override
     public void GetCompenentList(String name, iComponent compenet) {
 
+    }
+
+
+    public ArrayList<String> getList() {
+        return null;
     }
 }

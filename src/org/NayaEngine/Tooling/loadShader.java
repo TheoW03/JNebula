@@ -1,8 +1,11 @@
 package org.NayaEngine.Tooling;
 
+import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.GL2;
+import org.joml.Matrix4f;
 
 import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -95,5 +98,12 @@ public class loadShader {
     public void freeBuffer(int[] buffer,int GL_CONSTANT,GL2 gl){
         gl.glBindBuffer(GL_CONSTANT, 0);
 
+    }
+    public void sendMartices(Matrix4f matrice, GL2 gl, int matricLocation) {
+        FloatBuffer matBufferM = Buffers.newDirectFloatBuffer(1024);
+        matrice.get(matBufferM);
+//        c.initModel(new Vector3(0,0,0)).get(matBufferM);
+        gl.glUniformMatrix4fv(matricLocation, 1, false, matBufferM);
+        matBufferM.clear();
     }
 }

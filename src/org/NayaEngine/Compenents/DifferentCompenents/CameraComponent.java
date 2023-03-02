@@ -11,17 +11,10 @@ import org.joml.Matrix4f;
  * ~ project outline here ~
  * @Javadoc
  */
-public class CameraComponent implements iComponent {
-    public Camera camera;
-    public Matrix4f projectMatrix, viewMatrix;
-    public CameraComponent(Camera camera) {
-        this.camera = camera;
-        this.projectMatrix = camera.getProjection();
-        this.viewMatrix = camera.viewMatrix();
-    }
+public class CameraComponent extends iComponent {
 
     @Override
-    public String toString() {
-        return "CameraComponent";
+    public void update(float dt) {
+
     }
 }

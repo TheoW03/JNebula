@@ -2,6 +2,8 @@ package org.NayaEngine.GameObjects;
 
 import org.NayaEngine.Compenents.iComponent;
 
+import java.util.ArrayList;
+
 
 /**
  * @author Theo willis
@@ -11,9 +13,11 @@ import org.NayaEngine.Compenents.iComponent;
  */
 public interface GameBehavior {
     public iComponent GetCompenent(String name);
+
     public void AddCompenent(String name, iComponent compenet);
+
     public void GetCompenentList(String name, iComponent compenet);
 
-
+    public ArrayList<String> getList();
 
 }

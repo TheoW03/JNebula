@@ -9,7 +9,7 @@ import org.NayaEngine.Compenents.iComponent;
  * ~ project outline here ~
  * @Javadoc
  */
-public class LightingComponent implements iComponent {
+public class LightingComponent extends iComponent {
     public LightingComponent() {
 
     }
@@ -17,5 +17,10 @@ public class LightingComponent implements iComponent {
     @Override
     public String toString() {
         return "LightingComponent";
+    }
+
+    @Override
+    public void update(float dt) {
+
     }
 }

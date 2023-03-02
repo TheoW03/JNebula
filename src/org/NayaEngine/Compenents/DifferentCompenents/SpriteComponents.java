@@ -12,27 +12,22 @@ import java.util.Arrays;
  * ~ project outline here ~
  * @Javadoc
  */
-public class SpriteComponents implements iComponent {
-    public Texture texture;
-    public int[] indicies;
-    public float[] textureCoords;
-    public SpriteComponents(Texture texture) {
-        this.indicies = new int[]{0, 1, 2, 3};  // Index buffer for a quad
+public class SpriteComponents extends iComponent {
 
-        this.textureCoords = new float[]{
-                0.0f, 0.0f,           // Bottom-left texture coordinate
-                1.0f, 0.0f,           // Bottom-right texture coordinate
-                0.0f, 1.0f,           // Top-left texture coordinate
-                1.0f, 1.0f           // Top-right texture coordinate
-        };
-        this.texture = texture;
+    @Override
+    public void init(float dt) {
+        super.init(dt);
+        System.out.println("start");
     }
-    public int getID(){
-        return texture.getTextureObject();
+
+    @Override
+    public void update(float dt) {
+        System.out.println("update works :D");
+
     }
 
     @Override
     public String toString() {
-        return "SpriteComponent";
+        return "getComepent works";
     }
 }

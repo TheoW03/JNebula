@@ -8,12 +8,18 @@ import org.NayaEngine.Compenents.iComponent;
  * ~ project outline here ~
  * @Javadoc
  */
-public class PhysicsComponent implements iComponent {
+public class PhysicsComponent extends iComponent {
     public PhysicsComponent() {
 
     }
     @Override
     public String toString() {
         return "PhysicsComponent";
+    }
+
+    @Override
+    public void update(float dt) {
+        System.out.println("physics uwu >:3");
+
     }
 }
