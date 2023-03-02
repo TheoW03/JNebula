@@ -2,6 +2,7 @@ package org.NayaEngine.GameObjects;
 
 import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.util.FPSAnimator;
 import org.NayaEngine.Compenents.DifferentCompenents.CameraComponent;
 import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
 import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
@@ -27,8 +28,17 @@ import static com.jogamp.opengl.GL.*;
  */
 public class InitObjects {
     public boolean first = false;
+    private FPSAnimator fpsAnimator;
 
-    public InitObjects() {
+    public InitObjects(FPSAnimator fpsAnimator) {
+        this.fpsAnimator = fpsAnimator;
+    }
+    public void printFrameRate(){
+        long currentTime = System.currentTimeMillis();
+        long deltaTime = currentTime - fpsAnimator.getLastFPSUpdateTime();
+        int frames = fpsAnimator.getFPS();
+        double fps = (double) frames / ((double) deltaTime / 1000000000.0);
+        System.out.println("FPS: "+frames);
 
     }
 

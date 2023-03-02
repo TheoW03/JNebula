@@ -1,7 +1,9 @@
+import com.jogamp.opengl.util.FPSAnimator;
 import org.NayaEngine.Compenents.DifferentCompenents.PhysicsComponent;
 import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
 import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
 import org.NayaEngine.Compenents.ManageCmponent;
+import org.NayaEngine.GameObjects.FrameRate;
 import org.NayaEngine.GameObjects.GameObject;
 import org.NayaEngine.GameObjects.InitObjects;
 import org.NayaEngine.GameObjects.SpriteObject;
@@ -25,14 +27,24 @@ public class RendererTest implements GLEventListener {
     ArrayList<GameObject> list;
     InitObjects c;
     public GameObject test;
+
+    public RendererTest(FPSAnimator fps){
+        c = new InitObjects(fps);
+    }
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
         list = new ArrayList<>();
-        c = new InitObjects();
         test = new GameObject("TEST");
         test.AddCompenent(new SpriteComponents());
         test.AddCompenent(new PhysicsComponent());
+        test.AddCompenent(new TransformComponent());
         list.add(test);
+        GameObject test2 = new GameObject("TEST2");
+        test2.AddCompenent(new SpriteComponents());
+        test2.AddCompenent(new PhysicsComponent());
+        list.add(test2);
+
+
     }
 
     @Override
@@ -42,8 +54,8 @@ public class RendererTest implements GLEventListener {
 
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
+        c.printFrameRate();
         c.InstiateObjects(list);
-        System.out.println(test.GetCompenent(TransformComponent.class));
     }
 
     @Override

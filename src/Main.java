@@ -35,13 +35,14 @@ public class Main {
                 jFrame.setSize(640, 480);
 
                 GLJPanel glJPanel = new GLJPanel(glCapabilities);
-                glJPanel.addGLEventListener(new RendererTest());
+                FPSAnimator animator = new FPSAnimator(glJPanel, 60);
+                glJPanel.addGLEventListener(new RendererTest(animator));
                 glJPanel.setSize(jFrame.getSize());
 
                 jFrame.getContentPane().add(glJPanel);
 
                 jFrame.setVisible(true);
-                FPSAnimator animator = new FPSAnimator(glJPanel, 60);
+
                 jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 animator.start();
 
