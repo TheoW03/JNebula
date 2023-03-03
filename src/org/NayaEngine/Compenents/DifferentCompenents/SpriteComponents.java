@@ -31,14 +31,32 @@ public class SpriteComponents extends iComponent {
     String type;
     public int textureID;
     public int[] indices;
-    public SpriteComponents(String file, String type, GL2 gl){
+    private float[] vertices, textureCoords;
+
+    public SpriteComponents(String file, String type, GL2 gl) {
         this.file = file;
         this.type = type;
         this.gl = gl;
+        vertices = new float[]{
+                -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
+                1.0f, -1.0f, 0.0f,    // Bottom-right vertex
+                -1.0f, 1.0f, 0.0f,    // Top-left vertex
+                1.0f, 1.0f, 0.0f      // Top-right vertex
+        };
+        textureCoords = new float[]{
+                0.0f, 0.0f,           // Bottom-left texture coordinate
+                1.0f, 0.0f,           // Bottom-right texture coordinate
+                0.0f, 1.0f,           // Top-left texture coordinate
+                1.0f, 1.0f            // Top-right texture coordinate
+        };
+        for (int i = 0; i < vertices.length; i++) {
+            vertices[i] = vertices[i] * 100.0f;
+        }
         this.textureID = 0;
 
     }
-    private void loadTexture(){
+
+    private void loadTexture() {
         Texture texture = null;
         try {
             gl.glEnable(GL.GL_BLEND);
@@ -66,10 +84,12 @@ public class SpriteComponents extends iComponent {
 
 
     }
+
     @Override
     public void init(float dt) {
         loadTexture();
     }
+
 
     @Override
     public void update(float dt) {
@@ -77,27 +97,38 @@ public class SpriteComponents extends iComponent {
 
     }
 
-    @Override
-    public void sendtoGPU(int shaderProgram, loadShader sh) {
-        System.out.println("send to GPU");
-        float[] vertices = {
+    /**
+     * sets vaertices defualt
+     */
+    public void setVerticesDefault() {
+        vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex
                 -1.0f, 1.0f, 0.0f,    // Top-left vertex
                 1.0f, 1.0f, 0.0f      // Top-right vertex
         };
-
-
-        float[] textureCoords = {
-                0.0f, 0.0f,           // Bottom-left texture coordinate
-                1.0f, 0.0f,           // Bottom-right texture coordinate
-                0.0f, 1.0f,           // Top-left texture coordinate
-                1.0f, 1.0f            // Top-right texture coordinate
-        };
         for (int i = 0; i < vertices.length; i++) {
             vertices[i] = vertices[i] * 100.0f;
         }
-        int []buffers = new int[3];
+    }
+
+    public void scale(float value) {
+        for (int i = 0; i < vertices.length; i++) {
+            vertices[i] *= value;
+        }
+    }
+
+    /**
+     *
+     * @param shaderProgram
+     * @param sh
+     */
+    @Override
+    public void sendtoGPU(int shaderProgram, loadShader sh) {
+        System.out.println("send to GPU");
+
+
+        int[] buffers = new int[3];
         indices = new int[]{0, 1, 2, 3};  // Index buffer for a quad
 
         gl.glGenBuffers(3, buffers, 0);

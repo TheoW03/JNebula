@@ -30,7 +30,7 @@ public class RendererTest implements GLEventListener {
     public SpriteObject s,s2;
     ArrayList<GameObject> list;
     InitObjects c;
-    public GameObject test;
+    public GameObject test, test2;
     FPSAnimator fps;
     GL2 gl;
 
@@ -50,7 +50,7 @@ public class RendererTest implements GLEventListener {
         test.AddCompenent(new CameraComponent(new Vector3(0,0,0),gl));
         test.AddCompenent(new TransformComponent(new Vector3(100,150,0),gl));
         list.add(test);
-        GameObject test2 = new GameObject("TEST2");
+        test2 = new GameObject("TEST2");
         test2.AddCompenent(new SpriteComponents("src/sprites/maxwell.png","png",gl));
         test2.AddCompenent(new CameraComponent(new Vector3(0,0,0),gl));
         test2.AddCompenent(new TransformComponent(new Vector3(100,40,0),gl));
