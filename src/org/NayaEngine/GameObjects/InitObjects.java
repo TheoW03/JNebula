@@ -9,6 +9,7 @@ import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
 import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
 import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.Tooling.Camera;
+import org.NayaEngine.Tooling.Window;
 import org.NayaEngine.Tooling.loadShader;
 import org.NayaEngine.math.Vector3;
 import org.joml.Matrix4f;
@@ -19,6 +20,7 @@ import java.util.*;
 import java.io.*;
 
 import static com.jogamp.opengl.GL.*;
+import static java.awt.SystemColor.window;
 
 
 /**
@@ -32,15 +34,16 @@ public class InitObjects {
     private FPSAnimator fpsAnimator;
     private GL2 gl;
 
-    public InitObjects(FPSAnimator fpsAnimator, GL2 gl) {
+    public InitObjects(GL2 gl) {
         this.gl = gl;
-        this.fpsAnimator = fpsAnimator;
+//        this.fpsAnimator = fpsAnimator;
     }
 
     public void printFrameRate() {
+
         long currentTime = System.currentTimeMillis();
-        long deltaTime = currentTime - fpsAnimator.getLastFPSUpdateTime();
-        int frames = fpsAnimator.getFPS();
+        long deltaTime = currentTime - Window.animator.getLastFPSUpdateTime();
+        int frames = Window.animator.getFPS();
         double fps = (double) frames / ((double) deltaTime / 1000000000.0);
         System.out.println("FPS: " + frames);
 

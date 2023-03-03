@@ -9,6 +9,7 @@ import org.NayaEngine.Compenents.ManageCmponent;
 import org.NayaEngine.GameObjects.GameObject;
 import org.NayaEngine.GameObjects.InitObjects;
 import org.NayaEngine.GameObjects.SpriteObject;
+import org.NayaEngine.Tooling.Window;
 import org.NayaEngine.math.Vector3;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GLAutoDrawable;
@@ -34,8 +35,8 @@ public class RendererTest implements GLEventListener {
     FPSAnimator fps;
     GL2 gl;
 
-    public RendererTest(FPSAnimator fps){
-        this.fps = fps;
+    public RendererTest(){
+//        this.fps = w.animator;
     }
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
@@ -43,7 +44,7 @@ public class RendererTest implements GLEventListener {
         gl.glEnable(GL.GL_BLEND);
         gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
 
-        c = new InitObjects(fps,gl);
+        c = new InitObjects(gl);
         list = new ArrayList<>();
         test = new GameObject("TEST");
         test.AddCompenent(new SpriteComponents("src/sprites/test.jpg","jpg",gl));
