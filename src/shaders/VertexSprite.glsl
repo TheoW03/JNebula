@@ -23,7 +23,7 @@ out vec2 tCoord;
 //    0.0, 0.0, 1.0, 0.0,
 //    0.0, 0.0, 0.0, 1.0);
 //}
-
+//temp commenr
 void main() {
     gl_Position =  model*projectMatrix* viewMatrix * vec4(vPos, 1.0);
     tCoord = vTex;
