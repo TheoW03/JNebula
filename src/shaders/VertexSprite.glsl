@@ -8,6 +8,11 @@ uniform mat4 projectMatrix;
 uniform mat4 viewMatrix;
 uniform mat4 model;
 
+uniform float dt;
+uniform float vx;
+uniform float vy;
+
+
 out vec2 tCoord;
 
 //mat4 getRotationMatrix(float angle) {

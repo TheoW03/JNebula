@@ -1,6 +1,9 @@
 package org.NayaEngine.Compenents.DifferentCompenents;
 
+import com.jogamp.opengl.GL;
+import com.jogamp.opengl.GL2;
 import org.NayaEngine.Compenents.iComponent;
+import org.NayaEngine.Tooling.loadShader;
 
 /**
  * @author Theo willis
@@ -9,7 +12,8 @@ import org.NayaEngine.Compenents.iComponent;
  * @Javadoc
  */
 public class PhysicsComponent extends iComponent {
-    public PhysicsComponent() {
+    public PhysicsComponent(GL2 gl) {
+        this.gl = gl;
 
     }
     @Override
@@ -19,7 +23,14 @@ public class PhysicsComponent extends iComponent {
 
     @Override
     public void update(float dt) {
+
         System.out.println("physics uwu >:3");
+
+    }
+
+    @Override
+    public void sendtoGPU(int shaderProgram, loadShader sh) {
+
 
     }
 }
