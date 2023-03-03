@@ -50,3 +50,7 @@ enjoy :)
 
 ![img.png](img.png)
 example of how it looks ^
+
+in the future I plan to add a text based gameObject editor
+
+and physics. and lighting.
