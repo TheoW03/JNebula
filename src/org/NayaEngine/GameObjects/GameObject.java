@@ -1,14 +1,22 @@
 package org.NayaEngine.GameObjects;
 
 import com.jogamp.opencl.llb.CL;
+import com.jogamp.opengl.GL;
+import com.jogamp.opengl.GL2;
+import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
 import org.NayaEngine.Compenents.ManageCmponent;
 import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
 import org.NayaEngine.Compenents.iComponent;
+import org.NayaEngine.Tooling.loadShader;
 import org.NayaEngine.math.Vector3;
 
+import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static com.jogamp.opengl.GL.*;
+import static com.jogamp.opengl.GL.GL_ARRAY_BUFFER;
 
 
 /**
@@ -18,12 +26,14 @@ import java.util.List;
  * @Javadoc
  */
 public class GameObject {
+    public int[] indices;
 
     public ArrayList<iComponent> compenets;
-
+    public String name;
     public GameObject(String name) {
         compenets = new ArrayList<>();
 
+        this.name = name;
     }
 
     public <T extends iComponent> T GetCompenent(Class<T> compenet) {
@@ -51,17 +61,53 @@ public class GameObject {
         compenet.gameObject = this;
     }
 
-    public void update(float dt) {
+    public void update(float dt, GL2 gl) {
+        loadShader sh = new loadShader();
+//        gl.glClear(GL.GL_COLOR_BUFFER_BIT); // Clear the color buffer to the clear color
+        indices = new int[3];
+        int shP = sh.shaderCOmpile(gl);
         for (int i = 0; i < compenets.size(); i++) {
-            compenets.get(i).update(1);
+            compenets.get(i).update(dt);
+            compenets.get(i).sendtoGPU(shP,sh);
+            if(compenets.get(i) instanceof SpriteComponents){
+                indices = ((SpriteComponents) compenets.get(i)).indices;
+                int[] buffers = new int[1];
+                gl.glGenBuffers(1, buffers, 0);
+                gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
+                gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+            }
+
         }
+        gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
+
+        gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
+        gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
 
-    public void start(float dt) {
+    public void start(float dt, GL2 gl) {
+        loadShader sh = new loadShader();
+        int shP = sh.shaderCOmpile(gl);
+        indices = new int[3];
         for (int i = 0; i < compenets.size(); i++) {
-            compenets.get(i).init(1);
+            compenets.get(i).init(dt);
+            compenets.get(i).sendtoGPU(shP,sh);
+            if(compenets.get(i) instanceof SpriteComponents){
+                indices = ((SpriteComponents) compenets.get(i)).indices;
+                int[] buffers = new int[1];
+                gl.glGenBuffers(1, buffers, 0);
+                gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
+                gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+            }
+
+
         }
+
+
+        gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
+        gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
+        gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
+
 
     public void GetCompenentList(String name, iComponent compenet) {
 

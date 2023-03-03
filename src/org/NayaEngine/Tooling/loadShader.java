@@ -41,6 +41,18 @@ public class loadShader {
         return t.toString();
     }
 
+    public int shaderCOmpile(GL2 gl) {
+        String vertexSource = "",
+                fragSource = "";
+        try {
+            vertexSource = processShader("VertexSprite.glsl");
+            fragSource = processShader("SpriteFrag.glsl");
+        } catch (IOException ignored) {
+            return 0;
+        }
+        return loadShaders(vertexSource, fragSource, gl);
+    }
+
     public int loadShaders(String vertexShaderS, String fragShader, GL2 gl2) {
         if (vertexShaderS.length() == "error getting file".length()) {
             return 0;
@@ -92,13 +104,16 @@ public class loadShader {
 
         gl.glGenBuffers(buffer.length, buffer, 0);
     }
-    public void bindBuffer(int[] buffer,int GL_CONSTANT,GL2 gl){
+
+    public void bindBuffer(int[] buffer, int GL_CONSTANT, GL2 gl) {
         gl.glBindBuffer(GL_CONSTANT, buffer[0]);
     }
-    public void freeBuffer(int[] buffer,int GL_CONSTANT,GL2 gl){
+
+    public void freeBuffer(int[] buffer, int GL_CONSTANT, GL2 gl) {
         gl.glBindBuffer(GL_CONSTANT, 0);
 
     }
+
     public void sendMartices(Matrix4f matrice, GL2 gl, int matricLocation) {
         FloatBuffer matBufferM = Buffers.newDirectFloatBuffer(1024);
         matrice.get(matBufferM);
