@@ -40,18 +40,23 @@ public class RendererTest implements GLEventListener {
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
         gl = glAutoDrawable.getGL().getGL2();
+        gl.glEnable(GL.GL_BLEND);
+        gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
+
         c = new InitObjects(fps,gl);
         list = new ArrayList<>();
         test = new GameObject("TEST");
         test.AddCompenent(new SpriteComponents("src/sprites/test.jpg","jpg",gl));
         test.AddCompenent(new CameraComponent(new Vector3(0,0,0),gl));
-        test.AddCompenent(new TransformComponent(new Vector3(100,100,0),gl));
+        test.AddCompenent(new TransformComponent(new Vector3(100,150,0),gl));
         list.add(test);
         GameObject test2 = new GameObject("TEST2");
-        test2.AddCompenent(new SpriteComponents("src/sprites/test.jpg","jpg",gl));
+        test2.AddCompenent(new SpriteComponents("src/sprites/maxwell.png","png",gl));
         test2.AddCompenent(new CameraComponent(new Vector3(0,0,0),gl));
-        test2.AddCompenent(new TransformComponent(new Vector3(10,40,0),gl));
+        test2.AddCompenent(new TransformComponent(new Vector3(100,40,0),gl));
         list.add(test2);
+        gl.glClearColor(0.1f, 0.5f, 0.2f, 0.0f);
+
 
     }
 
@@ -60,10 +65,13 @@ public class RendererTest implements GLEventListener {
 
     }
 
+    public  int i = 0;
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
+        test.GetCompenent(TransformComponent.class).location = new Vector3(100,i,0);
         c.printFrameRate();
         c.InstiateObjects(list);
+        i++;
 //        gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
 //        gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
 //        gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);

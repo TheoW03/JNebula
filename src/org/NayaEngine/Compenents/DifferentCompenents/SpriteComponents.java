@@ -41,6 +41,8 @@ public class SpriteComponents extends iComponent {
     private void loadTexture(){
         Texture texture = null;
         try {
+            gl.glEnable(GL.GL_BLEND);
+            gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
             TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File(file), true, type);
             texture = TextureIO.newTexture(data);
             System.out.println("hi");
@@ -61,6 +63,8 @@ public class SpriteComponents extends iComponent {
         gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+
     }
     @Override
     public void init(float dt) {
@@ -126,6 +130,8 @@ public class SpriteComponents extends iComponent {
 
         gl.glActiveTexture(GL_TEXTURE0);
         gl.glBindTexture(GL_TEXTURE_2D, textureID);
+//        gl.glEnable(GL.GL_BLEND);
+//        gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
         int textureSamplerLoc = gl.glGetUniformLocation(shaderProgram, "tSample");
         System.out.println("texture: " + textureSamplerLoc);
         gl.glUniform1i(textureSamplerLoc, 0);

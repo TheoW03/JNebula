@@ -48,6 +48,7 @@ public class InitObjects {
 
 
     public void InstiateObjects(List<GameObject> object) {
+        gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);// Clear the color buffer to the clear color
 
         for (int i = 0; i < object.size(); i++) {
             if (!first) {
@@ -65,6 +66,7 @@ public class InitObjects {
             int[] buffers = new int[1];
             gl.glGenBuffers(1, buffers, 0);
             gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
+
             gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
             gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
             gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
