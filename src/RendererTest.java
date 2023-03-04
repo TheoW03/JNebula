@@ -50,11 +50,13 @@ public class RendererTest implements GLEventListener {
         test.AddCompenent(new SpriteComponents("src/sprites/test.jpg","jpg",gl));
         test.AddCompenent(new CameraComponent(new Vector3(0,0,0),gl));
         test.AddCompenent(new TransformComponent(new Vector3(100,150,0),gl));
+        test.AddCompenent(new PhysicsComponent(gl,4.0f,test.GetCompenent(TransformComponent.class).location));
         list.add(test);
         test2 = new GameObject("TEST2");
         test2.AddCompenent(new SpriteComponents("src/sprites/maxwell.png","png",gl));
         test2.AddCompenent(new CameraComponent(new Vector3(0,0,0),gl));
         test2.AddCompenent(new TransformComponent(new Vector3(100,40,0),gl));
+        test2.AddCompenent(new PhysicsComponent(gl,2.0f,test2.GetCompenent(TransformComponent.class).location));
         list.add(test2);
         gl.glClearColor(0.1f, 0.5f, 0.2f, 0.0f);
 
@@ -69,9 +71,11 @@ public class RendererTest implements GLEventListener {
     public  int i = 0;
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
-        test.GetCompenent(TransformComponent.class).location = new Vector3(100,i,0);
         Window.printFrameRate();
         c.InstiateObjects(list);
+        if(i == 4){
+            test.isActive = false;
+        }
         i++;
     }
 

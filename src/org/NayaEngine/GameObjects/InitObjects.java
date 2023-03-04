@@ -47,11 +47,11 @@ public class InitObjects {
 
         for (int i = 0; i < object.size(); i++) {
             if (!first) {
-                object.get(i).start(1, gl);
+                object.get(i).start(0.1f, gl);
                 System.out.println(object.get(i).name);
 
             } else {
-                object.get(i).update(1, gl);
+                object.get(i).update(0.1f, gl);
                 System.out.println(object.get(i).name);
             }
 

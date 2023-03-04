@@ -3,6 +3,7 @@ package org.NayaEngine.GameObjects;
 import com.jogamp.opencl.llb.CL;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
+import org.NayaEngine.Compenents.DifferentCompenents.PhysicsComponent;
 import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
 import org.NayaEngine.Compenents.ManageCmponent;
 import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
@@ -30,7 +31,11 @@ public class GameObject {
 
     public ArrayList<iComponent> compenets;
     public String name;
+
+    public boolean isActive;
+
     public GameObject(String name) {
+        isActive = true;
         compenets = new ArrayList<>();
 
         this.name = name;
@@ -62,50 +67,63 @@ public class GameObject {
     }
 
     public void update(float dt, GL2 gl) {
-        loadShader sh = new loadShader();
+        if (isActive) {
+            loadShader sh = new loadShader();
 //        gl.glClear(GL.GL_COLOR_BUFFER_BIT); // Clear the color buffer to the clear color
-        indices = new int[3];
-        int shP = sh.shaderCOmpile(gl);
-        for (int i = 0; i < compenets.size(); i++) {
-            compenets.get(i).update(dt);
-            compenets.get(i).sendtoGPU(shP,sh);
-            if(compenets.get(i) instanceof SpriteComponents){
-                indices = ((SpriteComponents) compenets.get(i)).indices;
-                int[] buffers = new int[1];
-                gl.glGenBuffers(1, buffers, 0);
-                gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
-                gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+            indices = new int[3];
+            int shP = sh.shaderCOmpile(gl);
+            for (int i = 0; i < compenets.size(); i++) {
+                compenets.get(i).update(dt);
+                compenets.get(i).sendtoGPU(shP, sh);
+                if (compenets.get(i) instanceof SpriteComponents) {
+                    indices = ((SpriteComponents) compenets.get(i)).indices;
+                    int[] buffers = new int[1];
+                    gl.glGenBuffers(1, buffers, 0);
+                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
+                    gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+                }
+                if (compenets.get(i) instanceof PhysicsComponent) {
+                    GetCompenent(TransformComponent.class).location = ((PhysicsComponent) compenets.get(i)).vectorPosition;
+                }
+
+
             }
+            gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
 
+            gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
+            gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         }
-        gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
 
-        gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
-        gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
 
     public void start(float dt, GL2 gl) {
-        loadShader sh = new loadShader();
-        int shP = sh.shaderCOmpile(gl);
-        indices = new int[3];
-        for (int i = 0; i < compenets.size(); i++) {
-            compenets.get(i).init(dt);
-            compenets.get(i).sendtoGPU(shP,sh);
-            if(compenets.get(i) instanceof SpriteComponents){
-                indices = ((SpriteComponents) compenets.get(i)).indices;
-                int[] buffers = new int[1];
-                gl.glGenBuffers(1, buffers, 0);
-                gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
-                gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+        if (isActive) {
+            loadShader sh = new loadShader();
+            int shP = sh.shaderCOmpile(gl);
+            indices = new int[3];
+            for (int i = 0; i < compenets.size(); i++) {
+                compenets.get(i).init(dt);
+                compenets.get(i).sendtoGPU(shP, sh);
+                if (compenets.get(i) instanceof SpriteComponents) {
+                    indices = ((SpriteComponents) compenets.get(i)).indices;
+                    int[] buffers = new int[1];
+                    gl.glGenBuffers(1, buffers, 0);
+                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
+                    gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+                }
+//            if (compenets.get(i) instanceof PhysicsComponent) {
+//                GetCompenent(TransformComponent.class).location = ((PhysicsComponent) compenets.get(i)).vectorPosition;
+//            }
+
+
             }
 
 
+            gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
+            gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
+            gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         }
 
-
-        gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
-        gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
-        gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
 
 

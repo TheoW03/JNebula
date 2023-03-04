@@ -20,7 +20,7 @@ import java.io.*;
  */
 public class Window {
     public static FPSAnimator animator;
-
+    public static float deltaTime;
     public Window(int width, int height, String title, GLEventListener renderer) {
         final GLProfile glProfile = GLProfile.getDefault();
         final GLCapabilities glCapabilities = new GLCapabilities(glProfile);
@@ -49,9 +49,9 @@ public class Window {
 
     public static void printFrameRate() {
 
-        long currentTime = System.currentTimeMillis();
-        long deltaTime = currentTime - animator.getLastFPSUpdateTime();
+        deltaTime = 0.1f;
         int frames = Window.animator.getFPS();
+        System.out.println("DT: "+deltaTime);
         double fps = (double) frames / ((double) deltaTime / 1000000000.0);
         System.out.println("FPS: " + frames);
 
