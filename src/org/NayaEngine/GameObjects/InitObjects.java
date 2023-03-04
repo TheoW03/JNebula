@@ -39,15 +39,7 @@ public class InitObjects {
 //        this.fpsAnimator = fpsAnimator;
     }
 
-    public void printFrameRate() {
 
-        long currentTime = System.currentTimeMillis();
-        long deltaTime = currentTime - Window.animator.getLastFPSUpdateTime();
-        int frames = Window.animator.getFPS();
-        double fps = (double) frames / ((double) deltaTime / 1000000000.0);
-        System.out.println("FPS: " + frames);
-
-    }
 
 
     public void InstiateObjects(List<GameObject> object) {

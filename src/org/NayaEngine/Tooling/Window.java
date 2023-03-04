@@ -20,7 +20,8 @@ import java.io.*;
  */
 public class Window {
     public static FPSAnimator animator;
-    public Window(int width, int height, String title,GLEventListener renderer) {
+
+    public Window(int width, int height, String title, GLEventListener renderer) {
         final GLProfile glProfile = GLProfile.getDefault();
         final GLCapabilities glCapabilities = new GLCapabilities(glProfile);
         SwingUtilities.invokeLater(new Runnable() {
@@ -43,6 +44,16 @@ public class Window {
 
             }
         });
+
+    }
+
+    public static void printFrameRate() {
+
+        long currentTime = System.currentTimeMillis();
+        long deltaTime = currentTime - animator.getLastFPSUpdateTime();
+        int frames = Window.animator.getFPS();
+        double fps = (double) frames / ((double) deltaTime / 1000000000.0);
+        System.out.println("FPS: " + frames);
 
     }
 }

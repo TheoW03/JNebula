@@ -70,12 +70,9 @@ public class RendererTest implements GLEventListener {
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
         test.GetCompenent(TransformComponent.class).location = new Vector3(100,i,0);
-        c.printFrameRate();
+        Window.printFrameRate();
         c.InstiateObjects(list);
         i++;
-//        gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
-//        gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
-//        gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
 
     @Override
