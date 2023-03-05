@@ -24,7 +24,7 @@ public class PhysicsComponent extends iComponent {
         this.startingV = startingV;
         vectorPosition = position;
         this.veloLock = false;
-        System.out.println("constructor value: "+vectorPosition.y);
+        System.out.println("constructor value: " + vectorPosition.y);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class PhysicsComponent extends iComponent {
 
     @Override
     public void update(float dt) {
-        if(veloLock){
+        if (veloLock) {
             return;
         }
         startingV += 0.05f;
@@ -42,6 +42,10 @@ public class PhysicsComponent extends iComponent {
 
     }
 
+    public boolean checkCollison(Vector3 positionObj1, Vector3 positionObj2) {
+        return (Math.abs(positionObj1.x - positionObj2.x) < 1
+                && Math.abs(positionObj1.y - positionObj2.y) < 1);
+    }
 
     @Override
     public void sendtoGPU(int shaderProgram, loadShader sh) {

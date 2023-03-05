@@ -21,6 +21,7 @@ import java.io.*;
 public class Window {
     public static FPSAnimator animator;
     public static float deltaTime;
+
     public Window(int width, int height, String title, GLEventListener renderer) {
         final GLProfile glProfile = GLProfile.getDefault();
         final GLCapabilities glCapabilities = new GLCapabilities(glProfile);
@@ -29,6 +30,7 @@ public class Window {
 
                 JFrame jFrame = new JFrame(title);
                 jFrame.setSize(width, height);
+                jFrame.addKeyListener(new KeyboardInput());
 
                 GLJPanel glJPanel = new GLJPanel(glCapabilities);
                 animator = new FPSAnimator(glJPanel, 60);
@@ -51,7 +53,7 @@ public class Window {
 
         deltaTime = 0.1f;
         int frames = Window.animator.getFPS();
-        System.out.println("DT: "+deltaTime);
+        System.out.println("DT: " + deltaTime);
         double fps = (double) frames / ((double) deltaTime / 1000000000.0);
         System.out.println("FPS: " + frames);
 
