@@ -32,6 +32,7 @@ public class SpriteComponents extends iComponent {
     public int textureID;
     public int[] indices;
     private float[] vertices, textureCoords;
+    public int width,height;
 
     public SpriteComponents(String file, String type, GL2 gl) {
         this.file = file;
@@ -71,6 +72,8 @@ public class SpriteComponents extends iComponent {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        width = texture.getWidth();
+        height = texture.getHeight();
         gl.glEnable(GL_TEXTURE_2D);
         assert texture != null;
         texture.bind(gl);

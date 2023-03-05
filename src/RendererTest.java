@@ -82,7 +82,7 @@ public class RendererTest implements GLEventListener {
 
         if(test.GetCompenent(PhysicsComponent.class).checkCollison(test2.GetCompenent(TransformComponent.class).location,
                 test.GetCompenent(TransformComponent.class).location)){
-//            test.GetCompenent(PhysicsComponent.class).veloLock = true;
+            test.GetCompenent(PhysicsComponent.class).veloLock = true;
             System.out.println("collided");
         }
 //        if(i == 4){
