@@ -16,12 +16,14 @@ public class PhysicsComponent extends iComponent {
     public float startingV;
     public Vector3 vectorPosition;
     private Vector3 position;
+    public boolean veloLock;
 
     public PhysicsComponent(GL2 gl, float startingV, Vector3 position) {
         this.gl = gl;
         this.position = position;
         this.startingV = startingV;
         vectorPosition = position;
+        this.veloLock = false;
         System.out.println("constructor value: "+vectorPosition.y);
     }
 
@@ -32,15 +34,19 @@ public class PhysicsComponent extends iComponent {
 
     @Override
     public void update(float dt) {
+        if(veloLock){
+            return;
+        }
         startingV += 0.05f;
         vectorPosition.y -= startingV;
-        System.out.println("pos: "+vectorPosition.y);
-        position = vectorPosition;
 
     }
 
+
     @Override
     public void sendtoGPU(int shaderProgram, loadShader sh) {
+
+
     }
 
 }

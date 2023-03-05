@@ -73,9 +73,9 @@ public class RendererTest implements GLEventListener {
     public void display(GLAutoDrawable glAutoDrawable) {
         Window.printFrameRate();
         c.InstiateObjects(list);
-        if(i == 4){
-            test.isActive = false;
-        }
+//        if(i == 4){
+//            test.isActive = false;
+//        }
         i++;
     }
 
