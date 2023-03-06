@@ -1,10 +1,7 @@
 import com.jogamp.newt.event.KeyEvent;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.util.FPSAnimator;
-import org.NayaEngine.Compenents.DifferentCompenents.CameraComponent;
-import org.NayaEngine.Compenents.DifferentCompenents.PhysicsComponent;
-import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
-import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
+import org.NayaEngine.Compenents.DifferentCompenents.*;
 import org.NayaEngine.Compenents.ManageCmponent;
 //import org.NayaEngine.GameObjects.FrameRate;
 import org.NayaEngine.GameObjects.GameObject;
@@ -30,16 +27,17 @@ import static com.jogamp.opengl.GL.*;
  */
 public class RendererTest implements GLEventListener {
 
-    public SpriteObject s,s2;
+    public SpriteObject s, s2;
     ArrayList<GameObject> list;
     InitObjects c;
     public GameObject test, test2;
     FPSAnimator fps;
     GL2 gl;
 
-    public RendererTest(){
+    public RendererTest() {
 //        this.fps = w.animator;
     }
+
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
         gl = glAutoDrawable.getGL().getGL2();
@@ -49,16 +47,19 @@ public class RendererTest implements GLEventListener {
         c = new InitObjects(gl);
         list = new ArrayList<>();
         test = new GameObject("TEST");
-        test.AddCompenent(new SpriteComponents("src/sprites/test.jpg","jpg",gl));
-        test.AddCompenent(new CameraComponent(new Vector3(0,0,0),gl));
-        test.AddCompenent(new TransformComponent(new Vector3(100,150,0),gl));
-        test.AddCompenent(new PhysicsComponent(gl,4.0f,test.GetCompenent(TransformComponent.class).location));
+        test.AddCompenent(new SpriteComponents("src/sprites/test.jpg", "jpg", gl));
+        test.AddCompenent(new CameraComponent(new Vector3(0, 0, 0), gl));
+        test.AddCompenent(new TransformComponent(new Vector3(100, 150, 0), gl));
+        test.AddCompenent(new PhysicsComponent(gl, 4.0f, test.GetCompenent(TransformComponent.class).location));
+        test.AddCompenent(new ColliderCompenet(test.GetCompenent(SpriteComponents.class).width,test.GetCompenent(SpriteComponents.class).height));
+
         list.add(test);
         test2 = new GameObject("TEST2");
-        test2.AddCompenent(new SpriteComponents("src/sprites/maxwell.png","png",gl));
-        test2.AddCompenent(new CameraComponent(new Vector3(0,0,0),gl));
-        test2.AddCompenent(new TransformComponent(new Vector3(100,40,0),gl));
-        test2.AddCompenent(new PhysicsComponent(gl,2.0f,test2.GetCompenent(TransformComponent.class).location));
+        test2.AddCompenent(new SpriteComponents("src/sprites/maxwell.png", "png", gl));
+        test2.AddCompenent(new CameraComponent(new Vector3(0, 0, 0), gl));
+        test2.AddCompenent(new TransformComponent(new Vector3(100, 40, 0), gl));
+        test2.AddCompenent(new PhysicsComponent(gl, 1.0f, test2.GetCompenent(TransformComponent.class).location));
+        test2.AddCompenent(new ColliderCompenet(test2.GetCompenent(SpriteComponents.class).width,test2.GetCompenent(SpriteComponents.class).height));
         test2.GetCompenent(PhysicsComponent.class).veloLock = true;
         list.add(test2);
         gl.glClearColor(0.1f, 0.5f, 0.2f, 0.0f);
@@ -71,23 +72,23 @@ public class RendererTest implements GLEventListener {
 
     }
 
-    public  int i = 0;
+    public int i = 0;
+
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
         Window.printFrameRate();
         c.InstiateObjects(list);
-        if(KeyboardInput.inputPressed == KeyEvent.VK_W){
+        if (KeyboardInput.inputPressed == KeyEvent.VK_W) {
             System.out.println("typed");
         }
-
-        if(test.GetCompenent(PhysicsComponent.class).checkCollison(test2.GetCompenent(TransformComponent.class).location,
-                test.GetCompenent(TransformComponent.class).location)){
+//        ColliderCompenet c = test2.GetCompenent(ColliderCompenet.class);
+        System.out.println("colider: " + test2.GetCompenent(ColliderCompenet.class).isCollided(test.GetCompenent(ColliderCompenet.class), test.GetCompenent(TransformComponent.class).location,
+                test2.GetCompenent(TransformComponent.class).location));
+        if (test2.GetCompenent(ColliderCompenet.class).isCollided(test.GetCompenent(ColliderCompenet.class), test.GetCompenent(TransformComponent.class).location,
+                test2.GetCompenent(TransformComponent.class).location)) {
             test.GetCompenent(PhysicsComponent.class).veloLock = true;
             System.out.println("collided");
         }
-//        if(i == 4){
-//            test.isActive = false;
-//        }
         i++;
     }
 

@@ -54,6 +54,7 @@ public class SpriteComponents extends iComponent {
             vertices[i] = vertices[i] * 100.0f;
         }
         this.textureID = 0;
+        loadTexture();
 
     }
 

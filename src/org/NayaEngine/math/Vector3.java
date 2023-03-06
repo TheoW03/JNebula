@@ -22,4 +22,13 @@ public class Vector3 {
         this.y = y;
         this.z = 0;
     }
+
+    @Override
+    public String toString() {
+        return "Vector3{" +
+                "x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                '}';
+    }
 }
