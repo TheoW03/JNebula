@@ -115,6 +115,9 @@ public class SpriteComponents extends iComponent {
             vertices[i] = vertices[i] * 100.0f;
         }
     }
+    public float[] getVertices(){
+        return vertices;
+    }
 
     public void scale(float value) {
         for (int i = 0; i < vertices.length; i++) {
