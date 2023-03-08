@@ -22,7 +22,11 @@ public class Vector3 {
         this.y = y;
         this.z = 0;
     }
+    public float dotProduct(Vector3 product){
+        //SUNATION(n, n < compenets) axnbxn
+        return 0;
 
+    }
     @Override
     public String toString() {
         return "Vector3{" +

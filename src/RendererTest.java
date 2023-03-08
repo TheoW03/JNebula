@@ -57,7 +57,7 @@ public class RendererTest implements GLEventListener {
         test2 = new GameObject("TEST2");
         test2.AddCompenent(new SpriteComponents("src/sprites/maxwell.png", "png", gl));
         test2.AddCompenent(new CameraComponent(new Vector3(0, 0, 0), gl));
-        test2.AddCompenent(new TransformComponent(new Vector3(100, 40, 0), gl));
+        test2.AddCompenent(new TransformComponent(new Vector3(96, 40, 0), gl));
         test2.AddCompenent(new PhysicsComponent(gl, 1.0f, test2.GetCompenent(TransformComponent.class).location));
         test2.AddCompenent(new ColliderCompenet(test2.GetCompenent(SpriteComponents.class).width, test2.GetCompenent(SpriteComponents.class).height));
         test2.GetCompenent(PhysicsComponent.class).veloLock = true;
@@ -81,7 +81,7 @@ public class RendererTest implements GLEventListener {
         if (KeyboardInput.inputPressed == KeyEvent.VK_W) {
             System.out.println("typed");
         }
-        if (test.GetCompenent(ColliderCompenet.class).isCollided(test2.GetCompenent(ColliderCompenet.class))) {
+        if (test2.GetCompenent(ColliderCompenet.class).isCollided(test.GetCompenent(ColliderCompenet.class))) {
             test.GetCompenent(PhysicsComponent.class).veloLock = true;
             System.out.println("collided");
         }
