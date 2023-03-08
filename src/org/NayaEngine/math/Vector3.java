@@ -24,8 +24,15 @@ public class Vector3 {
     }
     public float dotProduct(Vector3 product){
         //SUNATION(n, n < compenets) axnbxn
-        return 0;
+        return product.x*this.x + product.y*this.y;
+    }
 
+    /**
+     *
+     * @return
+     */
+    public float mangitude(){
+        return (float) Math.sqrt(this.x*this.x + this.y*this.y);
     }
     @Override
     public String toString() {

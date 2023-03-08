@@ -41,11 +41,10 @@ public class ColliderCompenet extends iComponent {
         Vector3 location1 = this.gameObject.GetCompenent(TransformComponent.class).location;
         float x1 = Math.max(location1.x, location2.x);
         float y1 = Math.max(location1.y, location2.y);
-        float x2 = Math.min(location1.x + this.width / 100, location2.x + collider.width / 100);
-        float y2 = Math.min(location1.y + this.height / 100, location2.y + collider.height / 100);
+        float x2 = Math.min(location1.x + this.width / 100, location2.x + collider.width*2 / 100);
+        float y2 = Math.min(location1.y + this.height / 100, location2.y + collider.height*2 / 100);
         System.out.println(x1 + " " + y1 + " " + x2 + " " + y2);
-        if((x2 - x1 > 0 && y2 - y1 > 0)){
-            collider.gameObject.GetCompenent(TransformComponent.class).location = new Vector3(location2.x, location1.x + this.width/100);
+        if((x2*2 - x1 > 0 && y2*2 - y1 > 0)){
             return true;
         }else {
             return false;
