@@ -1,0 +1,26 @@
+GameObject{
+    name: "name"
+    Transform{
+        location: (1,-2,0); //this is a comment
+    }
+    SpriteCompenets{
+        file:"sprite.png";
+        type: ".png";
+    }
+    PhysicsCompents{
+        velocity: 10;
+    }
+}
+GameObject, "name"{
+    Transform{
+        location: vec3(1,2,0); //this is a comment
+    }
+    SpriteCompenets{
+        file:"sprite.png";
+        type: ".png";
+
+    }
+    PhysicsCompents{
+        velocity: 10;
+    }
+}

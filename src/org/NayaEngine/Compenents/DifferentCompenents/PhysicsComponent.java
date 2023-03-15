@@ -38,7 +38,7 @@ public class PhysicsComponent extends iComponent {
             return;
         }
         startingV += 0.05f;
-        vectorPosition.y -= startingV;
+//        vectorPosition.y -= startingV;
 
     }
 

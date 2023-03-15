@@ -2,18 +2,25 @@
 
 layout (location = 0) in vec3 vPos;
 layout (location = 1) in vec2 vTex;
-layout (location = 2) in vec3 color;
+layout (location = 2) in vec3 normal;
+
 
 uniform mat4 projectMatrix;
 uniform mat4 viewMatrix;
 uniform mat4 model;
+//uniform vec3 pointLightPosition;
+
 
 uniform float dt;
 uniform float vx;
 uniform float vy;
+uniform float lightExits2 = 0;
 
-
+out vec4 pointLightPosition;
 out vec2 tCoord;
+out vec3 FragPos;
+out vec3 Normal;   // Normal of the vertex in world space
+out vec4 lightSourcelocation;
 
 //mat4 getRotationMatrix(float angle) {
 //    float c = cos(radians(angle));
@@ -26,5 +33,12 @@ out vec2 tCoord;
 //temp commenr
 void main() {
     gl_Position =  model*projectMatrix* viewMatrix * vec4(vPos, 1.0);
+
+    if(lightExits2 == 1){
+        vec3 pointLightPosition = vPos;
+        FragPos = vec3(model * vec4(pointLightPosition, 1.0));
+        Normal = mat3(transpose(inverse(model))) * normal;
+    }
+    lightSourcelocation = gl_Position;
     tCoord = vTex;
 }

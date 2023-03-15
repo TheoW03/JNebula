@@ -25,6 +25,14 @@ public class InterptStuff {
 //        Object obj = clazz.getDeclaredConstructor().newInstance();
 //
 //        Field field = clazz.getDeclaredField("myVariable");
+
+
+        //how to implement a JSON serializer
+//        StringBuilder json = new StringBuilder("{");
+//
+//        // Iterate over the object's fields
+//        Field[] fields = obj.getClass().getDeclaredFields();
+
     }
 
 

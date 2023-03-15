@@ -20,6 +20,7 @@ import java.util.*;
 import java.io.*;
 
 import static com.jogamp.opengl.GL.*;
+import static com.jogamp.opengl.fixedfunc.GLLightingFunc.GL_LIGHTING;
 import static java.awt.SystemColor.window;
 
 
@@ -33,8 +34,9 @@ public class InitObjects {
     public boolean first = false;
     private FPSAnimator fpsAnimator;
     private GL2 gl;
-
+    public static CameraComponent mainCamera;
     public InitObjects(GL2 gl) {
+        mainCamera = new CameraComponent(new Vector3(0,0,0),gl);
         this.gl = gl;
 //        this.fpsAnimator = fpsAnimator;
     }
@@ -43,9 +45,16 @@ public class InitObjects {
 
 
     public void InstiateObjects(List<GameObject> object) {
+        gl.glEnable(GL_LIGHTING);
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);// Clear the color buffer to the clear color
 
         for (int i = 0; i < object.size(); i++) {
+            if(object.get(i).GetCompenent(CameraComponent.class) == null){
+                object.get(i).AddCompenent(mainCamera);
+            }
+            if(object.get(i).GetCompenent(TransformComponent.class) == null){
+                object.get(i).AddCompenent(new TransformComponent(new Vector3(0,0,0),gl));
+            }
             if (!first) {
                 object.get(i).start(0.1f, gl);
                 System.out.println(object.get(i).name);

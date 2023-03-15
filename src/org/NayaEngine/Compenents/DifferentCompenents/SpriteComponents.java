@@ -8,6 +8,7 @@ import com.jogamp.opengl.util.texture.TextureIO;
 import org.NayaEngine.Compenents.iComponent;
 import com.jogamp.opengl.util.texture.Texture;
 import org.NayaEngine.Tooling.loadShader;
+import org.NayaEngine.math.Vector3;
 
 import java.io.File;
 import java.io.IOException;
@@ -88,6 +89,19 @@ public class SpriteComponents extends iComponent {
 
 
     }
+    public Vector3[] getVecticesAsVector(){
+        Vector3[] vertix = new Vector3[4];
+        vertix[0] = new Vector3(vertices[0], vertices[1]);
+        vertix[1] = new Vector3(vertices[3], vertices[4]);
+        vertix[2] = new Vector3(vertices[6], vertices[7]);
+        vertix[3] = new Vector3(vertices[9], vertices[10]);
+        return vertix;
+    }
+    /**
+     *
+     * @param dt
+     * gl will be passed here.
+     */
 
     @Override
     public void init(float dt) {

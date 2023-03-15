@@ -26,6 +26,17 @@ public class Vector3 {
         //SUNATION(n, n < compenets) axnbxn
         return product.x*this.x + product.y*this.y;
     }
+    public float magnitude(){
+        return (float) Math.sqrt((this.x*this.x)+(this.y*this.y));
+
+    }
+    public Vector3 unitVector(){
+        float mag = magnitude();
+        if(mag != 0){
+            return  this;
+        }
+        return new Vector3(x*1/mag,y*1/mag,0 );
+    }
 
     /**
      *

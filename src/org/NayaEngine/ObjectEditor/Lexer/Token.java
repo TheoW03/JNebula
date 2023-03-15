@@ -1,8 +1,5 @@
 package org.NayaEngine.ObjectEditor.Lexer;
 
-import java.util.*;
-import java.io.*;
-
 
 /**
  * @author Theo willis
@@ -12,7 +9,8 @@ import java.io.*;
  */
 public class Token {
     public enum Tokens {
-        GAME_OBJECT, STRING, COMPENET
+        GAME_OBJECT, STRING, COMPONENT,
+        BOOLEAN,NUMBER,STR, COMMA, PARENTHSIS, END_OF_LINE, GROUP
     }
 
     public Token.Tokens tokens;
