@@ -31,14 +31,19 @@ void main(){
     if(Lightexists == 1){
 //        float ambientS = 0.1;
 
+        vec3 norm = normalize(Normal);
+        vec3 lightDir = normalize(lightPos - FragPos);
+        float diff = max(dot(norm, lightDir), 0.0);
+        vec3 diffuse = diff * lightColor;
+
         vec3 ambient = strength * lightColor;
 //        vec3 result = ambient * objectColor;
-
 //        vec4 color = texture(tSample, tCoord)+vec4(result,1.0);
 //        if (color.a < 0.1){
 //            discard;
 //        }
-        vec3 result = ambient * objectColor;
+        vec3 result = (diffuse+ambient)*objectColor;
+//        vec3 result = ambient * objectColor;
         FragColor = vec4(result, 1.0)*texture(tSample, tCoord);
 //        FragColor = vec4(lightColor,1.0)*vec4(objectColor,1.0)* texture(tSample,tCoord);
     }else{

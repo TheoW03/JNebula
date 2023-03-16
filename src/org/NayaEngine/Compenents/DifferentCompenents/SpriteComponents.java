@@ -34,7 +34,7 @@ public class SpriteComponents extends iComponent {
     public int[] indices;
     private float[] vertices, textureCoords;
     public int width,height;
-
+    private float[] normals;
     public SpriteComponents(String file, String type, GL2 gl) {
         this.file = file;
         this.type = type;
@@ -50,6 +50,12 @@ public class SpriteComponents extends iComponent {
                 1.0f, 0.0f,           // Bottom-right texture coordinate
                 0.0f, 1.0f,           // Top-left texture coordinate
                 1.0f, 1.0f            // Top-right texture coordinate
+        };
+        normals = new float[]{
+                0.0f, 1.0f,
+                0.0f, 1.0f,
+                0.0f, 1.0f,
+                0.0f, 1.0f,
         };
         for (int i = 0; i < vertices.length; i++) {
             vertices[i] = vertices[i] * 100.0f;
@@ -125,6 +131,7 @@ public class SpriteComponents extends iComponent {
                 -1.0f, 1.0f, 0.0f,    // Top-left vertex
                 1.0f, 1.0f, 0.0f      // Top-right vertex
         };
+
         for (int i = 0; i < vertices.length; i++) {
             vertices[i] = vertices[i] * 100.0f;
         }

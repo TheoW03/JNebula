@@ -52,20 +52,23 @@ public class RendererTest implements GLEventListener {
         test.AddCompenent(new SpriteComponents("src/sprites/test.jpg", "jpg", gl));
 
 //        test.GetCompenent(SpriteComponents.class).scale(200);
-        test.AddCompenent(new LightingComponent(gl));
+
 //        test.AddCompenent(new CameraComponent(new Vector3(0, 0, 0), gl));
         test.AddCompenent(new TransformComponent(new Vector3(100, 150, 0), gl));
 
-        test.AddCompenent(new PhysicsComponent(gl, 4.0f, test.GetCompenent(TransformComponent.class).location));
-        test.AddCompenent(new ColliderCompenet(test.GetCompenent(SpriteComponents.class).width, test.GetCompenent(SpriteComponents.class).height));
 
+        test.AddCompenent(new PhysicsComponent(gl, 4.0f, test.GetCompenent(TransformComponent.class).location));
+
+        test.AddCompenent(new ColliderCompenet(test.GetCompenent(SpriteComponents.class).width, test.GetCompenent(SpriteComponents.class).height));
+        test.AddCompenent(new LightingComponent(gl));
         list.add(test);
         test2 = new GameObject("TEST2");
 
         test2.AddCompenent(new SpriteComponents("src/sprites/maxwell.png", "png", gl));
 //        test2.AddCompenent(new CameraComponent(new Vector3(0, 0, 0), gl));
+
+        test2.AddCompenent(new TransformComponent(new Vector3(100, 40, 0), gl));
         test2.AddCompenent(new LightingComponent(gl));
-        test2.AddCompenent(new TransformComponent(new Vector3(96, 40, 0), gl));
         test2.AddCompenent(new PhysicsComponent(gl, 0.5f, test2.GetCompenent(TransformComponent.class).location));
         test2.AddCompenent(new ColliderCompenet(test2.GetCompenent(SpriteComponents.class).width, test2.GetCompenent(SpriteComponents.class).height));
 

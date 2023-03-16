@@ -35,7 +35,7 @@ public class Vector3 {
         if(mag != 0){
             return  this;
         }
-        return new Vector3(x*1/mag,y*1/mag,0 );
+        return new Vector3(x*(1/mag),y*(1/mag),z*(1/mag));
     }
 
     /**

@@ -2,7 +2,7 @@
 
 layout (location = 0) in vec3 vPos;
 layout (location = 1) in vec2 vTex;
-layout (location = 2) in vec3 normal;
+layout (location = 2) in vec3 anormal;
 
 
 uniform mat4 projectMatrix;
@@ -36,8 +36,8 @@ void main() {
 
     if(lightExits2 == 1){
         vec3 pointLightPosition = vPos;
-        FragPos = vec3(model * vec4(pointLightPosition, 1.0));
-        Normal = mat3(transpose(inverse(model))) * normal;
+        FragPos = vec3(model * vec4(vPos, 1.0));
+        Normal = mat3(transpose(inverse(model))) * anormal;
     }
     lightSourcelocation = gl_Position;
     tCoord = vTex;
