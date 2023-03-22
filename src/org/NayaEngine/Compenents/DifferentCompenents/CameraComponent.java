@@ -18,10 +18,11 @@ import org.joml.Matrix4f;
 public class CameraComponent extends iComponent {
 
     public Camera camera;
+    public Vector3 cameralocation;
     public CameraComponent(Vector3 cameraLocation, GL2 gl){
         this.gl = gl;
         this.camera = new Camera(cameraLocation);
-
+        this.cameralocation = cameraLocation;
     }
 
     @Override

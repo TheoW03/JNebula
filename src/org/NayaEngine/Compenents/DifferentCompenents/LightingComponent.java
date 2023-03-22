@@ -63,6 +63,7 @@ public class LightingComponent extends iComponent {
     @Override
     public void sendtoGPU(int shaderProgram, loadShader sh) {
         int[] buffers = new int[2];
+        Vector3 location = gameObject.GetCompenent(CameraComponent.class).cameralocation;
         gl.glGenBuffers(2, buffers, 0);
         int lightColorLoc = gl.glGetUniformLocation(shaderProgram, "lightColor");
         int objColor = gl.glGetUniformLocation(shaderProgram, "objectColor");
@@ -71,23 +72,28 @@ public class LightingComponent extends iComponent {
         int strength = gl.glGetUniformLocation(shaderProgram, "strength");
         int lightPosition = gl.glGetUniformLocation(shaderProgram, "lightPos");
 
-
+        int viewPosLoc = gl.glGetUniformLocation(shaderProgram, "viewPos");
+        int specularStrengthLoc = gl.glGetUniformLocation(shaderProgram, "specularStrength");
         System.out.println("light: "+lightColorLoc);
         System.out.println("obj: "+objColor);
         gl.glUniform3f(lightColorLoc, 1.0f,1.0f,1.0f);
         gl.glUniform3f(objColor, 1.0f, 0.5f, 0.31f);
+        gl.glUniform3f(viewPosLoc,1, 0, 0);
+        gl.glUniform1f(specularStrengthLoc,1.5f);
+        gl.glUniform3f(objColor, 1.0f, 0.5f, 0.31f);
         gl.glUniform1f(lightExists, 1.0f);
         gl.glUniform1f(lightExists2, 1.0f);
         Vector3 a = gameObject.GetCompenent(TransformComponent.class).location;
-        gl.glUniform3f(lightPosition,a.x, a.y,0);
-        a.x += i2;
-        if(a.x <0){
-            i2 = 1.0f;
-        }else if(a.x > 200){
-            i2 = -1.0f;
-        }
+        gl.glUniform3f(lightPosition,0, 0,0);
+
+        i2++;
+//        if(a.x <0){
+//            i2 = 1.0f;
+//        }else if(a.x > 200){
+//            i2 = -1.0f;
+//        }
         gameObject.GetCompenent(TransformComponent.class).location = a;
-        gl.glUniform1f(strength, 0.0f);
+        gl.glUniform1f(strength, 0.5f);
         VectorMath v = new VectorMath();
         float[] normals = v.vectorNormals(this.gameObject.GetCompenent(SpriteComponents.class).getVecticesAsVector());
         int normalLoc = gl.glGetAttribLocation(shaderProgram,"anormal");
