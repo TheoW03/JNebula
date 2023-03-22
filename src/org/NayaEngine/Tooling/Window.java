@@ -30,9 +30,10 @@ public class Window {
 
                 JFrame jFrame = new JFrame(title);
                 jFrame.setSize(width, height);
-                jFrame.addKeyListener(new KeyboardInput());
+                jFrame.addKeyListener(new Input());
 
                 GLJPanel glJPanel = new GLJPanel(glCapabilities);
+                glJPanel.addKeyListener(new Input());
                 animator = new FPSAnimator(glJPanel, 60);
                 glJPanel.addGLEventListener(renderer);
                 glJPanel.setSize(jFrame.getSize());
@@ -43,6 +44,7 @@ public class Window {
 
                 jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 animator.start();
+
 
             }
         });

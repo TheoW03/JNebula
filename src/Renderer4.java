@@ -2,7 +2,10 @@ import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import org.NayaEngine.GameObjects.GameRenderer;
+import org.NayaEngine.Tooling.Input;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.*;
 import java.io.*;
 
@@ -55,6 +58,9 @@ public class Renderer4 extends GameRenderer {
         gl.glMaterialf(GL2.GL_FRONT_AND_BACK, GL2.GL_SHININESS, materialShininess);
         gl.glEnable(GL_NORMALIZE);
         // Draw a rectangle
+        if(Input.getKey() == KeyEvent.VK_W){
+            System.out.println("W pressed");
+        }
         gl.glBegin(GL2.GL_QUADS);
         gl.glNormal3f(0.0f, 0.0f, i); // surface normal
         gl.glVertex2f(0.0f, 0.0f);

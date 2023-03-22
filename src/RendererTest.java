@@ -7,7 +7,7 @@ import org.NayaEngine.Compenents.ManageCmponent;
 import org.NayaEngine.GameObjects.GameObject;
 import org.NayaEngine.GameObjects.InitObjects;
 import org.NayaEngine.GameObjects.SpriteObject;
-import org.NayaEngine.Tooling.KeyboardInput;
+
 import org.NayaEngine.Tooling.Window;
 import org.NayaEngine.math.Vector3;
 import com.jogamp.opengl.GL;
@@ -92,9 +92,6 @@ public class RendererTest implements GLEventListener {
 //        test2.GetCompenent(SpriteComponents.class).scale(i);
         Window.printFrameRate();
         c.InstiateObjects(list);
-        if (KeyboardInput.inputPressed == KeyEvent.VK_W) {
-            System.out.println("typed");
-        }
         if (test2.GetCompenent(ColliderCompenet.class).isCollided(test.GetCompenent(ColliderCompenet.class))) {
             test.GetCompenent(PhysicsComponent.class).veloLock = true;
             System.out.println("collided");
