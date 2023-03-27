@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 /**
  * @author Theo willis
- * @version 1.0.0
+ * @version 1.0.0s
  * ~ project outline here ~
  * <p>
  * <p>
