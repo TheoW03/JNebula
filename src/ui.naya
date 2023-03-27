@@ -6,7 +6,7 @@ GameObject{
     SpriteCompenets{
         file:"sprite.png";
         type: ".png";
-    }
+    }//s
     PhysicsCompents{
         velocity: 10;//k
     }
