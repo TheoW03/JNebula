@@ -9,6 +9,7 @@ in vec4 lightSourcelocation;
 uniform sampler2D tSample;
 
 uniform float Lightexists = 0;
+uniform float LightSource = 0;
 uniform vec3 lightPos;
 uniform vec3 lightColor;
 uniform vec3 objectColor;
@@ -30,8 +31,9 @@ out vec4 FragColor;
 
 void main(){
 
-    if(Lightexists == 1){
-//        float ambientS = 0.1;
+
+    if (Lightexists == 1){
+        //        float ambientS = 0.1;
 
         vec3 lightDir = normalize(lightPos - FragPos);
         vec3 viewDir = -normalize(viewPos - FragPos);
@@ -48,15 +50,22 @@ void main(){
         vec3 specular = specularStrength * spec * lightColor;
 
         //        vec3 result = ambient * objectColor;
-//        vec4 color = texture(tSample, tCoord)+vec4(result,1.0);
-//        if (color.a < 0.1){
-//            discard;
-//        }
-        vec3 result = (diffuse+ambient+specular)*objectColor;
-//        vec3 result = ambient * objectColor;
-        FragColor = vec4(result, 1.0)*texture(tSample, tCoord);
-//        FragColor = vec4(lightColor,1.0)*vec4(objectColor,1.0)* texture(tSample,tCoord);
-    }else{
+        //        vec4 color = texture(tSample, tCoord)+vec4(result,1.0);
+        //        if (color.a < 0.1){
+        //            discard;
+        //        }
+
+        if (LightSource == 1){
+            vec3 result = ambient*objectColor;
+            FragColor = vec4(result, 1.0)*texture(tSample, tCoord);
+
+        } else {
+            vec3 result = (diffuse+ambient+specular)*objectColor;
+            FragColor = vec4(result, 1.0)*texture(tSample, tCoord);
+
+        }
+
+    } else {
         vec4 color = texture(tSample, tCoord);
         FragColor = color;
 
@@ -65,8 +74,7 @@ void main(){
 
     //    color *= vec4(lightColor,1.0);
 
-//
-
+    //
 
 
     //    vec2 distance = location - tCoord;

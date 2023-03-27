@@ -31,8 +31,8 @@ import java.util.ArrayList;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        Window w = new Window(640, 480, "2D graphics inDev edition", new Renderer4());
-
+//        Window w = new Window(640, 480, "2D graphics inDev edition", new RendererTest());
+        testLexxer();
 //        Window w2 = new Window(640, 480, "2D graphics inDev edition", new Renderer4());
     }
 

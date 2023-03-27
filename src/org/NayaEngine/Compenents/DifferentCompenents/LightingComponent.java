@@ -23,15 +23,34 @@ import static com.jogamp.opengl.fixedfunc.GLLightingFunc.GL_LIGHT0;
  * ~ project outline here ~
  * @Javadoc
  */
+
+
 public class LightingComponent extends iComponent {
 
+    public float intensity;
+    public float[] lightColor;
+    public float strength;
+    public Vector3 lightLocation, cameraPos;
+    public LightingComponent source;
     public LightingComponent(float intensity,
                              float[] lightColor,
                              float strength,
                              GL2 gl) {
         this.gl = gl;
-
-
+        this.lightColor = lightColor;
+        this.strength = strength;
+        this.intensity = intensity;
+        this.lightLocation = this.gameObject.GetCompenent(TransformComponent.class).location;
+        this.cameraPos = this.gameObject.GetCompenent(CameraComponent.class).cameralocation;
+    }
+    public LightingComponent(LightingComponent source, GL2 gl) {
+        this.gl = gl;
+        this.lightColor = source.lightColor;
+        this.strength = source.strength;
+        this.intensity = source.intensity;
+        this.lightLocation = source.lightLocation;
+        this.cameraPos = source.cameraPos;
+        this.source =source;
     }
 
     public LightingComponent(GL2 gl){

@@ -13,8 +13,9 @@ GameObject{
 }
 GameObject, "name"{
     Transform{
-        location: vec3(1,2,0); //this is a comment
+        location: vec3(1.1,2,0); //this is a comment
     }
+
     SpriteCompenets{
         file:"sprite.png";
         type: ".png";

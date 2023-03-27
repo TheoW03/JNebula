@@ -10,7 +10,7 @@ package org.NayaEngine.ObjectEditor.Lexer;
 public class Token {
     public enum Tokens {
         GAME_OBJECT, STRING, COMPONENT,
-        BOOLEAN,NUMBER,STR, COMMA, PARENTHSIS, END_OF_LINE, GROUP
+        BOOLEAN,NUMBER,STR, COMMA, PARENTHSIS, END_OF_LINE, WORD, CLOSE_BRACE, OPEN_BRACE, EQAULS_TO, GROUP
     }
 
     public Token.Tokens tokens;
