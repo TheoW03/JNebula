@@ -8,7 +8,7 @@ GameObject{
         type: ".png";
     }
     PhysicsCompents{
-        velocity: 10;
+        velocity: 10;//k
     }
 }
 GameObject, "name"{
