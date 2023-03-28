@@ -36,7 +36,7 @@ void main(){
         //        float ambientS = 0.1;
 
         vec3 lightDir = normalize(lightPos - FragPos);
-        vec3 viewDir = -normalize(viewPos - FragPos);
+        vec3 viewDir = normalize(viewPos - FragPos);
 
 
         vec3 norm = normalize(Normal);

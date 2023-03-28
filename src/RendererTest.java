@@ -1,13 +1,12 @@
-import com.jogamp.newt.event.KeyEvent;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.util.FPSAnimator;
 import org.NayaEngine.Compenents.DifferentCompenents.*;
-import org.NayaEngine.Compenents.ManageCmponent;
 //import org.NayaEngine.GameObjects.FrameRate;
 import org.NayaEngine.GameObjects.GameObject;
 import org.NayaEngine.GameObjects.InitObjects;
 import org.NayaEngine.GameObjects.SpriteObject;
 
+import org.NayaEngine.Tooling.Colors;
 import org.NayaEngine.Tooling.Window;
 import org.NayaEngine.math.Vector3;
 import com.jogamp.opengl.GL;
@@ -60,21 +59,25 @@ public class RendererTest implements GLEventListener {
         test.AddCompenent(new PhysicsComponent(gl, 4.0f, test.GetCompenent(TransformComponent.class).location));
 
         test.AddCompenent(new ColliderCompenet(test.GetCompenent(SpriteComponents.class).width, test.GetCompenent(SpriteComponents.class).height));
-        test.AddCompenent(new LightingComponent(gl));
+//        test.AddCompenent(new LightingComponent(10, Colors.colorHex(Colors.RED),1.0f,gl));
         list.add(test);
         test2 = new GameObject("TEST2");
 
         test2.AddCompenent(new SpriteComponents("src/sprites/maxwell.png", "png", gl));
-//        test2.AddCompenent(new CameraComponent(new Vector3(0, 0, 0), gl));
 
+        test2.AddCompenent(new LightingComponent(0.9f, Colors.colorHex(Colors.WHITE),0.5f,gl));
+        test.AddCompenent(new LightingComponent(test2.GetCompenent(LightingComponent.class),gl));
+
+        System.out.println("test: "+test2);
         test2.AddCompenent(new TransformComponent(new Vector3(100, 40, 0), gl));
-        test2.AddCompenent(new LightingComponent(gl));
+
+
         test2.AddCompenent(new PhysicsComponent(gl, 0.5f, test2.GetCompenent(TransformComponent.class).location));
         test2.AddCompenent(new ColliderCompenet(test2.GetCompenent(SpriteComponents.class).width, test2.GetCompenent(SpriteComponents.class).height));
 
         test2.GetCompenent(PhysicsComponent.class).veloLock = true;
         list.add(test2);
-        gl.glClearColor(0.1f, 0.5f, 0.2f, 0.0f);
+        gl.glClearColor(1, 0.5f, 0.2f, 0.0f);
 
 
     }
@@ -84,7 +87,7 @@ public class RendererTest implements GLEventListener {
 
     }
 
-    public int i = 1;
+    public float i2 = 1;
 
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
@@ -96,10 +99,16 @@ public class RendererTest implements GLEventListener {
             test.GetCompenent(PhysicsComponent.class).veloLock = true;
             System.out.println("collided");
         }
-        i = i +100;
+//        i = i +100;
         int error = gl.glGetError();
         if (error != GL_NO_ERROR) {
             System.out.println("OpenGL error occurred: " + error);
+        }
+        test.GetCompenent(TransformComponent.class).location.x +=i2;
+        if ( test.GetCompenent(TransformComponent.class).location.x < 0) {
+            i2 = 1.0f;
+        } else if ( test.GetCompenent(TransformComponent.class).location.x > 200) {
+            i2 = -1.0f;
         }
 
     }
