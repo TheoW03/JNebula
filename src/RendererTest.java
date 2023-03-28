@@ -65,7 +65,7 @@ public class RendererTest implements GLEventListener {
 
         test2.AddCompenent(new SpriteComponents("src/sprites/maxwell.png", "png", gl));
 
-        test2.AddCompenent(new LightingComponent(0.9f, Colors.colorHex(Colors.WHITE),0.5f,gl));
+        test2.AddCompenent(new LightingComponent(1.0f, Colors.colorHex(Colors.WHITE),0.5f,gl));
         test.AddCompenent(new LightingComponent(test2.GetCompenent(LightingComponent.class),gl));
 
         System.out.println("test: "+test2);
@@ -104,10 +104,10 @@ public class RendererTest implements GLEventListener {
         if (error != GL_NO_ERROR) {
             System.out.println("OpenGL error occurred: " + error);
         }
-        test.GetCompenent(TransformComponent.class).location.x +=i2;
-        if ( test.GetCompenent(TransformComponent.class).location.x < 0) {
+        test2.GetCompenent(TransformComponent.class).location.x +=i2;
+        if ( test2.GetCompenent(TransformComponent.class).location.x < -200) {
             i2 = 1.0f;
-        } else if ( test.GetCompenent(TransformComponent.class).location.x > 200) {
+        } else if ( test2.GetCompenent(TransformComponent.class).location.x > 200) {
             i2 = -1.0f;
         }
 

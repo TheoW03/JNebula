@@ -40,7 +40,7 @@ void main(){
 
 
         vec3 norm = normalize(Normal);
-        vec3 reflectDir = reflect(-lightDir, norm);
+        vec3 reflectDir = reflect(lightDir, norm);
         float spec = pow(max(dot(viewDir, reflectDir), 0.0), 4);
 
         float diff = max(dot(norm, lightDir), 0.0);
@@ -56,7 +56,7 @@ void main(){
         //        }
 
         if (LightSource == 1){
-            vec3 result = ambient*objectColor;
+            vec3 result = (ambient)*objectColor;
             FragColor = vec4(result, 1.0)*texture(tSample, tCoord);
 
         } else {
