@@ -46,6 +46,7 @@ public class Camera {
         return modelViewMatrix.translate(location.x/100.0f, location.y/100.0f,0);
 
     }
+
     public Matrix4f getProjection() {
         return projection;
     }

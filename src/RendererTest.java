@@ -56,7 +56,7 @@ public class RendererTest implements GLEventListener {
         test.AddCompenent(new TransformComponent(new Vector3(100, 150, 0), gl));
 
 
-        test.AddCompenent(new PhysicsComponent(gl, 4.0f, test.GetCompenent(TransformComponent.class).location));
+//        test.AddCompenent(new PhysicsComponent(gl, new Vector3(-1,0.5f),-0.05f, test.GetCompenent(TransformComponent.class).location));
 
         test.AddCompenent(new ColliderCompenet(test.GetCompenent(SpriteComponents.class).width, test.GetCompenent(SpriteComponents.class).height));
 //        test.AddCompenent(new LightingComponent(10, Colors.colorHex(Colors.RED),1.0f,gl));
@@ -65,19 +65,21 @@ public class RendererTest implements GLEventListener {
 
         test2.AddCompenent(new SpriteComponents("src/sprites/maxwell.png", "png", gl));
 
-        test2.AddCompenent(new LightingComponent(1.0f, Colors.colorHex(Colors.WHITE),0.5f,gl));
-        test.AddCompenent(new LightingComponent(test2.GetCompenent(LightingComponent.class),gl));
+//        test2.AddCompenent(new LightingComponent(1.0f, Colors.colorHex(Colors.WHITE),0.5f,gl));
+//        test.AddCompenent(new LightingComponent(test2.GetCompenent(LightingComponent.class),gl));
 
         System.out.println("test: "+test2);
-        test2.AddCompenent(new TransformComponent(new Vector3(100, 40, 0), gl));
+        test2.AddCompenent(new TransformComponent(new Vector3(100, 100, 0), gl));
 
 
-        test2.AddCompenent(new PhysicsComponent(gl, 0.5f, test2.GetCompenent(TransformComponent.class).location));
+//        test2.AddCompenent(new PhysicsComponent(gl, new Vector3(-1,1.0f),-0.05f, test2.GetCompenent(TransformComponent.class).location));
         test2.AddCompenent(new ColliderCompenet(test2.GetCompenent(SpriteComponents.class).width, test2.GetCompenent(SpriteComponents.class).height));
 
-        test2.GetCompenent(PhysicsComponent.class).veloLock = true;
+//        test2.GetCompenent(PhysicsComponent.class).veloLock = true;
+//        test.GetCompenent(PhysicsComponent.class).veloLock = true;
         list.add(test2);
-        gl.glClearColor(1, 0.5f, 0.2f, 0.0f);
+        test2.GetCompenent(SpriteComponents.class).scale(2);
+        gl.glClearColor(1, 1, 1, 0.0f);
 
 
     }
@@ -94,22 +96,27 @@ public class RendererTest implements GLEventListener {
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
 //        test2.GetCompenent(SpriteComponents.class).scale(i);
         Window.printFrameRate();
+
+//        test2.GetCompenent(TransformComponent.class).transform(new Vector3(1,1));
+
         c.InstiateObjects(list);
         if (test2.GetCompenent(ColliderCompenet.class).isCollided(test.GetCompenent(ColliderCompenet.class))) {
-            test.GetCompenent(PhysicsComponent.class).veloLock = true;
+//            test2.GetCompenent(PhysicsComponent.class).veloLock = true;
             System.out.println("collided");
         }
+        test2.GetCompenent(TransformComponent.class).rotateContinosuly(-0.05f);
+        test.isActive = false;
 //        i = i +100;
         int error = gl.glGetError();
         if (error != GL_NO_ERROR) {
             System.out.println("OpenGL error occurred: " + error);
         }
-        test2.GetCompenent(TransformComponent.class).location.x +=i2;
-        if ( test2.GetCompenent(TransformComponent.class).location.x < -200) {
-            i2 = 1.0f;
-        } else if ( test2.GetCompenent(TransformComponent.class).location.x > 200) {
-            i2 = -1.0f;
-        }
+//        test2.GetCompenent(TransformComponent.class).location.y +=i2;
+//        if ( test2.GetCompenent(TransformComponent.class).location.x < -200) {
+//            i2 = 1.0f;
+//        } else if ( test2.GetCompenent(TransformComponent.class).location.x > 200) {
+//            i2 = -1.0f;
+//        }
 
     }
 

@@ -13,16 +13,18 @@ import org.NayaEngine.math.Vector3;
  * @Javadoc
  */
 public class PhysicsComponent extends iComponent {
-    public float startingV;
+    public Vector3 startingV;
     public Vector3 vectorPosition;
     private Vector3 position;
     public boolean veloLock;
-
-    public PhysicsComponent(GL2 gl, float startingV, Vector3 position) {
+    public float ROC;
+    public Vector3 transformVector;
+    public PhysicsComponent(GL2 gl, Vector3 startingV,float ROC, Vector3 position) {
         this.gl = gl;
         this.position = position;
         this.startingV = startingV;
         vectorPosition = position;
+        this.ROC = ROC;
         this.veloLock = false;
         System.out.println("constructor value: " + vectorPosition.y);
     }
@@ -37,9 +39,9 @@ public class PhysicsComponent extends iComponent {
         if (veloLock) {
             return;
         }
-        startingV += 0.05f;
-//        vectorPosition.y -= startingV;
 
+        startingV.y += ROC;
+        vectorPosition.y += startingV.y;
     }
 
     public boolean checkCollison(Vector3 positionObj1, Vector3 positionObj2) {

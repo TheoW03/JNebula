@@ -8,6 +8,8 @@ layout (location = 2) in vec3 anormal;
 uniform mat4 projectMatrix;
 uniform mat4 viewMatrix;
 uniform mat4 model;
+uniform mat4 rot;
+
 //uniform vec3 pointLightPosition;
 
 
@@ -32,8 +34,9 @@ out vec4 lightSourcelocation;
 //}
 //temp commenr
 void main() {
-    gl_Position =  model*projectMatrix* viewMatrix * vec4(vPos, 1.0);
-
+    vec4 pos = vec4(vPos,1.0);
+    pos = rot*pos;
+    gl_Position =  (model)*projectMatrix* viewMatrix * pos;
     if(lightExits2 == 1){
         vec3 pointLightPosition = vPos;
         FragPos = vec3(model * vec4(vPos, 1.0));

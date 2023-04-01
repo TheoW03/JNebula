@@ -33,7 +33,7 @@ public class SpriteComponents extends iComponent {
     public int textureID;
     public int[] indices;
     private float[] vertices, textureCoords;
-    public int width,height;
+    public float width,height;
     private float[] normals;
     public SpriteComponents(String file, String type, GL2 gl) {
         this.file = file;
@@ -65,6 +65,15 @@ public class SpriteComponents extends iComponent {
 
     }
 
+    public void setHeight(){
+        Vector3[] a = getVecticesAsVector();
+//        AC = C - A = (2, 2) - (0, 0) = (2, 2)
+//        BD = D - B = (0, 2) - (2, 0) = (-2, 2)
+        Vector3 AC = new Vector3((a[0].x - a[2].x), (a[0].y - a[2].y));
+        Vector3 BD = new Vector3((a[1].x - a[3].x),(a[1].y - a[3].y));
+        this.width = (float) (AC.magnitude()*Math.cos(45));
+        this.height = (float) ( BD.magnitude()*Math.sin(45));
+    }
     private void loadTexture() {
         Texture texture = null;
         try {
@@ -80,8 +89,11 @@ public class SpriteComponents extends iComponent {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        width = texture.getWidth();
-        height = texture.getHeight();
+        setHeight();
+//        width = texture.getWidth();
+//        height = texture.getHeight();
+        System.out.println(width);
+        System.out.println("width: "+height);
         gl.glEnable(GL_TEXTURE_2D);
         assert texture != null;
         texture.bind(gl);
