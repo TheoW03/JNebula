@@ -6,6 +6,7 @@ import org.NayaEngine.Tooling.Input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 import java.util.*;
 import java.io.*;
 
@@ -60,6 +61,9 @@ public class Renderer4 extends GameRenderer {
         // Draw a rectangle
         if(Input.getKey() == KeyEvent.VK_W){
             System.out.println("W pressed");
+        }
+        if(Input.getMouseCode() == MouseEvent.BUTTON1){
+            System.out.println("clicked pressed");
         }
         gl.glBegin(GL2.GL_QUADS);
         gl.glNormal3f(0.0f, 0.0f, i); // surface normal

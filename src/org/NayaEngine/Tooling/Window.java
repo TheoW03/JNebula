@@ -34,6 +34,8 @@ public class Window {
 
                 GLJPanel glJPanel = new GLJPanel(glCapabilities);
                 glJPanel.addKeyListener(new Input());
+                glJPanel.addMouseListener(new Input());
+
                 animator = new FPSAnimator(glJPanel, 60);
                 glJPanel.addGLEventListener(renderer);
                 glJPanel.setSize(jFrame.getSize());

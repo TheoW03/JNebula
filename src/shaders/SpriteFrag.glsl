@@ -10,6 +10,7 @@ uniform sampler2D tSample;
 
 uniform float Lightexists = 0;
 uniform float LightSource = 0;
+uniform float fColor;
 uniform vec3 lightPos;
 uniform vec3 lightColor;
 uniform vec3 objectColor;
@@ -28,6 +29,23 @@ uniform vec3 viewPos;
 uniform float lightIntensity;
 
 out vec4 FragColor;
+
+struct Light {
+    vec3 position;
+    vec3 color;
+    float intensity;
+};
+struct renderedObject{
+    vec3 textureCoords;
+    vec4 color;
+};
+
+vec4 calcLight(Light light){
+    return vec4(0,0,0,0);
+}
+vec4 getSprite(renderedObject light){
+    return vec4(0,0,0,0);
+}
 
 void main(){
 
@@ -67,9 +85,7 @@ void main(){
 
     } else {
         vec4 color = texture(tSample, tCoord);
-        FragColor = color;
-
-
+        FragColor = color ;
     }
 
     //    color *= vec4(lightColor,1.0);

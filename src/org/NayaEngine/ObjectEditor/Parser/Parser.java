@@ -1,5 +1,7 @@
 package org.NayaEngine.ObjectEditor.Parser;
 
+import org.NayaEngine.ObjectEditor.Lexer.Token;
+
 import java.util.*;
 import java.io.*;
 
@@ -11,8 +13,10 @@ import java.io.*;
  * @Javadoc
  */
 public class Parser {
-    public Parser() {
 
+    private ArrayList<Token> tokens;
+    public Parser(ArrayList<Token> tokens) {
+        this.tokens = tokens;
     }
 
 }

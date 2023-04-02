@@ -48,13 +48,17 @@ public class loadShader {
             vertexSource = processShader("VertexSprite.glsl");
             fragSource = processShader("SpriteFrag.glsl");
         } catch (IOException ignored) {
+
             return 0;
         }
         return loadShaders(vertexSource, fragSource, gl);
     }
 
     public int loadShaders(String vertexShaderS, String fragShader, GL2 gl2) {
-        if (vertexShaderS.length() == "error getting file".length()) {
+        // OHIO boss :kekw:
+        if (vertexShaderS.length() == "error getting file".length() ||
+                fragShader.length() == "error getting file".length()) {
+            System.out.println("didnt compile");
             return 0;
         }
         int shaderProgram = gl2.glCreateProgram();
@@ -63,6 +67,7 @@ public class loadShader {
         System.out.println(vertexShader);
         gl2.glCompileShader(vertexShader);
         int[] sucess = new int[1];
+//        int sucess = 0;
         gl2.glGetShaderiv(vertexShader, GL2.GL_COMPILE_STATUS, sucess, 0);
         if (sucess[0] == GL2.GL_FALSE) {
             int[] logLength = new int[1];
