@@ -76,7 +76,7 @@ public class SpriteComponents extends iComponent {
     public SpriteComponents(String file,
                             String type,
                             int numRows, int numCols,
-                            int FPS, GL2 gl) {
+                            int FPS,int spriteWidth,int spriteHeight,int offset, GL2 gl) {
         vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex
@@ -98,8 +98,8 @@ public class SpriteComponents extends iComponent {
         loadTexture();
         float width = texture.getWidth();
         float height = texture.getHeight();
-        int spriteWidth = 64;
-        int spriteHeight = 64;
+//        int spriteWidth = 64;
+//        int spriteHeight = 64;
         int i2 = 0;
         float spriteY = height - spriteHeight;
         float spriteX = 0;
@@ -120,10 +120,10 @@ public class SpriteComponents extends iComponent {
                 System.out.println("textureds");
 //                System.out.println(Arrays.toString(texCoords));
                 spriteTexCoords[i2] = textureCoords;
-                spriteX += spriteWidth-7;
+                spriteX += spriteWidth-offset;
                 if(spriteX >= width){
                     spriteX =0;
-                    spriteY -= spriteHeight+4;
+                    spriteY -= spriteHeight+offset;
                 }
                 i2++;
             }

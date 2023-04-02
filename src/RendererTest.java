@@ -48,7 +48,8 @@ public class RendererTest implements GLEventListener {
         list = new ArrayList<>();
         test = new GameObject("TEST");
 //        test.AddCompenent(new LightingComponent(0.2f,new float[]{0.5f,0.5f,0.5f},0.3f,gl));
-        test.AddCompenent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg",1,5,20,gl));
+//        test.AddCompenent(new SpriteComponents("src/sprites/junp.png", "png",1,5,20,40,110,6,gl));
+        test.AddCompenent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg",1,5,20,64,64,7,gl));
 //        test.AddCompenent(new RenderCompenent(Colors.RED));
 //        test.GetCompenent(SpriteComponents.class).scale(200);
 
