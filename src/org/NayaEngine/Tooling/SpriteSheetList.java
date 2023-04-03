@@ -12,6 +12,7 @@ import java.io.*;
  * @author Theo willis
  * @version 1.0.0
  * ~ project outline here ~
+ * (add ability to remove)
  * @Javadoc
  */
 public class SpriteSheetList {
@@ -51,7 +52,6 @@ public class SpriteSheetList {
                         rightX, topY
                 };
                 System.out.println("textureds");
-//                System.out.println(Arrays.toString(texCoords));
                 spriteTexCoords[i2] = textureCoords;
                 spriteX += spriteWidth - offset;
                 if (spriteX >= width) {
@@ -71,7 +71,6 @@ public class SpriteSheetList {
             System.out.println("hi");
             if (texture == null) {
                 System.err.println("Error loading texture");
-                return;
             }
         } catch (IOException e) {
             e.printStackTrace();

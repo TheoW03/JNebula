@@ -1,17 +1,18 @@
 things I would like to get done
 
 
-1. organize shader code
+1. organize shader code: 15% complete
 
-2. collisons
+2. collisons: 30% complete
 
-3. lighting. make more consistent
+3. lighting. make more consistent: 10% complete
 
-4. object editor
+4. object editor: 16% complete (parser, interpter and the ability to generate )
 
-5. Sprite renderering. make it less a default sprite
+5. Sprite renderering. make it less a default sprite: 0% compelete
 
-6. animation suppport
+6. animation suppport (make it not interfere with the code. thread.sleep does that): 45% complete
 
-7. custom shaders. find a way to add them for people
+7. custom shaders. find a way to add them for people: Havent started.
 
+8. documetation. look for an offical docs website: havent started
