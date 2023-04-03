@@ -55,12 +55,19 @@ public class loadShader {
     }
 
     public int loadShaders(String vertexShaderS, String fragShader, GL2 gl2) {
-        // OHIO boss :kekw:
-        if (vertexShaderS.length() == "error getting file".length() ||
-                fragShader.length() == "error getting file".length()) {
+
+        if (vertexShaderS.equals("error getting file") ||
+                fragShader.equals("error getting file")) {
             System.out.println("didnt compile");
             return 0;
         }
+
+        // OHIO boss :kekw:
+//        if (vertexShaderS.length() == "error getting file".length() ||
+//                fragShader.length() == "error getting file".length()) {
+//            System.out.println("didnt compile");
+//            return 0;
+//        }
         int shaderProgram = gl2.glCreateProgram();
         int vertexShader = gl2.glCreateShader(GL2.GL_VERTEX_SHADER);
         gl2.glShaderSource(vertexShader, 1, new String[]{vertexShaderS}, null);
