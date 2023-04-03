@@ -251,7 +251,7 @@ public class SpriteComponents extends iComponent {
     public void init(float dt) {
         loadTexture();
         if(FPS != 0){
-            Timer timerC = new Timer(1000/FPS, new ActionListener() {
+            Timer animationTimer = new Timer(1000/FPS, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     currentFrame++;
@@ -262,7 +262,7 @@ public class SpriteComponents extends iComponent {
                 }
             });
 
-            timerC.start();
+            animationTimer.start();
         }
 
 
