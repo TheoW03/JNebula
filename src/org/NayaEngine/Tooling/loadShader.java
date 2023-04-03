@@ -56,6 +56,7 @@ public class loadShader {
 
     public int loadShaders(String vertexShaderS, String fragShader, GL2 gl2) {
 
+        //duke mwean UwU
         if (vertexShaderS.equals("error getting file") ||
                 fragShader.equals("error getting file")) {
             System.out.println("didnt compile");
