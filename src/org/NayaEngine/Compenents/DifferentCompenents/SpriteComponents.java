@@ -7,6 +7,7 @@ import com.jogamp.opengl.util.texture.TextureData;
 import com.jogamp.opengl.util.texture.TextureIO;
 import org.NayaEngine.Compenents.iComponent;
 import com.jogamp.opengl.util.texture.Texture;
+import org.NayaEngine.Tooling.SpriteSheetList;
 import org.NayaEngine.Tooling.loadShader;
 import org.NayaEngine.math.Vector3;
 
@@ -76,7 +77,7 @@ public class SpriteComponents extends iComponent {
     public SpriteComponents(String file,
                             String type,
                             int numRows, int numCols,
-                            int FPS,int spriteWidth,int spriteHeight,int offset, GL2 gl) {
+                            int FPS, int spriteWidth, int spriteHeight, int offset, GL2 gl) {
         vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex
@@ -120,16 +121,66 @@ public class SpriteComponents extends iComponent {
                 System.out.println("textureds");
 //                System.out.println(Arrays.toString(texCoords));
                 spriteTexCoords[i2] = textureCoords;
-                spriteX += spriteWidth-offset;
-                if(spriteX >= width){
-                    spriteX =0;
-                    spriteY -= spriteHeight+offset;
+                spriteX += spriteWidth - offset;
+                if (spriteX >= width) {
+                    spriteX = 0;
+                    spriteY -= spriteHeight + offset;
                 }
                 i2++;
             }
         }
 
 
+    }
+
+    public SpriteComponents(float[] textureCoords, SpriteSheetList spriteSheetList, GL2 gl) {
+        vertices = new float[]{
+                -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
+                1.0f, -1.0f, 0.0f,    // Bottom-right vertex
+                -1.0f, 1.0f, 0.0f,    // Top-left vertex
+                1.0f, 1.0f, 0.0f      // Top-right vertex
+        };
+        normals = new float[]{
+                0.0f, 1.0f,
+                0.0f, 1.0f,
+                0.0f, 1.0f,
+                0.0f, 1.0f,
+        };
+        spriteTexCoords = new float[1][textureCoords.length];
+        spriteTexCoords[0] = textureCoords;
+        this.texture = spriteSheetList.texture;
+        this.textureID = 0;
+        this.gl = gl;
+        loadTexture();
+        for (int i = 0; i < vertices.length; i++) {
+            vertices[i] = vertices[i] * 100.0f;
+        }
+
+
+    }
+
+    public SpriteComponents(float[][] textureCoords, SpriteSheetList spriteSheetList, int FPS, GL2 gl) {
+        vertices = new float[]{
+                -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
+                1.0f, -1.0f, 0.0f,    // Bottom-right vertex
+                -1.0f, 1.0f, 0.0f,    // Top-left vertex
+                1.0f, 1.0f, 0.0f      // Top-right vertex
+        };
+        normals = new float[]{
+                0.0f, 1.0f,
+                0.0f, 1.0f,
+                0.0f, 1.0f,
+                0.0f, 1.0f,
+        };
+        spriteTexCoords = textureCoords;
+        this.texture = spriteSheetList.texture;
+        this.textureID = 0;
+        this.gl = gl;
+        this.FPS = FPS;
+        loadTexture();
+        for (int i = 0; i < vertices.length; i++) {
+            vertices[i] = vertices[i] * 100.0f;
+        }
     }
 
     public void setHeight() {
@@ -143,20 +194,22 @@ public class SpriteComponents extends iComponent {
     }
 
     private void loadTexture() {
-//        Texture texture = null;
-        try {
-            gl.glEnable(GL.GL_BLEND);
-            gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
-            TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File(file), true, type);
-            this.texture = TextureIO.newTexture(data);
-            System.out.println("hi");
-            if (texture == null) {
-                System.err.println("Error loading texture");
-                return;
+        if (this.texture == null) {
+            try {
+                gl.glEnable(GL.GL_BLEND);
+                gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
+                TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File(file), true, type);
+                this.texture = TextureIO.newTexture(data);
+                System.out.println("hi");
+                if (texture == null) {
+                    System.err.println("Error loading texture");
+                    return;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+
         setHeight();
 //        width = texture.getWidth();
 //        height = texture.getHeight();
@@ -236,7 +289,7 @@ public class SpriteComponents extends iComponent {
         System.out.println("send to GPU");
 
 //        textureCoords = spriteTexCoords[(int) currentFrame];
-        textureCoords = spriteTexCoords[(int)currentFrame];
+        textureCoords = spriteTexCoords[(int) currentFrame];
         int[] buffers = new int[3];
         indices = new int[]{0, 1, 2, 3};  // Index buffer for a quad
 

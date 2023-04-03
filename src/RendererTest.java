@@ -7,6 +7,7 @@ import org.NayaEngine.GameObjects.InitObjects;
 import org.NayaEngine.GameObjects.SpriteObject;
 
 import org.NayaEngine.Tooling.Colors;
+import org.NayaEngine.Tooling.SpriteSheetList;
 import org.NayaEngine.Tooling.Window;
 import org.NayaEngine.math.Vector3;
 import com.jogamp.opengl.GL;
@@ -45,12 +46,15 @@ public class RendererTest implements GLEventListener {
         gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
 
         c = new InitObjects(gl);
+        SpriteSheetList s1 = new SpriteSheetList("src/sprites/sprite_sheet.jpg", "jpg", 1, 5, 64, 64, 7);
         list = new ArrayList<>();
         test = new GameObject("TEST");
 //        test.AddCompenent(new LightingComponent(0.2f,new float[]{0.5f,0.5f,0.5f},0.3f,gl));
 //        test.AddCompenent(new SpriteComponents("src/sprites/junp.png", "png",1,5,20,40,110,6,gl));
-        test.AddCompenent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg",1,5,20,64,64,7,gl));
+//        test.AddCompenent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg",1,5,20,64,64,7,gl));
+        test.AddCompenent(new SpriteComponents(s1.getSection(1,3), s1,15, gl));
 //        test.AddCompenent(new RenderCompenent(Colors.RED));
+
 //        test.GetCompenent(SpriteComponents.class).scale(200);
 
 //        test.AddCompenent(new CameraComponent(new Vector3(0, 0, 0), gl));
@@ -69,7 +73,7 @@ public class RendererTest implements GLEventListener {
 //        test2.AddCompenent(new LightingComponent(1.0f, Colors.colorHex(Colors.WHITE),0.4f,gl));
 //        test.AddCompenent(new LightingComponent(test2.GetCompenent(LightingComponent.class),gl));
 
-        System.out.println("test: "+test2);
+        System.out.println("test: " + test2);
         test2.AddCompenent(new TransformComponent(new Vector3(100, 100, 0), gl));
 
 
