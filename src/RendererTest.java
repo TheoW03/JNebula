@@ -51,8 +51,8 @@ public class RendererTest implements GLEventListener {
         test = new GameObject("TEST");
 //        test.AddCompenent(new LightingComponent(0.2f,new float[]{0.5f,0.5f,0.5f},0.3f,gl));
 //        test.AddCompenent(new SpriteComponents("src/sprites/junp.png", "png",1,5,20,40,110,6,gl));
-//        test.AddCompenent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg",1,5,20,64,64,7,gl));
-        test.AddCompenent(new SpriteComponents(s1.getSection(1,3), s1,15, gl));
+        test.AddCompenent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg", 1, 5, 20, 64, 64, 7, gl));
+//        test.AddCompenent(new SpriteComponents(s1.getSection(1,3), s1,15, gl));
 //        test.AddCompenent(new RenderCompenent(Colors.RED));
 
 //        test.GetCompenent(SpriteComponents.class).scale(200);
@@ -103,15 +103,15 @@ public class RendererTest implements GLEventListener {
 //        test2.GetCompenent(SpriteComponents.class).scale(i);
         Window.printFrameRate();
 
-//        test2.GetCompenent(TransformComponent.class).transform(new Vector3(-1,-1));
 
         c.InstiateObjects(list);
+        test.GetCompenent(TransformComponent.class).rotateContinosuly(-0.05f);
         if (test2.GetCompenent(ColliderCompenet.class).isCollided(test.GetCompenent(ColliderCompenet.class))) {
 //            test2.GetCompenent(PhysicsComponent.class).veloLock = true;
             System.out.println("collided");
         }
-//        test2.GetCompenent(TransformComponent.class).rotateContinosuly(-0.05f);
-        test2.isActive = false;
+        test2.GetCompenent(TransformComponent.class).rotateContinosuly(-0.05f);
+//        test2.isActive = false;
 //        i = i +100;
         int error = gl.glGetError();
         if (error != GL_NO_ERROR) {

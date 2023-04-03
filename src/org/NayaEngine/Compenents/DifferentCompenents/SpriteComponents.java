@@ -11,6 +11,9 @@ import org.NayaEngine.Tooling.SpriteSheetList;
 import org.NayaEngine.Tooling.loadShader;
 import org.NayaEngine.math.Vector3;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.FloatBuffer;
@@ -43,6 +46,7 @@ public class SpriteComponents extends iComponent {
     private int FPS;
 
     public SpriteComponents(String file, String type, GL2 gl) {
+
         this.file = file;
         this.type = type;
         this.gl = gl;
@@ -242,12 +246,27 @@ public class SpriteComponents extends iComponent {
      * @param dt gl will be passed here.
      */
 
+
     @Override
     public void init(float dt) {
         loadTexture();
+        if(FPS != 0){
+            Timer timerC = new Timer(1000/FPS, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    currentFrame++;
+                    System.out.println("current frame"+currentFrame);
+                    if(currentFrame > spriteTexCoords.length){
+                        currentFrame = 0;
+                    }
+                }
+            });
+
+            timerC.start();
+        }
+
+
     }
-
-
     @Override
     public void update(float dt) {
         System.out.println("update works :D");
@@ -289,7 +308,16 @@ public class SpriteComponents extends iComponent {
         System.out.println("send to GPU");
 
 //        textureCoords = spriteTexCoords[(int) currentFrame];
-        textureCoords = spriteTexCoords[(int) currentFrame];
+        if(currentFrame > spriteTexCoords.length){
+            currentFrame = 0;
+        }
+        try{
+            textureCoords = spriteTexCoords[(int) currentFrame];
+        }catch (ArrayIndexOutOfBoundsException e){
+            currentFrame = 0;
+            textureCoords = spriteTexCoords[(int) currentFrame];
+        }
+
         int[] buffers = new int[3];
         indices = new int[]{0, 1, 2, 3};  // Index buffer for a quad
 
@@ -327,20 +355,17 @@ public class SpriteComponents extends iComponent {
 //        gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
         int textureSamplerLoc = gl.glGetUniformLocation(shaderProgram, "tSample");
         System.out.println("texture: " + textureSamplerLoc);
-        currentFrame++;
-
-
 // Wrap frame counter around at end of animation
         if (currentFrame >= spriteTexCoords.length) {
             currentFrame = 0;
         }
-        if (FPS != 0) {
-            try {
-                Thread.sleep(1000 / FPS);
-            } catch (InterruptedException e) {
-                System.out.println("er");
-            }
-        }
+//        if (FPS != 0) {
+//            try {
+//                Thread.sleep(1000 / FPS);
+//            } catch (InterruptedException e) {
+//                System.out.println("er");
+//            }
+//        }
 
         gl.glUniform1i(textureSamplerLoc, 0);
     }
