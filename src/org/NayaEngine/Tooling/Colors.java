@@ -14,6 +14,13 @@ public class Colors {
     public static final String WHITE = "FFFFFF";
     public static final String BLACK = "000000";
 
+    public float r2,g2,b2;
+    public Colors(float r,float g,float b){
+        this.r2 =r;
+        this.b2 = b;
+        this.g2 = g;
+
+    }
     public static float[] colorHex(String color) {
         String r = String.valueOf(color.charAt(0) + color.charAt(1));
         String g = String.valueOf(color.charAt(2) + color.charAt(3));
@@ -31,4 +38,8 @@ public class Colors {
                 (float) b / 256};
     }
 
+    @Override
+    public String toString() {
+        return r2 + " "+g2+" "+b2;
+    }
 }

@@ -7,11 +7,13 @@ import com.jogamp.opengl.util.texture.TextureData;
 import com.jogamp.opengl.util.texture.TextureIO;
 import org.NayaEngine.Compenents.iComponent;
 import com.jogamp.opengl.util.texture.Texture;
+import org.NayaEngine.Tooling.Colors;
 import org.NayaEngine.Tooling.SpriteSheetList;
 import org.NayaEngine.Tooling.loadShader;
 import org.NayaEngine.math.Vector3;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -44,6 +46,8 @@ public class SpriteComponents extends iComponent {
     private float[][] spriteTexCoords;
     private Texture texture;
     private int FPS;
+
+    public Colors color;
 
     public SpriteComponents(String file, String type, GL2 gl) {
 
@@ -186,7 +190,11 @@ public class SpriteComponents extends iComponent {
             vertices[i] = vertices[i] * 100.0f;
         }
     }
+    public SpriteComponents(Colors color, GL2 gl){
+        this.gl = gl;
+        this.color = color;
 
+    }
     public void setHeight() {
         Vector3[] a = getVecticesAsVector();
 //        AC = C - A = (2, 2) - (0, 0) = (2, 2)
