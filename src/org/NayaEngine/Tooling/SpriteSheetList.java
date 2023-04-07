@@ -73,21 +73,39 @@ public class SpriteSheetList {
             }
         }
     }
-    public void loadSpriteSheet(){
 
-    }
-    public SpriteSheetList(String file, String type, int numRows, int numCols) throws IOException {
-        this.file = file;
-        this.type = type;
-        spriteTexCoords = new float[numRows * numCols][8];
-        loadTexture();
-        BufferedImage newImage = new BufferedImage(texture.getWidth(), texture.getHeight(), BufferedImage.TYPE_INT_RGB);
-        BufferedImage image = ImageIO.read(new File(file));
-        dynamicallyLoadBounds(image);
-    }
+    private void loadSpriteSheet(int spriteHeight, int spriteWidth, int numRows, int numCols, int offset) {
+        float width = texture.getWidth();
+        float height = texture.getHeight();
+//        int spriteWidth = 64;
+//        int spriteHeight = 64;
+        int i2 = 0;
+        float spriteY = height - spriteHeight;
+        float spriteX = 0;
+        for (int row = 0; row < numRows; row++) {
+            for (int col = 0; col < numCols; col++) {
+                int spriteIndex = row * numCols + col;
 
-    public void height() {
-
+                float topY = (spriteY + spriteHeight) / height;
+                float rightX = (spriteX + spriteHeight) / width;
+                float leftX = spriteX / width;
+                float bottomY = spriteY / height;
+                float[] textureCoords = new float[]{
+                        leftX, bottomY,
+                        rightX, bottomY,
+                        leftX, topY,
+                        rightX, topY
+                };
+                System.out.println("textureds");
+                spriteTexCoords[i2] = textureCoords;
+                spriteX += spriteWidth - offset;
+                if (spriteX >= width) {
+                    spriteX = 0;
+                    spriteY -= spriteHeight + offset;
+                }
+                i2++;
+            }
+        }
     }
 
     private void loadTexture() {
@@ -104,6 +122,21 @@ public class SpriteSheetList {
         }
 
     }
+
+    public SpriteSheetList(String file, String type, int numRows, int numCols) throws IOException {
+        this.file = file;
+        this.type = type;
+        spriteTexCoords = new float[numRows * numCols][8];
+        loadTexture();
+        BufferedImage newImage = new BufferedImage(texture.getWidth(), texture.getHeight(), BufferedImage.TYPE_INT_RGB);
+        BufferedImage image = ImageIO.read(new File(file));
+        dynamicallyLoadBounds(image);
+    }
+
+    public void height() {
+
+    }
+
 
     public <T> T findMostFrequent(ArrayList<T> list) {
         if (list == null || list.isEmpty()) {
