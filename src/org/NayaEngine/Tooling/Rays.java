@@ -14,6 +14,7 @@ import java.io.*;
  */
 public class Rays {
     public Vector3 dir, origin, length;
+
     public Rays(Vector3 dir, Vector3 origin, Vector3 length) {
         this.length = length;
         this.dir = dir;
@@ -23,7 +24,6 @@ public class Rays {
         this.length = length;
         this.dir = dir;
     }
-
     public Vector3 getEndPoint(){
         System.out.println("endpoint: "+new Vector3(origin.x + length.x+dir.x, origin.y +length.y+ dir.y));
         return new Vector3(origin.x + length.x+dir.x, origin.y +length.y+ dir.y);
