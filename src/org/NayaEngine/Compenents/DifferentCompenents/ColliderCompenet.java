@@ -1,6 +1,7 @@
 package org.NayaEngine.Compenents.DifferentCompenents;
 
 import org.NayaEngine.Compenents.iComponent;
+import org.NayaEngine.Tooling.Rays;
 import org.NayaEngine.math.Vector3;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -18,6 +19,9 @@ import java.io.*;
 public class ColliderCompenet extends iComponent {
     public float width, height;
 
+    public Rays[] list;
+    public Rays ray;
+
     public ColliderCompenet() {
         this.height = this.gameObject.GetCompenent(SpriteComponents.class).height;
         this.width = this.gameObject.GetCompenent(SpriteComponents.class).width;
@@ -28,7 +32,12 @@ public class ColliderCompenet extends iComponent {
         this.width = colliderWidth;
 
     }
-
+    public ColliderCompenet(Rays[] list){
+        this.list = list;
+    }
+    public ColliderCompenet(Rays ray){
+        this.ray = ray;
+    }
     @Override
     public void update(float dt) {
 
@@ -50,6 +59,7 @@ public class ColliderCompenet extends iComponent {
         return usignedDIst;
     }
 
+
     private Vector3 getUSdist(Vector3 p, Vector3 center, Vector3 size) {
         Vector2f p1 = new Vector2f(p.x, p.y);
         Vector2f c = new Vector2f(center.x, center.y);
@@ -68,6 +78,13 @@ public class ColliderCompenet extends iComponent {
      */
     public boolean isCollided(ColliderCompenet collider) {
         Vector3 location1 = this.gameObject.GetCompenent(TransformComponent.class).location;
+        Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
+        Vector3 size = collider.gameObject.GetCompenent(SpriteComponents.class).get_size();
+        return getDist(location1, location2, size) == 0;
+    }
+    public boolean rayCollide(ColliderCompenet collider){
+        ray.origin = this.gameObject.GetCompenent(TransformComponent.class).location;
+        Vector3 location1 = this.ray.getEndPoint();
         Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
         Vector3 size = collider.gameObject.GetCompenent(SpriteComponents.class).get_size();
         return getDist(location1, location2, size) == 0;

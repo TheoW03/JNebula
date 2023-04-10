@@ -43,7 +43,6 @@ public class TransformComponent extends iComponent {
         location.x += transform.x;
         location.y += transform.y;
     }
-
     public void rotateContinosuly(float angle) {
 //        this.rotation = new Matrix4f();
         Matrix4f newROtate = new Matrix4f();

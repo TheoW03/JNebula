@@ -7,6 +7,7 @@ import org.NayaEngine.GameObjects.InitObjects;
 import org.NayaEngine.GameObjects.SpriteObject;
 
 import org.NayaEngine.Tooling.Colors;
+import org.NayaEngine.Tooling.Rays;
 import org.NayaEngine.Tooling.SpriteSheetList;
 import org.NayaEngine.Tooling.Window;
 import org.NayaEngine.math.Vector3;
@@ -65,12 +66,12 @@ public class RendererTest implements GLEventListener {
 //        test.GetCompenent(SpriteComponents.class).scale(200);
 
 //        test.AddCompenent(new CameraComponent(new Vector3(0, 0, 0), gl));
-        test.AddCompenent(new TransformComponent(new Vector3(100, 200, 0), gl));
+        test.AddCompenent(new TransformComponent(new Vector3(0, 200, 0), gl));
 
 
         test.AddCompenent(new PhysicsComponent(gl, new Vector3(-1,0.5f),-0.05f, test.GetCompenent(TransformComponent.class).location));
-
-        test.AddCompenent(new ColliderCompenet(test.GetCompenent(SpriteComponents.class).width, test.GetCompenent(SpriteComponents.class).height));
+        Rays ray = new Rays(new Vector3(0,-1), new Vector3(0,-180));
+        test.AddCompenent(new ColliderCompenet(ray));
 //        test.AddCompenent(new LightingComponent(10, Colors.colorHex(Colors.RED),1.0f,gl));
         list.add(test);
         test2 = new GameObject("TEST2");
@@ -88,6 +89,7 @@ public class RendererTest implements GLEventListener {
         test2.AddCompenent(new ColliderCompenet(test2.GetCompenent(SpriteComponents.class).width, test2.GetCompenent(SpriteComponents.class).height));
 
         test2.GetCompenent(PhysicsComponent.class).veloLock = true;
+        test.GetCompenent(PhysicsComponent.class).veloLock = true;
 //        test.GetCompenent(PhysicsComponent.class).veloLock = true;
         list.add(test2);
 
@@ -112,17 +114,20 @@ public class RendererTest implements GLEventListener {
 
 
         c.InstiateObjects(list);
-
+        test.GetCompenent(TransformComponent.class).transform(new Vector3(0.5f,0));
 //        test2.GetCompenent(ColliderCompenet.class).rayCastCollider(test.GetCompenent(ColliderCompenet.class));
-        if (test2.GetCompenent(ColliderCompenet.class).isCollided(test.GetCompenent(ColliderCompenet.class))) {
-            test.GetCompenent(PhysicsComponent.class).veloLock = true;
+        if (test.GetCompenent(ColliderCompenet.class).rayCollide(test2.GetCompenent(ColliderCompenet.class))) {
+            gl.glClearColor(1, 1, 1, 0.0f);
             System.out.println("collided");
+        }else {
+            gl.glClearColor(0, 1, 1, 0.0f);
         }
 //        test2.GetCompenent(TransformComponent.class).rotateContinosuly(-0.05f);
 //        test2.isActive = false;
 //        i = i +100;
         int error = gl.glGetError();
         if (error != GL_NO_ERROR) {
+
             System.out.println("OpenGL error occurred: " + error);
         }
 //        test2.GetCompenent(TransformComponent.class).location.y +=i2;
