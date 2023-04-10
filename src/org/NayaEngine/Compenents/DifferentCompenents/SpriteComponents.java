@@ -190,11 +190,13 @@ public class SpriteComponents extends iComponent {
             vertices[i] = vertices[i] * 100.0f;
         }
     }
-    public SpriteComponents(Colors color, GL2 gl){
+
+    public SpriteComponents(Colors color, GL2 gl) {
         this.gl = gl;
         this.color = color;
 
     }
+
     public void setHeight() {
         Vector3[] a = getVecticesAsVector();
 //        AC = C - A = (2, 2) - (0, 0) = (2, 2)
@@ -203,6 +205,20 @@ public class SpriteComponents extends iComponent {
         Vector3 BD = new Vector3((a[1].x - a[3].x), (a[1].y - a[3].y));
         this.width = (float) (AC.magnitude() * Math.cos(45));
         this.height = (float) (BD.magnitude() * Math.sin(45));
+    }
+
+    public Vector3 getCenter() {
+        Vector3[] a = getVecticesAsVector();
+        float centerX = 0;
+        float centerY = 0;
+        for (int i = 0; i < a.length; i++) {
+            centerX += a[i].x;
+            centerY += a[i].y;
+        }
+        centerX /= 4;
+        centerY /= 4;
+
+        return new Vector3(centerX, centerY);
     }
 
     private void loadTexture() {
@@ -258,13 +274,13 @@ public class SpriteComponents extends iComponent {
     @Override
     public void init(float dt) {
         loadTexture();
-        if(FPS != 0){
-            Timer animationTimer = new Timer(1000/FPS, new ActionListener() {
+        if (FPS != 0) {
+            Timer animationTimer = new Timer(1000 / FPS, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     currentFrame++;
-                    System.out.println("current frame"+currentFrame);
-                    if(currentFrame > spriteTexCoords.length){
+                    System.out.println("current frame" + currentFrame);
+                    if (currentFrame > spriteTexCoords.length) {
                         currentFrame = 0;
                     }
                 }
@@ -275,6 +291,7 @@ public class SpriteComponents extends iComponent {
 
 
     }
+
     @Override
     public void update(float dt) {
         System.out.println("update works :D");
@@ -316,12 +333,12 @@ public class SpriteComponents extends iComponent {
         System.out.println("send to GPU");
 
 //        textureCoords = spriteTexCoords[(int) currentFrame];
-        if(currentFrame > spriteTexCoords.length){
+        if (currentFrame > spriteTexCoords.length) {
             currentFrame = 0;
         }
-        try{
+        try {
             textureCoords = spriteTexCoords[(int) currentFrame];
-        }catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             currentFrame = 0;
             textureCoords = spriteTexCoords[(int) currentFrame];
         }

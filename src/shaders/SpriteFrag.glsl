@@ -21,6 +21,7 @@ uniform float shininess;
 uniform float strength;
 uniform vec3 viewPos;
 
+uniform vec3 camera_pos;
 
 //uniform float baseIntensity;
 //uniform vec3 color;
@@ -35,6 +36,10 @@ struct Light {
     vec3 color;
     float intensity;
 };
+struct Ray {
+    vec3 origin;
+    vec3 direction;
+};
 struct renderedObject{
     vec3 textureCoords;
     vec4 color;
@@ -43,8 +48,21 @@ struct renderedObject{
 vec4 calcLight(Light light){
     return vec4(0,0,0,0);
 }
-vec4 getSprite(renderedObject light){
-    return vec4(0,0,0,0);
+Ray[] rays(){
+
+    // Define the corners of the square in camera space
+    vec3 bl = vec3(-1.0, -1.0, 0.0);
+    vec3 br = vec3(1.0, -1.0, 0.0);
+    vec3 tl = vec3(-1.0, 1.0, 0.0);
+    vec3 tr = vec3(1.0, 1.0, 0.0);
+
+    // Generate rays for each corner of the square
+    Ray rays[4];
+    rays[0] = Ray(camera_pos, normalize(bl - camera_pos));
+    rays[1] = Ray(camera_pos, normalize(br - camera_pos));
+    rays[2] = Ray(camera_pos, normalize(tl - camera_pos));
+    rays[3] = Ray(camera_pos, normalize(tr - camera_pos));
+    return rays;
 }
 
 void main(){

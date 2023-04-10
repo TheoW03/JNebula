@@ -148,4 +148,7 @@ public class LightingComponent extends iComponent {
         System.out.println("u2: " + i2);
 
     }
+    public void raymarchingcalc(){
+
+    }
 }

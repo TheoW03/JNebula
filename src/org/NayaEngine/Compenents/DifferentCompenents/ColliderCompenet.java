@@ -2,6 +2,8 @@ package org.NayaEngine.Compenents.DifferentCompenents;
 
 import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.math.Vector3;
+import org.joml.Vector2f;
+import org.joml.Vector3f;
 
 import java.util.*;
 import java.io.*;
@@ -32,6 +34,45 @@ public class ColliderCompenet extends iComponent {
 
     }
 
+    private Vector2f calcOffset(Vector2f p, Vector2f center, Vector2f size){
+        Vector2f o1 = center.sub(p);
+        Vector2f o3 = new Vector2f(Math.abs(o1.x), Math.abs(o1.y));
+        Vector2f o2 = o3.sub(size);
+        return o2;
+    }
+
+    private float getDist(Vector3 p, Vector3 center, Vector3 size) {
+        Vector2f p1 = new Vector2f(p.x, p.y);
+        Vector2f c = new Vector2f(center.x, center.y);
+        Vector2f size2 = new Vector2f(size.x, size.y);
+        Vector2f offset = calcOffset(p1, c, size2);
+        float usignedDIst = offset.max(new Vector2f(0, 0)).length();
+        return usignedDIst;
+    }
+    private Vector3 getUSdist(Vector3 p, Vector3 center, Vector3 size){
+        Vector2f p1 = new Vector2f(p.x, p.y);
+        Vector2f c = new Vector2f(center.x, center.y);
+        Vector2f size2 = new Vector2f(size.x, size.y);
+        Vector2f offset = calcOffset(p1, c,size2);
+        float usignedDIst = offset.max(new Vector2f(0,0)).length();
+        System.out.println("usigned dist"+usignedDIst);
+        Vector2f signedDIst = offset.max(offset.min(new Vector2f(0,0)));
+        Vector2f output = signedDIst.add(new Vector2f(usignedDIst,usignedDIst));
+        return  new Vector3(output.x, output.y);
+    }
+
+    /**
+     *
+     * @param collider
+     * @return
+     * this does the raymarch distance algorithm.
+     */
+    public boolean rayCastCollider(ColliderCompenet collider){
+        Vector3 location1 = this.gameObject.GetCompenent(TransformComponent.class).location;
+        Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
+        Vector3 size = new Vector3(50,50);
+        return getDist(location1,location2,size) == 0;
+    }
     /**
      * @param collider
      */

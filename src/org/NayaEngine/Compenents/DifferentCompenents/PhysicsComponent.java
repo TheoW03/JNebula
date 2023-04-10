@@ -41,7 +41,7 @@ public class PhysicsComponent extends iComponent {
         }
 
         startingV.y += ROC;
-        vectorPosition.y += startingV.y;
+        vectorPosition.y -= startingV.y;
     }
 
     public boolean checkCollison(Vector3 positionObj1, Vector3 positionObj2) {

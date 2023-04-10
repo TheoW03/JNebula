@@ -133,10 +133,6 @@ public class SpriteSheetList {
         dynamicallyLoadBounds(image);
     }
 
-    public void height() {
-
-    }
-
 
     public <T> T findMostFrequent(ArrayList<T> list) {
         if (list == null || list.isEmpty()) {
