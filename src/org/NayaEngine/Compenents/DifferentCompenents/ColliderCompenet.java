@@ -66,7 +66,7 @@ public class ColliderCompenet extends iComponent {
      * @param collider
      * @return this does the raymarch distance algorithm.
      */
-    public boolean rayCastCollider(ColliderCompenet collider) {
+    public boolean isCollided(ColliderCompenet collider) {
         Vector3 location1 = this.gameObject.GetCompenent(TransformComponent.class).location;
         Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
         Vector3 size = collider.gameObject.GetCompenent(SpriteComponents.class).get_size();

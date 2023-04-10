@@ -114,7 +114,7 @@ public class RendererTest implements GLEventListener {
         c.InstiateObjects(list);
 
 //        test2.GetCompenent(ColliderCompenet.class).rayCastCollider(test.GetCompenent(ColliderCompenet.class));
-        if (test2.GetCompenent(ColliderCompenet.class).rayCastCollider(test.GetCompenent(ColliderCompenet.class))) {
+        if (test2.GetCompenent(ColliderCompenet.class).isCollided(test.GetCompenent(ColliderCompenet.class))) {
             test2.GetCompenent(PhysicsComponent.class).veloLock = true;
             System.out.println("collided");
         }
