@@ -83,6 +83,9 @@ public class ColliderCompenet extends iComponent {
         return getDist(location1, location2, size) == 0;
     }
     public boolean rayCollide(ColliderCompenet collider){
+        if(ray == null){
+            return false;
+        }
         ray.origin = this.gameObject.GetCompenent(TransformComponent.class).location;
         Vector3 location1 = this.ray.getEndPoint();
         Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
