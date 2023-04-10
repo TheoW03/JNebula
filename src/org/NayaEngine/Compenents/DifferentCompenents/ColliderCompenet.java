@@ -70,7 +70,7 @@ public class ColliderCompenet extends iComponent {
     public boolean rayCastCollider(ColliderCompenet collider){
         Vector3 location1 = this.gameObject.GetCompenent(TransformComponent.class).location;
         Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
-        Vector3 size = new Vector3(50,50);
+        Vector3 size = collider.gameObject.GetCompenent(SpriteComponents.class).get_size();
         return getDist(location1,location2,size) == 0;
     }
     /**

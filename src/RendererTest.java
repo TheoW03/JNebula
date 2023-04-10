@@ -65,7 +65,7 @@ public class RendererTest implements GLEventListener {
 //        test.GetCompenent(SpriteComponents.class).scale(200);
 
 //        test.AddCompenent(new CameraComponent(new Vector3(0, 0, 0), gl));
-        test.AddCompenent(new TransformComponent(new Vector3(100, 150, 0), gl));
+        test.AddCompenent(new TransformComponent(new Vector3(100, 200, 0), gl));
 
 
         test.AddCompenent(new PhysicsComponent(gl, new Vector3(-1,0.5f),-0.05f, test.GetCompenent(TransformComponent.class).location));
@@ -81,10 +81,10 @@ public class RendererTest implements GLEventListener {
 //        test.AddCompenent(new LightingComponent(test2.GetCompenent(LightingComponent.class),gl));
 
         System.out.println("test: " + test2);
-        test2.AddCompenent(new TransformComponent(new Vector3(100, 50, 0), gl));
+        test2.AddCompenent(new TransformComponent(new Vector3(100, 20, 0), gl));
 
 
-        test2.AddCompenent(new PhysicsComponent(gl, new Vector3(-1,0.5f),-0.05f, test2.GetCompenent(TransformComponent.class).location));
+        test2.AddCompenent(new PhysicsComponent(gl, new Vector3(0.5f,0.5f),-0.05f, test2.GetCompenent(TransformComponent.class).location));
         test2.AddCompenent(new ColliderCompenet(test2.GetCompenent(SpriteComponents.class).width, test2.GetCompenent(SpriteComponents.class).height));
 
 //        test2.GetCompenent(PhysicsComponent.class).veloLock = true;

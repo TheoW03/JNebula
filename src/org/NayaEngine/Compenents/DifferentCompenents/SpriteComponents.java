@@ -197,6 +197,9 @@ public class SpriteComponents extends iComponent {
 
     }
 
+    public Vector3 get_size(){
+        return new Vector3(vertices[3]/2,vertices[3]/2);
+    }
     public void setHeight() {
         Vector3[] a = getVecticesAsVector();
 //        AC = C - A = (2, 2) - (0, 0) = (2, 2)
