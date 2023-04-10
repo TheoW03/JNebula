@@ -87,8 +87,8 @@ public class RendererTest implements GLEventListener {
         test2.AddCompenent(new PhysicsComponent(gl, new Vector3(0.5f,0.5f),-0.05f, test2.GetCompenent(TransformComponent.class).location));
         test2.AddCompenent(new ColliderCompenet(test2.GetCompenent(SpriteComponents.class).width, test2.GetCompenent(SpriteComponents.class).height));
 
-//        test2.GetCompenent(PhysicsComponent.class).veloLock = true;
-        test.GetCompenent(PhysicsComponent.class).veloLock = true;
+        test2.GetCompenent(PhysicsComponent.class).veloLock = true;
+//        test.GetCompenent(PhysicsComponent.class).veloLock = true;
         list.add(test2);
 
 //        test2.GetCompenent(SpriteComponents.class).scale(2);
@@ -115,7 +115,7 @@ public class RendererTest implements GLEventListener {
 
 //        test2.GetCompenent(ColliderCompenet.class).rayCastCollider(test.GetCompenent(ColliderCompenet.class));
         if (test2.GetCompenent(ColliderCompenet.class).isCollided(test.GetCompenent(ColliderCompenet.class))) {
-            test2.GetCompenent(PhysicsComponent.class).veloLock = true;
+            test.GetCompenent(PhysicsComponent.class).veloLock = true;
             System.out.println("collided");
         }
 //        test2.GetCompenent(TransformComponent.class).rotateContinosuly(-0.05f);
