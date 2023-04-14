@@ -66,11 +66,11 @@ public class RendererTest implements GLEventListener {
 //        test.GetCompenent(SpriteComponents.class).scale(200);
 
 //        test.AddCompenent(new CameraComponent(new Vector3(0, 0, 0), gl));
-        test.AddCompenent(new TransformComponent(new Vector3(0, 150, 0), gl));
+        test.AddCompenent(new TransformComponent(new Vector3(0, 200, 0), gl));
 
 
         test.AddCompenent(new PhysicsComponent(gl, new Vector3(-1,0.5f),-0.05f, test.GetCompenent(TransformComponent.class).location));
-        Rays ray = new Rays(Vector3.down, 400);
+        Rays ray = new Rays(Vector3.down, 94);
         test.AddCompenent(new ColliderCompenet(ray));
 //        test.AddCompenent(new LightingComponent(10, Colors.colorHex(Colors.RED),1.0f,gl));
         list.add(test);
