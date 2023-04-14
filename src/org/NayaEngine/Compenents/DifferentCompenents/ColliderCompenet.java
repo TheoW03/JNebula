@@ -55,8 +55,7 @@ public class ColliderCompenet extends iComponent {
         Vector2f c = new Vector2f(center.x, center.y);
         Vector2f size2 = new Vector2f(size.x, size.y);
         Vector2f offset = calcOffset(p1, c, size2);
-        float usignedDIst = offset.max(new Vector2f(0, 0)).length();
-        return usignedDIst;
+        return offset.max(new Vector2f(0, 0)).length();
     }
 
 
@@ -80,18 +79,83 @@ public class ColliderCompenet extends iComponent {
         Vector3 location1 = this.gameObject.GetCompenent(TransformComponent.class).location;
         Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
         Vector3 size = collider.gameObject.GetCompenent(SpriteComponents.class).get_size();
+        System.out.println("size unit vector: "+size);
         return getDist(location1, location2, size) == 0;
     }
-    public boolean rayCollide(ColliderCompenet collider){
+    public boolean raycasting(ColliderCompenet collider){
         if(ray == null){
             return false;
         }
-        ray.origin = this.gameObject.GetCompenent(TransformComponent.class).location;
-        Vector3 location1 = this.ray.getEndPoint();
         Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
         Vector3 size = collider.gameObject.GetCompenent(SpriteComponents.class).get_size();
-        return getDist(location1, location2, size) == 0;
+        ray.origin = this.gameObject.GetCompenent(TransformComponent.class).location;
+        System.out.println(ray.getEndPoint());
+        Vector3 origin = ray.origin;
+        Vector3 direction = ray.dir.unitVector();
+        Vector2f s = new Vector2f(origin.x,origin.y);
+        Vector2f d = new Vector2f(direction.x,direction.y);
+        int x = (int) Math.floor(s.x);
+        int y = (int) Math.floor(s.y);
+        float tX, tY;
+        float dTx, dTy, stepX, stepY;
+        if (direction.x < 0) {
+            tX = (s.x - x) / (-d.x);
+            stepX = -1;
+            dTx = -1 / d.x;
+        } else {
+            tX = (x + 1 - s.x) / d.x;
+            stepX = 1;
+            dTx = 1 / d.x;
+        }
+
+        if (d.y < 0) {
+            tY = (s.y - y) / (-d.y);
+            stepY = -1;
+            dTy = -1 / d.y;
+        } else {
+            tY = (y + 1 - s.y) / d.y;
+            stepY = 1;
+            dTy = 1 / d.y;
+        }
+        double dist = 0;
+        while (dist < ray.length){
+            double tMin = Math.min(tX,tY);
+            // Check for intersection with each plane
+            if (tX == tMin) {
+                x += stepX;
+                tX += dTx;
+            }
+            if (tY == tMin) {
+                y += stepY;
+                tY += dTy;
+            }
+            if(getDist(new Vector3(x,y),location2,size) == 0){
+                return true;
+            }
+            System.out.println(new Vector3(x,y));
+            dist = Math.sqrt((x - s.x)*(x - s.x) + (y - s.y)*(y - s.y));
+
+        }
+        return false;
     }
+    public void checkUnsignedDist(ColliderCompenet collider){
+        Vector3 location1 = this.gameObject.GetCompenent(TransformComponent.class).location;
+        Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
+        System.out.println("checks: "+getUSdist(location2,location2,collider.gameObject.GetCompenent(SpriteComponents.class).get_size()));
+
+    }
+//    public boolean rayCollide(ColliderCompenet collider){
+//        if(ray == null){
+//            return false;
+//        }
+//        ray.origin = this.gameObject.GetCompenent(TransformComponent.class).location;
+//        Vector3 location1 = this.ray.getEndPoint();
+//        Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
+//        Vector3 size = new Vector3(0, ray.length);
+//        System.out.println(location1);
+//        System.out.println("dist: "+getDist(location1, location2, size));
+//        return getDist(location1, location2, size) == 0;
+//    }
 //    private boolean isCollided(ColliderCompenet collider) {
 //        Vector3 location1 = this.gameObject.GetCompenent(TransformComponent.class).location;
 //        Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;

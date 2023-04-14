@@ -11,6 +11,10 @@ public class Vector3 {
 
     public float x, y, z;
 
+    public static Vector3 up = new Vector3(0,1,0);
+    public static Vector3 down = new Vector3(0,-1,0);
+    public static Vector3 right = new Vector3(1,0,0);
+    public static Vector3 left = new Vector3(-1,0,0);
     public Vector3(float x, float y, float z) {
         this.x = x;
         this.y = y;
@@ -32,7 +36,7 @@ public class Vector3 {
     }
     public Vector3 unitVector(){
         float mag = magnitude();
-        if(mag != 0){
+        if(mag == 0){
             return  this;
         }
         return new Vector3(x*(1/mag),y*(1/mag),z*(1/mag));

@@ -13,19 +13,20 @@ import java.io.*;
  * @Javadoc
  */
 public class Rays {
-    public Vector3 dir, origin, length;
+    public Vector3 dir, origin;
+    public float length;
 
-    public Rays(Vector3 dir, Vector3 origin, Vector3 length) {
-        this.length = length;
+    public Rays(Vector3 dir, Vector3 origin) {
         this.dir = dir;
         this.origin = origin;
     }
-    public Rays(Vector3 dir, Vector3 length) {
-        this.length = length;
+    public Rays(Vector3 dir, float length) {
         this.dir = dir;
+        this.length =  length;
     }
     public Vector3 getEndPoint(){
-        System.out.println("endpoint: "+new Vector3(origin.x + length.x+dir.x, origin.y +length.y+ dir.y));
-        return new Vector3(origin.x + length.x+dir.x, origin.y +length.y+ dir.y);
+        Vector3 add =  new Vector3((length)*dir.x, (length)*dir.y);
+
+        return new Vector3(add.x+origin.x,add.y+ origin.y);
     }
 }

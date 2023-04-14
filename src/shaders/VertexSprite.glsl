@@ -28,9 +28,9 @@ out vec4 lightSourcelocation;
 //    float c = cos(radians(angle));
 //    float s = sin(radians(angle));
 //    return mat4(c, -s, 0.0, 0.0,
-//    s, c, 0.0, 0.0,
-//    0.0, 0.0, 1.0, 0.0,
-//    0.0, 0.0, 0.0, 1.0);
+//                s, c, 0.0, 0.0,
+//                0.0, 0.0, 1.0, 0.0,
+//                0.0, 0.0, 0.0, 1.0);
 //}
 //temp commenr
 
@@ -43,6 +43,7 @@ out vec4 lightSourcelocation;
 void main() {
     vec4 pos = vec4(vPos,1.0);
     pos = rot*pos;
+//    gl_Position = getRotationMatrix(45)*model*projectMatrix* viewMatrix*vec4(vPos,1.0);
     gl_Position =  (model)*projectMatrix* viewMatrix * pos;
     if(lightExits2 == 1){
         vec3 pointLightPosition = vPos;

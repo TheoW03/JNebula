@@ -1,8 +1,8 @@
 # collider compenet
 
-    inherits ICompenet
+```inherits ICompenet```
 
----
+
 ``isCollided(ColliderCompenet collider)``
 
 this checks if its a collider
@@ -10,10 +10,10 @@ returns true or false. uses an inhouse algorithm. that derived off ray
 marching. the distance functions.
 
 
-------------
+---------------
 
 
-``rayCollide(ColliderCompenet collider)`` 
+``raycast(ColliderCompenet collider)`` 
 
 
 this uses ray casting and checks collisons with rays.

@@ -198,7 +198,7 @@ public class SpriteComponents extends iComponent {
     }
 
     public Vector3 get_size(){
-        return new Vector3(vertices[3]/2,vertices[3]/2);
+        return new Vector3(vertices[3]/4,vertices[3]/2);
     }
     public void setHeight() {
         Vector3[] a = getVecticesAsVector();
@@ -209,6 +209,7 @@ public class SpriteComponents extends iComponent {
         this.width = (float) (AC.magnitude() * Math.cos(45));
         this.height = (float) (BD.magnitude() * Math.sin(45));
     }
+
 
     public Vector3 getCenter() {
         Vector3[] a = getVecticesAsVector();
@@ -258,6 +259,10 @@ public class SpriteComponents extends iComponent {
         gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 
+    }
+
+    public Vector3 get_sV(){
+        return new Vector3(width,height);
     }
 
     public Vector3[] getVecticesAsVector() {
