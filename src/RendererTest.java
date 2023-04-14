@@ -66,11 +66,11 @@ public class RendererTest implements GLEventListener {
 //        test.GetCompenent(SpriteComponents.class).scale(200);
 
 //        test.AddCompenent(new CameraComponent(new Vector3(0, 0, 0), gl));
-        test.AddCompenent(new TransformComponent(new Vector3(0, 200, 0), gl));
+        test.AddCompenent(new TransformComponent(new Vector3(100, 200, 0), gl));
 
 
         test.AddCompenent(new PhysicsComponent(gl, new Vector3(-1,0.5f),-0.05f, test.GetCompenent(TransformComponent.class).location));
-        Rays ray = new Rays(Vector3.down, 94);
+        Rays ray = new Rays(Vector3.down, 500);
         test.AddCompenent(new ColliderCompenet(ray));
 //        test.AddCompenent(new LightingComponent(10, Colors.colorHex(Colors.RED),1.0f,gl));
         list.add(test);
@@ -116,12 +116,12 @@ public class RendererTest implements GLEventListener {
         c.InstiateObjects(list);
 
 //        test2.GetCompenent(ColliderCompenet.class).rayCastCollider(test.GetCompenent(ColliderCompenet.class));
-        test.GetCompenent(TransformComponent.class).transform(new Vector3(0.5f,0));
-        if (test.GetCompenent(ColliderCompenet.class).raycasting(test2.GetCompenent(ColliderCompenet.class))) {
+
+        if (test.GetCompenent(ColliderCompenet.class).isCollided(test2.GetCompenent(ColliderCompenet.class))) {
             gl.glClearColor(1, 1, 1, 0.0f);
             System.out.println("collided");
         }else {
-
+            test.GetCompenent(TransformComponent.class).transform(new Vector3(0,-0.5f));
             gl.glClearColor(0, 1, 1, 0.0f);
         }
 //        test2.GetCompenent(TransformComponent.class).rotateContinosuly(-0.05f);

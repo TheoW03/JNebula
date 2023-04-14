@@ -2,6 +2,7 @@ package org.NayaEngine.Compenents;
 
 
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GL4;
 import org.NayaEngine.GameObjects.GameObject;
 import org.NayaEngine.Tooling.loadShader;
 

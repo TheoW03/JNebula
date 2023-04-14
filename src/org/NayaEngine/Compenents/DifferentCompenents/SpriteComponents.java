@@ -11,6 +11,7 @@ import org.NayaEngine.Tooling.Colors;
 import org.NayaEngine.Tooling.SpriteSheetList;
 import org.NayaEngine.Tooling.loadShader;
 import org.NayaEngine.math.Vector3;
+import org.joml.Vector3f;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,6 +43,7 @@ public class SpriteComponents extends iComponent {
     private float[] vertices, textureCoords;
     public float width, height;
     private float[] normals;
+
     private float currentFrame = 0;
     private float[][] spriteTexCoords;
     private Texture texture;
@@ -79,6 +81,7 @@ public class SpriteComponents extends iComponent {
         }
         this.textureID = 0;
         loadTexture();
+        System.out.println(texture.getHeight() + " "+texture.getWidth());
 
     }
 
@@ -105,8 +108,8 @@ public class SpriteComponents extends iComponent {
             vertices[i] = vertices[i] * 100.0f;
         }
         loadTexture();
-        float width = texture.getWidth();
-        float height = texture.getHeight();
+//        float width = texture.getWidth();
+//        float height = texture.getHeight();
 //        int spriteWidth = 64;
 //        int spriteHeight = 64;
         int i2 = 0;
@@ -198,16 +201,31 @@ public class SpriteComponents extends iComponent {
     }
 
     public Vector3 get_size(){
-        return new Vector3(vertices[3]/4,vertices[3]/2);
+        System.out.println("w: "+width +" "+height);
+        return  new Vector3(width,height-4);
+//        return new Vector3(vertices[3]/4,vertices[3]/2);
     }
     public void setHeight() {
         Vector3[] a = getVecticesAsVector();
 //        AC = C - A = (2, 2) - (0, 0) = (2, 2)
 //        BD = D - B = (0, 2) - (2, 0) = (-2, 2)
-        Vector3 AC = new Vector3((a[0].x - a[2].x), (a[0].y - a[2].y));
-        Vector3 BD = new Vector3((a[1].x - a[3].x), (a[1].y - a[3].y));
-        this.width = (float) (AC.magnitude() * Math.cos(45));
-        this.height = (float) (BD.magnitude() * Math.sin(45));
+//        double width = Math.sqrt( Math.pow(a[2].x - a[1].x, 2) + Math.pow(a[2].y- a[1].y, 2));
+//        double height = Math.sqrt( Math.pow(a[1].x - a[0].x, 2) + Math.pow(a[1].y - a[0].y, 2));
+        float[] v1 = { vertices[0], vertices[1], vertices[2] };
+        float[] v2 = { vertices[9], vertices[10], vertices[11] };
+        float[] v3 = { vertices[0], vertices[1], vertices[2] };
+        float[] v4 = { vertices[3], vertices[4], vertices[5] };
+        float length = new Vector3f(v1).distance(new Vector3f(v2));
+        float width = new Vector3f(v3).distance(new Vector3f(v4));
+//        Vector3 AC = new Vector3((a[1].x - a[0].x), (a[1].y - a[0].y));
+//        Vector3 BD = new Vector3((a[2].x - a[3].x), (a[2].y - a[3].y));
+//        System.exit(0);
+//        this.width = (float) (AC.magnitude() * Math.cos(45));
+//        this.height = (float) (BD.magnitude() * Math.sin(45));
+        System.out.println("width: "+(length/10)*2+" "+(width/10));
+//        System.exit(0);
+        this.height = (length/10)*2;
+        this.width = (width/10);
     }
 
 
