@@ -1,7 +1,7 @@
 # icompenent
 
 
-``GL2 gl`` this is the openGL context.
+``GL4 gl`` this is the openGL context.
 
 ---
 

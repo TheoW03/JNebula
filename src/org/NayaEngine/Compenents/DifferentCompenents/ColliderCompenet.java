@@ -82,7 +82,7 @@ public class ColliderCompenet extends iComponent {
         System.out.println("size unit vector: "+size);
         return getDist(location1, location2, size) == 0;
     }
-    public boolean raycasting(ColliderCompenet collider){
+    public boolean ray_collides(ColliderCompenet collider){
         if(ray == null){
             return false;
         }

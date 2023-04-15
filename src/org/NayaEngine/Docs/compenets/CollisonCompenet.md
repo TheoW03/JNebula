@@ -13,7 +13,7 @@ marching. the distance functions.
 ---------------
 
 
-``raycast(ColliderCompenet collider)`` 
+``ray_collides(ColliderCompenet collider)`` 
 
 
 this uses ray casting and checks collisons with rays.
