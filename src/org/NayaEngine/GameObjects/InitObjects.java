@@ -3,6 +3,7 @@ package org.NayaEngine.GameObjects;
 import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.util.FPSAnimator;
 import org.NayaEngine.Compenents.DifferentCompenents.CameraComponent;
 import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
@@ -33,9 +34,9 @@ import static java.awt.SystemColor.window;
 public class InitObjects {
     public boolean first = false;
     private FPSAnimator fpsAnimator;
-    private GL2 gl;
+    private GL4 gl;
     public static CameraComponent mainCamera;
-    public InitObjects(GL2 gl) {
+    public InitObjects(GL4 gl) {
         mainCamera = new CameraComponent(new Vector3(0,0,0),gl);
         this.gl = gl;
 //        this.fpsAnimator = fpsAnimator;

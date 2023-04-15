@@ -97,7 +97,7 @@ public class renderer implements GLEventListener {
     int frames4 = 0;
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
-        GL2 gl = glAutoDrawable.getGL().getGL2();
+        GL4 gl = (GL4) glAutoDrawable.getGL().getGL2();
         float[] vertices = {
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex

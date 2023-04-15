@@ -2,6 +2,7 @@ package org.NayaEngine.Compenents.DifferentCompenents;
 
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GL4;
 import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.Tooling.Camera;
 import org.NayaEngine.Tooling.loadShader;
@@ -19,7 +20,7 @@ public class CameraComponent extends iComponent {
 
     public Camera camera;
     public Vector3 cameralocation;
-    public CameraComponent(Vector3 cameraLocation, GL2 gl){
+    public CameraComponent(Vector3 cameraLocation, GL4 gl){
         this.gl = gl;
         this.camera = new Camera(cameraLocation);
         this.cameralocation = cameraLocation;

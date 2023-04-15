@@ -2,6 +2,7 @@ package org.NayaEngine.Tooling;
 
 import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GL4;
 import org.joml.Matrix4f;
 
 import java.nio.ByteBuffer;
@@ -41,7 +42,7 @@ public class loadShader {
         return t.toString();
     }
 
-    public int shaderCOmpile(GL2 gl) {
+    public int shaderCOmpile(GL4 gl) {
         String vertexSource = "",
                 fragSource = "";
         try {
@@ -54,7 +55,7 @@ public class loadShader {
         return loadShaders(vertexSource, fragSource, gl);
     }
 
-    public int loadShaders(String vertexShaderS, String fragShader, GL2 gl2) {
+    public int loadShaders(String vertexShaderS, String fragShader, GL4 gl2) {
 
         //duke mwean UwU
         if (vertexShaderS.equals("error getting file") ||
@@ -113,21 +114,21 @@ public class loadShader {
 
     }
 
-    public void genBuffer(int[] buffer, GL2 gl) {
+    public void genBuffer(int[] buffer, GL4 gl) {
 
         gl.glGenBuffers(buffer.length, buffer, 0);
     }
 
-    public void bindBuffer(int[] buffer, int GL_CONSTANT, GL2 gl) {
+    public void bindBuffer(int[] buffer, int GL_CONSTANT, GL4 gl) {
         gl.glBindBuffer(GL_CONSTANT, buffer[0]);
     }
 
-    public void freeBuffer(int[] buffer, int GL_CONSTANT, GL2 gl) {
+    public void freeBuffer(int[] buffer, int GL_CONSTANT, GL4 gl) {
         gl.glBindBuffer(GL_CONSTANT, 0);
 
     }
 
-    public void sendMartices(Matrix4f matrice, GL2 gl, int matricLocation) {
+    public void sendMartices(Matrix4f matrice, GL4 gl, int matricLocation) {
         FloatBuffer matBufferM = Buffers.newDirectFloatBuffer(1024);
         matrice.get(matBufferM);
 //        c.initModel(new Vector3(0,0,0)).get(matBufferM);

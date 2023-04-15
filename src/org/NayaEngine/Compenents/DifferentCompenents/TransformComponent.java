@@ -1,6 +1,7 @@
 package org.NayaEngine.Compenents.DifferentCompenents;
 
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GL4;
 import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.Tooling.Camera;
 import org.NayaEngine.Tooling.loadShader;
@@ -22,7 +23,7 @@ public class TransformComponent extends iComponent {
     public Vector3 location;
     public Matrix4f rotation;
 
-    public TransformComponent(Vector3 location, GL2 gl) {
+    public TransformComponent(Vector3 location, GL4 gl) {
         this.gl = gl;
         camera = new Camera(new Vector3(0, 0, 0));
         this.location = location;

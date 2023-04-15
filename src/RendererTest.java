@@ -1,4 +1,4 @@
-import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.*;
 import com.jogamp.opengl.util.FPSAnimator;
 import org.NayaEngine.Compenents.DifferentCompenents.*;
 //import org.NayaEngine.GameObjects.FrameRate;
@@ -11,9 +11,6 @@ import org.NayaEngine.Tooling.Rays;
 import org.NayaEngine.Tooling.SpriteSheetList;
 import org.NayaEngine.Tooling.Window;
 import org.NayaEngine.math.Vector3;
-import com.jogamp.opengl.GL;
-import com.jogamp.opengl.GLAutoDrawable;
-import com.jogamp.opengl.GLEventListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,7 +31,7 @@ public class RendererTest implements GLEventListener {
     InitObjects c;
     public GameObject test, test2;
     FPSAnimator fps;
-    GL2 gl;
+    GL4 gl;
 
     public RendererTest() {
 //        this.fps = w.animator;
@@ -43,7 +40,7 @@ public class RendererTest implements GLEventListener {
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
 
-        gl = glAutoDrawable.getGL().getGL2();
+        gl = glAutoDrawable.getGL().getGL4();
         gl.glEnable(GL.GL_BLEND);
         gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
 
@@ -78,8 +75,8 @@ public class RendererTest implements GLEventListener {
 
         test2.AddCompenent(new SpriteComponents("src/sprites/test.jpg", "jpg", gl));
 
-//        test2.AddCompenent(new LightingComponent(1.0f, Colors.colorHex(Colors.WHITE),0.4f,gl));
-//        test.AddCompenent(new LightingComponent(test2.GetCompenent(LightingComponent.class),gl));
+        test2.AddCompenent(new LightingComponent(1.0f, Colors.colorHex(Colors.WHITE),0.4f,gl));
+        test.AddCompenent(new LightingComponent(test2.GetCompenent(LightingComponent.class),gl));
 
         System.out.println("test: " + test2);
         test2.AddCompenent(new TransformComponent(new Vector3(100, 50, 0), gl));

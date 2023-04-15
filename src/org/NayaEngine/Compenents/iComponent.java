@@ -14,7 +14,7 @@ import org.NayaEngine.Tooling.loadShader;
  */
 public abstract class iComponent {
     public GameObject gameObject;
-    public GL2 gl;
+    public GL4 gl;
     public void init(float dt){
 
     }

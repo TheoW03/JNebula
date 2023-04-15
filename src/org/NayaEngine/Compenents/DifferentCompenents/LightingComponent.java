@@ -3,6 +3,7 @@ package org.NayaEngine.Compenents.DifferentCompenents;
 
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GL4;
 import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.GameObjects.GameObject;
 import org.NayaEngine.Tooling.loadShader;
@@ -36,7 +37,7 @@ public class LightingComponent extends iComponent {
     public LightingComponent(float intensity,
                              float[] lightColor,
                              float strength,
-                             GL2 gl) {
+                             GL4 gl) {
         this.gl = gl;
         this.lightColor = lightColor;
         this.strength = strength;
@@ -44,7 +45,7 @@ public class LightingComponent extends iComponent {
 
     }
 
-    public LightingComponent(LightingComponent source, GL2 gl) {
+    public LightingComponent(LightingComponent source, GL4 gl) {
         this.gl = gl;
         this.lightColor = source.lightColor;
         this.strength = source.strength;
@@ -54,7 +55,7 @@ public class LightingComponent extends iComponent {
         this.source = source;
     }
 
-    public LightingComponent(GL2 gl) {
+    public LightingComponent(GL4 gl) {
         this.gl = gl;
 
     }

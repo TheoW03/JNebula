@@ -2,6 +2,7 @@ package org.NayaEngine.Compenents.DifferentCompenents;
 
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.texture.TextureData;
 import com.jogamp.opengl.util.texture.TextureIO;
@@ -51,7 +52,7 @@ public class SpriteComponents extends iComponent {
 
     public Colors color;
 
-    public SpriteComponents(String file, String type, GL2 gl) {
+    public SpriteComponents(String file, String type, GL4 gl) {
 
         this.file = file;
         this.type = type;
@@ -88,7 +89,7 @@ public class SpriteComponents extends iComponent {
     public SpriteComponents(String file,
                             String type,
                             int numRows, int numCols,
-                            int FPS, int spriteWidth, int spriteHeight, int offset, GL2 gl) {
+                            int FPS, int spriteWidth, int spriteHeight, int offset, GL4 gl) {
         vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex
@@ -144,7 +145,7 @@ public class SpriteComponents extends iComponent {
 
     }
 
-    public SpriteComponents(float[] textureCoords, SpriteSheetList spriteSheetList, GL2 gl) {
+    public SpriteComponents(float[] textureCoords, SpriteSheetList spriteSheetList, GL4 gl) {
         vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex
@@ -170,7 +171,7 @@ public class SpriteComponents extends iComponent {
 
     }
 
-    public SpriteComponents(float[][] textureCoords, SpriteSheetList spriteSheetList, int FPS, GL2 gl) {
+    public SpriteComponents(float[][] textureCoords, SpriteSheetList spriteSheetList, int FPS, GL4 gl) {
         vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex
@@ -194,7 +195,7 @@ public class SpriteComponents extends iComponent {
         }
     }
 
-    public SpriteComponents(Colors color, GL2 gl) {
+    public SpriteComponents(Colors color, GL4 gl) {
         this.gl = gl;
         this.color = color;
 

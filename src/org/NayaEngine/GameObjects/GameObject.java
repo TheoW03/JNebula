@@ -3,6 +3,7 @@ package org.NayaEngine.GameObjects;
 import com.jogamp.opencl.llb.CL;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GL4;
 import org.NayaEngine.Compenents.DifferentCompenents.PhysicsComponent;
 import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
 import org.NayaEngine.Compenents.ManageCmponent;
@@ -66,7 +67,7 @@ public class GameObject {
         compenet.gameObject = this;
     }
 
-    public void update(float dt, GL2 gl) {
+    public void update(float dt, GL4 gl) {
         if (isActive) {
             loadShader sh = new loadShader();
 //        gl.glClear(GL.GL_COLOR_BUFFER_BIT); // Clear the color buffer to the clear color
@@ -96,7 +97,7 @@ public class GameObject {
 
     }
 
-    public void start(float dt, GL2 gl) {
+    public void start(float dt, GL4 gl) {
         if (isActive) {
             loadShader sh = new loadShader();
             int shP = sh.shaderCOmpile(gl);
