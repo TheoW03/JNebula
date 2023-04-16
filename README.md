@@ -32,7 +32,7 @@ import org.NayaEngine.GameObjects.GameRenderer;
 public class Main {
     public static void main(String[] args) throws IOException {
         GameRenderer starterCode = new StarterCode(); //for step 3 if you get a not defined error then
-        Window w = new Window(640, 480, "2D graphics inDev edition", starterCode); //inits window
+        Window w = new Window(640, 480, "my window", starterCode); //inits window
 
     }
 }
