@@ -47,8 +47,7 @@ this is how it should look like
 
 ```JAVA
 public class StarterCode extends GameRenderer {
-public InitObjects initObject;
-
+    public InitObjects initObject;
     //runs 1st frame
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
