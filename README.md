@@ -5,64 +5,67 @@ the naya engine.
 
 2D game engine coded by me TheoW03
 
+written in java
 
-how to get started  
+# how to get started
 
 
-1. download these 2 dependecies
 
-    version: 2.3.2
+1. <p>download these 2 dependecies
+---
+*    version: 2.3.2 JOGL (openGL)
+* https://jar-download.com/artifacts/org.jogamp.gluegen/gluegen-rt
+---
+ *   version 1.10.5 JOML (Matrix math)
+ * https://jar-download.com/artifacts/org.joml
 
-    https://jar-download.com/artifacts/org.jogamp.gluegen/gluegen-rt
+---
+*    and requires java 17
+* https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
+---
+2. create a new class call it whatever you want. Main Ill use for this
+and follow the example code below
 
-    version 1.10.5
+```JAVA
+import org.NayaEngine.GameObjects.GameRenderer;
 
-    https://jar-download.com/artifacts/org.joml
+public class Main {
+    public static void main(String[] args) throws IOException {
+        GameRenderer starterCode = new StarterCode(); //for step 3 if you get a not defined error then
+        Window w = new Window(640, 480, "2D graphics inDev edition", starterCode); //inits window
 
-    and requires java 17
+    }
+}
 
-2. create a new class that extends ``GameRenderer``
-and in main call the Window class
-like this
-
-``Window w = new Window(width, height, name of app, instance of gamerender)``
+```
+---
 3. once you do that follow below
 
------   
-create a new GameObject
+<p>create a new class called whatever you want. for this example
+starterCode and let it inherit from GameRenderer</p> 
+this is how it should look like
 
-name what you want and add comepents,
-like this
+```JAVA
+public class StarterCode extends GameRenderer {
+public InitObjects initObject;
 
-```GameObject.AddCompenent()```
+    //runs 1st frame
+    @Override
+    public void init(GLAutoDrawable glAutoDrawable) {
+        GameObject obj = new GameObject("starterObj"); // you can name it what you want
+        obj.AddCompenent(new CameraComponent(new Vector3(0,0,0))); //not required if you dont add it will default to 0,0
+        obj.AddCompenent(new SpriteComponents("sprite.png","png"));
+        obj.AddCompenent(new TransformComponent(new Vector3(0,0,0)));
+        gameObjectArrayList.add(obj);
+        initObject = new InitObjects();
+    }
+    //runs every frame. 
+    @Override
+    public void display(GLAutoDrawable glAutoDrawable) {
+        initObject.InstiateObjects(gameObjectArrayList); //inits list
+    }
+}
 
-to Edit the compenent use
+```
 
-``GameObject.GetCompenent(Compenent.class)``
-
-as of right now each compenent is required a sprite
-
-but im going to fix it you wont need to 
-
-to remove
-
-``GameObject.RemoveCompenent(Compenent.class)``
-
-you can also add your own scripts have it
-
-``extend iComponent``
-
-``update(dt)``
-runs every frame
-
-``init(dt)`` is the 1st frame
-
-enjoy :)
-
-![img.png](img.png)
-example of how it looks ^
-
-in the future I plan to add a text based gameObject editor
-
-and physics. and lighting.
 
