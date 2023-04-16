@@ -1,10 +1,10 @@
-package org.NayaEngine.GameObjects;
+package org.NayaEngine.uselessgameObjStuff;
 
-import org.NayaEngine.Compenents.DifferentCompenents.CameraComponent;
 import org.NayaEngine.Compenents.ManageCmponent;
 import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.Tooling.Camera;
 import org.NayaEngine.math.Vector3;
+import org.NayaEngine.uselessgameObjStuff.GameBehavior;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * ~ project outline here ~
  * @Javadoc
  */
-public class GlobalCompenet implements GameBehavior{
+public class GlobalCompenet implements GameBehavior {
     private ManageCmponent compenents;
     private Vector3 position;
     public static Camera MAIN_CAMERA;

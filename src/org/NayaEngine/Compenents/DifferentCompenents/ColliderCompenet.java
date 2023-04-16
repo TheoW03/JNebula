@@ -1,13 +1,9 @@
 package org.NayaEngine.Compenents.DifferentCompenents;
 
 import org.NayaEngine.Compenents.iComponent;
-import org.NayaEngine.Tooling.Rays;
+import org.NayaEngine.math.Ray;
 import org.NayaEngine.math.Vector3;
 import org.joml.Vector2f;
-import org.joml.Vector3f;
-
-import java.util.*;
-import java.io.*;
 
 
 /**
@@ -19,8 +15,8 @@ import java.io.*;
 public class ColliderCompenet extends iComponent {
     public float width, height;
 
-    public Rays[] list;
-    public Rays ray;
+    public Ray[] list;
+    public Ray ray;
 
     public ColliderCompenet() {
         this.height = this.gameObject.GetCompenent(SpriteComponents.class).height;
@@ -32,10 +28,10 @@ public class ColliderCompenet extends iComponent {
         this.width = colliderWidth;
 
     }
-    public ColliderCompenet(Rays[] list){
+    public ColliderCompenet(Ray[] list){
         this.list = list;
     }
-    public ColliderCompenet(Rays ray){
+    public ColliderCompenet(Ray ray){
         this.ray = ray;
     }
     @Override

@@ -5,15 +5,13 @@ import org.NayaEngine.Compenents.DifferentCompenents.*;
 import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.GameObjects.GameObject;
 import org.NayaEngine.GameObjects.InitObjects;
-import org.NayaEngine.GameObjects.SpriteObject;
+import org.NayaEngine.uselessgameObjStuff.SpriteObject;
 
 import org.NayaEngine.Tooling.Colors;
-import org.NayaEngine.Tooling.Rays;
-import org.NayaEngine.Tooling.SpriteSheetList;
+import org.NayaEngine.math.Ray;
 import org.NayaEngine.Tooling.Window;
 import org.NayaEngine.math.Vector3;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.jogamp.opengl.GL.*;
@@ -69,7 +67,7 @@ public class RendererTest implements GLEventListener {
 
 
         test.AddCompenent(new PhysicsComponent(new Vector3(-1,0.5f),-0.05f, test.GetCompenent(TransformComponent.class).location));
-        Rays ray = new Rays(Vector3.down, 500);
+        Ray ray = new Ray(Vector3.down, 500);
         test.AddCompenent(new ColliderCompenet(ray));
 //        test.AddCompenent(new LightingComponent(10, Colors.colorHex(Colors.RED),1.0f,gl));
         list.add(test);

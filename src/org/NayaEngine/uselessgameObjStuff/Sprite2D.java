@@ -1,4 +1,4 @@
-package org.NayaEngine.GameObjects;
+package org.NayaEngine.uselessgameObjStuff;
 
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GLProfile;

@@ -4,6 +4,7 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
+import org.NayaEngine.Compenents.iComponent;
 
 import java.util.*;
 import java.io.*;
@@ -16,10 +17,15 @@ import java.io.*;
  * @Javadoc
  */
 public abstract class GameRenderer implements GLEventListener {
-    public GL4 gl;
+    public static GL4 gl;
+    public ArrayList<GameObject> gameObjectArrayList; //might use map
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
         gl = (GL4) glAutoDrawable.getGL();
+        iComponent.gl = gl;
+        GameObject.gl = gl;
+        gameObjectArrayList = new ArrayList<>();
+
     }
 
     public  void dispose(GLAutoDrawable glAutoDrawable){
@@ -28,6 +34,8 @@ public abstract class GameRenderer implements GLEventListener {
 
     public void display(GLAutoDrawable glAutoDrawable){
         gl = (GL4) glAutoDrawable.getGL();
+        iComponent.gl = gl;
+        GameObject.gl = gl;
     }
 
     @Override

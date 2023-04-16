@@ -1,4 +1,4 @@
-package org.NayaEngine.GameObjects;
+package org.NayaEngine.uselessgameObjStuff;
 
 import org.NayaEngine.Compenents.ManageCmponent;
 import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
