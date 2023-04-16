@@ -32,8 +32,7 @@ import org.NayaEngine.GameObjects.GameRenderer;
 public class Main {
     public static void main(String[] args) throws IOException {
         GameRenderer starterCode = new StarterCode(); //for step 3 if you get a not defined error then
-        Window w = new Window(640, 480, "my window", starterCode); //inits window
-
+        Window.InitWindow(640, 480, "example window", new StarterCode());
     }
 }
 

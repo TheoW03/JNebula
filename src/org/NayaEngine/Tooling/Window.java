@@ -52,6 +52,35 @@ public class Window {
 
     }
 
+    public static void InitWindow(int width, int height, String title, GLEventListener renderer){
+        final GLProfile glProfile = GLProfile.getDefault();
+        final GLCapabilities glCapabilities = new GLCapabilities(glProfile);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+
+                JFrame jFrame = new JFrame(title);
+                jFrame.setSize(width, height);
+                jFrame.addKeyListener(new Input());
+
+                GLJPanel glJPanel = new GLJPanel(glCapabilities);
+                glJPanel.addKeyListener(new Input());
+                glJPanel.addMouseListener(new Input());
+
+                animator = new FPSAnimator(glJPanel, 60);
+                glJPanel.addGLEventListener(renderer);
+                glJPanel.setSize(jFrame.getSize());
+
+                jFrame.getContentPane().add(glJPanel);
+
+                jFrame.setVisible(true);
+
+                jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                animator.start();
+
+
+            }
+        });
+    }
     public static void printFrameRate() {
 
         deltaTime = 0.1f;
