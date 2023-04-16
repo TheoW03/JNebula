@@ -9,15 +9,26 @@ the naya engine.
 how to get started  
 
 
+1. download these 2 dependecies
 
-1. start a new class That uses GLeventListener 
-and get a window on the screen using openGL event listner
-   (future update i may abstract it)
+    version: 2.3.2
 
-2. Once you do that, create a new class
-implements GL eventListener.
+    https://jar-download.com/artifacts/org.jogamp.gluegen/gluegen-rt
 
-   
+    version 1.10.5
+
+    https://jar-download.com/artifacts/org.joml
+
+    and requires java 17
+
+2. create a new class that extends ``GameRenderer``
+and in main call the Window class
+like this
+
+``Window w = new Window(width, height, name of app, instance of gamerender)``
+3. once you do that follow below
+
+-----   
 create a new GameObject
 
 name what you want and add comepents,
@@ -54,3 +65,4 @@ example of how it looks ^
 in the future I plan to add a text based gameObject editor
 
 and physics. and lighting.
+
