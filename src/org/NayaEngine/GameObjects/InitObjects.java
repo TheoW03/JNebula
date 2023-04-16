@@ -6,6 +6,7 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.util.FPSAnimator;
 import org.NayaEngine.Compenents.DifferentCompenents.CameraComponent;
+import org.NayaEngine.Compenents.DifferentCompenents.ColliderCompenet;
 import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
 import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
 import org.NayaEngine.Compenents.iComponent;
@@ -15,6 +16,7 @@ import org.NayaEngine.Tooling.loadShader;
 import org.NayaEngine.math.Vector3;
 import org.joml.Matrix4f;
 
+import java.lang.reflect.Array;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.*;
@@ -34,11 +36,12 @@ import static java.awt.SystemColor.window;
 public class InitObjects {
     public boolean first = false;
     private FPSAnimator fpsAnimator;
-    private GL4 gl;
     public static CameraComponent mainCamera;
-    public InitObjects(GL4 gl) {
-        mainCamera = new CameraComponent(new Vector3(0,0,0),gl);
-        this.gl = gl;
+    private GL4 gl;
+    public InitObjects() {
+        mainCamera = new CameraComponent(new Vector3(0,0,0));
+        this.gl = iComponent.gl;
+        GameObject.gl = gl;
 //        this.fpsAnimator = fpsAnimator;
     }
 
@@ -46,6 +49,7 @@ public class InitObjects {
 
 
     public void InstiateObjects(List<GameObject> object) {
+        ArrayList<GameObject> hasCollison = new ArrayList<>();
         gl.glEnable(GL_LIGHTING);
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);// Clear the color buffer to the clear color
 
@@ -53,8 +57,11 @@ public class InitObjects {
             if(object.get(i).GetCompenent(CameraComponent.class) == null){
                 object.get(i).AddCompenent(mainCamera);
             }
+            if(object.get(i).GetCompenent(ColliderCompenet.class) != null){
+                hasCollison.add(object.get(i));
+            }
             if(object.get(i).GetCompenent(TransformComponent.class) == null){
-                object.get(i).AddCompenent(new TransformComponent(new Vector3(0,0,0),gl));
+                object.get(i).AddCompenent(new TransformComponent(new Vector3(0,0,0)));
             }
             if (!first) {
                 object.get(i).start(0.1f, gl);

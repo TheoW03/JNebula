@@ -20,8 +20,7 @@ public class CameraComponent extends iComponent {
 
     public Camera camera;
     public Vector3 cameralocation;
-    public CameraComponent(Vector3 cameraLocation, GL4 gl){
-        this.gl = gl;
+    public CameraComponent(Vector3 cameraLocation){
         this.camera = new Camera(cameraLocation);
         this.cameralocation = cameraLocation;
     }

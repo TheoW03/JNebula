@@ -52,7 +52,7 @@ public class SpriteComponents extends iComponent {
 
     public Colors color;
 
-    public SpriteComponents(String file, String type, GL4 gl) {
+    public SpriteComponents(String file, String type) {
 
         this.file = file;
         this.type = type;
@@ -89,7 +89,7 @@ public class SpriteComponents extends iComponent {
     public SpriteComponents(String file,
                             String type,
                             int numRows, int numCols,
-                            int FPS, int spriteWidth, int spriteHeight, int offset, GL4 gl) {
+                            int FPS, int spriteWidth, int spriteHeight, int offset) {
         vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex
@@ -145,7 +145,7 @@ public class SpriteComponents extends iComponent {
 
     }
 
-    public SpriteComponents(float[] textureCoords, SpriteSheetList spriteSheetList, GL4 gl) {
+    public SpriteComponents(float[] textureCoords, SpriteSheetList spriteSheetList) {
         vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex
@@ -171,7 +171,7 @@ public class SpriteComponents extends iComponent {
 
     }
 
-    public SpriteComponents(float[][] textureCoords, SpriteSheetList spriteSheetList, int FPS, GL4 gl) {
+    public SpriteComponents(float[][] textureCoords, SpriteSheetList spriteSheetList, int FPS) {
         vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex

@@ -20,7 +20,7 @@ public class PhysicsComponent extends iComponent {
     public boolean veloLock;
     public float ROC;
     public Vector3 transformVector;
-    public PhysicsComponent(GL4 gl, Vector3 startingV, float ROC, Vector3 position) {
+    public PhysicsComponent(Vector3 startingV, float ROC, Vector3 position) {
         this.gl = gl;
         this.position = position;
         this.startingV = startingV;

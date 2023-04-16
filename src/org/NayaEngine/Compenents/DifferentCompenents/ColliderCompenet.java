@@ -42,7 +42,6 @@ public class ColliderCompenet extends iComponent {
     public void update(float dt) {
 
     }
-
     private Vector2f calcOffset(Vector2f p, Vector2f center, Vector2f size) {
         Vector2f o1 = center.sub(p);
         Vector2f o3 = new Vector2f(Math.abs(o1.x), Math.abs(o1.y));
@@ -138,7 +137,7 @@ public class ColliderCompenet extends iComponent {
         }
         return false;
     }
-    public void checkUnsignedDist(ColliderCompenet collider){
+    private void checkUnsignedDist(ColliderCompenet collider){
         Vector3 location1 = this.gameObject.GetCompenent(TransformComponent.class).location;
         Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
         System.out.println("checks: "+getUSdist(location2,location2,collider.gameObject.GetCompenent(SpriteComponents.class).get_size()));

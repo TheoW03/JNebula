@@ -35,6 +35,8 @@ public class GameObject {
 
     public boolean isActive;
 
+    public static GL4 gl;
+
     public GameObject(String name) {
         isActive = true;
         compenets = new ArrayList<>();

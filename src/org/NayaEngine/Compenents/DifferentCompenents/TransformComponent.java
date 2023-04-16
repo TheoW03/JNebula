@@ -23,8 +23,7 @@ public class TransformComponent extends iComponent {
     public Vector3 location;
     public Matrix4f rotation;
 
-    public TransformComponent(Vector3 location, GL4 gl) {
-        this.gl = gl;
+    public TransformComponent(Vector3 location) {
         camera = new Camera(new Vector3(0, 0, 0));
         this.location = location;
 

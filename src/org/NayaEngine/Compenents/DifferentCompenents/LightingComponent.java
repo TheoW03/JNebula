@@ -36,8 +36,7 @@ public class LightingComponent extends iComponent {
 
     public LightingComponent(float intensity,
                              float[] lightColor,
-                             float strength,
-                             GL4 gl) {
+                             float strength) {
         this.gl = gl;
         this.lightColor = lightColor;
         this.strength = strength;
@@ -45,7 +44,7 @@ public class LightingComponent extends iComponent {
 
     }
 
-    public LightingComponent(LightingComponent source, GL4 gl) {
+    public LightingComponent(LightingComponent source) {
         this.gl = gl;
         this.lightColor = source.lightColor;
         this.strength = source.strength;
@@ -55,8 +54,8 @@ public class LightingComponent extends iComponent {
         this.source = source;
     }
 
-    public LightingComponent(GL4 gl) {
-        this.gl = gl;
+    public LightingComponent() {
+
 
     }
 

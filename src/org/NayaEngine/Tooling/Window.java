@@ -1,13 +1,12 @@
 package org.NayaEngine.Tooling;
 
-import com.jogamp.opengl.GLAutoDrawable;
-import com.jogamp.opengl.GLCapabilities;
-import com.jogamp.opengl.GLEventListener;
-import com.jogamp.opengl.GLProfile;
+import com.jogamp.opengl.*;
 import com.jogamp.opengl.awt.GLJPanel;
 import com.jogamp.opengl.util.FPSAnimator;
+import org.NayaEngine.Compenents.iComponent;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.*;
 import java.io.*;
 
@@ -60,6 +59,10 @@ public class Window {
         System.out.println("DT: " + deltaTime);
         double fps = (double) frames / ((double) deltaTime / 1000000000.0);
         System.out.println("FPS: " + frames);
+
+    }
+    public static void setBGColor(Colors c){
+        iComponent.gl.glClearColor(c.r2,c.b2,c.g2,0.0f);
 
     }
 }

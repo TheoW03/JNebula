@@ -3,6 +3,7 @@ package org.NayaEngine.Compenents;
 
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GL4;
+import org.NayaEngine.Compenents.DifferentCompenents.ColliderCompenet;
 import org.NayaEngine.GameObjects.GameObject;
 import org.NayaEngine.Tooling.loadShader;
 
@@ -14,12 +15,16 @@ import org.NayaEngine.Tooling.loadShader;
  */
 public abstract class iComponent {
     public GameObject gameObject;
-    public GL4 gl;
+//    public GL4 gl;
+    public static GL4 gl;
     public void init(float dt){
 
     }
     public abstract void update(float dt);
     public void sendtoGPU(int shaderProgram, loadShader sh){
+
+    }
+    public void Collides(ColliderCompenet c){
 
     }
 
