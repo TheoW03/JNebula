@@ -52,7 +52,7 @@ public class StarterCode extends GameRenderer {
     public void init(GLAutoDrawable glAutoDrawable) {
         GameObject obj = new GameObject("starterObj"); // you can name it what you want
         obj.AddCompenent(new CameraComponent(new Vector3(0,0,0))); //not required if you dont add it will default to 0,0
-        obj.AddCompenent(new SpriteComponents("sprite.png","png"));
+        obj.AddCompenent(new SpriteComponents("sprite.png","png",null)); //the null is a color
         obj.AddCompenent(new TransformComponent(new Vector3(0,0,0)));
         gameObjectArrayList.add(obj);
         initObject = new InitObjects();
