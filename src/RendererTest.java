@@ -59,8 +59,9 @@ public class RendererTest implements GLEventListener {
 //        test.AddCompenent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg", 1, 5, 20, 64, 64, 7, gl));
 //        test.AddCompenent(new SpriteComponents(s1.getSection(1,3), s1,15, gl));
 //        test.AddCompenent(new RenderCompenent(Colors.RED));
-        test.AddCompenent(new SpriteComponents("src/sprites/maxwell.png", "png"));
+        test.AddCompenent(new SpriteComponents("src/sprites/maxwell.png", "png", null));
 //        test.GetCompenent(SpriteComponents.class).scale(200);
+//
 
 //        test.AddCompenent(new CameraComponent(new Vector3(0, 0, 0), gl));
         test.AddCompenent(new TransformComponent(new Vector3(0, 100, 0)));
@@ -73,10 +74,10 @@ public class RendererTest implements GLEventListener {
         list.add(test);
         test2 = new GameObject("TEST2");
 
-        test2.AddCompenent(new SpriteComponents("src/sprites/test.jpg", "jpg"));
-
-        test2.AddCompenent(new LightingComponent(1.0f, Colors.colorHex(Colors.WHITE),0.4f));
-        test.AddCompenent(new LightingComponent(test2.GetCompenent(LightingComponent.class)));
+//        test2.AddCompenent(new SpriteComponents("src/sprites/test.jpg", "jpg",null));
+test2.AddCompenent(new SpriteComponents(new Colors(0.1f,0.5f,0.5f)));
+//        test2.AddCompenent(new LightingComponent(1.0f, Colors.colorHex(Colors.WHITE),0.4f));
+//        test.AddCompenent(new LightingComponent(test2.GetCompenent(LightingComponent.class)));
 
         System.out.println("test: " + test2);
         test2.AddCompenent(new TransformComponent(new Vector3(100, 50, 0)));

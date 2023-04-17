@@ -52,11 +52,45 @@ public class SpriteComponents extends iComponent {
 
     public Colors color;
 
-    public SpriteComponents(String file, String type) {
+    /**
+     *
+     * @param c, ill opt for getters and setters. this is painful :')
+     */
+    public SpriteComponents(Colors c){
+        this.color =c;
 
+        vertices = new float[]{
+                -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
+                1.0f, -1.0f, 0.0f,    // Bottom-right vertex
+                -1.0f, 1.0f, 0.0f,    // Top-left vertex
+                1.0f, 1.0f, 0.0f      // Top-right vertex
+        };
+        textureCoords = new float[]{
+                0.0f, 0.0f,           // Bottom-left texture coordinate
+                0.0f, 0.0f,           // Bottom-right texture coordinate
+                0.0f, 0.0f,           // Top-left texture coordinate
+                0.0f,0.0f            // Top-right texture coordinate
+        };
+        normals = new float[]{
+                0.0f, 1.0f,
+                0.0f, 1.0f,
+                0.0f, 1.0f,
+                0.0f, 1.0f,
+        };
+        spriteTexCoords = new float[1][textureCoords.length];
+        gl.glEnable(GL.GL_BLEND);
+        gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
+        for (int i = 0; i < vertices.length; i++) {
+            vertices[i] = vertices[i] * 100.0f;
+        }
+        this.texture =null;
+        setHeight();
+    }
+    public SpriteComponents(String file, String type, Colors c) {
+
+        this.color = c;
         this.file = file;
         this.type = type;
-        this.gl = gl;
         vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex
@@ -89,7 +123,8 @@ public class SpriteComponents extends iComponent {
     public SpriteComponents(String file,
                             String type,
                             int numRows, int numCols,
-                            int FPS, int spriteWidth, int spriteHeight, int offset) {
+                            int FPS, int spriteWidth, int spriteHeight, int offset, Colors c) {
+        this.color = c;
         vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex
@@ -145,7 +180,7 @@ public class SpriteComponents extends iComponent {
 
     }
 
-    public SpriteComponents(float[] textureCoords, SpriteSheetList spriteSheetList) {
+    public SpriteComponents(float[] textureCoords, SpriteSheetList spriteSheetList,Colors c) {
         vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex
@@ -158,11 +193,11 @@ public class SpriteComponents extends iComponent {
                 0.0f, 1.0f,
                 0.0f, 1.0f,
         };
+        this.color = c;
         spriteTexCoords = new float[1][textureCoords.length];
         spriteTexCoords[0] = textureCoords;
         this.texture = spriteSheetList.texture;
         this.textureID = 0;
-        this.gl = gl;
         loadTexture();
         for (int i = 0; i < vertices.length; i++) {
             vertices[i] = vertices[i] * 100.0f;
@@ -171,7 +206,7 @@ public class SpriteComponents extends iComponent {
 
     }
 
-    public SpriteComponents(float[][] textureCoords, SpriteSheetList spriteSheetList, int FPS) {
+    public SpriteComponents(float[][] textureCoords, SpriteSheetList spriteSheetList, int FPS,Colors c) {
         vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
                 1.0f, -1.0f, 0.0f,    // Bottom-right vertex
@@ -184,10 +219,10 @@ public class SpriteComponents extends iComponent {
                 0.0f, 1.0f,
                 0.0f, 1.0f,
         };
+        this.color = c;
         spriteTexCoords = textureCoords;
         this.texture = spriteSheetList.texture;
         this.textureID = 0;
-        this.gl = gl;
         this.FPS = FPS;
         loadTexture();
         for (int i = 0; i < vertices.length; i++) {
@@ -195,11 +230,6 @@ public class SpriteComponents extends iComponent {
         }
     }
 
-    public SpriteComponents(Colors color, GL4 gl) {
-        this.gl = gl;
-        this.color = color;
-
-    }
 
     public Vector3 get_size(){
         System.out.println("w: "+width +" "+height);
@@ -257,7 +287,6 @@ public class SpriteComponents extends iComponent {
                     return;
                 }
             } catch (IOException e) {
-                e.printStackTrace();
             }
         }
 
@@ -276,7 +305,8 @@ public class SpriteComponents extends iComponent {
         gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
+        gl.glEnable(GL_BLEND);
+        gl.glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     }
 
@@ -300,7 +330,7 @@ public class SpriteComponents extends iComponent {
 
     @Override
     public void init(float dt) {
-        loadTexture();
+//        loadTexture();
         if (FPS != 0) {
             Timer animationTimer = new Timer(1000 / FPS, new ActionListener() {
                 @Override
@@ -358,7 +388,10 @@ public class SpriteComponents extends iComponent {
     @Override
     public void sendtoGPU(int shaderProgram, loadShader sh) {
         System.out.println("send to GPU");
-
+        if(this.texture == null){
+            int location = gl.glGetUniformLocation(shaderProgram,"textureExists");
+            gl.glUniform1f(location,1);
+        }
 //        textureCoords = spriteTexCoords[(int) currentFrame];
         if (currentFrame > spriteTexCoords.length) {
             currentFrame = 0;
@@ -368,6 +401,9 @@ public class SpriteComponents extends iComponent {
         } catch (ArrayIndexOutOfBoundsException e) {
             currentFrame = 0;
             textureCoords = spriteTexCoords[(int) currentFrame];
+        }
+        if(texture == null){
+
         }
 
         int[] buffers = new int[3];
@@ -400,6 +436,14 @@ public class SpriteComponents extends iComponent {
         gl.glEnableVertexAttribArray(texCoordAttrib);
         gl.glVertexAttribPointer(texCoordAttrib, 2, GL_FLOAT, false, 0, vertices.length * 4);
         gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
+        int colorLocation = gl.glGetUniformLocation(shaderProgram, "color_of_sprite");
+        if(color != null){
+            gl.glUniform3f(colorLocation, color.r2, color.g2, color.b2);
+        }else {
+            gl.glUniform3f(colorLocation, 1,1,1);
+
+        }
+
 
         gl.glActiveTexture(GL_TEXTURE0);
         gl.glBindTexture(GL_TEXTURE_2D, textureID);

@@ -34,7 +34,7 @@ public class Main {
 //        Window w = new Window(640, 480, "2D graphics inDev edition", new RendererTest());
         Window.InitWindow(640, 480, "2D graphics inDev edition", new RendererTest());
         //        testLexxer();
-//        Window w2 = new Window(640, 480, "2D graphics inDev edition", new Renderer4());\
+//        Window.InitWindow(640, 480, "2D graphics inDev edition", new Renderer4());\
     }
 
     public static void testLexxer() throws IOException {
@@ -49,3 +49,37 @@ public class Main {
         System.out.println("lexxing complete");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

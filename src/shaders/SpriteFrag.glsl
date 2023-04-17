@@ -20,8 +20,9 @@ uniform float specularStrength;
 uniform float shininess;
 uniform float strength;
 uniform vec3 viewPos;
-
+uniform float textureExists = 0;
 uniform vec3 camera_pos;
+uniform vec3 color_of_sprite;
 
 //uniform float baseIntensity;
 //uniform vec3 color;
@@ -100,10 +101,15 @@ void main(){
             FragColor = vec4(result, 1.0)*texture(tSample, tCoord);
 
         }
-
     } else {
-        vec4 color = texture(tSample, tCoord);
-        FragColor = color ;
+        vec4 c = vec4(color_of_sprite,1.0);
+        if(textureExists == 0){
+            vec4 color = texture(tSample, tCoord);
+            FragColor = c*color;
+        }else{
+            FragColor = vec4(color_of_sprite,1.0);
+        }
+
     }
 
     //    color *= vec4(lightColor,1.0);
