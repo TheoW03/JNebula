@@ -20,7 +20,7 @@ written in java
  * https://jar-download.com/artifacts/org.joml
 
 ---
-*    and requires java 17
+*    requires java 17
 * https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
 ---
 2. create a new class call it whatever you want. Main Ill use for this
