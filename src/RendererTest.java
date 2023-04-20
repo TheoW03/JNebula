@@ -75,7 +75,7 @@ public class RendererTest implements GLEventListener {
         list.add(test);
         test2 = new GameObject("TEST2");
 
-        test2.AddCompenent(new SpriteComponents("src/sprites/test.jpg", "jpg",null));
+//        test2.AddCompenent(new SpriteComponents("src/sprites/test.jpg", "jpg",null));
 //        test2.GetCompenent(SpriteComponents.class).scaleVertex(2,2);
 //        test2.GetCompenent(SpriteComponents.class).scaleVertex(3,2);
 
@@ -88,7 +88,7 @@ public class RendererTest implements GLEventListener {
 
 
         test2.AddCompenent(new PhysicsComponent(new Vector3(0,3),-0.05f, test2.GetCompenent(TransformComponent.class).location, Vector3.down));
-        test2.AddCompenent(new ColliderCompenet(test2.GetCompenent(SpriteComponents.class).width, test2.GetCompenent(SpriteComponents.class).height));
+//        test2.AddCompenent(new ColliderCompenet(test2.GetCompenent(SpriteComponents.class).width, test2.GetCompenent(SpriteComponents.class).height));
 
 //        test2.GetCompenent(PhysicsComponent.class).veloLock = true;
 //        test.GetCompenent(PhysicsComponent.class).veloLock = true;

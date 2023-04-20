@@ -397,6 +397,9 @@ public class SpriteComponents extends iComponent {
         if(this.texture == null){
             int location = gl.glGetUniformLocation(shaderProgram,"textureExists");
             gl.glUniform1f(location,1);
+        }else {
+            int location = gl.glGetUniformLocation(shaderProgram,"textureExists");
+            gl.glUniform1f(location,0);
         }
 //        textureCoords = spriteTexCoords[(int) currentFrame];
         if (currentFrame > spriteTexCoords.length) {
@@ -408,10 +411,6 @@ public class SpriteComponents extends iComponent {
             currentFrame = 0;
             textureCoords = spriteTexCoords[(int) currentFrame];
         }
-        if(texture == null){
-
-        }
-
         int[] buffers = new int[3];
         indices = new int[]{0, 1, 2, 3};  // Index buffer for a quad
 

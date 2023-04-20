@@ -74,15 +74,18 @@ public class InitObjects {
 
         }
         for (int i = 0; i < object.size(); i++) {
-            int[] indices = object.get(i).indices;
-            int[] buffers = new int[1];
-            gl.glGenBuffers(1, buffers, 0);
-            gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
+            if(object.get(i).GetCompenent(SpriteComponents.class) != null){
+                int[] indices = object.get(i).indices;
+                int[] buffers = new int[1];
+                gl.glGenBuffers(1, buffers, 0);
+                gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
 
-            gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
-            gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
-            gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
-            gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+                gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+                gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
+                gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
+                gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+            }
+
         }
         first = true;
     }

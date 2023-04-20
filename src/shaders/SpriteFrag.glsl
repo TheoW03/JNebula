@@ -20,7 +20,7 @@ uniform float specularStrength;
 uniform float shininess;
 uniform float strength;
 uniform vec3 viewPos;
-uniform float textureExists = 0;
+uniform float textureExists = -1;
 uniform vec3 camera_pos;
 uniform vec3 color_of_sprite;
 
@@ -106,8 +106,10 @@ void main(){
         if(textureExists == 0){
             vec4 color = texture(tSample, tCoord);
             FragColor = c*color;
-        }else{
+        }else if(textureExists == 1){
             FragColor = vec4(color_of_sprite,1.0);
+        }else{
+
         }
 
     }
