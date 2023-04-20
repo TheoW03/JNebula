@@ -41,7 +41,7 @@ public class SpriteComponents extends iComponent {
     String type;
     public int textureID;
     public int[] indices;
-    private float[] vertices, textureCoords;
+    private float[]  textureCoords;
     public float width, height;
     private float[] normals;
 
@@ -49,22 +49,40 @@ public class SpriteComponents extends iComponent {
     private float[][] spriteTexCoords;
     private Texture texture;
     private int FPS;
+    public int numOfVertices;
 
     public Colors color;
+    public float[] defualtVertices;
+    float[][] vertices;
 
+    // 1. (Colors c, vertices)
+    //(Colors c)
+
+    //(SpriteSheetList, framerate, vertices)
+    //(spritesheetlist, index, vertices)
+
+    //(SpriteSheetList, framerate)
+    //(spritesheetlist, index)
     /**
      *
      * @param c, ill opt for getters and setters. this is painful :')
      */
+
     public SpriteComponents(Colors c){
         this.color =c;
 
-        vertices = new float[]{
-                -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
-                1.0f, -1.0f, 0.0f,    // Bottom-right vertex
-                -1.0f, 1.0f, 0.0f,    // Top-left vertex
-                1.0f, 1.0f, 0.0f      // Top-right vertex
+        this.vertices = new float[][]{
+                {-1.0f, -1.0f, 0.0f},
+                {1.0f, -1.0f, 0.0f},
+                {-1.0f, 1.0f, 0.0f},
+                {1.0f, 1.0f, 0.0f}
         };
+//        vertices = new float[]{
+//                -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
+//                1.0f, -1.0f, 0.0f,    // Bottom-right vertex
+//                -1.0f, 1.0f, 0.0f,    // Top-left vertex
+//                1.0f, 1.0f, 0.0f      // Top-right vertex
+//        };
         textureCoords = new float[]{
                 0.0f, 0.0f,           // Bottom-left texture coordinate
                 0.0f, 0.0f,           // Bottom-right texture coordinate
@@ -77,12 +95,14 @@ public class SpriteComponents extends iComponent {
                 0.0f, 1.0f,
                 0.0f, 1.0f,
         };
+//        this.defualtVertices = vertices;
         spriteTexCoords = new float[1][textureCoords.length];
         gl.glEnable(GL.GL_BLEND);
         gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
-        for (int i = 0; i < vertices.length; i++) {
-            vertices[i] = vertices[i] * 100.0f;
-        }
+//        for (int i = 0; i < vertices.length; i++) {
+//            vertices[i] = vertices[i] * 100.0f;
+//        }
+        scale(100);
         this.texture =null;
         setHeight();
     }
@@ -91,11 +111,11 @@ public class SpriteComponents extends iComponent {
         this.color = c;
         this.file = file;
         this.type = type;
-        vertices = new float[]{
-                -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
-                1.0f, -1.0f, 0.0f,    // Bottom-right vertex
-                -1.0f, 1.0f, 0.0f,    // Top-left vertex
-                1.0f, 1.0f, 0.0f      // Top-right vertex
+        this.vertices = new float[][]{
+                {-1.0f, -1.0f, 0.0f},
+                {1.0f, -1.0f, 0.0f},
+                {-1.0f, 1.0f, 0.0f},
+                {1.0f, 1.0f, 0.0f}
         };
         textureCoords = new float[]{
                 0.0f, 0.0f,           // Bottom-left texture coordinate
@@ -109,109 +129,63 @@ public class SpriteComponents extends iComponent {
                 0.0f, 1.0f,
                 0.0f, 1.0f,
         };
+//        this.defualtVertices = vertices;
         spriteTexCoords = new float[1][textureCoords.length];
         spriteTexCoords[0] = textureCoords;
-        for (int i = 0; i < vertices.length; i++) {
-            vertices[i] = vertices[i] * 100.0f;
-        }
+//        for (int i = 0; i < vertices.length; i++) {
+//            vertices[i][r] = vertices[i] * 100.0f;
+//        }
+        scale(100);
         this.textureID = 0;
         loadTexture();
         System.out.println(texture.getHeight() + " "+texture.getWidth());
 
     }
 
-    public SpriteComponents(String file,
-                            String type,
-                            int numRows, int numCols,
-                            int FPS, int spriteWidth, int spriteHeight, int offset, Colors c) {
-        this.color = c;
-        vertices = new float[]{
-                -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
-                1.0f, -1.0f, 0.0f,    // Bottom-right vertex
-                -1.0f, 1.0f, 0.0f,    // Top-left vertex
-                1.0f, 1.0f, 0.0f      // Top-right vertex
-        };
-        System.out.println("works");
-        this.file = file;
-        this.type = type;
-        this.gl = gl;
-        this.FPS = FPS;
-        spriteTexCoords = new float[numRows * numCols][8];
-        this.textureID = 0;
-        System.out.println(numRows);
-        System.out.println(numCols);
-        for (int i = 0; i < vertices.length; i++) {
-            vertices[i] = vertices[i] * 100.0f;
-        }
-        loadTexture();
-//        float width = texture.getWidth();
-//        float height = texture.getHeight();
-//        int spriteWidth = 64;
-//        int spriteHeight = 64;
-        int i2 = 0;
-        float spriteY = height - spriteHeight;
-        float spriteX = 0;
-        for (int row = 0; row < numRows; row++) {
-            for (int col = 0; col < numCols; col++) {
-                int spriteIndex = row * numCols + col;
-
-                float topY = (spriteY + spriteHeight) / height;
-                float rightX = (spriteX + spriteHeight) / width;
-                float leftX = spriteX / width;
-                float bottomY = spriteY / height;
-                float[] textureCoords = new float[]{
-                        leftX, bottomY,
-                        rightX, bottomY,
-                        leftX, topY,
-                        rightX, topY
-                };
-                System.out.println("textureds");
-//                System.out.println(Arrays.toString(texCoords));
-                spriteTexCoords[i2] = textureCoords;
-                spriteX += spriteWidth - offset;
-                if (spriteX >= width) {
-                    spriteX = 0;
-                    spriteY -= spriteHeight + offset;
-                }
-                i2++;
-            }
-        }
-
-
-    }
 
     public SpriteComponents(float[] textureCoords, SpriteSheetList spriteSheetList,Colors c) {
-        vertices = new float[]{
-                -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
-                1.0f, -1.0f, 0.0f,    // Bottom-right vertex
-                -1.0f, 1.0f, 0.0f,    // Top-left vertex
-                1.0f, 1.0f, 0.0f      // Top-right vertex
+        this.vertices = new float[][]{
+                {-1.0f, -1.0f, 0.0f},
+                {1.0f, -1.0f, 0.0f},
+                {-1.0f, 1.0f, 0.0f},
+                {1.0f, 1.0f, 0.0f}
         };
+//        this.defualtVertices = vertices;
         normals = new float[]{
                 0.0f, 1.0f,
                 0.0f, 1.0f,
                 0.0f, 1.0f,
                 0.0f, 1.0f,
         };
+
         this.color = c;
         spriteTexCoords = new float[1][textureCoords.length];
         spriteTexCoords[0] = textureCoords;
         this.texture = spriteSheetList.texture;
         this.textureID = 0;
+        scale(100);
         loadTexture();
-        for (int i = 0; i < vertices.length; i++) {
-            vertices[i] = vertices[i] * 100.0f;
-        }
+
+//        for (int i = 0; i < vertices.length; i++) {
+//            vertices[i] = vertices[i] * 100.0f;
+//        }
 
 
     }
-
-    public SpriteComponents(float[][] textureCoords, SpriteSheetList spriteSheetList, int FPS,Colors c) {
-        vertices = new float[]{
-                -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
-                1.0f, -1.0f, 0.0f,    // Bottom-right vertex
-                -1.0f, 1.0f, 0.0f,    // Top-left vertex
-                1.0f, 1.0f, 0.0f      // Top-right vertex
+//    public void setVertices(float[] vertices, int numOfVertices){
+//        this.vertices = vertices;
+//        this.numOfVertices = numOfVertices;
+//        for (int i = 0; i < vertices.length; i++) {
+//            vertices[i] = vertices[i] * 100.0f;
+//        }
+//        this.defualtVertices = vertices;
+//    }
+    public SpriteComponents(SpriteSheetList spriteSheetList, int FPS,Colors c) {
+        this.vertices = new float[][]{
+                {-1.0f, -1.0f, 0.0f},
+                {1.0f, -1.0f, 0.0f},
+                {-1.0f, 1.0f, 0.0f},
+                {1.0f, 1.0f, 0.0f}
         };
         normals = new float[]{
                 0.0f, 1.0f,
@@ -220,14 +194,16 @@ public class SpriteComponents extends iComponent {
                 0.0f, 1.0f,
         };
         this.color = c;
-        spriteTexCoords = textureCoords;
+        spriteTexCoords = spriteSheetList.spriteTexCoords;
         this.texture = spriteSheetList.texture;
         this.textureID = 0;
         this.FPS = FPS;
+        scale(100);
         loadTexture();
-        for (int i = 0; i < vertices.length; i++) {
-            vertices[i] = vertices[i] * 100.0f;
-        }
+
+//        for (int i = 0; i < vertices.length; i++) {
+//            vertices[i] = vertices[i] * 100.0f;
+//        }
     }
 
 
@@ -236,16 +212,22 @@ public class SpriteComponents extends iComponent {
         return  new Vector3(width,height-4);
 //        return new Vector3(vertices[3]/4,vertices[3]/2);
     }
+
     public void setHeight() {
         Vector3[] a = getVecticesAsVector();
 //        AC = C - A = (2, 2) - (0, 0) = (2, 2)
 //        BD = D - B = (0, 2) - (2, 0) = (-2, 2)
 //        double width = Math.sqrt( Math.pow(a[2].x - a[1].x, 2) + Math.pow(a[2].y- a[1].y, 2));
 //        double height = Math.sqrt( Math.pow(a[1].x - a[0].x, 2) + Math.pow(a[1].y - a[0].y, 2));
-        float[] v1 = { vertices[0], vertices[1], vertices[2] };
-        float[] v2 = { vertices[9], vertices[10], vertices[11] };
-        float[] v3 = { vertices[0], vertices[1], vertices[2] };
-        float[] v4 = { vertices[3], vertices[4], vertices[5] };
+
+        float[] v1 = vertices[0];
+        float[] v2 = vertices[1];
+        float[] v3 = vertices[2];
+        float[] v4 = vertices[3];
+//        float[] v1 = { vertices[0], vertices[1], vertices[2] };
+//        float[] v2 = { vertices[9], vertices[10], vertices[11] };
+//        float[] v3 = { vertices[0], vertices[1], vertices[2] };
+//        float[] v4 = { vertices[3], vertices[4], vertices[5] };
         float length = new Vector3f(v1).distance(new Vector3f(v2));
         float width = new Vector3f(v3).distance(new Vector3f(v4));
 //        Vector3 AC = new Vector3((a[1].x - a[0].x), (a[1].y - a[0].y));
@@ -316,10 +298,14 @@ public class SpriteComponents extends iComponent {
 
     public Vector3[] getVecticesAsVector() {
         Vector3[] vertix = new Vector3[4];
-        vertix[0] = new Vector3(vertices[0], vertices[1]);
-        vertix[1] = new Vector3(vertices[3], vertices[4]);
-        vertix[2] = new Vector3(vertices[6], vertices[7]);
-        vertix[3] = new Vector3(vertices[9], vertices[10]);
+        for(int r = 0; r < vertices.length;r++){
+            vertix[r] = new Vector3 (vertices[r][0], vertices[r][1],vertices[r][2]);
+        }
+//        vertix[0] = new Vec;
+//        vertix[0] = new Vector3(vertices[0], vertices[1]);
+//        vertix[1] = new Vector3(vertices[3], vertices[4]);
+//        vertix[2] = new Vector3(vertices[6], vertices[7]);
+//        vertix[3] = new Vector3(vertices[9], vertices[10]);
         return vertix;
     }
 
@@ -354,33 +340,53 @@ public class SpriteComponents extends iComponent {
         System.out.println("update works :D");
 
     }
+    public void scaleVertex(int v,float scale){
+        float[] vertex = vertices[v];
+        for (int i = 0; i < vertex.length;i++){
+            vertex[i] *= scale;
+        }
+        vertices[v] = vertex;
+    }
 
     /**
      * sets vaertices defualt
      */
     public void setVerticesDefault() {
-        vertices = new float[]{
-                -1.0f, -1.0f, 0.0f,   // Bottom-left vertex
-                1.0f, -1.0f, 0.0f,    // Bottom-right vertex
-                -1.0f, 1.0f, 0.0f,    // Top-left vertex
-                1.0f, 1.0f, 0.0f      // Top-right vertex
+        this.vertices = new float[][]{
+                {-1.0f, -1.0f, 0.0f},
+                {1.0f, -1.0f, 0.0f},
+                {-1.0f, 1.0f, 0.0f},
+                {1.0f, 1.0f, 0.0f}
         };
 
-        for (int i = 0; i < vertices.length; i++) {
-            vertices[i] = vertices[i] * 100.0f;
-        }
+        scale(100);
+
     }
 
-    public float[] getVertices() {
+    public float[][] getVertices() {
         return vertices;
     }
 
     public void scale(float value) {
-        for (int i = 0; i < vertices.length; i++) {
-            vertices[i] *= value;
+        for(int r = 0; r < vertices.length;r++){
+            for(int c = 0; c< vertices[r].length;c++){
+                vertices[r][c] = vertices[r][c]* value;
+            }
         }
+        setHeight();
     }
+    private float[] oneDto2D(float[][] v){
+        int i = 0;
+        float[] a= new float[v.length*4];
+        for(int r = 0; r < v.length;r++){
+            for (int c = 0; c < v[0].length;c++){
+                a[i] = v[r][c];
+                i++;
+            }
+        }
+        return a;
 
+    }
     /**
      * @param shaderProgram
      * @param sh
@@ -412,12 +418,12 @@ public class SpriteComponents extends iComponent {
         gl.glGenBuffers(3, buffers, 0);
         gl.glEnable(GL_TEXTURE_2D);
         gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
-        gl.glBufferData(GL_ARRAY_BUFFER, vertices.length * 4 + textureCoords.length * 4, null, GL_STATIC_DRAW);
+        gl.glBufferData(GL_ARRAY_BUFFER, oneDto2D(vertices).length* 4L + textureCoords.length * 4L, null, GL_STATIC_DRAW);
 
-        gl.glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.length * 4, FloatBuffer.wrap(vertices));
+        gl.glBufferSubData(GL_ARRAY_BUFFER, 0, oneDto2D(vertices).length*4, FloatBuffer.wrap(oneDto2D(vertices)));
         gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
 
-        gl.glBufferSubData(GL_ARRAY_BUFFER, vertices.length * 4, textureCoords.length * 4, FloatBuffer.wrap(textureCoords));
+        gl.glBufferSubData(GL_ARRAY_BUFFER, oneDto2D(vertices).length*4, textureCoords.length * 4, FloatBuffer.wrap(textureCoords));
         gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[2]);
 
         gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4, IntBuffer.wrap(indices), GL_STATIC_DRAW);
@@ -434,7 +440,7 @@ public class SpriteComponents extends iComponent {
         int texCoordAttrib = gl.glGetAttribLocation(shaderProgram, "vTex");
         System.out.println("vtex : " + texCoordAttrib);
         gl.glEnableVertexAttribArray(texCoordAttrib);
-        gl.glVertexAttribPointer(texCoordAttrib, 2, GL_FLOAT, false, 0, vertices.length * 4);
+        gl.glVertexAttribPointer(texCoordAttrib, 2, GL_FLOAT, false, 0, oneDto2D(vertices).length * 4L);
         gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
         int colorLocation = gl.glGetUniformLocation(shaderProgram, "color_of_sprite");
         if(color != null){

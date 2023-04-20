@@ -7,9 +7,7 @@ the naya engine.
 
 written in java
 
-# how to get started
-
-
+# installation
 
 1. <p>download these 2 dependecies
 ---
@@ -23,8 +21,7 @@ written in java
 *    requires java 17
 * https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
 ---
-2. create a new class call it whatever you want. Main Ill use for this
-and follow the example code below
+# sample starter code 
 
 ```JAVA
 import org.NayaEngine.GameObjects.GameRenderer;
@@ -38,7 +35,6 @@ public class Main {
 
 ```
 ---
-3. once you do that follow below
 
 <p>create a new class called whatever you want. for this example
 starterCode and let it inherit from GameRenderer</p> 

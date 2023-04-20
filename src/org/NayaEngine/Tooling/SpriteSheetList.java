@@ -28,7 +28,8 @@ public class SpriteSheetList {
     public String file, type;
     public float[][] spriteTexCoords;
     public Texture texture;
-    public GL2 gl;
+
+    //1. (file,type) (will spawn single)
 
     public SpriteSheetList(String file,
                            String type,
@@ -36,7 +37,6 @@ public class SpriteSheetList {
                            int spriteWidth, int spriteHeight, int offset) {
         this.file = file;
         this.type = type;
-        this.gl = gl;
         spriteTexCoords = new float[numRows * numCols][8];
         System.out.println(numRows);
         System.out.println(numCols);

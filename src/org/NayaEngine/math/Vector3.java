@@ -15,6 +15,7 @@ public class Vector3 {
     public static Vector3 down = new Vector3(0,-1,0);
     public static Vector3 right = new Vector3(1,0,0);
     public static Vector3 left = new Vector3(-1,0,0);
+
     public Vector3(float x, float y, float z) {
         this.x = x;
         this.y = y;

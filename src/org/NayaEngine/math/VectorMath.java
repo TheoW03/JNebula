@@ -27,6 +27,7 @@ public class VectorMath {
 
     }
 
+
     public float[] vectorNormals(Vector3[] list) {
         float[] vertices = new float[]{
                 -1.0f, -1.0f, 0.0f,   // Bottom-left vertex

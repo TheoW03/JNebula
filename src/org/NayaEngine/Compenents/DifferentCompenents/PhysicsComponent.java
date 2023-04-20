@@ -6,6 +6,7 @@ import com.jogamp.opengl.GL4;
 import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.Tooling.loadShader;
 import org.NayaEngine.math.Vector3;
+import org.joml.Vector3f;
 
 /**
  * @author Theo willis
@@ -22,8 +23,9 @@ public class PhysicsComponent extends iComponent {
     public Vector3 transformVector;
 
     public  Vector3 forceVector;
-    public PhysicsComponent(Vector3 startingV, float ROC, Vector3 position) {
-        this.gl = gl;
+    public Vector3 dir;
+    public PhysicsComponent(Vector3 startingV, float ROC, Vector3 position, Vector3 dir) {
+        this.dir = dir;
         this.position = position;
         this.startingV = startingV;
         vectorPosition = position;
@@ -43,8 +45,24 @@ public class PhysicsComponent extends iComponent {
             return;
         }
 
-        startingV.y += ROC;
-        vectorPosition.y += startingV.y;
+
+        if(startingV.y > 0){
+            startingV.y += ROC;
+
+        }else {
+            startingV.y = 0;
+        }
+        if(startingV.x > 0){
+            startingV.x += ROC;
+
+        }else {
+            startingV.x = 0;
+        }
+        Vector3f a = new Vector3f(startingV.x, startingV.y,0);
+        a.mul(new Vector3f(dir.x,dir.y,0));
+        System.out.println(startingV);
+        vectorPosition.y += a.y;
+        vectorPosition.x += a.x;
     }
 
     @Override
