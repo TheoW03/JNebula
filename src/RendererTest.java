@@ -60,24 +60,26 @@ public class RendererTest implements GLEventListener {
 //        test.AddCompenent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg", 1, 5, 20, 64, 64, 7, gl));
 //        test.AddCompenent(new SpriteComponents(s1.getSection(1,3), s1,15, gl));
 //        test.AddCompenent(new RenderCompenent(Colors.RED));
-//        test.AddCompenent(new SpriteComponents("src/sprites/maxwell.png", "png", null));
+        test.AddCompenent(new SpriteComponents("src/sprites/maxwell.png", "png", null));
 //        test.GetCompenent(SpriteComponents.class).scale(200);
 //
-        test.AddCompenent(new SpriteComponents(s1,20, null));
+//        test.AddCompenent(new SpriteComponents(s1,20, null));
 //        test.AddCompenent(new CameraComponent(new Vector3(0, 0, 0), gl));
         test.AddCompenent(new TransformComponent(new Vector3(0, 100, 0)));
 
 
 //        test.AddCompenent(new PhysicsComponent(new Vector3(-1,0.5f),-0.05f, test.GetCompenent(TransformComponent.class).location));
         Ray ray = new Ray(Vector3.down, 500);
-        test.AddCompenent(new ColliderCompenet(ray));
+        test.AddCompenent(new ColliderCompenet());
+
 //        test.AddCompenent(new LightingComponent(10, Colors.colorHex(Colors.RED),1.0f,gl));
         list.add(test);
         test2 = new GameObject("TEST2");
-
-//        test2.AddCompenent(new SpriteComponents("src/sprites/test.jpg", "jpg",null));
+        test2.AddCompenent(new SpriteComponents("src/sprites/test.jpg", "jpg",null));
+        System.out.println("sprite init");
+        test2.AddCompenent(new ColliderCompenet());
 //        test2.GetCompenent(SpriteComponents.class).scaleVertex(2,2);
-//        test2.GetCompenent(SpriteComponents.class).scaleVertex(3,2);
+
 
 //test2.AddCompenent(new SpriteComponents(new Colors(0.1f,0.5f,0.5f)));
 //        test2.AddCompenent(new LightingComponent(1.0f, Colors.colorHex(Colors.WHITE),0.4f));
@@ -88,7 +90,7 @@ public class RendererTest implements GLEventListener {
 
 
         test2.AddCompenent(new PhysicsComponent(new Vector3(0,3),-0.05f, test2.GetCompenent(TransformComponent.class).location, Vector3.down));
-//        test2.AddCompenent(new ColliderCompenet(test2.GetCompenent(SpriteComponents.class).width, test2.GetCompenent(SpriteComponents.class).height));
+
 
 //        test2.GetCompenent(PhysicsComponent.class).veloLock = true;
 //        test.GetCompenent(PhysicsComponent.class).veloLock = true;
@@ -97,8 +99,8 @@ public class RendererTest implements GLEventListener {
 
 //        test2.GetCompenent(SpriteComponents.class).scale(2);
         gl.glClearColor(0, 1, 1, 0.0f);
-
-
+        System.out.println("end of init");
+        test2.GetCompenent(SpriteComponents.class).scaleY(2);
     }
 
     @Override
@@ -115,18 +117,19 @@ public class RendererTest implements GLEventListener {
 //        test2.GetCompenent(SpriteComponents.class).scale(i);
         Window.printFrameRate();
 
-
+//        test2.AddCompenent(new ColliderCompenet());
         c.InstiateObjects(list);
 
 //        test2.GetCompenent(ColliderCompenet.class).rayCastCollider(test.GetCompenent(ColliderCompenet.class));
-//        test.GetCompenent(TransformComponent.class).transform(new Vector3(0.5f,0));
-//        if (test.GetCompenent(ColliderCompenet.class).ray_collides(test2.GetCompenent(ColliderCompenet.class))) {
-//            gl.glClearColor(1, 1, 1, 0.0f);
-//            a = false;
-//            System.out.println("collided");
-//        }else {
-//            gl.glClearColor(0, 1, 1, 0.0f);
-//        }
+
+        if (test.GetCompenent(ColliderCompenet.class).isCollided(test2.GetCompenent(ColliderCompenet.class))) {
+            gl.glClearColor(1, 1, 1, 0.0f);
+            a = false;
+            test.GetCompenent(TransformComponent.class).transform(Vector3.down);
+            System.out.println("collided");
+        }else {
+            test.GetCompenent(TransformComponent.class).transform(new Vector3(0.5f,0));
+        }
 //        test2.GetCompenent(TransformComponent.class).rotateContinosuly(-0.05f);
 //        test2.isActive = false;
 //        i = i +100;

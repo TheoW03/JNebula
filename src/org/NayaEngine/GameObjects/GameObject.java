@@ -32,6 +32,7 @@ public class GameObject {
 
     public ArrayList<iComponent> compenets;
     public String name;
+    public TransformComponent transform;
 
     public boolean isActive;
 
@@ -65,8 +66,12 @@ public class GameObject {
 
 
     public void AddCompenent(iComponent compenet) {
-        compenets.add(compenet);
+        if(compenet instanceof TransformComponent){
+            transform = (TransformComponent) compenet;
+        }
         compenet.gameObject = this;
+        compenets.add(compenet);
+
     }
 
     public void update(float dt, GL4 gl) {

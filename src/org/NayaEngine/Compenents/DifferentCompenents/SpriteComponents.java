@@ -12,7 +12,9 @@ import org.NayaEngine.Tooling.Colors;
 import org.NayaEngine.Tooling.SpriteSheetList;
 import org.NayaEngine.Tooling.loadShader;
 import org.NayaEngine.math.Vector3;
+import org.joml.Matrix4f;
 import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,6 +26,7 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Vector;
 
 import static com.jogamp.opengl.GL.*;
 import static com.jogamp.opengl.GL.GL_CLAMP_TO_EDGE;
@@ -207,6 +210,59 @@ public class SpriteComponents extends iComponent {
     }
 
 
+
+    public void scaleXY(float sx, float sy){
+        scaleX(sx);
+        scaleY(sy);
+    }
+    public void scaleX(float sx){
+        Vector3[] mv = getVecticesAsVector();
+        float centerX = (vertices[0][0] + vertices[1][0] + vertices[2][0] + vertices[3][0]) / 4.0f; // Calculate center point
+        float[][] scaleMatrix = {
+                {sx, 0.0f, 0.0f},
+                {0.0f, 1.0f, 0.0f},
+                {0.0f, 0.0f, 1.0f}
+        }; // Create scale matrix
+        for (int i = 0; i < vertices.length; i++) {
+            vertices[i][0] -= centerX; // Translate to origin
+            vertices[i] = multiplyMatrixVector(scaleMatrix, vertices[i]); // Apply non-uniform scale
+            vertices[i][0] += centerX; // Translate back to original position
+        }
+        this.width *= sx;
+        setHeight();
+    }
+
+    private float[] multiplyMatrixVector(float[][] s, float[] v){
+        int rows = s.length;
+        int cols = s[0].length;
+        float[] result = new float[rows];
+        for (int i = 0; i < rows; i++) {
+            float sum = 0.0f;
+            for (int j = 0; j < cols; j++) {
+                sum += s[i][j] * v[j];
+            }
+            result[i] = sum;
+        }
+        return result;
+    }
+    public void scaleY(float sy){
+        float centerY = (vertices[0][1] + vertices[1][1] + vertices[2][1] + vertices[3][1]) / 4.0f; // Calculate center point
+        System.out.println(Arrays.toString(vertices[0]) +" "+Arrays.toString(vertices[1])+" "+Arrays.toString(vertices[2]));
+        float[][] scaleMatrix = {
+                {1.0f, 0.0f, 0.0f},
+                {0.0f, sy, 0.0f},
+                {0.0f, 0.0f, 1.0f}
+        }; // Create scale matrix
+        for (int i = 0; i < vertices.length; i++) {
+            this.vertices[i][0] -= centerY; // Translate to origin
+            this.vertices[i] = multiplyMatrixVector(scaleMatrix, vertices[i]); // Apply non-uniform scale
+            this.vertices[i][0] += centerY; // Translate back to original position
+        }
+        this.height *= sy;
+        System.out.println(Arrays.toString(vertices[0]) +" "+Arrays.toString(vertices[1])+" "+Arrays.toString(vertices[2]));
+        System.out.println("after set height in scale y");
+    }
+
     public Vector3 get_size(){
         System.out.println("w: "+width +" "+height);
         return  new Vector3(width,height-4);
@@ -224,21 +280,25 @@ public class SpriteComponents extends iComponent {
         float[] v2 = vertices[1];
         float[] v3 = vertices[2];
         float[] v4 = vertices[3];
+        System.out.println(Arrays.toString(v1) +", "+Arrays.toString(v2)+" "+Arrays.toString(v3));
 //        float[] v1 = { vertices[0], vertices[1], vertices[2] };
 //        float[] v2 = { vertices[9], vertices[10], vertices[11] };
 //        float[] v3 = { vertices[0], vertices[1], vertices[2] };
 //        float[] v4 = { vertices[3], vertices[4], vertices[5] };
         float length = new Vector3f(v1).distance(new Vector3f(v2));
-        float width = new Vector3f(v3).distance(new Vector3f(v4));
+        float width1 = new Vector3f(v3).distance(new Vector3f(v4));
 //        Vector3 AC = new Vector3((a[1].x - a[0].x), (a[1].y - a[0].y));
 //        Vector3 BD = new Vector3((a[2].x - a[3].x), (a[2].y - a[3].y));
 //        System.exit(0);
 //        this.width = (float) (AC.magnitude() * Math.cos(45));
 //        this.height = (float) (BD.magnitude() * Math.sin(45));
-        System.out.println("width: "+(length/10)*2+" "+(width/10));
+//        System.out.println("width: "+(length/10)*2+" "+(width/10));
 //        System.exit(0);
+//        this.height = length;
+//        this.width = width1;
         this.height = (length/10)*2;
-        this.width = (width/10);
+        this.width = (width1/10);
+        System.out.println(height+" "+width);
     }
 
 

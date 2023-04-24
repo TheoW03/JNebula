@@ -55,6 +55,10 @@ public class loadShader {
         return loadShaders(vertexSource, fragSource, gl);
     }
 
+
+    public int addFragShader(){
+        return 0;
+    }
     public int loadShaders(String vertexShaderS, String fragShader, GL4 gl2) {
 
         //duke mwean UwU

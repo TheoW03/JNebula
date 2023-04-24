@@ -19,13 +19,15 @@ import java.io.*;
 public abstract class GameRenderer implements GLEventListener {
     public static GL4 gl;
     public ArrayList<GameObject> gameObjectArrayList; //might use map
+    public InitObjects instantiate;
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
+
         gl = (GL4) glAutoDrawable.getGL();
         iComponent.gl = gl;
         GameObject.gl = gl;
         gameObjectArrayList = new ArrayList<>();
-
+        instantiate = new InitObjects();
     }
 
     public  void dispose(GLAutoDrawable glAutoDrawable){

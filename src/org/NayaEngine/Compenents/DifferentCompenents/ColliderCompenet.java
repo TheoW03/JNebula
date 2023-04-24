@@ -19,8 +19,8 @@ public class ColliderCompenet extends iComponent {
     public Ray ray;
 
     public ColliderCompenet() {
-        this.height = this.gameObject.GetCompenent(SpriteComponents.class).height;
-        this.width = this.gameObject.GetCompenent(SpriteComponents.class).width;
+//        this.height = this.gameObject.GetCompenent(SpriteComponents.class).height;
+//        this.width = this.gameObject.GetCompenent(SpriteComponents.class).width;
     }
 
     public ColliderCompenet(float colliderWidth, float collliderHeight) {
