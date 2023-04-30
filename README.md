@@ -1,4 +1,4 @@
-# GameEngine2D
+# GameEngine2D v1.0.0
 
 
 the naya engine.
@@ -21,7 +21,7 @@ written in java
 *    requires java 17
 * https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
 ---
-# sample starter code 
+# usage
 
 ```JAVA
 import org.NayaEngine.GameObjects.GameRenderer;

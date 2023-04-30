@@ -32,7 +32,7 @@ public class DemoRenderer extends GameRenderer {
 
 
         ball.AddCompenent(new SpriteComponents(new Colors(1,1,1)));
-        paddle1.AddCompenent(new SpriteComponents("src/sprites/test.jpg","jpg",null));
+        paddle1.AddCompenent(new SpriteComponents("src/DemoGame/assets/paddle_asset.PNG","png",null));
         paddle2.AddCompenent(new SpriteComponents("src/DemoGame/assets/paddle_asset.PNG","png",null));
         instantiate = new InitObjects();
         gameObjectArrayList.add(paddle1);
@@ -41,7 +41,7 @@ public class DemoRenderer extends GameRenderer {
         paddle1.AddCompenent(new TransformComponent(new Vector3(30,100)));
         paddle2.AddCompenent(new TransformComponent(new Vector3(170,100)));
         paddle1.AddCompenent(new ColliderCompenet());
-
+        paddle2.AddCompenent(new ColliderCompenet());
         ball.AddCompenent(new TransformComponent(new Vector3(100,100)));
         ball.AddCompenent(new ColliderCompenet());
 
@@ -49,7 +49,7 @@ public class DemoRenderer extends GameRenderer {
         instantiate = new InitObjects();
         paddle1.GetCompenent(SpriteComponents.class).scaleX(0.25f);
         paddle2.GetCompenent(SpriteComponents.class).scaleX(0.25f);
-//        ball.GetCompenent(SpriteComponents.class).scaleXY(0.2f);
+        ball.GetCompenent(SpriteComponents.class).scaleXY(0.2f,0.2f);
 //        System.exit(0);
     }
 
@@ -64,13 +64,22 @@ public class DemoRenderer extends GameRenderer {
         if(Input.getKey()== KeyEvent.VK_W){
             paddle1.transform.transform(Vector3.up);
         }
+        if(Input.getKey()== KeyEvent.VK_DOWN){
+            paddle2.transform.transform(Vector3.down);
+        }
+        if(Input.getKey()== KeyEvent.VK_UP){
+            paddle2.transform.transform(Vector3.up);
+        }
         ball.transform.transform(bt);
         if(paddle1.GetCompenent(ColliderCompenet.class).isCollided(ball.GetCompenent(ColliderCompenet.class))){
-            bt = Vector3.down;
-        }else {
-            bt = Vector3.left;
+            Random random = new Random();
+            float randomValue = random.nextFloat(0.5f) *-0.5f;
+            bt = new Vector3(1,0.5f);
         }
-
+        if(paddle2.GetCompenent(ColliderCompenet.class).isCollided(ball.GetCompenent(ColliderCompenet.class))){
+            Random random = new Random();
+            bt = new Vector3(-1,-0.5f);
+        }
 
 
     }
