@@ -49,7 +49,7 @@ public class DemoRenderer extends GameRenderer {
         instantiate = new InitObjects();
         paddle1.GetCompenent(SpriteComponents.class).scaleX(0.25f);
         paddle2.GetCompenent(SpriteComponents.class).scaleX(0.25f);
-        ball.GetCompenent(SpriteComponents.class).scaleXY(0.25f,0.20f);
+//        ball.GetCompenent(SpriteComponents.class).scaleXY(0.2f);
 //        System.exit(0);
     }
 
@@ -65,8 +65,8 @@ public class DemoRenderer extends GameRenderer {
             paddle1.transform.transform(Vector3.up);
         }
         ball.transform.transform(bt);
-        if(ball.GetCompenent(ColliderCompenet.class).isCollided(paddle1.GetCompenent(ColliderCompenet.class))){
-            bt = Vector3.right;
+        if(paddle1.GetCompenent(ColliderCompenet.class).isCollided(ball.GetCompenent(ColliderCompenet.class))){
+            bt = Vector3.down;
         }else {
             bt = Vector3.left;
         }

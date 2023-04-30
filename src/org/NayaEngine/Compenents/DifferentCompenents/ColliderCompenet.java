@@ -41,8 +41,7 @@ public class ColliderCompenet extends iComponent {
     private Vector2f calcOffset(Vector2f p, Vector2f center, Vector2f size) {
         Vector2f o1 = center.sub(p);
         Vector2f o3 = new Vector2f(Math.abs(o1.x), Math.abs(o1.y));
-        Vector2f o2 = o3.sub(size);
-        return o2;
+        return o3.sub(size);
     }
 
     private float getDist(Vector3 p, Vector3 center, Vector3 size) {
@@ -50,6 +49,7 @@ public class ColliderCompenet extends iComponent {
         Vector2f c = new Vector2f(center.x, center.y);
         Vector2f size2 = new Vector2f(size.x, size.y);
         Vector2f offset = calcOffset(p1, c, size2);
+        System.out.println(offset);
         return offset.max(new Vector2f(0, 0)).length();
     }
 
@@ -71,11 +71,20 @@ public class ColliderCompenet extends iComponent {
      * @return this does the raymarch distance algorithm.
      */
     public boolean isCollided(ColliderCompenet collider) {
-        Vector3 location1 = this.gameObject.GetCompenent(TransformComponent.class).location;
-        Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
-        Vector3 size = collider.gameObject.GetCompenent(SpriteComponents.class).get_size();
-        System.out.println("size unit vector: "+size);
-        return getDist(location1, location2, size) == 0;
+        System.out.println("is collided");
+//        Vector3 location1 = this.gameObject.transform.location;
+        Vector3 location2 = collider.gameObject.transform.location;
+        Vector3[] location1 = this.gameObject.GetCompenent(SpriteComponents.class).getCenterPoints();
+//        Vector3[] location2 = collider.gameObject.GetCompenent(SpriteComponents.class).getCenterPoints();
+        Vector3 size1 = collider.gameObject.GetCompenent(SpriteComponents.class).get_size();
+        for (Vector3 vector3 : location1) {
+            if (getDist(vector3, location2, size1) < 1) {
+                return true;
+            }
+        }
+        return  false;
+
+
     }
     public boolean ray_collides(ColliderCompenet collider){
         if(ray == null){
@@ -124,9 +133,9 @@ public class ColliderCompenet extends iComponent {
                 y += stepY;
                 tY += dTy;
             }
-            if(getDist(new Vector3(x,y),location2,size) == 0){
-                return true;
-            }
+//            if(getDist(new Vector3(x,y),location2,size) == 0){
+//                return true;
+//            }
             System.out.println(new Vector3(x,y));
             dist = Math.sqrt((x - s.x)*(x - s.x) + (y - s.y)*(y - s.y));
 
@@ -151,22 +160,23 @@ public class ColliderCompenet extends iComponent {
 //        System.out.println("dist: "+getDist(location1, location2, size));
 //        return getDist(location1, location2, size) == 0;
 //    }
-//    private boolean isCollided(ColliderCompenet collider) {
-//        Vector3 location1 = this.gameObject.GetCompenent(TransformComponent.class).location;
-//        Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
-//        float x1 = Math.max(location1.x, location2.x);
-//        float y1 = Math.max(location1.y, location2.y);
-//        float x2 = Math.min(location1.x + this.width * 2 / 100, location2.x +
-//                collider.width * 2 / 100);
-//        float y2 = Math.min(location1.y + this.height * 2 / 100, location2.y +
-//                collider.height * 2 / 100);
-//        System.out.println(x1 + " " + y1 + " " + x2 + " " + y2);
-//        if ((x2 * width - x1 > 0 && y2 * 1.70 - y1 > 0)) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
+    public boolean isCollided2(ColliderCompenet collider) {
+        Vector3 location1 = this.gameObject.GetCompenent(TransformComponent.class).location;
+        Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
+        Vector3 size = collider.gameObject.GetCompenent(SpriteComponents.class).get_size();
+        float x1 = Math.max(location1.x, location2.x);
+        float y1 = Math.max(location1.y, location2.y);
+        float x2 = Math.min(location1.x + size.x * 2 / 100, location2.x +
+                collider.width * 2 / 100);
+        float y2 = Math.min(location1.y + size.y * 2 / 100, location2.y +
+                collider.height * 2 / 100);
+        System.out.println(x1 + " " + y1 + " " + x2 + " " + y2);
+        if ((x2 * width - x1 > 0 && y2 * height - y1 > 0)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 

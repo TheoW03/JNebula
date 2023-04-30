@@ -60,7 +60,7 @@ public class RendererTest implements GLEventListener {
 //        test.AddCompenent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg", 1, 5, 20, 64, 64, 7, gl));
 //        test.AddCompenent(new SpriteComponents(s1.getSection(1,3), s1,15, gl));
 //        test.AddCompenent(new RenderCompenent(Colors.RED));
-        test.AddCompenent(new SpriteComponents("src/sprites/maxwell.png", "png", null));
+        test.AddCompenent(new SpriteComponents(new Colors(1, 1, 1)));
 //        test.GetCompenent(SpriteComponents.class).scale(200);
 //
 //        test.AddCompenent(new SpriteComponents(s1,20, null));
@@ -75,9 +75,12 @@ public class RendererTest implements GLEventListener {
 //        test.AddCompenent(new LightingComponent(10, Colors.colorHex(Colors.RED),1.0f,gl));
         list.add(test);
         test2 = new GameObject("TEST2");
-        test2.AddCompenent(new SpriteComponents("src/sprites/test.jpg", "jpg",null));
+        test2.AddCompenent(new SpriteComponents(new Colors(1, 0, 0)));
         System.out.println("sprite init");
         test2.AddCompenent(new ColliderCompenet());
+
+//        test.GetCompenent(SpriteComponents.class).scaleX(0.25f);
+//        test2.GetCompenent(SpriteComponents.class).scaleX(0.25f);
 //        test2.GetCompenent(SpriteComponents.class).scaleVertex(2,2);
 
 
@@ -89,7 +92,7 @@ public class RendererTest implements GLEventListener {
         test2.AddCompenent(new TransformComponent(new Vector3(100, 200, 0)));
 
 
-        test2.AddCompenent(new PhysicsComponent(new Vector3(0,3),-0.05f, test2.GetCompenent(TransformComponent.class).location, Vector3.down));
+        test2.AddCompenent(new PhysicsComponent(new Vector3(0, 3), -0.05f, test2.GetCompenent(TransformComponent.class).location, Vector3.down));
 
 
 //        test2.GetCompenent(PhysicsComponent.class).veloLock = true;
@@ -97,10 +100,12 @@ public class RendererTest implements GLEventListener {
 //        test.GetCompenent(PhysicsComponent.class).veloLock = true;
         list.add(test2);
 
-//        test2.GetCompenent(SpriteComponents.class).scale(2);
+        test.GetCompenent(SpriteComponents.class).scaleXY(0.05f,0.05f);
+        test2.GetCompenent(SpriteComponents.class).scaleX(0.5f);
+//        test2.GetCompenent(SpriteComponents.class).scaleXY(0.2f,0.2f);
         gl.glClearColor(0, 1, 1, 0.0f);
         System.out.println("end of init");
-        test2.GetCompenent(SpriteComponents.class).scaleY(2);
+
     }
 
     @Override
@@ -108,29 +113,47 @@ public class RendererTest implements GLEventListener {
 
     }
 
-    public float i2 = 1;
+    public int i2 = 0;
+    public int f = 0;
 
     public boolean a = true;
+
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
+        Vector3 cent[] = test.GetCompenent(SpriteComponents.class).getCenterPoints();
+        if(i2 == cent.length){
+            i2 = 0;
+        }
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
+        c.InstiateObjects(list);
 //        test2.GetCompenent(SpriteComponents.class).scale(i);
         Window.printFrameRate();
 
-//        test2.AddCompenent(new ColliderCompenet());
-        c.InstiateObjects(list);
 
+//        test2.AddCompenent(new ColliderCompenet());
+
+
+//
+//        System.out.println(cent[i2]);
+//        test2.GetCompenent(TransformComponent.class).location = cent[i2];
+//        System.out.println("loc: " + test.transform.location);
+
+
+//        if(f % 100 == 0){
+//            i2++;
+//        }
+//        f++;
 //        test2.GetCompenent(ColliderCompenet.class).rayCastCollider(test.GetCompenent(ColliderCompenet.class));
 
         if (test.GetCompenent(ColliderCompenet.class).isCollided(test2.GetCompenent(ColliderCompenet.class))) {
-            gl.glClearColor(1, 1, 1, 0.0f);
+            gl.glClearColor(0, 0, 0, 0.0f);
             a = false;
-            test.GetCompenent(TransformComponent.class).transform(Vector3.down);
+            test.GetCompenent(TransformComponent.class).transform(new Vector3(0,0.5f));
             System.out.println("collided");
         }else {
             test.GetCompenent(TransformComponent.class).transform(new Vector3(0.5f,0));
         }
-//        test2.GetCompenent(TransformComponent.class).rotateContinosuly(-0.05f);
+        test2.GetCompenent(TransformComponent.class).rotateContinosuly(-0.05f);
 //        test2.isActive = false;
 //        i = i +100;
         int error = gl.glGetError();
