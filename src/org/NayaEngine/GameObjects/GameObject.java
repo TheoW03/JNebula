@@ -83,12 +83,26 @@ public class GameObject {
             for (int i = 0; i < compenets.size(); i++) {
                 compenets.get(i).update(dt);
                 compenets.get(i).sendtoGPU(shP, sh);
-                if(compenets.get(i) instanceof SpriteComponents){
+                if(GetCompenent(SpriteComponents.class) != null){
+                    System.out.println("update: "+this.name);
                     indices = GetCompenent(SpriteComponents.class).indices;
                     int[] buffers = new int[1];
                     gl.glGenBuffers(1, buffers, 0);
+//                    gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL_LINES);
                     gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
-                    gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+                    gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 6L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+                    gl.glDrawElements(GL_TRIANGLE_STRIP, 12, GL_UNSIGNED_INT, 0); //learn to make dynamic
+//                    if(i == 2){
+//                        gl.glDrawElements(GL_TRIANGLE_STRIP, 12, GL_UNSIGNED_INT, 0); //learn to make dynamic
+//
+//                    }else {
+//                        gl.glDrawElements(GL_LINE_LOOP, 12, GL_UNSIGNED_INT, 0); //learn to make dynamic
+//
+//                    }
+//                    gl.glDrawElements(GL_TRIANGLE_STRIP, 12, GL_UNSIGNED_INT, 0); //learn to make dynamic
+//                    gl.glDrawElements(GL_LINE_LOOP, 3, GL_UNSIGNED_INT, 0);
+                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+//                    gl.glPolygonMode(GL_BACK, GL_LINES);
                 }
 //                if (compenets.get(i) instanceof SpriteComponents) {
 //                    indices = ((SpriteComponents) compenets.get(i)).indices;
@@ -104,9 +118,9 @@ public class GameObject {
 
             }
             if(GetCompenent(SpriteComponents.class) != null){
-                gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
-                gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
-                gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+                System.out.println("render");
+
+
             }
 //            gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
 //

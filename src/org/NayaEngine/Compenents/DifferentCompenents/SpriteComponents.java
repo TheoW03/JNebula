@@ -329,8 +329,8 @@ public class SpriteComponents extends iComponent {
 //        System.exit(0);
 //        this.height = length;
 //        this.width = width1;
-        this.height = ((height/10))*2;
-        this.width = (((width /10)));
+        this.height = ((height / 10)) * 2;
+        this.width = (((width / 10)));
         System.out.println(height + " " + width);
     }
 
@@ -341,10 +341,10 @@ public class SpriteComponents extends iComponent {
         setHeight();
         Vector3 a = this.gameObject.transform.location;
         Vector3[] centPoints = new Vector3[5];
-        centPoints[0] = new Vector3((a.x + (width/2)), (a.y + (height/2)));
-        centPoints[1] = new Vector3((a.x - (width/2)), (a.y + (height/2)));
-        centPoints[2] = new Vector3((a.x - (width/2)), (a.y - (height/2)));
-        centPoints[3] = new Vector3((a.x + (width/2)), (a.y - (height/2)));
+        centPoints[0] = new Vector3((a.x + (width / 2)), (a.y + (height / 2)));
+        centPoints[1] = new Vector3((a.x - (width / 2)), (a.y + (height / 2)));
+        centPoints[2] = new Vector3((a.x - (width / 2)), (a.y - (height / 2)));
+        centPoints[3] = new Vector3((a.x + (width / 2)), (a.y - (height / 2)));
         centPoints[4] = a;
         System.out.println(Arrays.toString(centPoints));
         System.out.println(a);
@@ -536,8 +536,11 @@ public class SpriteComponents extends iComponent {
             textureCoords = spriteTexCoords[(int) currentFrame];
         }
         int[] buffers = new int[3];
-        indices = new int[]{0, 1, 2, 3};  // Index buffer for a quad
-
+        indices = new int[]{    0, 1, 2, // first triangle
+                                0, 2, 3,
+                                1,2,3}; // second triangle;  // Index buffer for a quad
+//        indices = new int[]{0, 1, 2, // first triangle
+//                              0, 2, 3};
         gl.glGenBuffers(3, buffers, 0);
         gl.glEnable(GL_TEXTURE_2D);
         gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);

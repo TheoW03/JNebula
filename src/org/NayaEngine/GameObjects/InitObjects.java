@@ -23,6 +23,7 @@ import java.util.*;
 import java.io.*;
 
 import static com.jogamp.opengl.GL.*;
+import static com.jogamp.opengl.GL2GL3.GL_LINE;
 import static com.jogamp.opengl.fixedfunc.GLLightingFunc.GL_LIGHTING;
 import static java.awt.SystemColor.window;
 
@@ -73,18 +74,26 @@ public class InitObjects {
             }
 
         }
-        for (int i = 0; i < object.size(); i++) {
-            if(object.get(i).GetCompenent(SpriteComponents.class) != null){
-                int[] indices = object.get(i).indices;
-                int[] buffers = new int[1];
-                gl.glGenBuffers(1, buffers, 0);
-                gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
 
-                gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
-                gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
-                gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
-                gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-            }
+
+        for (int i = 0; i < object.size(); i++) {
+//            if(object.get(i).GetCompenent(SpriteComponents.class) != null){
+//                System.out.println("init: "+object.get(i).name);
+//                int[] indices = object.get(i).indices;
+//                int[] buffers = new int[1];
+//                gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL_LINES);
+//
+//                gl.glGenBuffers(1, buffers, 0);
+//                gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
+//
+//                gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+////                gl.glDrawElements(GL_LINE_LOOP, 9, GL_UNSIGNED_INT, 0);
+////                gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
+////                gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+//
+////                gl.glPolygonMode(GL_BACK, GL_LINES);
+//
+//            }
 
         }
         first = true;
