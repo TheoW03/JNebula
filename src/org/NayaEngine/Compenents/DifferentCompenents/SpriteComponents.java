@@ -536,8 +536,8 @@ public class SpriteComponents extends iComponent {
             textureCoords = spriteTexCoords[(int) currentFrame];
         }
         int[] buffers = new int[3];
-        indices = new int[]{    0, 1, 2, // first triangle
-                                0, 2, 3,
+        indices = new int[]{    0, 2, 1,
+                                1, 3, 2,
                                 1,2,3}; // second triangle;  // Index buffer for a quad
 //        indices = new int[]{0, 1, 2, // first triangle
 //                              0, 2, 3};

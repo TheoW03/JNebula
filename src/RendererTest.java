@@ -64,7 +64,7 @@ public class RendererTest implements GLEventListener {
 //        test.AddCompenent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg", 1, 5, 20, 64, 64, 7, gl));
 //        test.AddCompenent(new SpriteComponents(s1.getSection(1,3), s1,15, gl));
 //        test.AddCompenent(new RenderCompenent(Colors.RED));
-//        test.AddCompenent(new SpriteComponents("src/sprites/test.jpg","jpg",null));
+        test.AddCompenent(new SpriteComponents("src/sprites/test.jpg","jpg",null));
 //        test.GetCompenent(SpriteComponents.class).scale(200);
 //
 //        test.AddCompenent(new SpriteComponents(s1,20, null));

@@ -91,7 +91,7 @@ public class GameObject {
 //                    gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL_LINES);
                     gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
                     gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 6L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
-                    gl.glDrawElements(GL_TRIANGLE_STRIP, 12, GL_UNSIGNED_INT, 0); //learn to make dynamic
+                    gl.glDrawElements(GL_TRIANGLE_STRIP, 7, GL_UNSIGNED_INT, 0); //learn to make dynamic
 //                    if(i == 2){
 //                        gl.glDrawElements(GL_TRIANGLE_STRIP, 12, GL_UNSIGNED_INT, 0); //learn to make dynamic
 //
