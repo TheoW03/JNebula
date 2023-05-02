@@ -1,31 +1,17 @@
 package org.NayaEngine.GameObjects;
 
-import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.GL;
-import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.util.FPSAnimator;
 import org.NayaEngine.Compenents.DifferentCompenents.CameraComponent;
 import org.NayaEngine.Compenents.DifferentCompenents.ColliderCompenet;
-import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
 import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
 import org.NayaEngine.Compenents.iComponent;
-import org.NayaEngine.Tooling.Camera;
-import org.NayaEngine.Tooling.Window;
-import org.NayaEngine.Tooling.loadShader;
 import org.NayaEngine.math.Vector3;
-import org.joml.Matrix4f;
 
-import java.lang.reflect.Array;
-import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
 import java.util.*;
-import java.io.*;
 
-import static com.jogamp.opengl.GL.*;
-import static com.jogamp.opengl.GL2GL3.GL_LINE;
 import static com.jogamp.opengl.fixedfunc.GLLightingFunc.GL_LIGHTING;
-import static java.awt.SystemColor.window;
 
 
 /**
@@ -56,13 +42,13 @@ public class InitObjects {
 
         for (int i = 0; i < object.size(); i++) {
             if(object.get(i).GetCompenent(CameraComponent.class) == null){
-                object.get(i).AddCompenent(mainCamera);
+                object.get(i).AddComponent(mainCamera);
             }
             if(object.get(i).GetCompenent(ColliderCompenet.class) != null){
                 hasCollison.add(object.get(i));
             }
             if(object.get(i).GetCompenent(TransformComponent.class) == null){
-                object.get(i).AddCompenent(new TransformComponent(new Vector3(0,0,0)));
+                object.get(i).AddComponent(new TransformComponent(new Vector3(0,0,0)));
             }
             if (!first) {
                 object.get(i).start(0.1f, gl);

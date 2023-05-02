@@ -102,7 +102,7 @@ public class SpriteObject  {
 //    }
 //
 //    @Override
-//    public void AddCompenent(String name, iComponent compenet) {
+//    public void AddComponent(String name, iComponent compenet) {
 //        a.add(compenet.toString());
 //        compenents.AddCompenet(compenet.toString(),compenet);
 //    }

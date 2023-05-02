@@ -56,47 +56,47 @@ public class RendererTest implements GLEventListener {
         list = new ArrayList<>();
         test = new GameObject("TEST");
         test3 = new GameObject("TEST3");
-        test3.AddCompenent(new SpriteComponents(new Colors(1, 1, 1)));
-        test3.AddCompenent(new TransformComponent(new Vector3(90, 150, 0)));
+        test3.AddComponent(new SpriteComponents(new Colors(1, 1, 1)));
+        test3.AddComponent(new TransformComponent(new Vector3(90, 150, 0)));
         list.add(test3);
-//        test.AddCompenent(new LightingComponent(0.2f,new float[]{0.5f,0.5f,0.5f},0.3f,gl));
-//        test.AddCompenent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg",1,5,20,108,64,7,gl));
-//        test.AddCompenent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg", 1, 5, 20, 64, 64, 7, gl));
-//        test.AddCompenent(new SpriteComponents(s1.getSection(1,3), s1,15, gl));
-//        test.AddCompenent(new RenderCompenent(Colors.RED));
-        test.AddCompenent(new SpriteComponents("src/sprites/test.jpg","jpg",null));
+//        test.AddComponent(new LightingComponent(0.2f,new float[]{0.5f,0.5f,0.5f},0.3f,gl));
+//        test.AddComponent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg",1,5,20,108,64,7,gl));
+//        test.AddComponent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg", 1, 5, 20, 64, 64, 7, gl));
+//        test.AddComponent(new SpriteComponents(s1.getSection(1,3), s1,15, gl));
+//        test.AddComponent(new RenderCompenent(Colors.RED));
+        test.AddComponent(new SpriteComponents("src/sprites/test.jpg","jpg",null));
 //        test.GetCompenent(SpriteComponents.class).scale(200);
 //
-//        test.AddCompenent(new SpriteComponents(s1,20, null));
-//        test.AddCompenent(new CameraComponent(new Vector3(0, 0, 0), gl));
-        test.AddCompenent(new TransformComponent(new Vector3(20, 100, 0)));
+//        test.AddComponent(new SpriteComponents(s1,20, null));
+//        test.AddComponent(new CameraComponent(new Vector3(0, 0, 0), gl));
+        test.AddComponent(new TransformComponent(new Vector3(20, 100, 0)));
 
 
-//        test.AddCompenent(new PhysicsComponent(new Vector3(-1,0.5f),-0.05f, test.GetCompenent(TransformComponent.class).location));
+//        test.AddComponent(new PhysicsComponent(new Vector3(-1,0.5f),-0.05f, test.GetCompenent(TransformComponent.class).location));
         Ray ray = new Ray(Vector3.down, 500);
-        test.AddCompenent(new ColliderCompenet());
+        test.AddComponent(new ColliderCompenet());
 
-//        test.AddCompenent(new LightingComponent(10, Colors.colorHex(Colors.RED),1.0f,gl));
+//        test.AddComponent(new LightingComponent(10, Colors.colorHex(Colors.RED),1.0f,gl));
         list.add(test);
         test2 = new GameObject("TEST2");
-        test2.AddCompenent(new SpriteComponents(new Colors(1, 0, 0)));
+        test2.AddComponent(new SpriteComponents(new Colors(1, 0, 0)));
         System.out.println("sprite init");
-        test2.AddCompenent(new ColliderCompenet());
+        test2.AddComponent(new ColliderCompenet());
 
 //        test.GetCompenent(SpriteComponents.class).scaleX(0.25f);
 //        test2.GetCompenent(SpriteComponents.class).scaleX(0.25f);
 //        test2.GetCompenent(SpriteComponents.class).scaleVertex(2,2);
 
 
-//test2.AddCompenent(new SpriteComponents(new Colors(0.1f,0.5f,0.5f)));
-//        test2.AddCompenent(new LightingComponent(1.0f, Colors.colorHex(Colors.WHITE),0.4f));
-//        test.AddCompenent(new LightingComponent(test2.GetCompenent(LightingComponent.class)));
+//test2.AddComponent(new SpriteComponents(new Colors(0.1f,0.5f,0.5f)));
+//        test2.AddComponent(new LightingComponent(1.0f, Colors.colorHex(Colors.WHITE),0.4f));
+//        test.AddComponent(new LightingComponent(test2.GetCompenent(LightingComponent.class)));
 
         System.out.println("test: " + test2);
-        test2.AddCompenent(new TransformComponent(new Vector3(100, 200, 0)));
+        test2.AddComponent(new TransformComponent(new Vector3(100, 200, 0)));
 
 
-        test2.AddCompenent(new PhysicsComponent(new Vector3(0, 3), -0.05f, test2.GetCompenent(TransformComponent.class).location, Vector3.down));
+        test2.AddComponent(new PhysicsComponent(new Vector3(0, 3), -0.05f, test2.GetCompenent(TransformComponent.class).location, Vector3.down));
 
 
 //        test2.GetCompenent(PhysicsComponent.class).veloLock = true;
@@ -134,7 +134,7 @@ public class RendererTest implements GLEventListener {
         Window.printFrameRate();
 
 
-//        test2.AddCompenent(new ColliderCompenet());
+//        test2.AddComponent(new ColliderCompenet());
 
 
 //

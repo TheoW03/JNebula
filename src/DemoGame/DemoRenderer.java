@@ -13,7 +13,6 @@ import org.NayaEngine.math.Vector3;
 
 import java.awt.event.KeyEvent;
 import java.util.*;
-import java.io.*;
 
 /**
  * @author Theo willis
@@ -31,19 +30,19 @@ public class DemoRenderer extends GameRenderer {
         ball = new GameObject("ball");
 
 
-        ball.AddCompenent(new SpriteComponents(new Colors(1,1,1)));
-        paddle1.AddCompenent(new SpriteComponents("src/DemoGame/assets/paddle_asset.PNG","png",null));
-        paddle2.AddCompenent(new SpriteComponents("src/DemoGame/assets/paddle_asset.PNG","png",null));
+        ball.AddComponent(new SpriteComponents(new Colors(1,1,1)));
+        paddle1.AddComponent(new SpriteComponents("src/DemoGame/assets/paddle_asset.PNG","png",null));
+        paddle2.AddComponent(new SpriteComponents("src/DemoGame/assets/paddle_asset.PNG","png",null));
         Init = new InitObjects();
         gameObjectArrayList.add(paddle1);
         gameObjectArrayList.add(paddle2);
         gameObjectArrayList.add(ball);
-        paddle1.AddCompenent(new TransformComponent(new Vector3(30,100)));
-        paddle2.AddCompenent(new TransformComponent(new Vector3(170,100)));
-        paddle1.AddCompenent(new ColliderCompenet());
-        paddle2.AddCompenent(new ColliderCompenet());
-        ball.AddCompenent(new TransformComponent(new Vector3(100,100)));
-        ball.AddCompenent(new ColliderCompenet());
+        paddle1.AddComponent(new TransformComponent(new Vector3(30,100)));
+        paddle2.AddComponent(new TransformComponent(new Vector3(170,100)));
+        paddle1.AddComponent(new ColliderCompenet());
+        paddle2.AddComponent(new ColliderCompenet());
+        ball.AddComponent(new TransformComponent(new Vector3(100,100)));
+        ball.AddComponent(new ColliderCompenet());
         System.out.println("init");
         paddle1.GetCompenent(SpriteComponents.class).scaleX(0.25f);
         paddle2.GetCompenent(SpriteComponents.class).scaleX(0.25f);

@@ -1,24 +1,16 @@
 package org.NayaEngine.GameObjects;
 
-import com.jogamp.opencl.llb.CL;
-import com.jogamp.opengl.GL;
-import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GL4;
 import org.NayaEngine.Compenents.DifferentCompenents.PhysicsComponent;
 import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
-import org.NayaEngine.Compenents.ManageCmponent;
 import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
 import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.Tooling.loadShader;
-import org.NayaEngine.math.Vector3;
 
 import java.nio.IntBuffer;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import static com.jogamp.opengl.GL.*;
-import static com.jogamp.opengl.GL.GL_ARRAY_BUFFER;
 
 
 /**
@@ -65,12 +57,12 @@ public class GameObject {
     }
 
 
-    public void AddCompenent(iComponent compenet) {
-        if (compenet instanceof TransformComponent) {
-            transform = (TransformComponent) compenet;
+    public void AddComponent(iComponent component) {
+        if (component instanceof TransformComponent) {
+            transform = (TransformComponent) component;
         }
-        compenet.gameObject = this;
-        compenets.add(compenet);
+        component.gameObject = this;
+        compenets.add(component);
 
     }
 
