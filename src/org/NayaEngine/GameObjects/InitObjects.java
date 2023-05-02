@@ -49,7 +49,7 @@ public class InitObjects {
 
 
 
-    public void InstiateObjects(List<GameObject> object) {
+    public void InstantiateObjects(List<GameObject> object) {
         ArrayList<GameObject> hasCollison = new ArrayList<>();
         gl.glEnable(GL_LIGHTING);
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);// Clear the color buffer to the clear color

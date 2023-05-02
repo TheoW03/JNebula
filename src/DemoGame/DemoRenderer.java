@@ -34,7 +34,7 @@ public class DemoRenderer extends GameRenderer {
         ball.AddCompenent(new SpriteComponents(new Colors(1,1,1)));
         paddle1.AddCompenent(new SpriteComponents("src/DemoGame/assets/paddle_asset.PNG","png",null));
         paddle2.AddCompenent(new SpriteComponents("src/DemoGame/assets/paddle_asset.PNG","png",null));
-        instantiate = new InitObjects();
+        Init = new InitObjects();
         gameObjectArrayList.add(paddle1);
         gameObjectArrayList.add(paddle2);
         gameObjectArrayList.add(ball);
@@ -44,9 +44,7 @@ public class DemoRenderer extends GameRenderer {
         paddle2.AddCompenent(new ColliderCompenet());
         ball.AddCompenent(new TransformComponent(new Vector3(100,100)));
         ball.AddCompenent(new ColliderCompenet());
-
         System.out.println("init");
-        instantiate = new InitObjects();
         paddle1.GetCompenent(SpriteComponents.class).scaleX(0.25f);
         paddle2.GetCompenent(SpriteComponents.class).scaleX(0.25f);
         ball.GetCompenent(SpriteComponents.class).scaleXY(0.2f,0.2f);
@@ -56,7 +54,7 @@ public class DemoRenderer extends GameRenderer {
     Vector3 bt = Vector3.left;
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
-        instantiate.InstiateObjects(gameObjectArrayList);
+        Init.InstantiateObjects(gameObjectArrayList);
 
         if(Input.getKey()== KeyEvent.VK_S){
             paddle1.transform.transform(Vector3.down);

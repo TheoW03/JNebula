@@ -129,7 +129,7 @@ public class RendererTest implements GLEventListener {
 //            i2 = 0;
 //        }
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
-        c.InstiateObjects(list);
+        c.InstantiateObjects(list);
 //        test2.GetCompenent(SpriteComponents.class).scale(i);
         Window.printFrameRate();
 

@@ -51,12 +51,11 @@ public class StarterCode extends GameRenderer {
         obj.AddCompenent(new SpriteComponents("sprite.png","png",null)); //the null is a color
         obj.AddCompenent(new TransformComponent(new Vector3(0,0,0)));
         gameObjectArrayList.add(obj);
-        initObject = new InitObjects();
     }
     //runs every frame. 
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
-        initObject.InstiateObjects(gameObjectArrayList); //inits list
+        Init.InstantiateObjects(gameObjectArrayList); //inits list
     }
 }
 
