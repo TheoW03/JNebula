@@ -22,6 +22,5 @@ public class Debug {
                 0.0f, 0.0f, 0.0f,
                 ray.length, 0.0f,0.0f
         };
-
     }
 }

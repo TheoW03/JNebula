@@ -160,6 +160,8 @@ public class RendererTest implements GLEventListener {
 //        }
         gl.glClearColor(0, 0, 0, 0.0f);
 //        test2.GetCompenent(TransformComponent.class).rotateContinosuly(-0.05f);
+//        test.GetCompenent(TransformComponent.class).rotateContinosuly(-0.05f);
+//        test3.GetCompenent(TransformComponent.class).rotateContinosuly(-0.05f);
 //        test2.isActive = false;
 //        i = i +100;
         int error = gl.glGetError();

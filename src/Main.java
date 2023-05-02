@@ -33,6 +33,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 //        Window w = new Window(640, 480, "2D graphics inDev edition", new RendererTest());
         Window.InitWindow(640, 480, "2D graphics inDev edition", new RendererTest());
+
         //        testLexxer();
 //        Window.InitWindow(640, 480, "2D graphics inDev edition", new Renderer4());
     }

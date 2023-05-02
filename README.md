@@ -23,29 +23,29 @@ written in java
 ---
 # usage
 
+main
+
 ```JAVA
 import org.NayaEngine.GameObjects.GameRenderer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         GameRenderer starterCode = new StarterCode(); //for step 3 if you get a not defined error then
-        Window.InitWindow(640, 480, "example window", new StarterCode());
+        Window.InitWindow(640, 480, "example window", starterCode);
     }
 }
 
 ```
 ---
 
-<p>create a new class called whatever you want. for this example
-starterCode and let it inherit from GameRenderer</p> 
-this is how it should look like
-
+renderer class
 ```JAVA
 public class StarterCode extends GameRenderer {
     public InitObjects initObject;
     //runs 1st frame
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
+        super.init(glAutoDrawable); 
         GameObject obj = new GameObject("starterObj"); // you can name it what you want
         obj.AddCompenent(new CameraComponent(new Vector3(0,0,0))); //not required if you dont add it will default to 0,0
         obj.AddCompenent(new SpriteComponents("sprite.png","png",null)); //the null is a color

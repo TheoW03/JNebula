@@ -66,7 +66,7 @@ public class GameObject {
 
 
     public void AddCompenent(iComponent compenet) {
-        if(compenet instanceof TransformComponent){
+        if (compenet instanceof TransformComponent) {
             transform = (TransformComponent) compenet;
         }
         compenet.gameObject = this;
@@ -83,8 +83,8 @@ public class GameObject {
             for (int i = 0; i < compenets.size(); i++) {
                 compenets.get(i).update(dt);
                 compenets.get(i).sendtoGPU(shP, sh);
-                if(GetCompenent(SpriteComponents.class) != null){
-                    System.out.println("update: "+this.name);
+                if (GetCompenent(SpriteComponents.class) != null) {
+                    System.out.println("update: " + this.name);
                     indices = GetCompenent(SpriteComponents.class).indices;
                     int[] buffers = new int[1];
                     gl.glGenBuffers(1, buffers, 0);
@@ -117,7 +117,7 @@ public class GameObject {
 
 
             }
-            if(GetCompenent(SpriteComponents.class) != null){
+            if (GetCompenent(SpriteComponents.class) != null) {
                 System.out.println("render");
 
 
@@ -138,7 +138,7 @@ public class GameObject {
             for (int i = 0; i < compenets.size(); i++) {
                 compenets.get(i).init(dt);
                 compenets.get(i).sendtoGPU(shP, sh);
-                if(GetCompenent(SpriteComponents.class) != null){
+                if (GetCompenent(SpriteComponents.class) != null) {
                     indices = GetCompenent(SpriteComponents.class).indices;
                     int[] buffers = new int[1];
                     gl.glGenBuffers(1, buffers, 0);
@@ -152,9 +152,9 @@ public class GameObject {
 //                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
 //                    gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
 //                }
-            if (compenets.get(i) instanceof PhysicsComponent) {
-                GetCompenent(TransformComponent.class).location = ((PhysicsComponent) compenets.get(i)).vectorPosition;
-            }
+                if (compenets.get(i) instanceof PhysicsComponent) {
+                    GetCompenent(TransformComponent.class).location = ((PhysicsComponent) compenets.get(i)).vectorPosition;
+                }
 
 
             }
