@@ -39,6 +39,7 @@ public class Camera {
                 cameraFront.add(location.x,location.y,0),cameraUp);
         return view;
     }
+
     public Matrix4f initModel(Vector3 location){
         Matrix4f modelViewMatrix = new Matrix4f();
         modelViewMatrix.identity();

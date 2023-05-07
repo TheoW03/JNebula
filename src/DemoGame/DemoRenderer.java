@@ -80,7 +80,11 @@ public class DemoRenderer extends GameRenderer {
             float randomNum = (float) (Math.random() * (max - min) + min);
             bt = new Vector3(-1,randomNum);
         }
-
+        if(ball.transform.location.y > 200){
+            bt = new Vector3(bt.x,-bt.y);
+        }else if(ball.transform.location.y < 0){
+            bt = new Vector3(bt.x,bt.y);
+        }
 
     }
 }
