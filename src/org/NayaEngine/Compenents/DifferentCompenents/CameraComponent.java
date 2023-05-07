@@ -28,7 +28,9 @@ public class CameraComponent extends iComponent {
         sh.sendMartices(camera.viewMatrix(),gl,matriceLocation);
         sh.sendMartices(camera.getProjection(),gl,projectionLocation);
     }
-
+    public void zoom(float zoomfactor){
+        this.camera.zoom(zoomfactor);
+    }
     @Override
     public void update(float dt) {
 

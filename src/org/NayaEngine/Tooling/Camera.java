@@ -23,14 +23,15 @@ public class Camera {
         this.projection = new Matrix4f();
         this.view = new Matrix4f();
         initMatrix();
-
+    }
+    public void zoom(float zoomFactor){
+        projection.ortho(0, (32.0f * 40.0f)/zoomFactor, 0.0f, (32.0f * 21.0f)/zoomFactor, 0.0f, 100.0f);
     }
 
     public void initMatrix() {
         projection.identity(); //this is like n*1
-        projection.ortho(0.0f, 32.0f * 40.0f, 0.0f, 32.0f * 21.0f, 0.0f, 100.0f);
+        projection.ortho(0, (32.0f * 40.0f), 0.0f, (32.0f * 21.0f), 0.0f, 100.0f);
     }
-
     public Matrix4f viewMatrix() {
         Vector3f cameraFront = new Vector3f(0.0f,0.0f,-1.0f);
         Vector3f cameraUp = new Vector3f(0.0f,1.0f,0.0f);
