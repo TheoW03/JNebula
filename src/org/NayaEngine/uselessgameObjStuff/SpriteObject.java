@@ -1,22 +1,5 @@
 package org.NayaEngine.uselessgameObjStuff;
 
-import org.NayaEngine.Compenents.ManageCmponent;
-import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
-import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
-import org.NayaEngine.Compenents.iComponent;
-import org.NayaEngine.math.Vector3;
-import com.jogamp.opengl.GL;
-import com.jogamp.opengl.GLProfile;
-import com.jogamp.opengl.util.texture.Texture;
-import com.jogamp.opengl.util.texture.TextureData;
-import com.jogamp.opengl.util.texture.TextureIO;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import static com.jogamp.opengl.GL.*;
-
 /**
  * @author Theo willis
  * @version 1.0.0
@@ -65,7 +48,7 @@ public class SpriteObject  {
 //    private void addDefuaultCompenets(){
 //
 //        compenents.AddCompenet("TransformComponent", new TransformComponent(location));
-//        compenents.AddCompenet("SpriteComponent", new SpriteComponents(spriteTexture));
+//        compenents.AddCompenet("SpriteComponent", new SpriteComponent(spriteTexture));
 //    }
 //    public ArrayList<String> getList() {
 //        return a;

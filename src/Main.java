@@ -1,14 +1,7 @@
 import org.NayaEngine.ObjectEditor.Lexer.Lexxer;
 import org.NayaEngine.ObjectEditor.Lexer.Token;
-import org.NayaEngine.Tooling.Input;
 import org.NayaEngine.Tooling.Window;
-import org.NayaEngine.Tooling.loadShader;
-import com.jogamp.opengl.GLCapabilities;
-import com.jogamp.opengl.GLProfile;
-import com.jogamp.opengl.awt.GLJPanel;
-import com.jogamp.opengl.util.FPSAnimator;
 
-import javax.swing.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;

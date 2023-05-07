@@ -1,10 +1,7 @@
 package org.NayaEngine.Compenents.DifferentCompenents;
 
-import com.jogamp.opengl.GL;
-import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.GL4;
 import org.NayaEngine.Compenents.iComponent;
-import org.NayaEngine.Tooling.loadShader;
+import org.NayaEngine.Tooling.LoadShader;
 import org.NayaEngine.math.Vector3;
 import org.joml.Vector3f;
 
@@ -66,7 +63,7 @@ public class PhysicsComponent extends iComponent {
     }
 
     @Override
-    public void sendtoGPU(int shaderProgram, loadShader sh) {
+    public void sendtoGPU(int shaderProgram, LoadShader sh) {
 
 
     }

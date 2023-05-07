@@ -56,39 +56,39 @@ public class RendererTest implements GLEventListener {
         list = new ArrayList<>();
         test = new GameObject("TEST");
         test3 = new GameObject("TEST3");
-        test3.AddComponent(new SpriteComponents(new Colors(1, 1, 1)));
+        test3.AddComponent(new SpriteComponent(new Colors(1, 1, 1)));
         test3.AddComponent(new TransformComponent(new Vector3(90, 150, 0)));
         list.add(test3);
 //        test.AddComponent(new LightingComponent(0.2f,new float[]{0.5f,0.5f,0.5f},0.3f,gl));
-//        test.AddComponent(new SpriteComponents(s1,10,null));
-//        test.AddComponent(new SpriteComponents(s1.getSection(1,3), s1,15, gl));
+//        test.AddComponent(new SpriteComponent(s1,10,null));
+//        test.AddComponent(new SpriteComponent(s1.getSection(1,3), s1,15, gl));
 //        test.AddComponent(new RenderCompenent(Colors.RED));
-        test.AddComponent(new SpriteComponents("src/sprites/test.jpg","jpg",null));
-//        test.AddComponent(new GizmosCompenent(test.GetCompenent(SpriteComponents.class)));
-//        test.GetCompenent(SpriteComponents.class).scale(200);
+        test.AddComponent(new SpriteComponent("src/sprites/test.jpg","jpg",null));
+//        test.AddComponent(new GizmosCompenent(test.GetCompenent(SpriteComponent.class)));
+//        test.GetCompenent(SpriteComponent.class).scale(200);
 //
-//        test.AddComponent(new SpriteComponents(s1,20, null));
+//        test.AddComponent(new SpriteComponent(s1,20, null));
 //        test.AddComponent(new CameraComponent(new Vector3(0, 0, 0), gl));
         test.AddComponent(new TransformComponent(new Vector3(20, 100, 0)));
 
 
 //        test.AddComponent(new PhysicsComponent(new Vector3(-1,0.5f),-0.05f, test.GetCompenent(TransformComponent.class).location));
         Ray ray = new Ray(Vector3.down, 500);
-        test.AddComponent(new ColliderCompenet());
+        test.AddComponent(new ColliderComponent());
 
 //        test.AddComponent(new LightingComponent(10, Colors.colorHex(Colors.RED),1.0f,gl));
         list.add(test);
         test2 = new GameObject("TEST2");
-        test2.AddComponent(new SpriteComponents(new Colors(1, 0, 0)));
+        test2.AddComponent(new SpriteComponent(new Colors(1, 0, 0)));
         System.out.println("sprite init");
-        test2.AddComponent(new ColliderCompenet());
+        test2.AddComponent(new ColliderComponent());
 
-//        test.GetCompenent(SpriteComponents.class).scaleX(0.25f);
-//        test2.GetCompenent(SpriteComponents.class).scaleX(0.25f);
-//        test2.GetCompenent(SpriteComponents.class).scaleVertex(2,2);
+//        test.GetCompenent(SpriteComponent.class).scaleX(0.25f);
+//        test2.GetCompenent(SpriteComponent.class).scaleX(0.25f);
+//        test2.GetCompenent(SpriteComponent.class).scaleVertex(2,2);
 
 
-//test2.AddComponent(new SpriteComponents(new Colors(0.1f,0.5f,0.5f)));
+//test2.AddComponent(new SpriteComponent(new Colors(0.1f,0.5f,0.5f)));
 //        test2.AddComponent(new LightingComponent(1.0f, Colors.colorHex(Colors.WHITE),0.4f));
 //        test.AddComponent(new LightingComponent(test2.GetCompenent(LightingComponent.class)));
 
@@ -104,9 +104,9 @@ public class RendererTest implements GLEventListener {
 //        test.GetCompenent(PhysicsComponent.class).veloLock = true;
         list.add(test2);
 
-//        test.GetCompenent(SpriteComponents.class).scaleXY(0.05f,0.05f);
-//        test2.GetCompenent(SpriteComponents.class).scaleX(0.5f);
-//        test2.GetCompenent(SpriteComponents.class).scaleXY(0.2f,0.2f);
+//        test.GetCompenent(SpriteComponent.class).scaleXY(0.05f,0.05f);
+//        test2.GetCompenent(SpriteComponent.class).scaleX(0.5f);
+//        test2.GetCompenent(SpriteComponent.class).scaleXY(0.2f,0.2f);
         gl.glClearColor(0, 1, 1, 0.0f);
         System.out.println("end of init");
 
@@ -124,17 +124,17 @@ public class RendererTest implements GLEventListener {
 
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
-//        Vector3 cent[] = test.GetCompenent(SpriteComponents.class).getCenterPoints();
+//        Vector3 cent[] = test.GetCompenent(SpriteComponent.class).getCenterPoints();
 //        if(i2 == cent.length){
 //            i2 = 0;
 //        }
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
         c.InstantiateObjects(list);
-//        test2.GetCompenent(SpriteComponents.class).scale(i);
+//        test2.GetCompenent(SpriteComponent.class).scale(i);
         Window.printFrameRate();
 
 
-//        test2.AddComponent(new ColliderCompenet());
+//        test2.AddComponent(new ColliderComponent());
 
 
 //
@@ -147,9 +147,9 @@ public class RendererTest implements GLEventListener {
 //            i2++;
 //        }
 //        f++;
-//        test2.GetCompenent(ColliderCompenet.class).rayCastCollider(test.GetCompenent(ColliderCompenet.class));
+//        test2.GetCompenent(ColliderComponent.class).rayCastCollider(test.GetCompenent(ColliderComponent.class));
 
-//        if (test.GetCompenent(ColliderCompenet.class).isCollided(test2.GetCompenent(ColliderCompenet.class))) {
+//        if (test.GetCompenent(ColliderComponent.class).isCollided(test2.GetCompenent(ColliderComponent.class))) {
 //            gl.glClearColor(0, 0, 0, 0.0f);
 //            a = false;
 //            test.GetCompenent(TransformComponent.class).transform(new Vector3(0,0.5f));

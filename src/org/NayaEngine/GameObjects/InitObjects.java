@@ -4,7 +4,7 @@ import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.util.FPSAnimator;
 import org.NayaEngine.Compenents.DifferentCompenents.CameraComponent;
-import org.NayaEngine.Compenents.DifferentCompenents.ColliderCompenet;
+import org.NayaEngine.Compenents.DifferentCompenents.ColliderComponent;
 import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
 import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.math.Vector3;
@@ -44,7 +44,7 @@ public class InitObjects {
             if(object.get(i).GetCompenent(CameraComponent.class) == null){
                 object.get(i).AddComponent(mainCamera);
             }
-            if(object.get(i).GetCompenent(ColliderCompenet.class) != null){
+            if(object.get(i).GetCompenent(ColliderComponent.class) != null){
                 hasCollison.add(object.get(i));
             }
             if(object.get(i).GetCompenent(TransformComponent.class) == null){
@@ -64,7 +64,7 @@ public class InitObjects {
 
 
 //        for (int i = 0; i < object.size(); i++) {
-//            if(object.get(i).GetCompenent(SpriteComponents.class) != null){
+//            if(object.get(i).GetCompenent(SpriteComponent.class) != null){
 //                System.out.println("init: "+object.get(i).name);
 //                int[] indices = object.get(i).indices;
 //                int[] buffers = new int[1];

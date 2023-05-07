@@ -3,11 +3,9 @@ package org.NayaEngine.Compenents.DifferentCompenents;
 import com.jogamp.opengl.GL;
 import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.Tooling.Colors;
-import org.NayaEngine.Tooling.loadShader;
+import org.NayaEngine.Tooling.LoadShader;
 
 import java.nio.FloatBuffer;
-import java.util.*;
-import java.io.*;
 
 import static com.jogamp.opengl.GL.*;
 
@@ -39,7 +37,7 @@ public class RenderCompenent extends iComponent {
     }
 
     @Override
-    public void sendtoGPU(int shaderProgram, loadShader sh) {
+    public void sendtoGPU(int shaderProgram, LoadShader sh) {
         indices = new int[]{0, 1, 2, 3};  // Index buffer for a quad
 
         int[] buffers = new int[1];

@@ -1,11 +1,10 @@
 package org.NayaEngine.Compenents;
 
 
-import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GL4;
-import org.NayaEngine.Compenents.DifferentCompenents.ColliderCompenet;
+import org.NayaEngine.Compenents.DifferentCompenents.ColliderComponent;
 import org.NayaEngine.GameObjects.GameObject;
-import org.NayaEngine.Tooling.loadShader;
+import org.NayaEngine.Tooling.LoadShader;
 
 /**
  * @author Theo willis
@@ -23,10 +22,10 @@ public abstract class iComponent {
     public void update(float dt){
 
     }
-    public void sendtoGPU(int shaderProgram, loadShader sh){
+    public void sendtoGPU(int shaderProgram, LoadShader sh){
 
     }
-    public void Collides(ColliderCompenet c){
+    public void Collides(ColliderComponent c){
 
     }
 

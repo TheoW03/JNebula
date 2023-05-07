@@ -1,8 +1,6 @@
 package org.NayaEngine.Compenents.DifferentCompenents;
 
 import com.jogamp.opengl.GL;
-import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.texture.TextureData;
 import com.jogamp.opengl.util.texture.TextureIO;
@@ -10,23 +8,18 @@ import org.NayaEngine.Compenents.iComponent;
 import com.jogamp.opengl.util.texture.Texture;
 import org.NayaEngine.Tooling.Colors;
 import org.NayaEngine.Tooling.SpriteSheetList;
-import org.NayaEngine.Tooling.loadShader;
+import org.NayaEngine.Tooling.LoadShader;
 import org.NayaEngine.math.Vector3;
-import org.joml.Matrix4f;
 import org.joml.Vector3f;
-import org.joml.Vector4f;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Vector;
 
 import static com.jogamp.opengl.GL.*;
 import static com.jogamp.opengl.GL.GL_CLAMP_TO_EDGE;
@@ -38,7 +31,7 @@ import static com.jogamp.opengl.GL.GL_CLAMP_TO_EDGE;
  * ~ project outline here ~
  * @Javadoc
  */
-public class SpriteComponents extends iComponent {
+public class SpriteComponent extends iComponent {
 
     String file;
     public boolean wireFrame = false;
@@ -65,7 +58,7 @@ public class SpriteComponents extends iComponent {
      * @param c
      * sprite without a texture
      */
-    public SpriteComponents(Colors c) {
+    public SpriteComponent(Colors c) {
         this.color = c;
 
         this.vertices = new float[][]{
@@ -101,7 +94,7 @@ public class SpriteComponents extends iComponent {
      * @param c
      * sprite with texture.
      */
-    public SpriteComponents(String file, String type, Colors c) {
+    public SpriteComponent(String file, String type, Colors c) {
 
         this.color = c;
         this.file = file;
@@ -134,7 +127,7 @@ public class SpriteComponents extends iComponent {
     }
 
 
-    public SpriteComponents(float[] textureCoords, SpriteSheetList spriteSheetList, Colors c) {
+    public SpriteComponent(float[] textureCoords, SpriteSheetList spriteSheetList, Colors c) {
         this.vertices = new float[][]{
                 {-1.0f, -1.0f, 0.0f},
                 {1.0f, -1.0f, 0.0f},
@@ -164,7 +157,7 @@ public class SpriteComponents extends iComponent {
      * @param c
      * sprite sheet animation
      */
-    public SpriteComponents(SpriteSheetList spriteSheetList, int FPS, Colors c) {
+    public SpriteComponent(SpriteSheetList spriteSheetList, int FPS, Colors c) {
         this.vertices = new float[][]{
                 {-1.0f, -1.0f, 0.0f},
                 {1.0f, -1.0f, 0.0f},
@@ -462,7 +455,7 @@ public class SpriteComponents extends iComponent {
      * @param sh
      */
     @Override
-    public void sendtoGPU(int shaderProgram, loadShader sh) {
+    public void sendtoGPU(int shaderProgram, LoadShader sh) {
         System.out.println("send to sprite");
         if (this.texture == null) {
             int location = gl.glGetUniformLocation(shaderProgram, "textureExists");

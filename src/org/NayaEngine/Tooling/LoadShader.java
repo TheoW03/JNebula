@@ -20,7 +20,7 @@ import java.io.*;
  * ~ project outline here ~
  * @Javadoc
  */
-public class loadShader {
+public class LoadShader {
 
     /**
      * @return shader content

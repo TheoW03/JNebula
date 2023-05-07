@@ -2,14 +2,12 @@ package org.NayaEngine.Compenents.DifferentCompenents;
 
 import com.jogamp.opengl.GL;
 import org.NayaEngine.Compenents.iComponent;
-import org.NayaEngine.Tooling.loadShader;
+import org.NayaEngine.Tooling.LoadShader;
 import org.NayaEngine.math.Ray;
 
 import java.awt.*;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
-import java.util.*;
-import java.io.*;
 
 import static com.jogamp.opengl.GL.*;
 
@@ -22,11 +20,11 @@ import static com.jogamp.opengl.GL.*;
  */
 public class GizmosCompenent  extends iComponent {
 
-    public SpriteComponents components;
+    public SpriteComponent components;
     public Color c;
     public float[] vertices;
     public int[] indicies;
-    public GizmosCompenent(SpriteComponents components) {
+    public GizmosCompenent(SpriteComponent components) {
         this.components = components;
         gl.glEnable(GL.GL_BLEND);
         gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
@@ -35,12 +33,12 @@ public class GizmosCompenent  extends iComponent {
     public GizmosCompenent(Ray ray){
 
     }
-    public void draw_collider(SpriteComponents co, Color c){
+    public void draw_collider(SpriteComponent co, Color c){
 
     }
 
     @Override
-    public void sendtoGPU(int shaderProgram, loadShader sh) {
+    public void sendtoGPU(int shaderProgram, LoadShader sh) {
 
         int location = gl.glGetUniformLocation(shaderProgram, "textureExists");
 //        gl.glUniform1f(location, 1);

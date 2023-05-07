@@ -1,8 +1,8 @@
 package DemoGame;
 
 import com.jogamp.opengl.GLAutoDrawable;
-import org.NayaEngine.Compenents.DifferentCompenents.ColliderCompenet;
-import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
+import org.NayaEngine.Compenents.DifferentCompenents.ColliderComponent;
+import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponent;
 import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
 import org.NayaEngine.GameObjects.GameObject;
 import org.NayaEngine.GameObjects.GameRenderer;
@@ -12,7 +12,6 @@ import org.NayaEngine.Tooling.Input;
 import org.NayaEngine.math.Vector3;
 
 import java.awt.event.KeyEvent;
-import java.util.*;
 
 /**
  * @author Theo willis
@@ -30,23 +29,23 @@ public class DemoRenderer extends GameRenderer {
         ball = new GameObject("ball");
 
 
-        ball.AddComponent(new SpriteComponents(new Colors(1,1,1)));
-        paddle1.AddComponent(new SpriteComponents("src/DemoGame/assets/paddle_asset.PNG","png",null));
-        paddle2.AddComponent(new SpriteComponents("src/DemoGame/assets/paddle_asset.PNG","png",null));
+        ball.AddComponent(new SpriteComponent(new Colors(1,1,1)));
+        paddle1.AddComponent(new SpriteComponent("src/DemoGame/assets/paddle_asset.PNG","png",null));
+        paddle2.AddComponent(new SpriteComponent("src/DemoGame/assets/paddle_asset.PNG","png",null));
         Init = new InitObjects();
         gameObjectArrayList.add(paddle1);
         gameObjectArrayList.add(paddle2);
         gameObjectArrayList.add(ball);
         paddle1.AddComponent(new TransformComponent(new Vector3(30,100)));
         paddle2.AddComponent(new TransformComponent(new Vector3(170,100)));
-        paddle1.AddComponent(new ColliderCompenet());
-        paddle2.AddComponent(new ColliderCompenet());
+        paddle1.AddComponent(new ColliderComponent());
+        paddle2.AddComponent(new ColliderComponent());
         ball.AddComponent(new TransformComponent(new Vector3(100,100)));
-        ball.AddComponent(new ColliderCompenet());
+        ball.AddComponent(new ColliderComponent());
         System.out.println("init");
-        paddle1.GetCompenent(SpriteComponents.class).scaleX(0.25f);
-        paddle2.GetCompenent(SpriteComponents.class).scaleX(0.25f);
-        ball.GetCompenent(SpriteComponents.class).scaleXY(0.2f,0.2f);
+        paddle1.GetCompenent(SpriteComponent.class).scaleX(0.25f);
+        paddle2.GetCompenent(SpriteComponent.class).scaleX(0.25f);
+        ball.GetCompenent(SpriteComponent.class).scaleXY(0.2f,0.2f);
 //        System.exit(0);
     }
 
@@ -68,13 +67,13 @@ public class DemoRenderer extends GameRenderer {
             paddle2.transform.transform(Vector3.up);
         }
         ball.transform.transform(bt);
-        if(paddle1.GetCompenent(ColliderCompenet.class).isCollided(ball.GetCompenent(ColliderCompenet.class))){
+        if(paddle1.GetCompenent(ColliderComponent.class).isCollided(ball.GetCompenent(ColliderComponent.class))){
             float min = -0.5f;
             float max = 0.5f;
             float randomNum = (float) (Math.random() * (max - min) + min);
             bt = new Vector3(1,randomNum);
         }
-        if(paddle2.GetCompenent(ColliderCompenet.class).isCollided(ball.GetCompenent(ColliderCompenet.class))){
+        if(paddle2.GetCompenent(ColliderComponent.class).isCollided(ball.GetCompenent(ColliderComponent.class))){
             float min = -0.5f;
             float max = 0.5f;
             float randomNum = (float) (Math.random() * (max - min) + min);

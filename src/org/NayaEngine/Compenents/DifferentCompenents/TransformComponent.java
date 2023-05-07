@@ -1,14 +1,10 @@
 package org.NayaEngine.Compenents.DifferentCompenents;
 
-import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.GL4;
 import org.NayaEngine.Compenents.iComponent;
 import org.NayaEngine.Tooling.Camera;
-import org.NayaEngine.Tooling.loadShader;
+import org.NayaEngine.Tooling.LoadShader;
 import org.NayaEngine.math.Vector3;
 import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3fc;
 
 
 /**
@@ -59,7 +55,7 @@ public class TransformComponent extends iComponent {
     }
 
     @Override
-    public void sendtoGPU(int shaderProgram, loadShader sh) {
+    public void sendtoGPU(int shaderProgram, LoadShader sh) {
         if (rotation == null) {
             rotation = new Matrix4f();
             rotation.identity();

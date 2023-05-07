@@ -21,7 +21,7 @@ public class InterptStuff {
             InvocationTargetException,
             InstantiationException,
             IllegalAccessException {
-//        Class<?> clazz = Class.forName("org.NayaEngine.ColliderCompenet");
+//        Class<?> clazz = Class.forName("org.NayaEngine.ColliderComponent");
 //        Object obj = clazz.getDeclaredConstructor().newInstance();
 //
 //        Field field = clazz.getDeclaredField("myVariable");

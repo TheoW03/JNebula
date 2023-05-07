@@ -3,10 +3,10 @@ package org.NayaEngine.GameObjects;
 import com.jogamp.opengl.GL4;
 import org.NayaEngine.Compenents.DifferentCompenents.GizmosCompenent;
 import org.NayaEngine.Compenents.DifferentCompenents.PhysicsComponent;
-import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
+import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponent;
 import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
 import org.NayaEngine.Compenents.iComponent;
-import org.NayaEngine.Tooling.loadShader;
+import org.NayaEngine.Tooling.LoadShader;
 
 import java.nio.IntBuffer;
 import java.util.ArrayList;
@@ -69,16 +69,16 @@ public class GameObject {
 
     public void update(float dt, GL4 gl) {
         if (isActive) {
-            loadShader sh = new loadShader();
+            LoadShader sh = new LoadShader();
 //        gl.glClear(GL.GL_COLOR_BUFFER_BIT); // Clear the color buffer to the clear color
             indices = new int[3];
             int shP = sh.shaderCOmpile(gl);
             for (int i = 0; i < compenets.size(); i++) {
                 compenets.get(i).update(dt);
                 compenets.get(i).sendtoGPU(shP, sh);
-                if (GetCompenent(SpriteComponents.class) != null) {
+                if (GetCompenent(SpriteComponent.class) != null) {
                     System.out.println("update: " + this.name);
-                    indices = GetCompenent(SpriteComponents.class).indices;
+                    indices = GetCompenent(SpriteComponent.class).indices;
                     int[] buffers = new int[1];
                     gl.glGenBuffers(1, buffers, 0);
 //                    gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL_LINES);
@@ -124,8 +124,8 @@ public class GameObject {
 //                    gl.glDrawElements(GL_LINE_LOOP, 3, GL_UNSIGNED_INT, 0);
                     gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
                 }
-//                if (compenets.get(i) instanceof SpriteComponents) {
-//                    indices = ((SpriteComponents) compenets.get(i)).indices;
+//                if (compenets.get(i) instanceof SpriteComponent) {
+//                    indices = ((SpriteComponent) compenets.get(i)).indices;
 //                    int[] buffers = new int[1];
 //                    gl.glGenBuffers(1, buffers, 0);
 //                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
@@ -137,7 +137,7 @@ public class GameObject {
 
 
             }
-            if (GetCompenent(SpriteComponents.class) != null) {
+            if (GetCompenent(SpriteComponent.class) != null) {
                 System.out.println("render");
 
 
@@ -153,22 +153,22 @@ public class GameObject {
     public void start(float dt, GL4 gl) {
         ArrayList<GizmosCompenent> c = new ArrayList<>();
         if (isActive) {
-            loadShader sh = new loadShader();
+            LoadShader sh = new LoadShader();
             int shP = sh.shaderCOmpile(gl);
             indices = new int[3];
             for (int i = 0; i < compenets.size(); i++) {
                 compenets.get(i).init(dt);
                 compenets.get(i).sendtoGPU(shP, sh);
-                if (GetCompenent(SpriteComponents.class) != null) {
-                    indices = GetCompenent(SpriteComponents.class).indices;
+                if (GetCompenent(SpriteComponent.class) != null) {
+                    indices = GetCompenent(SpriteComponent.class).indices;
                     int[] buffers = new int[1];
                     gl.glGenBuffers(1, buffers, 0);
                     gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
                     gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
                 }
 
-//                if (compenets.get(i) instanceof SpriteComponents) {
-//                    indices = ((SpriteComponents) compenets.get(i)).indices;
+//                if (compenets.get(i) instanceof SpriteComponent) {
+//                    indices = ((SpriteComponent) compenets.get(i)).indices;
 //                    int[] buffers = new int[1];
 //                    gl.glGenBuffers(1, buffers, 0);
 //                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
@@ -181,7 +181,7 @@ public class GameObject {
 
             }
 
-//            if(GetCompenent(SpriteComponents.class) != null){
+//            if(GetCompenent(SpriteComponent.class) != null){
 //                gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
 //                gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
 //                gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);

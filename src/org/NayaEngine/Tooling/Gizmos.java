@@ -1,10 +1,6 @@
 package org.NayaEngine.Tooling;
 
-import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponents;
-import org.NayaEngine.GameObjects.GameObject;
-
-import java.util.*;
-import java.io.*;
+import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponent;
 
 
 /**
@@ -17,7 +13,7 @@ public class Gizmos {
     public Gizmos() {
 
     }
-    public static void DrawHitBox(SpriteComponents a){
+    public static void DrawHitBox(SpriteComponent a){
 
 
     }

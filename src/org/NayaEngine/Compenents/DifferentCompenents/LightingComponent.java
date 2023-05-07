@@ -1,22 +1,15 @@
 package org.NayaEngine.Compenents.DifferentCompenents;
 
 
-import com.jogamp.opengl.GL;
-import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.GL4;
 import org.NayaEngine.Compenents.iComponent;
-import org.NayaEngine.GameObjects.GameObject;
-import org.NayaEngine.Tooling.loadShader;
+import org.NayaEngine.Tooling.LoadShader;
 import org.NayaEngine.math.Vector3;
 import org.NayaEngine.math.VectorMath;
 
 import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
 import java.util.Arrays;
 
 import static com.jogamp.opengl.GL.*;
-import static com.jogamp.opengl.fixedfunc.GLLightingFunc.*;
-import static com.jogamp.opengl.fixedfunc.GLLightingFunc.GL_LIGHT0;
 
 /**
  * @author Theo willis
@@ -84,7 +77,7 @@ public class LightingComponent extends iComponent {
     float i2 = 1.0f;
 
     @Override
-    public void sendtoGPU(int shaderProgram, loadShader sh) {
+    public void sendtoGPU(int shaderProgram, LoadShader sh) {
         int[] buffers = new int[2];
         if (source != null) {
             if (source.gameObject.GetCompenent(TransformComponent.class) == null || source.gameObject.GetCompenent(CameraComponent.class) == null) {
@@ -134,7 +127,7 @@ public class LightingComponent extends iComponent {
         gl.glUniform1f(strengthL, this.strength);
         VectorMath v = new VectorMath();
         float[] normals;
-        normals = v.vectorNormals(this.gameObject.GetCompenent(SpriteComponents.class).getVecticesAsVector());
+        normals = v.vectorNormals(this.gameObject.GetCompenent(SpriteComponent.class).getVecticesAsVector());
         int normalLoc = gl.glGetAttribLocation(shaderProgram, "anormal");
         gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
         gl.glBufferData(GL_ARRAY_BUFFER, normals.length * 4L, FloatBuffer.wrap(normals), GL_STATIC_DRAW);

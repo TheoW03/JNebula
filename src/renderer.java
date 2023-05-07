@@ -1,5 +1,5 @@
 import org.NayaEngine.Tooling.Camera;
-import org.NayaEngine.Tooling.loadShader;
+import org.NayaEngine.Tooling.LoadShader;
 import org.NayaEngine.math.Vector3;
 import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.*;
@@ -121,7 +121,7 @@ public class renderer implements GLEventListener {
 
         gl.glEnable(GL_TEXTURE_2D);
 
-        loadShader sh = new loadShader();
+        LoadShader sh = new LoadShader();
         String vertexSource = "";
         String fragSource = "";
         int[] buffers = new int[3];
