@@ -191,7 +191,7 @@ public class renderer implements GLEventListener {
         matBufferV.clear();
 
         FloatBuffer matBufferM = Buffers.newDirectFloatBuffer(1024);
-        c.initModel(new Vector3(0,frames,0)).get(matBufferM);
+//        c.initModel(new Vector3(0,frames,0)).get(matBufferM);
         gl.glUniformMatrix4fv(modelMartrix, 1, false, matBufferM);
         matBufferM.clear();
 // Draw the quad

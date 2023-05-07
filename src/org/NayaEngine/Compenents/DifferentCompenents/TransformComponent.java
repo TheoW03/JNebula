@@ -39,12 +39,12 @@ public class TransformComponent extends iComponent {
         location.x += transform.x;
         location.y += transform.y;
     }
-    public void rotateContinosuly(float angle) {
+    public void rotateContinuously(float angle) {
 //        this.rotation = new Matrix4f();
-        Matrix4f newROtate = new Matrix4f();
-        newROtate.identity();
-        newROtate.rotate(angle, 0, 0, 1);
-        rotation = rotation.mul(newROtate);
+        Matrix4f newRotate = new Matrix4f();
+        newRotate.identity();
+        newRotate.rotate(angle, 0, 0, 1);
+        rotation = rotation.mul(newRotate);
 
     }
 
@@ -53,7 +53,13 @@ public class TransformComponent extends iComponent {
         rotation.rotate(angle, 0, 0, 1);
 
     }
+    private Matrix4f initModel(Vector3 location){
+        Matrix4f modelViewMatrix = new Matrix4f();
+        modelViewMatrix.identity();
 
+        return modelViewMatrix.translate(location.x/100.0f, location.y/100.0f,0);
+
+    }
     @Override
     public void sendtoGPU(int shaderProgram, LoadShader sh) {
         if (rotation == null) {
@@ -63,7 +69,7 @@ public class TransformComponent extends iComponent {
         int modelMartrix = gl.glGetUniformLocation(shaderProgram, "model");
         int rotationMatrix = gl.glGetUniformLocation(shaderProgram, "rot");
 
-        Matrix4f m = camera.initModel(location);
+        Matrix4f m = initModel(location);
         sh.sendMartices(rotation, gl, rotationMatrix);
         sh.sendMartices(m, gl, modelMartrix);
 

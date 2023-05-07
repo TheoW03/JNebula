@@ -76,7 +76,7 @@ public class Sprite2D {
     }
 
     public void render(Camera camera, Vector3 location, GL gl, Texture texture) {
-        Matrix4f model = camera.initModel(location);
+//        Matrix4f model = camera.initModel(location);
 
 
 
