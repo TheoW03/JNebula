@@ -62,10 +62,5 @@ public class PhysicsComponent extends iComponent {
         vectorPosition.x += a.x;
     }
 
-    @Override
-    public void sendtoGPU(int shaderProgram, LoadShader sh) {
-
-
-    }
 
 }

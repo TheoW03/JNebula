@@ -7,6 +7,7 @@ import org.NayaEngine.Compenents.iComponent;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.util.*;
 import java.io.*;
 
@@ -29,7 +30,7 @@ public class Window {
 
                 JFrame jFrame = new JFrame(title);
                 jFrame.setSize(width, height);
-                jFrame.addKeyListener(new Input());
+                jFrame.addKeyListener((KeyListener) renderer);
 
                 GLJPanel glJPanel = new GLJPanel(glCapabilities);
                 glJPanel.addKeyListener(new Input());

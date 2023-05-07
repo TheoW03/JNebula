@@ -6,6 +6,10 @@ import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import org.NayaEngine.Compenents.iComponent;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.*;
 import java.io.*;
 
@@ -16,7 +20,7 @@ import java.io.*;
  * ~ project outline here ~
  * @Javadoc
  */
-public abstract class GameRenderer implements GLEventListener {
+public abstract class GameRenderer implements GLEventListener, KeyListener {
     public static GL4 gl;
     public ArrayList<GameObject> gameObjectArrayList; //might use map
     public InitObjects Init;
@@ -45,4 +49,19 @@ public abstract class GameRenderer implements GLEventListener {
 
     }
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
 }

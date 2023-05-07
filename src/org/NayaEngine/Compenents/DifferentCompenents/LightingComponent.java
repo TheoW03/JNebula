@@ -38,7 +38,6 @@ public class LightingComponent extends iComponent {
     }
 
     public LightingComponent(LightingComponent source) {
-        this.gl = gl;
         this.lightColor = source.lightColor;
         this.strength = source.strength;
         this.intensity = source.intensity;

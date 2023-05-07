@@ -21,6 +21,7 @@ import java.awt.event.KeyEvent;
  */
 public class DemoRenderer extends GameRenderer {
     GameObject paddle1, paddle2, ball;
+
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
         super.init(glAutoDrawable);
@@ -29,60 +30,63 @@ public class DemoRenderer extends GameRenderer {
         ball = new GameObject("ball");
 
 
-        ball.AddComponent(new SpriteComponent(new Colors(1,1,1)));
-        paddle1.AddComponent(new SpriteComponent("src/DemoGame/assets/paddle_asset.PNG","png",null));
-        paddle2.AddComponent(new SpriteComponent("src/DemoGame/assets/paddle_asset.PNG","png",null));
+        ball.AddComponent(new SpriteComponent(new Colors(1, 1, 1)));
+        paddle1.AddComponent(new SpriteComponent("src/DemoGame/assets/paddle_asset.PNG", "png", null));
+        paddle2.AddComponent(new SpriteComponent("src/DemoGame/assets/paddle_asset.PNG", "png", null));
         Init = new InitObjects();
         gameObjectArrayList.add(paddle1);
         gameObjectArrayList.add(paddle2);
         gameObjectArrayList.add(ball);
-        paddle1.AddComponent(new TransformComponent(new Vector3(30,100)));
-        paddle2.AddComponent(new TransformComponent(new Vector3(170,100)));
+        paddle1.AddComponent(new TransformComponent(new Vector3(30, 100)));
+        paddle2.AddComponent(new TransformComponent(new Vector3(170, 100)));
         paddle1.AddComponent(new ColliderComponent());
         paddle2.AddComponent(new ColliderComponent());
-        ball.AddComponent(new TransformComponent(new Vector3(100,100)));
+        ball.AddComponent(new TransformComponent(new Vector3(100, 100)));
         ball.AddComponent(new ColliderComponent());
         System.out.println("init");
         paddle1.GetCompenent(SpriteComponent.class).scaleX(0.25f);
         paddle2.GetCompenent(SpriteComponent.class).scaleX(0.25f);
-        ball.GetCompenent(SpriteComponent.class).scaleXY(0.2f,0.2f);
+        ball.GetCompenent(SpriteComponent.class).scaleXY(0.2f, 0.2f);
 //        System.exit(0);
     }
 
     Vector3 bt = Vector3.left;
+
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
         Init.InstantiateObjects(gameObjectArrayList);
 
-        if(Input.getKey()== KeyEvent.VK_S){
-            paddle1.transform.transform(Vector3.down);
-        }
-        if(Input.getKey()== KeyEvent.VK_W){
-            paddle1.transform.transform(Vector3.up);
-        }
-        if(Input.getKey()== KeyEvent.VK_DOWN){
-            paddle2.transform.transform(Vector3.down);
-        }
-        if(Input.getKey()== KeyEvent.VK_UP){
-            paddle2.transform.transform(Vector3.up);
-        }
+
+//  use methods
+//        if(Input.getKey()== KeyEvent.VK_S){
+//            paddle1.transform.transform(Vector3.down);
+//        }
+//        if(Input.getKey()== KeyEvent.VK_W){
+//            paddle1.transform.transform(Vector3.up);
+//        }
+//        if(Input.getKey()== KeyEvent.VK_DOWN){
+//            paddle2.transform.transform(Vector3.down);
+//        }
+//        if(Input.getKey()== KeyEvent.VK_UP){
+//            paddle2.transform.transform(Vector3.up);
+//        }
         ball.transform.transform(bt);
-        if(paddle1.GetCompenent(ColliderComponent.class).isCollided(ball.GetCompenent(ColliderComponent.class))){
+        if (paddle1.GetCompenent(ColliderComponent.class).isCollided(ball.GetCompenent(ColliderComponent.class))) {
             float min = -0.5f;
             float max = 0.5f;
             float randomNum = (float) (Math.random() * (max - min) + min);
-            bt = new Vector3(1,randomNum);
+            bt = new Vector3(1, randomNum);
         }
-        if(paddle2.GetCompenent(ColliderComponent.class).isCollided(ball.GetCompenent(ColliderComponent.class))){
+        if (paddle2.GetCompenent(ColliderComponent.class).isCollided(ball.GetCompenent(ColliderComponent.class))) {
             float min = -0.5f;
             float max = 0.5f;
             float randomNum = (float) (Math.random() * (max - min) + min);
-            bt = new Vector3(-1,randomNum);
+            bt = new Vector3(-1, randomNum);
         }
-        if(ball.transform.location.y > 200){
-            bt = new Vector3(bt.x,-bt.y);
-        }else if(ball.transform.location.y < 0){
-            bt = new Vector3(bt.x,bt.y);
+        if (ball.transform.location.y > 200) {
+            bt = new Vector3(bt.x, -bt.y);
+        } else if (ball.transform.location.y < 0) {
+            bt = new Vector3(bt.x, bt.y);
         }
 
     }
