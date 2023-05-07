@@ -50,6 +50,7 @@ public class InitObjects {
             if(object.get(i).GetCompenent(TransformComponent.class) == null){
                 object.get(i).AddComponent(new TransformComponent(new Vector3(0,0,0)));
             }
+
             if (!first) {
                 object.get(i).start(0.1f, gl);
                 System.out.println(object.get(i).name);
@@ -62,7 +63,7 @@ public class InitObjects {
         }
 
 
-        for (int i = 0; i < object.size(); i++) {
+//        for (int i = 0; i < object.size(); i++) {
 //            if(object.get(i).GetCompenent(SpriteComponents.class) != null){
 //                System.out.println("init: "+object.get(i).name);
 //                int[] indices = object.get(i).indices;
@@ -81,7 +82,7 @@ public class InitObjects {
 //
 //            }
 
-        }
+//        }
         first = true;
     }
 

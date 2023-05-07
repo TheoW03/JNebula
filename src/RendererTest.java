@@ -60,11 +60,11 @@ public class RendererTest implements GLEventListener {
         test3.AddComponent(new TransformComponent(new Vector3(90, 150, 0)));
         list.add(test3);
 //        test.AddComponent(new LightingComponent(0.2f,new float[]{0.5f,0.5f,0.5f},0.3f,gl));
-//        test.AddComponent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg",1,5,20,108,64,7,gl));
-//        test.AddComponent(new SpriteComponents("src/sprites/sprite_sheet.jpg", "jpg", 1, 5, 20, 64, 64, 7, gl));
+//        test.AddComponent(new SpriteComponents(s1,10,null));
 //        test.AddComponent(new SpriteComponents(s1.getSection(1,3), s1,15, gl));
 //        test.AddComponent(new RenderCompenent(Colors.RED));
         test.AddComponent(new SpriteComponents("src/sprites/test.jpg","jpg",null));
+//        test.AddComponent(new GizmosCompenent(test.GetCompenent(SpriteComponents.class)));
 //        test.GetCompenent(SpriteComponents.class).scale(200);
 //
 //        test.AddComponent(new SpriteComponents(s1,20, null));

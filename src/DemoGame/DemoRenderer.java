@@ -69,13 +69,16 @@ public class DemoRenderer extends GameRenderer {
         }
         ball.transform.transform(bt);
         if(paddle1.GetCompenent(ColliderCompenet.class).isCollided(ball.GetCompenent(ColliderCompenet.class))){
-            Random random = new Random();
-            float randomValue = random.nextFloat(0.5f) *-0.5f;
-            bt = new Vector3(1,0.5f);
+            float min = -0.5f;
+            float max = 0.5f;
+            float randomNum = (float) (Math.random() * (max - min) + min);
+            bt = new Vector3(1,randomNum);
         }
         if(paddle2.GetCompenent(ColliderCompenet.class).isCollided(ball.GetCompenent(ColliderCompenet.class))){
-            Random random = new Random();
-            bt = new Vector3(-1,-0.5f);
+            float min = -0.5f;
+            float max = 0.5f;
+            float randomNum = (float) (Math.random() * (max - min) + min);
+            bt = new Vector3(-1,randomNum);
         }
 
 

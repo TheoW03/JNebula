@@ -20,7 +20,9 @@ public abstract class iComponent {
     public void init(float dt){
 
     }
-    public abstract void update(float dt);
+    public void update(float dt){
+
+    }
     public void sendtoGPU(int shaderProgram, loadShader sh){
 
     }
