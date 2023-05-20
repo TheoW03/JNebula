@@ -58,8 +58,6 @@ public class DemoRenderer extends GameRenderer implements KeyListener {
     public void display(GLAutoDrawable glAutoDrawable) {
         Init.InstantiateObjects(gameObjectArrayList);
 
-
-//  use methods
         if(Input.getKey()== KeyEvent.VK_S){
             paddle1.transform.transform(Vector3.down);
         }

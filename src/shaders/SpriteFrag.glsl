@@ -49,7 +49,7 @@ struct renderedObject{
 vec4 calcLight(Light light){
     return vec4(0,0,0,0);
 }
-Ray[] rays(){
+Ray[4] rays(){
 
     // Define the corners of the square in camera space
     vec3 bl = vec3(-1.0, -1.0, 0.0);
