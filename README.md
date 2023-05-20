@@ -7,7 +7,7 @@ the naya engine.
 
 written in java
 
-# installation
+# Installation
 
 1. <p>download these 2 dependecies
 ---
@@ -21,7 +21,7 @@ written in java
 *    requires java 17
 * https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
 ---
-# usage
+# Getting Started
 
 main
 
@@ -38,7 +38,7 @@ public class Main {
 ```
 ---
 
-renderer class
+your renderer class
 ```JAVA
 public class StarterCode extends GameRenderer {
     public InitObjects initObject;

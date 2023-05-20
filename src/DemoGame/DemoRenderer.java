@@ -11,7 +11,9 @@ import org.NayaEngine.Tooling.Colors;
 import org.NayaEngine.Tooling.Input;
 import org.NayaEngine.math.Vector3;
 
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * @author Theo willis
@@ -19,7 +21,7 @@ import java.awt.event.KeyEvent;
  * ~ project outline here ~
  * @Javadoc
  */
-public class DemoRenderer extends GameRenderer {
+public class DemoRenderer extends GameRenderer implements KeyListener {
     GameObject paddle1, paddle2, ball;
 
     @Override
@@ -58,18 +60,18 @@ public class DemoRenderer extends GameRenderer {
 
 
 //  use methods
-//        if(Input.getKey()== KeyEvent.VK_S){
-//            paddle1.transform.transform(Vector3.down);
-//        }
-//        if(Input.getKey()== KeyEvent.VK_W){
-//            paddle1.transform.transform(Vector3.up);
-//        }
-//        if(Input.getKey()== KeyEvent.VK_DOWN){
-//            paddle2.transform.transform(Vector3.down);
-//        }
-//        if(Input.getKey()== KeyEvent.VK_UP){
-//            paddle2.transform.transform(Vector3.up);
-//        }
+        if(Input.getKey()== KeyEvent.VK_S){
+            paddle1.transform.transform(Vector3.down);
+        }
+        if(Input.getKey()== KeyEvent.VK_W){
+            paddle1.transform.transform(Vector3.up);
+        }
+        if(Input.getKey()== KeyEvent.VK_DOWN){
+            paddle2.transform.transform(Vector3.down);
+        }
+        if(Input.getKey()== KeyEvent.VK_UP){
+            paddle2.transform.transform(Vector3.up);
+        }
         ball.transform.transform(bt);
         if (paddle1.GetCompenent(ColliderComponent.class).isCollided(ball.GetCompenent(ColliderComponent.class))) {
             float min = -0.5f;
@@ -90,4 +92,39 @@ public class DemoRenderer extends GameRenderer {
         }
 
     }
+//    @Override
+//    public void keyPressed(KeyEvent e) {
+//        if (e.getKeyCode() == KeyEvent.VK_S) {
+//            paddle1.transform.transform(Vector3.down);
+//
+//        }
+//        if (e.getKeyCode() == KeyEvent.VK_W) {
+//            paddle1.transform.transform(Vector3.up);
+//        }
+//        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+//            paddle2.transform.transform(Vector3.down);
+//        }
+//        if (e.getKeyCode() == KeyEvent.VK_UP) {
+//            paddle2.transform.transform(Vector3.up);
+//        }
+//    }
+//
+//    @Override
+//    public void keyReleased(KeyEvent e) {
+//        if (e.getKeyCode() == KeyEvent.VK_S) {
+//            paddle1.transform.transform(Vector3.zero);
+//        }
+//        if (e.getKeyCode() == KeyEvent.VK_W) {
+//            paddle1.transform.transform(Vector3.zero);
+//        }
+//        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+//            paddle2.transform.transform(Vector3.zero);
+//        }
+//        if (e.getKeyCode() == KeyEvent.VK_UP) {
+//            paddle2.transform.transform(Vector3.zero);
+//        }
+//    }
+
+
+
 }
