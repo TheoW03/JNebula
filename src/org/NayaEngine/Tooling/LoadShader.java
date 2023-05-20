@@ -22,6 +22,7 @@ import java.io.*;
  */
 public class LoadShader {
 
+    public String vertexSource, fragSource;
     /**
      * @return shader content
      */
@@ -43,8 +44,9 @@ public class LoadShader {
     }
 
     public int shaderCOmpile(GL4 gl) {
-        String vertexSource = "",
-                fragSource = "";
+        if(vertexSource != null && fragSource != null){
+            return loadShaders(vertexSource,fragSource,gl);
+        }
         try {
             vertexSource = processShader("VertexSprite.glsl");
             fragSource = processShader("SpriteFrag.glsl");

@@ -283,7 +283,7 @@ public class SpriteComponent extends iComponent {
         centPoints[0] = new Vector3((a.x + (width / 2)), (a.y + (height / 2)));
         centPoints[1] = new Vector3((a.x - (width / 2)), (a.y + (height / 2)));
         centPoints[2] = new Vector3((a.x - (width / 2)), (a.y - (height / 2)));
-        centPoints[3] = new Vector3((a.x + (width / 2)), (a.y - (height / 2)));
+        centPoints[3] = new Vector3((a.x + (width / 2)), (a.y - (height / 2))); // D:
         centPoints[4] = a;
         System.out.println(Arrays.toString(centPoints));
         System.out.println(a);

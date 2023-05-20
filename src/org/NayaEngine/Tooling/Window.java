@@ -4,6 +4,8 @@ import com.jogamp.opengl.*;
 import com.jogamp.opengl.awt.GLJPanel;
 import com.jogamp.opengl.util.FPSAnimator;
 import org.NayaEngine.Compenents.iComponent;
+import org.NayaEngine.GameObjects.GameObject;
+import org.NayaEngine.GameObjects.GameRenderer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,7 +24,7 @@ public class Window {
     public static FPSAnimator animator;
     public static float deltaTime;
 
-    public Window(int width, int height, String title, GLEventListener renderer) {
+    public Window(int width, int height, String title, GameRenderer renderer) {
         final GLProfile glProfile = GLProfile.getDefault();
         final GLCapabilities glCapabilities = new GLCapabilities(glProfile);
         SwingUtilities.invokeLater(new Runnable() {
@@ -30,10 +32,10 @@ public class Window {
 
                 JFrame jFrame = new JFrame(title);
                 jFrame.setSize(width, height);
-                jFrame.addKeyListener((KeyListener) renderer);
+//                jFrame.addKeyListener(renderer);
 
                 GLJPanel glJPanel = new GLJPanel(glCapabilities);
-                glJPanel.addKeyListener(new Input());
+                glJPanel.addKeyListener(renderer);
                 glJPanel.addMouseListener(new Input());
 
                 animator = new FPSAnimator(glJPanel, 60);
