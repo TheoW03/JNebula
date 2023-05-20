@@ -56,20 +56,18 @@ public class DemoRenderer extends GameRenderer {
     public void display(GLAutoDrawable glAutoDrawable) {
         Init.InstantiateObjects(gameObjectArrayList);
 
-
-//  use methods
-//        if(Input.getKey()== KeyEvent.VK_S){
-//            paddle1.transform.transform(Vector3.down);
-//        }
-//        if(Input.getKey()== KeyEvent.VK_W){
-//            paddle1.transform.transform(Vector3.up);
-//        }
-//        if(Input.getKey()== KeyEvent.VK_DOWN){
-//            paddle2.transform.transform(Vector3.down);
-//        }
-//        if(Input.getKey()== KeyEvent.VK_UP){
-//            paddle2.transform.transform(Vector3.up);
-//        }
+        if(Input.getKey()== KeyEvent.VK_S){
+            paddle1.transform.transform(Vector3.down);
+        }
+        if(Input.getKey()== KeyEvent.VK_W){
+            paddle1.transform.transform(Vector3.up);
+        }
+        if(Input.getKey()== KeyEvent.VK_DOWN){
+            paddle2.transform.transform(Vector3.down);
+        }
+        if(Input.getKey()== KeyEvent.VK_UP){
+            paddle2.transform.transform(Vector3.up);
+        }
         ball.transform.transform(bt);
         if (paddle1.GetCompenent(ColliderComponent.class).isCollided(ball.GetCompenent(ColliderComponent.class))) {
             float min = -0.5f;
