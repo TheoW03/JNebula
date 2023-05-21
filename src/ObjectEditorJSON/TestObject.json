@@ -1,6 +1,5 @@
 [
   {
-    "object_type": "org.JNebula.GameObjects.GameObject",
     "name": "testObject",
     "components": [
       {

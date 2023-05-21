@@ -2,6 +2,7 @@
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.JNebula.ObjectEditor.ObjectEditorJSON;
+import org.JNebula.Tooling.Window;
 import org.JNebula.math.Vector3;
 
 import java.io.*;
@@ -23,11 +24,11 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws IOException {
 //        Window w = new Window(640, 480, "2D graphics inDev edition", new RendererTest());
-//        Window.InitWindow(640, 480, "2D graphics inDev edition", new RendererTest());
+        Window.InitWindow(640, 480, "2D graphics inDev edition", new RendererTest());
         Vector3 a;
 //        Camera a;
 
-        testObjectEditor();
+//        testObjectEditor();
 
         // TODO: Object eidtor
 

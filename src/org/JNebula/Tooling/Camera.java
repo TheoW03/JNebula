@@ -37,7 +37,8 @@ public class Camera {
         Matrix4f scaleMatrix4f = new Matrix4f();
         scaleMatrix4f.identity();
         scaleMatrix4f.scale(2);
-        projection.ortho(0, (32.0f * 40.0f), 0.0f, (32.0f * 21.0f), 1, 50.0f);
+        projection.ortho(0.0f, 32.0f * 40.0f, 0.0f, 32.0f * 21.0f, 0.0f, 100.0f);
+
     }
     public Matrix4f viewMatrix() {
         Vector3f cameraFront = new Vector3f(0.0f,0.0f,-1.0f);

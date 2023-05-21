@@ -1,3 +1,3 @@
 # object editor
 
-WIP
+JSON based
