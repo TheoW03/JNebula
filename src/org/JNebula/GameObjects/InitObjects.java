@@ -3,10 +3,10 @@ package org.JNebula.GameObjects;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.util.FPSAnimator;
-import org.JNebula.Compenents.DifferentCompenents.CameraComponent;
-import org.JNebula.Compenents.DifferentCompenents.ColliderComponent;
-import org.JNebula.Compenents.DifferentCompenents.TransformComponent;
-import org.JNebula.Compenents.iComponent;
+import org.JNebula.Components.DifferentComponents.CameraComponent;
+import org.JNebula.Components.DifferentComponents.ColliderComponent;
+import org.JNebula.Components.DifferentComponents.TransformComponent;
+import org.JNebula.Components.iComponent;
 import org.JNebula.math.Vector3;
 
 import java.util.*;

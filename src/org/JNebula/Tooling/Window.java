@@ -3,7 +3,7 @@ package org.JNebula.Tooling;
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.awt.GLJPanel;
 import com.jogamp.opengl.util.FPSAnimator;
-import org.JNebula.Compenents.iComponent;
+import org.JNebula.Components.iComponent;
 import org.JNebula.GameObjects.GameRenderer;
 
 import javax.swing.*;

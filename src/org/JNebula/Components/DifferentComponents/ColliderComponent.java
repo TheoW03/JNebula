@@ -1,6 +1,6 @@
-package org.JNebula.Compenents.DifferentCompenents;
+package org.JNebula.Components.DifferentComponents;
 
-import org.JNebula.Compenents.iComponent;
+import org.JNebula.Components.iComponent;
 import org.JNebula.math.Ray;
 import org.JNebula.math.Vector3;
 import org.joml.Vector2f;

@@ -1,10 +1,10 @@
-package org.JNebula.Compenents.DifferentCompenents;
+package org.JNebula.Components.DifferentComponents;
 
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.texture.TextureData;
 import com.jogamp.opengl.util.texture.TextureIO;
-import org.JNebula.Compenents.iComponent;
+import org.JNebula.Components.iComponent;
 import com.jogamp.opengl.util.texture.Texture;
 import org.JNebula.Tooling.Colors;
 import org.JNebula.Tooling.SpriteSheetList;

@@ -1,15 +1,12 @@
 package org.JNebula.ObjectEditor;
 
 import com.google.gson.Gson;
-import org.JNebula.Compenents.DifferentCompenents.TransformComponent;
-import org.JNebula.Compenents.iComponent;
+import org.JNebula.Components.iComponent;
 import org.JNebula.GameObjects.GameObject;
-import org.JNebula.math.Vector3;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;

@@ -1,8 +1,8 @@
-package org.JNebula.Compenents;
+package org.JNebula.Components;
 
 
 import com.jogamp.opengl.GL4;
-import org.JNebula.Compenents.DifferentCompenents.ColliderComponent;
+import org.JNebula.Components.DifferentComponents.ColliderComponent;
 import org.JNebula.GameObjects.GameObject;
 import org.JNebula.Tooling.LoadShader;
 

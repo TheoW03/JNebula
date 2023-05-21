@@ -1,7 +1,7 @@
 package org.JNebula.uselessgameObjStuff;
 
-import org.JNebula.Compenents.ManageCmponent;
-import org.JNebula.Compenents.iComponent;
+import org.JNebula.Components.ManageCmponent;
+import org.JNebula.Components.iComponent;
 import org.JNebula.Tooling.Camera;
 import org.JNebula.math.Vector3;
 

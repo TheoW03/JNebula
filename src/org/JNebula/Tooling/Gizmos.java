@@ -1,6 +1,6 @@
 package org.JNebula.Tooling;
 
-import org.JNebula.Compenents.DifferentCompenents.SpriteComponent;
+import org.JNebula.Components.DifferentComponents.SpriteComponent;
 
 
 /**

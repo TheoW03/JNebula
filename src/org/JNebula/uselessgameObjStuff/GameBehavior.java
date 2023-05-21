@@ -1,6 +1,6 @@
 package org.JNebula.uselessgameObjStuff;
 
-import org.JNebula.Compenents.iComponent;
+import org.JNebula.Components.iComponent;
 
 import java.util.ArrayList;
 

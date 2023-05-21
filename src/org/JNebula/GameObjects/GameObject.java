@@ -1,11 +1,11 @@
 package org.JNebula.GameObjects;
 
 import com.jogamp.opengl.GL4;
-import org.JNebula.Compenents.DifferentCompenents.GizmosCompenent;
-import org.JNebula.Compenents.DifferentCompenents.PhysicsComponent;
-import org.JNebula.Compenents.DifferentCompenents.SpriteComponent;
-import org.JNebula.Compenents.DifferentCompenents.TransformComponent;
-import org.JNebula.Compenents.iComponent;
+import org.JNebula.Components.DifferentComponents.GizmosCompenent;
+import org.JNebula.Components.DifferentComponents.PhysicsComponent;
+import org.JNebula.Components.DifferentComponents.SpriteComponent;
+import org.JNebula.Components.DifferentComponents.TransformComponent;
+import org.JNebula.Components.iComponent;
 import org.JNebula.Tooling.LoadShader;
 
 import java.nio.IntBuffer;

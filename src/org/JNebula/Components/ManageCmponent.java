@@ -1,4 +1,4 @@
-package org.JNebula.Compenents;
+package org.JNebula.Components;
 
 import java.util.*;
 

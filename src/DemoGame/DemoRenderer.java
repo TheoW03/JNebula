@@ -1,9 +1,9 @@
 package DemoGame;
 
 import com.jogamp.opengl.GLAutoDrawable;
-import org.JNebula.Compenents.DifferentCompenents.ColliderComponent;
-import org.JNebula.Compenents.DifferentCompenents.SpriteComponent;
-import org.JNebula.Compenents.DifferentCompenents.TransformComponent;
+import org.JNebula.Components.DifferentComponents.ColliderComponent;
+import org.JNebula.Components.DifferentComponents.SpriteComponent;
+import org.JNebula.Components.DifferentComponents.TransformComponent;
 import org.JNebula.GameObjects.GameObject;
 import org.JNebula.GameObjects.GameRenderer;
 import org.JNebula.GameObjects.InitObjects;

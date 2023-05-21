@@ -1,7 +1,7 @@
-package org.JNebula.Compenents.DifferentCompenents;
+package org.JNebula.Components.DifferentComponents;
 
 
-import org.JNebula.Compenents.iComponent;
+import org.JNebula.Components.iComponent;
 
 /**
  * @author Theo willis

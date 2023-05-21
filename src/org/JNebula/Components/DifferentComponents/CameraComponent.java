@@ -1,6 +1,6 @@
-package org.JNebula.Compenents.DifferentCompenents;
+package org.JNebula.Components.DifferentComponents;
 
-import org.JNebula.Compenents.iComponent;
+import org.JNebula.Components.iComponent;
 import org.JNebula.Tooling.Camera;
 import org.JNebula.Tooling.LoadShader;
 import org.JNebula.math.Vector3;

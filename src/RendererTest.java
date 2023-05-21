@@ -1,8 +1,8 @@
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.util.FPSAnimator;
-import org.JNebula.Compenents.DifferentCompenents.*;
+import org.JNebula.Components.DifferentComponents.*;
 //import org.NayaEngine.GameObjects.FrameRate;
-import org.JNebula.Compenents.iComponent;
+import org.JNebula.Components.iComponent;
 import org.JNebula.GameObjects.GameObject;
 import org.JNebula.GameObjects.InitObjects;
 import org.JNebula.Tooling.SpriteSheetList;
@@ -60,7 +60,7 @@ public class RendererTest implements GLEventListener {
         test3.AddComponent(new TransformComponent(new Vector3(90, 150, 0)));
         list.add(test3);
 //        test.AddComponent(new LightingComponent(0.2f,new float[]{0.5f,0.5f,0.5f},0.3f,gl));
-//        test.AddComponent(new SpriteComponent(s1,10,null));
+//        test.AddComponent(new SpriteComponent(s1,20,null));
 //        test.AddComponent(new SpriteComponent(s1.getSection(1,3), s1,15, gl));
 //        test.AddComponent(new RenderCompenent(Colors.RED));
         test.AddComponent(new SpriteComponent("src/sprites/test.jpg","jpg",null));

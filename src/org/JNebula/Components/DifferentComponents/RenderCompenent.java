@@ -1,7 +1,7 @@
-package org.JNebula.Compenents.DifferentCompenents;
+package org.JNebula.Components.DifferentComponents;
 
 import com.jogamp.opengl.GL;
-import org.JNebula.Compenents.iComponent;
+import org.JNebula.Components.iComponent;
 import org.JNebula.Tooling.Colors;
 import org.JNebula.Tooling.LoadShader;
 

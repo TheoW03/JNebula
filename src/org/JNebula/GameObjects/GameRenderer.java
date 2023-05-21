@@ -3,7 +3,7 @@ package org.JNebula.GameObjects;
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
-import org.JNebula.Compenents.iComponent;
+import org.JNebula.Components.iComponent;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
