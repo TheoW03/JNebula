@@ -1,17 +1,17 @@
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.util.FPSAnimator;
-import org.NayaEngine.Compenents.DifferentCompenents.*;
+import org.JNebula.Compenents.DifferentCompenents.*;
 //import org.NayaEngine.GameObjects.FrameRate;
-import org.NayaEngine.Compenents.iComponent;
-import org.NayaEngine.GameObjects.GameObject;
-import org.NayaEngine.GameObjects.InitObjects;
-import org.NayaEngine.Tooling.SpriteSheetList;
-import org.NayaEngine.uselessgameObjStuff.SpriteObject;
+import org.JNebula.Compenents.iComponent;
+import org.JNebula.GameObjects.GameObject;
+import org.JNebula.GameObjects.InitObjects;
+import org.JNebula.Tooling.SpriteSheetList;
+import org.JNebula.uselessgameObjStuff.SpriteObject;
 
-import org.NayaEngine.Tooling.Colors;
-import org.NayaEngine.math.Ray;
-import org.NayaEngine.Tooling.Window;
-import org.NayaEngine.math.Vector3;
+import org.JNebula.Tooling.Colors;
+import org.JNebula.math.Ray;
+import org.JNebula.Tooling.Window;
+import org.JNebula.math.Vector3;
 
 import java.util.ArrayList;
 

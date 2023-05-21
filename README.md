@@ -1,4 +1,4 @@
-# GameEngine2D v1.0.0
+# JNebula 2D v1.0.0
 
 
 the naya engine.
@@ -26,7 +26,7 @@ written in java
 main
 
 ```JAVA
-import org.NayaEngine.GameObjects.GameRenderer;
+import org.JNebula.GameObjects.GameRenderer;
 
 public class Main {
     public static void main(String[] args) throws IOException {

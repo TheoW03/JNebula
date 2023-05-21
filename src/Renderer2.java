@@ -1,13 +1,10 @@
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
-import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureIO;
-import org.NayaEngine.GameObjects.GameRenderer;
+import org.JNebula.GameObjects.GameRenderer;
 
-import java.awt.event.ActionEvent;
-import java.util.*;
 import java.io.*;
 
 import static com.jogamp.opengl.fixedfunc.GLLightingFunc.*;

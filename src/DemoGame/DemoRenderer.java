@@ -1,17 +1,16 @@
 package DemoGame;
 
 import com.jogamp.opengl.GLAutoDrawable;
-import org.NayaEngine.Compenents.DifferentCompenents.ColliderComponent;
-import org.NayaEngine.Compenents.DifferentCompenents.SpriteComponent;
-import org.NayaEngine.Compenents.DifferentCompenents.TransformComponent;
-import org.NayaEngine.GameObjects.GameObject;
-import org.NayaEngine.GameObjects.GameRenderer;
-import org.NayaEngine.GameObjects.InitObjects;
-import org.NayaEngine.Tooling.Colors;
-import org.NayaEngine.Tooling.Input;
-import org.NayaEngine.math.Vector3;
+import org.JNebula.Compenents.DifferentCompenents.ColliderComponent;
+import org.JNebula.Compenents.DifferentCompenents.SpriteComponent;
+import org.JNebula.Compenents.DifferentCompenents.TransformComponent;
+import org.JNebula.GameObjects.GameObject;
+import org.JNebula.GameObjects.GameRenderer;
+import org.JNebula.GameObjects.InitObjects;
+import org.JNebula.Tooling.Colors;
+import org.JNebula.Tooling.Input;
+import org.JNebula.math.Vector3;
 
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 

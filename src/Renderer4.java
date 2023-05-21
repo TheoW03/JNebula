@@ -1,17 +1,6 @@
-import com.jogamp.opengl.GL;
-import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.GLAutoDrawable;
-import org.NayaEngine.GameObjects.GameRenderer;
-import org.NayaEngine.Tooling.Input;
-
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.util.*;
-import java.io.*;
-
-import static com.jogamp.opengl.fixedfunc.GLLightingFunc.*;
+import org.JNebula.GameObjects.GameRenderer;
 
 /**
  * @author Theo willis

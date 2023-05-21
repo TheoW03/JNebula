@@ -1,9 +1,6 @@
 package DemoGame;
 
-import org.NayaEngine.Tooling.Window;
-
-import java.util.*;
-import java.io.*;
+import org.JNebula.Tooling.Window;
 
 /**
  * @author Theo willis
