@@ -1,26 +1,6 @@
 # JNebula 2D v1.0.0
+<p>coded by: TheoW03 and T-A-B</p>
 
-
-the naya engine.
-
-2D game engine coded by me TheoW03
-
-written in java
-
-# Installation
-
-1. <p>download these 2 dependecies
----
-*    version: 2.3.2 JOGL (openGL)
-* https://jar-download.com/artifacts/org.jogamp.gluegen/gluegen-rt
----
- *   version 1.10.5 JOML (Matrix math)
- * https://jar-download.com/artifacts/org.joml
-
----
-*    requires java 17
-* https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
----
 # Getting Started
 
 main
