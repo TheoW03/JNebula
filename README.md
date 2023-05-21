@@ -1,5 +1,9 @@
 # JNebula 2D v1.0.0
+
+a component based, 2D graphics engine
+coded in java 
 <p>coded by: TheoW03 and T-A-B</p>
+
 
 # Getting Started
 
