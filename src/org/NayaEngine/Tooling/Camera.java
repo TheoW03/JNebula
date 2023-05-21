@@ -51,4 +51,8 @@ public class Camera {
     public Matrix4f getProjection() {
         return projection;
     }
+
+    public String toString(){
+        return location.toString();
+    }
 }

@@ -1,11 +1,9 @@
-package org.NayaEngine.ObjectEditor.Parser;
+package org.NayaEngine.ObjectEditor;
 
 import org.NayaEngine.GameObjects.GameObject;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
-import java.io.*;
 
 
 /**
@@ -14,8 +12,12 @@ import java.io.*;
  * ~ project outline here ~
  * @Javadoc
  */
-public class InterptStuff {
-    public InterptStuff() throws ClassNotFoundException,
+public class ObjectEditorJSON {
+
+    public ObjectEditorJSON(String file){
+
+    }
+    public ObjectEditorJSON() throws ClassNotFoundException,
             NoSuchFieldException,
             NoSuchMethodException,
             InvocationTargetException,
