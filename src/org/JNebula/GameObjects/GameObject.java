@@ -39,6 +39,9 @@ public class GameObject {
     }
 
     public <T extends iComponent> T GetCompenent(Class<T> compenet) {
+        if(compenets == null){
+            compenets = new ArrayList<>();
+        }
         for (iComponent c : compenets) {
             if (compenet.isAssignableFrom(c.getClass())) {
                 return compenet.cast(c);
@@ -48,6 +51,9 @@ public class GameObject {
     }
 
     public <T extends iComponent> T RemoveCompenent(Class<T> compenet) {
+        if(compenets == null){
+            compenets = new ArrayList<>();
+        }
         for (int i = 0; i < compenets.size(); i++) {
             if (compenet.isAssignableFrom(compenets.get(i).getClass())) {
                 return compenet.cast(compenets.remove(i));
@@ -59,6 +65,9 @@ public class GameObject {
 
 
     public void AddComponent(iComponent component) {
+        if(compenets == null){
+            compenets = new ArrayList<>();
+        }
         if (component instanceof TransformComponent) {
             transform = (TransformComponent) component;
         }
@@ -197,7 +206,9 @@ public class GameObject {
 
     }
 
-
+    public String toString(){
+        return name;
+    }
     public ArrayList<String> getList() {
         return null;
     }
