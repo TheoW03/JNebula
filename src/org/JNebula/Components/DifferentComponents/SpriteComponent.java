@@ -48,6 +48,8 @@ public class SpriteComponent extends iComponent {
     private int FPS = 0;
     public int numOfVertices;
 
+    public int scaleHeight, scaleWidth;
+
     public Colors color;
     public float[] defualtVertices;
     float[][] vertices;
@@ -204,6 +206,10 @@ public class SpriteComponent extends iComponent {
         };
         this.textureID = 0;
         scaleXY(100, 100);
+        if(scaleHeight != 0 && scaleWidth != 0){
+            scaleXY(scaleWidth, scaleHeight);
+        }
+
         loadTexture();
 
 

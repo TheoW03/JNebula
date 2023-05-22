@@ -48,7 +48,7 @@
         "component_name": "org.JNebula.Components.DifferentComponents.TransformComponent",
         "location": {
           "x": 100,
-          "y": 0,
+          "y": 100,
           "z": 0
         }
       },
