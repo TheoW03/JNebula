@@ -1,14 +1,64 @@
 [
   {
-    "name": "testObject",
+    "name": "paddle1",
+    "isActive": true,
     "components": [
       {
-        "component_name": "org.JNebula.Compenents.DifferentCompenents.TransformComponent",
+        "component_name": "org.JNebula.Components.DifferentComponents.TransformComponent",
         "location": {
-          "x": 1,
-          "y": 2,
-          "z": 3
+          "x": 100,
+          "y": 100,
+          "z": 0
         }
+      },
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.SpriteComponent",
+        "file": "src/sprites/test.jpg",
+        "type": "jpg"
+      }
+    ]
+  },
+  {
+    "name": "paddle2",
+    "isActive": true,
+    "components": [
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.TransformComponent",
+        "location": {
+          "x": 100,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.SpriteComponent",
+        "file": "src/sprites/maxwell.png",
+        "type": "png"
+      },
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.CollliderCompenent"
+      }
+    ]
+  },
+  {
+    "name": "paddle1",
+    "isActive": true,
+    "components": [
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.TransformComponent",
+        "location": {
+          "x": 100,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.SpriteComponent",
+        "file": "src/sprites/maxwell.png",
+        "type": "png"
+      },
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.CollliderCompenent"
       }
     ]
   }

@@ -1,12 +1,15 @@
 package org.JNebula.ObjectEditor;
 
 import com.google.gson.Gson;
+import org.JNebula.Components.DifferentComponents.SpriteComponent;
 import org.JNebula.Components.iComponent;
 import org.JNebula.GameObjects.GameObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -70,11 +73,17 @@ public class ObjectEditorJSON {
                 System.out.println("obj: " + obj);
                 try {
                     // Dynamically create an instance of the class
-                    Class<?> clazz = Class.forName(obj);
+                    Class<? extends iComponent> clazz = (Class<? extends iComponent>) Class.forName(obj);
+
+//                    clazz.getConstructor(clazz.getTypeParameters());
                     Object object = gson.fromJson(String.valueOf(components.getJSONObject(c)), clazz);
-                    System.out.println(gameObject);
                     assert gameObject != null;
-                    gameObject.AddComponent((iComponent) clazz.cast(object));
+                    Class<? extends iComponent> capturedType = clazz;
+// Cast the object to the captured type
+                    iComponent capturedObject = capturedType.cast(object);
+                    System.out.println("object: "+capturedObject);
+// Get the constructor of the class
+                    gameObject.AddComponent(capturedType.cast(capturedObject));
                     // Access object properties
                 } catch (ClassNotFoundException e) {
                     System.out.println("class not found");

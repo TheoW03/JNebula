@@ -5,6 +5,7 @@ import org.JNebula.Components.DifferentComponents.*;
 import org.JNebula.Components.iComponent;
 import org.JNebula.GameObjects.GameObject;
 import org.JNebula.GameObjects.InitObjects;
+import org.JNebula.ObjectEditor.ObjectEditorJSON;
 import org.JNebula.Tooling.SpriteSheetList;
 import org.JNebula.uselessgameObjStuff.SpriteObject;
 
@@ -40,36 +41,42 @@ public class RendererTest implements GLEventListener {
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
 
+
         iComponent.gl = glAutoDrawable.getGL().getGL4();
         gl = iComponent.gl;
         gl.glEnable(GL.GL_BLEND);
         gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
+        ObjectEditorJSON js = new ObjectEditorJSON("src/ObjectEditorJSON/TestObject.json");
+        list = js.objects;
 
+        System.out.println(list);
+//        System.exit(0);
+//        list =  new ArrayList<>();
         c = new InitObjects();
-        SpriteSheetList s1 = new SpriteSheetList("src/sprites/sprite_sheet.jpg", "jpg", 1, 5, 64, 64, 7);
+//        SpriteSheetList s1 = new SpriteSheetList("src/sprites/sprite_sheet.jpg", "jpg", 1, 5, 64, 64, 7);
 //        try {
 //            SpriteSheetList s2 = new SpriteSheetList("src/sprites/sprite_sheet.jpg", "jpg",1,5);
 //        } catch (IOException e) {
 ////
 //        }
 //        System.exit(0);
-        list = new ArrayList<>();
         test = new GameObject("TEST");
         test3 = new GameObject("TEST3");
         test3.AddComponent(new SpriteComponent(new Colors(1, 1, 1)));
-        test3.AddComponent(new TransformComponent(new Vector3(90, 150, 0)));
-        list.add(test3);
+        test3.AddComponent(new TransformComponent(new Vector3(90, 0, 0)));
+//        list.add(test3);
 //        test.AddComponent(new LightingComponent(0.2f,new float[]{0.5f,0.5f,0.5f},0.3f,gl));
 //        test.AddComponent(new SpriteComponent(s1,20,null));
 //        test.AddComponent(new SpriteComponent(s1.getSection(1,3), s1,15, gl));
 //        test.AddComponent(new RenderCompenent(Colors.RED));
         test.AddComponent(new SpriteComponent("src/sprites/test.jpg","jpg",null));
+//        test.AddComponent(new SpriteComponent(s1,20, null));
 //        test.AddComponent(new GizmosCompenent(test.GetCompenent(SpriteComponent.class)));
 //        test.GetCompenent(SpriteComponent.class).scale(200);
 //
-//        test.AddComponent(new SpriteComponent(s1,20, null));
+
 //        test.AddComponent(new CameraComponent(new Vector3(0, 0, 0), gl));
-        test.AddComponent(new TransformComponent(new Vector3(20, 100, 0)));
+        test.AddComponent(new TransformComponent(new Vector3(20, 0, 0)));
 
 
 //        test.AddComponent(new PhysicsComponent(new Vector3(-1,0.5f),-0.05f, test.GetCompenent(TransformComponent.class).location));
@@ -102,7 +109,7 @@ public class RendererTest implements GLEventListener {
 //        test2.GetCompenent(PhysicsComponent.class).veloLock = true;
 //        test.GetCompenent(PhysicsComponent.class).veloLock = true;
 //        test.GetCompenent(PhysicsComponent.class).veloLock = true;
-        list.add(test2);
+//        list.add(test2);
 
 //        test.GetCompenent(SpriteComponent.class).scaleXY(0.05f,0.05f);
 //        test2.GetCompenent(SpriteComponent.class).scaleX(0.5f);

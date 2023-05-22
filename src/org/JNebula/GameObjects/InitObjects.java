@@ -50,15 +50,17 @@ public class InitObjects {
             if(object.get(i).GetCompenent(TransformComponent.class) == null){
                 object.get(i).AddComponent(new TransformComponent(new Vector3(0,0,0)));
             }
+            System.out.println(object.get(i).toString());
+            System.out.println(object.get(i).isActive);
 
             if (!first) {
                 object.get(i).start(0.1f, gl);
-                System.out.println(object.get(i).name);
 
             } else {
                 object.get(i).update(0.1f, gl);
                 System.out.println(object.get(i).name);
             }
+//            System.exit(1);
 
         }
 

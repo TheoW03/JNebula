@@ -45,7 +45,7 @@ public class SpriteComponent extends iComponent {
     private float currentFrame = 0;
     private float[][] spriteTexCoords;
     private Texture texture;
-    private int FPS;
+    private int FPS = 0;
     public int numOfVertices;
 
     public Colors color;
@@ -54,129 +54,176 @@ public class SpriteComponent extends iComponent {
 
 
     /**
-     *
-     * @param c
-     * sprite without a texture
+     * @param c sprite without a texture
      */
     public SpriteComponent(Colors c) {
         this.color = c;
 
-        this.vertices = new float[][]{
-                {-1.0f, -1.0f, 0.0f},   // Bottom-left vertex
-                {1.0f, -1.0f, 0.0f},    // Bottom-right vertex
-                {-1.0f, 1.0f, 0.0f},    // Top-left vertex
-                {1.0f, 1.0f, 0.0f}      // Top-right vertex
-        };
-        textureCoords = new float[]{
-                0.0f, 0.0f,           // Bottom-left texture coordinate
-                0.0f, 0.0f,           // Bottom-right texture coordinate
-                0.0f, 0.0f,           // Top-left texture coordinate
-                0.0f, 0.0f            // Top-right texture coordinate
-        };
-        normals = new float[]{
-                0.0f, 1.0f,
-                0.0f, 1.0f,
-                0.0f, 1.0f,
-                0.0f, 1.0f,
-        };
-        spriteTexCoords = new float[1][textureCoords.length];
+//        this.vertices = new float[][]{
+//                {-1.0f, -1.0f, 0.0f},   // Bottom-left vertex
+//                {1.0f, -1.0f, 0.0f},    // Bottom-right vertex
+//                {-1.0f, 1.0f, 0.0f},    // Top-left vertex
+//                {1.0f, 1.0f, 0.0f}      // Top-right vertex
+//        };
+//        textureCoords = new float[]{
+//                0.0f, 0.0f,           // Bottom-left texture coordinate
+//                0.0f, 0.0f,           // Bottom-right texture coordinate
+//                0.0f, 0.0f,           // Top-left texture coordinate
+//                0.0f, 0.0f            // Top-right texture coordinate
+//        };
+//        normals = new float[]{
+//                0.0f, 1.0f,
+//                0.0f, 1.0f,
+//                0.0f, 1.0f,
+//                0.0f, 1.0f,
+//        };
+//        spriteTexCoords = new float[1][textureCoords.length];
         gl.glEnable(GL.GL_BLEND);
         gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
-        this.texture = null;
-        setHeight();
-        scaleXY(100, 100);
+//        this.texture = null;
+//        setHeight();
+//        scaleXY(100, 100);
     }
 
     /**
-     *
      * @param file
      * @param type
-     * @param c
-     * sprite with texture.
+     * @param c    sprite with texture.
      */
     public SpriteComponent(String file, String type, Colors c) {
 
         this.color = c;
         this.file = file;
         this.type = type;
-        this.vertices = new float[][]{
-                {-1.0f, -1.0f, 0.0f},
-                {1.0f, -1.0f, 0.0f},
-                {-1.0f, 1.0f, 0.0f},
-                {1.0f, 1.0f, 0.0f}
-        };
-        textureCoords = new float[]{
-                0.0f, 0.0f,           // Bottom-left texture coordinate
-                1.0f, 0.0f,           // Bottom-right texture coordinate
-                0.0f, 1.0f,           // Top-left texture coordinate
-                1.0f, 1.0f            // Top-right texture coordinate
-        };
-        normals = new float[]{
-                0.0f, 1.0f,
-                0.0f, 1.0f,
-                0.0f, 1.0f,
-                0.0f, 1.0f,
-        };
-        spriteTexCoords = new float[1][textureCoords.length];
-        spriteTexCoords[0] = textureCoords;
+        System.out.println(this.file);
+//        this.vertices = new float[][]{
+//                {-1.0f, -1.0f, 0.0f},
+//                {1.0f, -1.0f, 0.0f},
+//                {-1.0f, 1.0f, 0.0f},
+//                {1.0f, 1.0f, 0.0f}
+//        };
+//        textureCoords = new float[]{
+//                0.0f, 0.0f,           // Bottom-left texture coordinate
+//                1.0f, 0.0f,           // Bottom-right texture coordinate
+//                0.0f, 1.0f,           // Top-left texture coordinate
+//                1.0f, 1.0f            // Top-right texture coordinate
+//        };
+//        normals = new float[]{
+//                0.0f, 1.0f,
+//                0.0f, 1.0f,
+//                0.0f, 1.0f,
+//                0.0f, 1.0f,
+//        };
+//        spriteTexCoords = new float[1][textureCoords.length];
+//        spriteTexCoords[0] = textureCoords;
         this.textureID = 0;
-        loadTexture();
-        scaleXY(100, 100);
-        System.out.println(texture.getHeight() + " " + texture.getWidth());
+//        loadTexture();
+//        scaleXY(100, 100);
+//        System.out.println(texture.getHeight() + " " + texture.getWidth());
 
     }
 
 
     public SpriteComponent(float[] textureCoords, SpriteSheetList spriteSheetList, Colors c) {
-        this.vertices = new float[][]{
-                {-1.0f, -1.0f, 0.0f},
-                {1.0f, -1.0f, 0.0f},
-                {-1.0f, 1.0f, 0.0f},
-                {1.0f, 1.0f, 0.0f}
-        };
-        normals = new float[]{
-                0.0f, 1.0f,
-                0.0f, 1.0f,
-                0.0f, 1.0f,
-                0.0f, 1.0f,
-        };
+//        this.vertices = new float[][]{
+//                {-1.0f, -1.0f, 0.0f},
+//                {1.0f, -1.0f, 0.0f},
+//                {-1.0f, 1.0f, 0.0f},
+//                {1.0f, 1.0f, 0.0f}
+//        };
+//        normals = new float[]{
+//                0.0f, 1.0f,
+//                0.0f, 1.0f,
+//                0.0f, 1.0f,
+//                0.0f, 1.0f,
+//        };
 
         this.color = c;
-        spriteTexCoords = new float[1][textureCoords.length];
-        spriteTexCoords[0] = textureCoords;
+//        spriteTexCoords = new float[1][textureCoords.length];
+//        spriteTexCoords[0] = textureCoords;
         this.texture = spriteSheetList.texture;
         this.textureID = 0;
-        loadTexture();
-        scaleXY(100, 100);
+//        loadTexture();
+//        scaleXY(100, 100);
     }
 
     /**
-     *
      * @param spriteSheetList
      * @param FPS
-     * @param c
-     * sprite sheet animation
+     * @param c               sprite sheet animation
      */
     public SpriteComponent(SpriteSheetList spriteSheetList, int FPS, Colors c) {
-        this.vertices = new float[][]{
-                {-1.0f, -1.0f, 0.0f},
-                {1.0f, -1.0f, 0.0f},
-                {-1.0f, 1.0f, 0.0f},
-                {1.0f, 1.0f, 0.0f}
-        };
-        normals = new float[]{
-                0.0f, 1.0f,
-                0.0f, 1.0f,
-                0.0f, 1.0f,
-                0.0f, 1.0f,
-        };
+//        this.vertices = new float[][]{
+//                {-1.0f, -1.0f, 0.0f},
+//                {1.0f, -1.0f, 0.0f},
+//                {-1.0f, 1.0f, 0.0f},
+//                {1.0f, 1.0f, 0.0f}
+//        };
+//        normals = new float[]{
+//                0.0f, 1.0f,
+//                0.0f, 1.0f,
+//                0.0f, 1.0f,
+//                0.0f, 1.0f,
+//        };
         this.color = c;
         spriteTexCoords = spriteSheetList.spriteTexCoords;
         this.texture = spriteSheetList.texture;
         this.textureID = 0;
         this.FPS = FPS;
-        loadTexture();
+//        loadTexture();
+//        scaleXY(100, 100);
+    }
+
+    @Override
+    public void init(float dt) {
+
+        System.out.println("init in dpsty");
+        this.vertices = new float[][]{
+                {-1.0f, -1.0f, 0.0f},
+                {1.0f, -1.0f, 0.0f},
+                {-1.0f, 1.0f, 0.0f},
+                {1.0f, 1.0f, 0.0f}
+        };
+        if (spriteTexCoords == null) {
+            textureCoords = new float[]{
+                    0.0f, 0.0f,           // Bottom-left texture coordinate
+                    1.0f, 0.0f,           // Bottom-right texture coordinate
+                    0.0f, 1.0f,           // Top-left texture coordinate
+                    1.0f, 1.0f            // Top-right texture coordinate
+            };
+            spriteTexCoords = new float[1][textureCoords.length];
+            spriteTexCoords[0] = textureCoords;
+
+        }
+
+        normals = new float[]{
+                0.0f, 1.0f,
+                0.0f, 1.0f,
+                0.0f, 1.0f,
+                0.0f, 1.0f,
+        };
+        this.textureID = 0;
         scaleXY(100, 100);
+        loadTexture();
+
+
+
+        if (FPS != 0) {
+            Timer animationTimer = new Timer(1000 / FPS, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    currentFrame++;
+                    System.out.println("current frame" + currentFrame);
+                    if (currentFrame > spriteTexCoords.length) {
+                        currentFrame = 0;
+                    }
+                }
+            });
+
+            animationTimer.start();
+        }
+        getCenterPoints();
+
     }
 
     private float[] multiplyMatrixVector(float[][] s, float[] v) {
@@ -214,7 +261,6 @@ public class SpriteComponent extends iComponent {
         }
         this.width *= sx;
     }
-
 
 
     public void scaleY(float sy) {
@@ -317,38 +363,53 @@ public class SpriteComponent extends iComponent {
     }
 
     private void loadTexture() {
-        if (this.texture == null) {
-            try {
-                gl.glEnable(GL.GL_BLEND);
-                gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
-                TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File(file), true, type);
-                this.texture = TextureIO.newTexture(data);
-                System.out.println("hi");
-                if (texture == null) {
-                    System.err.println("Error loading texture");
-                    return;
+        gl.glEnable(GL_TEXTURE_2D);
+        System.out.println("file: "+file);
+        System.out.println("load texture");
+        if (file != null) {
+
+            if (this.texture == null) {
+                try {
+
+                    gl.glEnable(GL.GL_BLEND);
+                    gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
+                    TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File(file), true, type);
+                    this.texture = TextureIO.newTexture(data);
+                    System.out.println("hi");
+                    if (texture == null) {
+                        System.err.println("Error loading texture");
+                        return;
+                    }
+
+//                    System.exit(1);
+                } catch (IOException e) {
                 }
-            } catch (IOException e) {
             }
+            setHeight();
+
         }
 
-        setHeight();
+
+
 //        width = texture.getWidth();
 //        height = texture.getHeight();
         System.out.println(width);
         System.out.println("width: " + height);
-        gl.glEnable(GL_TEXTURE_2D);
+
         assert texture != null;
-        texture.bind(gl);
-        this.textureID = texture.getTextureObject();
-        System.out.println(textureID);
+        if(this.texture != null){
+            texture.bind(gl);
+            this.textureID = texture.getTextureObject();
+            System.out.println(textureID);
 // Set texture parameters
-        gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        gl.glEnable(GL_BLEND);
-        gl.glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+            gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+            gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+            gl.glEnable(GL_BLEND);
+            gl.glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        }
+
 
     }
 
@@ -373,27 +434,6 @@ public class SpriteComponent extends iComponent {
      * @param dt gl will be passed here.
      */
 
-
-    @Override
-    public void init(float dt) {
-//        loadTexture();
-        if (FPS != 0) {
-            Timer animationTimer = new Timer(1000 / FPS, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    currentFrame++;
-                    System.out.println("current frame" + currentFrame);
-                    if (currentFrame > spriteTexCoords.length) {
-                        currentFrame = 0;
-                    }
-                }
-            });
-
-            animationTimer.start();
-        }
-        getCenterPoints();
-
-    }
 
     @Override
     public void update(float dt) {
@@ -456,7 +496,7 @@ public class SpriteComponent extends iComponent {
      */
     @Override
     public void sendtoGPU(int shaderProgram, LoadShader sh) {
-        System.out.println("send to sprite");
+        System.out.println("send to sprite GPU");
         if (this.texture == null) {
             int location = gl.glGetUniformLocation(shaderProgram, "textureExists");
             gl.glUniform1f(location, 1);
@@ -475,7 +515,7 @@ public class SpriteComponent extends iComponent {
             textureCoords = spriteTexCoords[(int) currentFrame];
         }
         int[] buffers = new int[3];
-        indices = new int[]{0, 2, 1,
+        this.indices = new int[]{0, 2, 1,
                 1, 3, 2,
                 1, 2, 3}; // second triangle;  // Index buffer for a quad
 //        indices = new int[]{0, 1, 2, // first triangle
@@ -538,6 +578,6 @@ public class SpriteComponent extends iComponent {
 
     @Override
     public String toString() {
-        return "getComepent works";
+        return "sprite compenent "+texture;
     }
 }

@@ -27,19 +27,18 @@ public class GameObject {
     public String name;
     public TransformComponent transform;
 
-    public boolean isActive;
+    public boolean isActive = true;
 
     public static GL4 gl;
 
     public GameObject(String name) {
-        isActive = true;
         compenets = new ArrayList<>();
 
         this.name = name;
     }
 
     public <T extends iComponent> T GetCompenent(Class<T> compenet) {
-        if(compenets == null){
+        if (compenets == null) {
             compenets = new ArrayList<>();
         }
         for (iComponent c : compenets) {
@@ -50,8 +49,9 @@ public class GameObject {
         return null;
     }
 
+
     public <T extends iComponent> T RemoveCompenent(Class<T> compenet) {
-        if(compenets == null){
+        if (compenets == null) {
             compenets = new ArrayList<>();
         }
         for (int i = 0; i < compenets.size(); i++) {
@@ -65,7 +65,7 @@ public class GameObject {
 
 
     public void AddComponent(iComponent component) {
-        if(compenets == null){
+        if (compenets == null) {
             compenets = new ArrayList<>();
         }
         if (component instanceof TransformComponent) {
@@ -73,6 +73,8 @@ public class GameObject {
         }
         component.gameObject = this;
         compenets.add(component);
+
+        System.out.println("type: ");
 
     }
 
@@ -161,19 +163,25 @@ public class GameObject {
 
     public void start(float dt, GL4 gl) {
         ArrayList<GizmosCompenent> c = new ArrayList<>();
-        if (isActive) {
+
+        if (this.isActive) {
+
             LoadShader sh = new LoadShader();
             int shP = sh.shaderCOmpile(gl);
             indices = new int[3];
+            System.out.println("a: " + compenets.size());
+
             for (int i = 0; i < compenets.size(); i++) {
-                compenets.get(i).init(dt);
+                compenets.get(i).getClass().cast(compenets.get(i)).init(dt);
+                System.out.println("class type: " + compenets.get(i).getClass().cast(compenets.get(i)).getClass());
                 compenets.get(i).sendtoGPU(shP, sh);
-                if (GetCompenent(SpriteComponent.class) != null) {
+                if (compenets.get(i) instanceof SpriteComponent) {
                     indices = GetCompenent(SpriteComponent.class).indices;
                     int[] buffers = new int[1];
                     gl.glGenBuffers(1, buffers, 0);
                     gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
                     gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+
                 }
 
 //                if (compenets.get(i) instanceof SpriteComponent) {
@@ -206,9 +214,14 @@ public class GameObject {
 
     }
 
-    public String toString(){
+    public String toString() {
+//        if(compenets != null){
+//            return name+" "+ Arrays.toString(compenets.toArray());
+//        }
+//        return name;
         return name;
     }
+
     public ArrayList<String> getList() {
         return null;
     }
