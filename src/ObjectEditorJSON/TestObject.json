@@ -1,6 +1,6 @@
 [
   {
-    "name": "paddle1",
+    "name": "render1",
     "isActive": true,
     "components": [
       {
@@ -19,7 +19,7 @@
     ]
   },
   {
-    "name": "paddle2",
+    "name": "render2",
     "isActive": true,
     "components": [
       {
