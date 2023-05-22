@@ -30,6 +30,7 @@ public class ObjectEditorJSON {
     public ObjectEditorJSON(String file) {
         StringBuilder t = new StringBuilder();
         try {
+            System.out.println("hi");
 
             ArrayList<String> a = (ArrayList<String>) Files.readAllLines(Path.of(file), StandardCharsets.UTF_8);
             a.forEach(contents -> {
@@ -70,21 +71,11 @@ public class ObjectEditorJSON {
             JSONArray components = a.getJSONArray("components");
             for (int c = 0; c < components.length(); c++) {
                 String obj = components.getJSONObject(c).get("component_name").toString();
-                System.out.println("obj: " + obj);
                 try {
-                    // Dynamically create an instance of the class
                     Class<? extends iComponent> clazz = (Class<? extends iComponent>) Class.forName(obj);
-
-//                    clazz.getConstructor(clazz.getTypeParameters());
                     Object object = gson.fromJson(String.valueOf(components.getJSONObject(c)), clazz);
                     assert gameObject != null;
-                    Class<? extends iComponent> capturedType = clazz;
-// Cast the object to the captured type
-                    iComponent capturedObject = capturedType.cast(object);
-                    System.out.println("object: "+capturedObject);
-// Get the constructor of the class
-                    gameObject.AddComponent(capturedType.cast(capturedObject));
-                    // Access object properties
+                    gameObject.AddComponent(clazz.cast(object));
                 } catch (ClassNotFoundException e) {
                     System.out.println("class not found");
                 }

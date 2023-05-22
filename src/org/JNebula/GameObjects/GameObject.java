@@ -74,7 +74,6 @@ public class GameObject {
         component.gameObject = this;
         compenets.add(component);
 
-        System.out.println("type: ");
 
     }
 
@@ -172,8 +171,7 @@ public class GameObject {
             System.out.println("a: " + compenets.size());
 
             for (int i = 0; i < compenets.size(); i++) {
-                compenets.get(i).getClass().cast(compenets.get(i)).init(dt);
-                System.out.println("class type: " + compenets.get(i).getClass().cast(compenets.get(i)).getClass());
+                compenets.get(i).init(dt);
                 compenets.get(i).sendtoGPU(shP, sh);
                 if (compenets.get(i) instanceof SpriteComponent) {
                     indices = GetCompenent(SpriteComponent.class).indices;
