@@ -33,7 +33,11 @@ public class SceneObject {
     public ArrayList<GameObject> getList() {
         return gameObjectList;
     }
-
+    /**
+     *
+     * @param object
+     * only if Java had default values T~T like C#, C++
+     */
     public void destroyObject(GameObject object) {
         for (int i = 0; i < gameObjectList.size(); i++) {
             if (object.name.equals(gameObjectList.get(i).name)) {
@@ -46,4 +50,16 @@ public class SceneObject {
 
     }
 
+
+    public void destroyObject(String objectName) {
+        for (int i = 0; i < gameObjectList.size(); i++) {
+            if (objectName.equals(gameObjectList.get(i).name)) {
+                gameObjectList.remove(i);
+                gameObjectMap.remove(objectName);
+                return;
+            }
+        }
+
+
+    }
 }
