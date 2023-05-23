@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import org.JNebula.Components.DifferentComponents.SpriteComponent;
 import org.JNebula.Components.iComponent;
 import org.JNebula.GameObjects.GameObject;
+import org.JNebula.Tooling.SceneObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -25,7 +26,7 @@ import java.util.*;
 public class ObjectEditorJSON {
 
     private String JSONString;
-    public ArrayList<GameObject> objects;
+    public SceneObject objects;
 
     public ObjectEditorJSON(String file) {
         StringBuilder t = new StringBuilder();
@@ -49,9 +50,10 @@ public class ObjectEditorJSON {
 //    Object value = field.get(obj);
     }
 
-    private ArrayList<GameObject> JSONEditor() {
+    private SceneObject JSONEditor() {
         Gson gson = new Gson();
         ArrayList<GameObject> objectList = new ArrayList<>();
+        SceneObject scene = new SceneObject();
         JSONArray jsonArray = new JSONArray(JSONString);
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject a = jsonArray.getJSONObject(i);
@@ -80,9 +82,9 @@ public class ObjectEditorJSON {
                     System.out.println("class not found");
                 }
             }
-            objectList.add(gameObject);
+            scene.initObject(gameObject);
 
         }
-        return objectList;
+        return scene;
     }
 }

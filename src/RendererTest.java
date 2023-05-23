@@ -6,6 +6,7 @@ import org.JNebula.Components.iComponent;
 import org.JNebula.GameObjects.GameObject;
 import org.JNebula.GameObjects.InitObjects;
 import org.JNebula.ObjectEditor.ObjectEditorJSON;
+import org.JNebula.Tooling.SceneObject;
 import org.JNebula.Tooling.SpriteSheetList;
 import org.JNebula.uselessgameObjStuff.SpriteObject;
 
@@ -28,7 +29,7 @@ import static com.jogamp.opengl.GL.*;
 public class RendererTest implements GLEventListener {
 
     public SpriteObject s, s2;
-    ArrayList<GameObject> list;
+    SceneObject list;
     InitObjects c;
     public GameObject test, test2, test3;
     FPSAnimator fps;
@@ -48,8 +49,6 @@ public class RendererTest implements GLEventListener {
         gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
         ObjectEditorJSON js = new ObjectEditorJSON("src/ObjectEditorJSON/TestObject.json");
         list = js.objects;
-
-        System.out.println(list);
 //        System.exit(0);
 //        list =  new ArrayList<>();
         c = new InitObjects();
@@ -84,7 +83,7 @@ public class RendererTest implements GLEventListener {
         test.AddComponent(new ColliderComponent());
 
 //        test.AddComponent(new LightingComponent(10, Colors.colorHex(Colors.RED),1.0f,gl));
-        list.add(test);
+        list.initObject(test);
         test2 = new GameObject("TEST2");
         test2.AddComponent(new SpriteComponent(new Colors(1, 0, 0)));
         System.out.println("sprite init");
@@ -136,7 +135,7 @@ public class RendererTest implements GLEventListener {
 //            i2 = 0;
 //        }
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
-        c.InstantiateObjects(list);
+        c.InstantiateObjects(list.getList());
 //        test2.GetCompenent(SpriteComponent.class).scale(i);
         Window.printFrameRate();
 

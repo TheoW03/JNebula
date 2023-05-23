@@ -6,6 +6,9 @@ package org.JNebula.uselessgameObjStuff;
  * ~ project outline here ~
  * @Javadoc
  */
+
+
+//many failed ideas. im holding onto incase i need them one day
 public class SpriteObject  {
 //    public Texture spriteTexture;
 //    private Vector3 location;
