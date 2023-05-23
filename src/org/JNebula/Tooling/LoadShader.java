@@ -43,7 +43,7 @@ public class LoadShader {
         return t.toString();
     }
 
-    public int shaderCOmpile(GL4 gl) {
+    public int shaderCompile(GL4 gl) {
         if(vertexSource != null && fragSource != null){
             return loadShaders(vertexSource,fragSource,gl);
         }

@@ -18,7 +18,7 @@ public class SpriteObject  {
 //    public int[] indicies;
 //    public int textureID;
 //    private float velocity;
-//    private ManageCmponent compenents;
+//    private ManageComponent compenents;
 //    public ArrayList<String> a;
 //    /**
 //     * @param location xyz
@@ -45,7 +45,7 @@ public class SpriteObject  {
 //        };// Top-right texture coordinate
 //        loadTexture(fileName,type);
 //        addDefuaultCompenets();
-//        compenents = new ManageCmponent();
+//        compenents = new ManageComponent();
 //    }
 //
 //    private void addDefuaultCompenets(){

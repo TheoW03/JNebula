@@ -82,7 +82,7 @@ public class GameObject {
             LoadShader sh = new LoadShader();
 //        gl.glClear(GL.GL_COLOR_BUFFER_BIT); // Clear the color buffer to the clear color
             indices = new int[3];
-            int shP = sh.shaderCOmpile(gl);
+            int shP = sh.shaderCompile(gl);
             for (int i = 0; i < compenets.size(); i++) {
                 compenets.get(i).update(dt);
                 compenets.get(i).sendtoGPU(shP, sh);
@@ -166,7 +166,7 @@ public class GameObject {
         if (this.isActive) {
 
             LoadShader sh = new LoadShader();
-            int shP = sh.shaderCOmpile(gl);
+            int shP = sh.shaderCompile(gl);
             indices = new int[3];
             System.out.println("a: " + compenets.size());
 

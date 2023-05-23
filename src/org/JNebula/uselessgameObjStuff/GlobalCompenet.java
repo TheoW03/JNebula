@@ -1,6 +1,6 @@
 package org.JNebula.uselessgameObjStuff;
 
-import org.JNebula.Components.ManageCmponent;
+import org.JNebula.Components.ManageComponent;
 import org.JNebula.Components.iComponent;
 import org.JNebula.Tooling.Camera;
 import org.JNebula.math.Vector3;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @Javadoc
  */
 public class GlobalCompenet implements GameBehavior {
-    private ManageCmponent compenents;
+    private ManageComponent compenents;
     private Vector3 position;
     public static Camera MAIN_CAMERA;
     private ArrayList<String> a;

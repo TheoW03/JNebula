@@ -13,9 +13,9 @@ import java.util.*;
  * we then add the compenets in the constructor of the method.
  *
  */
-public class ManageCmponent {
+public class ManageComponent {
     private HashMap<String, iComponent> a;
-    public ManageCmponent() {
+    public ManageComponent() {
         a = new HashMap<>();
     }
 
