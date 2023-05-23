@@ -26,7 +26,7 @@ import java.util.*;
 public class ObjectEditorJSON {
 
     private String JSONString;
-    public SceneObject objects;
+    public ArrayList<GameObject> objects;
 
     public ObjectEditorJSON(String file) {
         StringBuilder t = new StringBuilder();
@@ -50,10 +50,9 @@ public class ObjectEditorJSON {
 //    Object value = field.get(obj);
     }
 
-    private SceneObject JSONEditor() {
+    private ArrayList<GameObject> JSONEditor() {
         Gson gson = new Gson();
         ArrayList<GameObject> objectList = new ArrayList<>();
-        SceneObject scene = new SceneObject();
         JSONArray jsonArray = new JSONArray(JSONString);
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject a = jsonArray.getJSONObject(i);
@@ -82,9 +81,9 @@ public class ObjectEditorJSON {
                     System.out.println("class not found");
                 }
             }
-            scene.initObject(gameObject);
+            objectList.add(gameObject);
 
         }
-        return scene;
+        return objectList;
     }
 }

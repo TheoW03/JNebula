@@ -29,7 +29,7 @@ import static com.jogamp.opengl.GL.*;
 public class RendererTest implements GLEventListener {
 
     public SpriteObject s, s2;
-    SceneObject list;
+    ArrayList<GameObject> list;
     InitObjects c;
     public GameObject test, test2, test3;
     FPSAnimator fps;
@@ -83,7 +83,7 @@ public class RendererTest implements GLEventListener {
         test.AddComponent(new ColliderComponent());
 
 //        test.AddComponent(new LightingComponent(10, Colors.colorHex(Colors.RED),1.0f,gl));
-        list.initObject(test);
+        list.add(test);
         test2 = new GameObject("TEST2");
         test2.AddComponent(new SpriteComponent(new Colors(1, 0, 0)));
         System.out.println("sprite init");
@@ -135,7 +135,7 @@ public class RendererTest implements GLEventListener {
 //            i2 = 0;
 //        }
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
-        c.InstantiateObjects(list.getList());
+        c.InstantiateObjects(list);
 //        test2.GetCompenent(SpriteComponent.class).scale(i);
         Window.printFrameRate();
 

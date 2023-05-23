@@ -26,6 +26,8 @@ your renderer class
 ```JAVA
 public class StarterCode extends GameRenderer {
     public InitObjects initObject;
+    
+    //if you use the object editor it requires Scene object.java
     //runs 1st frame
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
