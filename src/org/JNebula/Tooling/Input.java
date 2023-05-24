@@ -16,6 +16,7 @@ public class Input extends MouseInputAdapter implements KeyListener {
     private static KeyEvent ke;
     private static MouseEvent me;
     private static boolean[] keys = new boolean[256];
+    private static boolean[] mouse_buttons = new boolean[4];
 
 
     public Input() {
@@ -78,8 +79,7 @@ public class Input extends MouseInputAdapter implements KeyListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        System.out.println("realeased");
-        me = null;
+
     }
 
     @Override

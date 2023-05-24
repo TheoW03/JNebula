@@ -1,19 +1,18 @@
 # collider compenet
 
-```inherits ICompenet```
 
-
+----
 ``isCollided(ColliderCompenet collider)``
 
 this checks if its a collider
-returns true or false. uses an inhouse algorithm. that derived off ray
-marching. the distance functions.
+returns true or false. uses an in-house algorithm. that derived off ray
+marching. the distance functions to be specific :3.
 
 
 ---------------
 
 
-``ray_collides(ColliderCompenet collider)`` 
+``public boolean ray_collides(ColliderCompenet collider)``
 
 
 this uses ray casting and checks collisons with rays.
@@ -22,9 +21,7 @@ returns either true or false
 
 
 * a list of rays
-* or a single ray
+* or a single ray (coming soon)
 
-it will default to false 
+it will default to false or
 if you didn't define the ray in constructor
-
-all defined in constructor

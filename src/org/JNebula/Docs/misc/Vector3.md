@@ -1,10 +1,12 @@
 # Vector3 
 
 
-float x,y,z
+``public float x,y;``
 
 
-this can be used as an location
+<h2>direction vectors constants</h2>
 
-its a line pretty much
-
+    public static Vector3 down = new Vector3(0,-1,0);
+    public static Vector3 right = new Vector3(1,0,0);
+    public static Vector3 left = new Vector3(-1,0,0);
+    public static Vector3 zero = new Vector3(0,0,0); //zero vector >:3 sends shivers
