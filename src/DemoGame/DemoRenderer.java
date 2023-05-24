@@ -13,6 +13,7 @@ import org.JNebula.math.Vector3;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.security.Key;
 
 /**
  * @author Theo willis
@@ -44,6 +45,7 @@ public class DemoRenderer extends GameRenderer implements KeyListener {
         paddle2.AddComponent(new ColliderComponent());
         ball.AddComponent(new TransformComponent(new Vector3(100, 100)));
         ball.AddComponent(new ColliderComponent());
+        Init.InstantiateObjects(gameObjectArrayList);
         System.out.println("init");
         paddle1.GetCompenent(SpriteComponent.class).scaleX(0.25f);
         paddle2.GetCompenent(SpriteComponent.class).scaleX(0.25f);
@@ -57,17 +59,20 @@ public class DemoRenderer extends GameRenderer implements KeyListener {
     public void display(GLAutoDrawable glAutoDrawable) {
         Init.InstantiateObjects(gameObjectArrayList);
 
-        if(Input.getKey()== KeyEvent.VK_S){
+        if(Input.getKey(KeyEvent.VK_S)){
             paddle1.transform.transform(Vector3.down);
         }
-        if(Input.getKey()== KeyEvent.VK_W){
+        if(Input.getKey(KeyEvent.VK_W)){
             paddle1.transform.transform(Vector3.up);
         }
-        if(Input.getKey()== KeyEvent.VK_DOWN){
+        if(Input.getKey(KeyEvent.VK_DOWN)){
             paddle2.transform.transform(Vector3.down);
         }
-        if(Input.getKey()== KeyEvent.VK_UP){
+        if(Input.getKey(KeyEvent.VK_UP)){
             paddle2.transform.transform(Vector3.up);
+        }
+        if(Input.getKey(KeyEvent.VK_SPACE)){
+            ball.transform.location = new Vector3(100,100);
         }
         ball.transform.transform(bt);
         if (paddle1.GetCompenent(ColliderComponent.class).isCollided(ball.GetCompenent(ColliderComponent.class))) {

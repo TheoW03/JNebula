@@ -124,8 +124,6 @@ public class SpriteComponent extends iComponent {
 
     @Override
     public void init(float dt) {
-
-        System.out.println("init in dpsty");
         this.vertices = new float[][]{
                 {-1.0f, -1.0f, 0.0f},
                 {1.0f, -1.0f, 0.0f},
@@ -333,6 +331,9 @@ public class SpriteComponent extends iComponent {
     }
 
     public Vector3[] getVecticesAsVector() {
+        if(vertices == null){
+            return new Vector3[4];
+        }
         Vector3[] vertix = new Vector3[4];
         for (int r = 0; r < vertices.length; r++) {
             vertix[r] = new Vector3(vertices[r][0], vertices[r][1], vertices[r][2]);

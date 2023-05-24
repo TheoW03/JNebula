@@ -15,6 +15,8 @@ import java.awt.event.MouseEvent;
 public class Input extends MouseInputAdapter implements KeyListener {
     private static KeyEvent ke;
     private static MouseEvent me;
+    private static boolean[] keys = new boolean[256];
+
 
     public Input() {
 
@@ -28,17 +30,27 @@ public class Input extends MouseInputAdapter implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        ke = e;
+        int keyCode = e.getKeyCode();
+        if (keyCode >= 0 && keyCode < keys.length) {
+            keys[keyCode] = true;
+        }
     }
 
 
     @Override
     public void keyReleased(KeyEvent e) {
-        ke = null;
+        int keyCode = e.getKeyCode();
+        if (keyCode >= 0 && keyCode < keys.length) {
+            keys[keyCode] = false;
+        }
     }
 
-    public static int getKey() {
-        return (ke == null) ? 0 : ke.getKeyCode();
+
+    public static boolean getKey(int keyCode) {
+        if (keyCode >= 0 && keyCode < keys.length) {
+            return keys[keyCode];
+        }
+        return false;
     }
 
     public static int getMouseCode() {
