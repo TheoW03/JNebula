@@ -17,7 +17,7 @@ public class ColliderComponent extends iComponent {
 
     public Ray[] list;
     public Ray ray;
-
+    public float[][] hitBox;
     public ColliderComponent() {
 //        this.height = this.gameObject.GetCompenent(SpriteComponent.class).height;
 //        this.width = this.gameObject.GetCompenent(SpriteComponent.class).width;
@@ -34,10 +34,17 @@ public class ColliderComponent extends iComponent {
     public ColliderComponent(Ray ray){
         this.ray = ray;
     }
+
+    @Override
+    public void init(float dt) {
+        hitBox = gameObject.GetCompenent(SpriteComponent.class).vertices;
+    }
+
     @Override
     public void update(float dt) {
-
+        hitBox = gameObject.GetCompenent(SpriteComponent.class).vertices;
     }
+
     private Vector2f calcOffset(Vector2f p, Vector2f center, Vector2f size) {
         Vector2f o1 = center.sub(p);
         Vector2f o3 = new Vector2f(Math.abs(o1.x), Math.abs(o1.y));
@@ -86,7 +93,7 @@ public class ColliderComponent extends iComponent {
 
 
     }
-    public boolean ray_collides(ColliderComponent collider){
+    public boolean rayCollides(ColliderComponent collider){
         if(ray == null){
             return false;
         }

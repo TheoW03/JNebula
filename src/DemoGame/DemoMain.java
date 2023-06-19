@@ -14,6 +14,6 @@ public class DemoMain {
     }
 
     public static void main(String[] args) {
-        Window.InitWindow(640, 480, "Pong", new DemoRenderer());
+        Window.InitWindow(640, 480, "Pong 2d JNebula", new DemoRenderer());
     }
 }
