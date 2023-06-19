@@ -57,6 +57,7 @@ public class StarterCode extends GameRenderer {
 
 <summary><b> JSON editor</b></summary>
 
+warning: The JSON editor isnt fully functional and may have some bugs.
 
 ```JSON
 [
@@ -116,3 +117,4 @@ public class StarterCode extends GameRenderer {
 }
 ```
 </details>
+
