@@ -7,6 +7,10 @@ coded in java
 
 # Getting Started
 
+<details>
+<summary><b>No JSON editor</b></summary>
+
+
 main
 
 ```JAVA
@@ -45,6 +49,70 @@ public class StarterCode extends GameRenderer {
     }
 }
 
+
+```
+</details>
+<br>
+<details> 
+
+<summary><b> JSON editor</b></summary>
+
+
+```JSON
+[
+  {
+    "name": "render1",
+    "isActive": true,
+    "components": [
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.TransformComponent",
+        "location": {
+          "x": 100,
+          "y": 100,
+          "z": 0
+        }
+      },
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.SpriteComponent",
+        "file": "${path to image}",
+        "type": "jpg"
+      }
+    ]
+  }
+]
 ```
 
 
+```JAVA
+import org.JNebula.GameObjects.GameRenderer;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        GameRenderer starterCode = new StarterCode(); //for step 3 if you get a not defined error then
+        Window.InitWindow(640, 480, "example window", starterCode);
+    }
+}
+
+```
+
+
+```JAVA
+public class StarterCode extends GameRenderer {
+    public InitObjects initObject;
+
+    //if you use the object editor it requires Scene object.java
+    //runs 1st frame
+    @Override
+    public void init(GLAutoDrawable glAutoDrawable) {
+        super.init(glAutoDrawable);
+        ObjectEditorJSON js = new ObjectEditorJSON("${PATH TO JSON}"); //JSON code
+        gameObjectArrayList = js.objects;
+    }
+    //runs every frame. 
+    @Override
+    public void display(GLAutoDrawable glAutoDrawable) {
+        Init.InstantiateObjects(gameObjectArrayList); //inits list
+    }
+}
+```
+</details>
