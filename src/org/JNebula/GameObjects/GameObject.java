@@ -1,10 +1,7 @@
 package org.JNebula.GameObjects;
 
 import com.jogamp.opengl.GL4;
-import org.JNebula.Components.DifferentComponents.GizmosCompenent;
-import org.JNebula.Components.DifferentComponents.PhysicsComponent;
-import org.JNebula.Components.DifferentComponents.SpriteComponent;
-import org.JNebula.Components.DifferentComponents.TransformComponent;
+import org.JNebula.Components.DifferentComponents.*;
 import org.JNebula.Components.iComponent;
 import org.JNebula.Tooling.LoadShader;
 
@@ -94,7 +91,10 @@ public class GameObject {
 //                    gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL_LINES);
                     gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
                     gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 6L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+
                     gl.glDrawElements(GL_TRIANGLE_STRIP, 7, GL_UNSIGNED_INT, 0); //learn to make dynamic
+
+
 //                    if(i == 2){
 //                        gl.glDrawElements(GL_TRIANGLE_STRIP, 7, GL_UNSIGNED_INT, 0); //learn to make dynamic
 //
@@ -102,12 +102,33 @@ public class GameObject {
 //                        gl.glDrawElements(GL_LINE_LOOP, 7, GL_UNSIGNED_INT, 0); //learn to make dynamic
 //
 //                    }
-                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-                    gl.glGenBuffers(1, buffers, 0);
+//                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+//                    gl.glGenBuffers(1, buffers, 0);
+
 //                    gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL_LINES);
-                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
-                    gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 6L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
-                    gl.glDrawElements(GL_LINE_LOOP, 7, GL_UNSIGNED_INT, 0); //learn to make dynamic
+                    if (GetCompenent(ColliderComponent.class) != null) {
+                        if (GetCompenent(ColliderComponent.class).showHitBox) {
+                            int colorLocation = gl.glGetUniformLocation(shP, "color_of_sprite");
+                            int location = gl.glGetUniformLocation(shP, "textureExists");
+                            gl.glUniform1f(location, 1);
+                            gl.glUniform3f(colorLocation, 0, 1, 0);
+//                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
+//                    gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 6L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+                            gl.glDrawElements(GL_LINE_LOOP, 7, GL_UNSIGNED_INT, 0); //learn to make dynamic
+                            if (GetCompenent(SpriteComponent.class).color == null) {
+                                gl.glUniform3f(colorLocation, 1, 1, 1);
+                            } else {
+                                gl.glUniform3f(colorLocation, GetCompenent(SpriteComponent.class).color.r2,
+                                        GetCompenent(SpriteComponent.class).color.g2, GetCompenent(SpriteComponent.class).color.b2);
+                            }
+                            if (GetCompenent(SpriteComponent.class).texture != null) {
+                                gl.glUniform1f(location, 0);
+                            }
+                        }
+                    }
+
+
+//                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
                     System.out.println("sprite render 1st");
 
 //                    gl.glDrawElements(GL_TRIANGLE_STRIP, 12, GL_UNSIGNED_INT, 0); //learn to make dynamic
@@ -132,15 +153,7 @@ public class GameObject {
 //                    }
 //                    gl.glDrawElements(GL_TRIANGLE_STRIP, 12, GL_UNSIGNED_INT, 0); //learn to make dynamic
 //                    gl.glDrawElements(GL_LINE_LOOP, 3, GL_UNSIGNED_INT, 0);
-                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
                 }
-//                if (compenets.get(i) instanceof SpriteComponent) {
-//                    indices = ((SpriteComponent) compenets.get(i)).indices;
-//                    int[] buffers = new int[1];
-//                    gl.glGenBuffers(1, buffers, 0);
-//                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
-//                    gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
-//                }
                 if (compenets.get(i) instanceof PhysicsComponent) {
                     GetCompenent(TransformComponent.class).location = ((PhysicsComponent) compenets.get(i)).vectorPosition;
                 }

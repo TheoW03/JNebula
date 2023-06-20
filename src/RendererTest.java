@@ -68,7 +68,7 @@ public class RendererTest implements GLEventListener {
 //        test.AddComponent(new SpriteComponent(s1,20,null));
 //        test.AddComponent(new SpriteComponent(s1.getSection(1,3), s1,15, gl));
 //        test.AddComponent(new RenderCompenent(Colors.RED));
-        test.AddComponent(new SpriteComponent("src/sprites/test.jpg","jpg",null));
+//        test.AddComponent(new SpriteComponent("src/sprites/test.jpg","jpg",null));
 //        test.AddComponent(new SpriteComponent(s1,20, null));
 //        test.AddComponent(new GizmosCompenent(test.GetCompenent(SpriteComponent.class)));
 //        test.GetCompenent(SpriteComponent.class).scale(200);
@@ -80,7 +80,7 @@ public class RendererTest implements GLEventListener {
 
 //        test.AddComponent(new PhysicsComponent(new Vector3(-1,0.5f),-0.05f, test.GetCompenent(TransformComponent.class).location));
         Ray ray = new Ray(Vector3.down, 500);
-        test.AddComponent(new ColliderComponent());
+//        test.AddComponent(new ColliderComponent());
 
 //        test.AddComponent(new LightingComponent(10, Colors.colorHex(Colors.RED),1.0f,gl));
         list.add(test);
