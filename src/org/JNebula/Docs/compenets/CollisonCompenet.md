@@ -1,18 +1,35 @@
-# collider compenet
+# Collider Component
 
+This lets you check for collisions
+
+
+<details>
+<summary><b>Vars</b></summary>
+
+---
+
+``public boolean showHitBox``
+
+shows the hitbox of the collider
+
+---
+
+</details>
+
+
+<details>
+<summary><b>Methods</b></summary>
 
 ----
-``isCollided(ColliderCompenet collider)``
+``public boolean isCollided(ColliderCompenet collider)``
 
 this checks if its a collider
-returns true or false. uses an in-house algorithm. that derived off ray
-marching. the distance functions to be specific :3.
+returns true or false. if collides or not.
 
 
 ---------------
 
-
-``public boolean ray_collides(ColliderCompenet collider)``
+``public boolean rayCollides(ColliderCompenet collider)``
 
 
 this uses ray casting and checks collisons with rays.
@@ -25,3 +42,4 @@ returns either true or false
 
 it will default to false or
 if you didn't define the ray in constructor
+</details>
