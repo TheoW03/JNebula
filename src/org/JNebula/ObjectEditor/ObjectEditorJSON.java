@@ -78,7 +78,8 @@ public class ObjectEditorJSON {
                     assert gameObject != null;
                     gameObject.AddComponent(clazz.cast(object));
                 } catch (ClassNotFoundException e) {
-                    System.out.println("class not found");
+                    System.err.println(obj+" is not a valid component name in "+gameObject.toString());
+                    System.exit(1);
                 }
             }
             objectList.add(gameObject);
