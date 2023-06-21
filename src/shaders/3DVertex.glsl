@@ -7,7 +7,7 @@ uniform mat4 model;
 uniform mat4 rot;
 out vec3 SH_color;
 void main(){
-    gl_Position = model*vec4(position, 1.0);
+    vec4 l = rot*vec4(position, 1.0);
+    gl_Position = l;
     SH_color = color;
-
 }
