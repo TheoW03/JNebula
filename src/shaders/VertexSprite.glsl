@@ -17,11 +17,12 @@ uniform float dt;
 uniform float vx;
 uniform float vy;
 uniform float lightExits2 = 0;
+uniform vec2 screenRes;
 
 out vec4 pointLightPosition;
 out vec2 tCoord;
 out vec3 FragPos;
-out vec3 Normal;   // Normal of the vertex in world space
+out vec3 Normal;// Normal of the vertex in world space
 out vec4 lightSourcelocation;
 
 //mat4 getRotationMatrix(float angle) {
@@ -41,11 +42,13 @@ out vec4 lightSourcelocation;
 //    return unsignedDst+signedDst;
 //}
 void main() {
-    vec4 pos = vec4(vPos,1.0);
+    vec4 pos = vec4(vPos, 1.0);
     pos = rot*pos;
-//    gl_Position = getRotationMatrix(45)*model*projectMatrix* viewMatrix*vec4(vPos,1.0);
-    gl_Position =   (model)*projectMatrix* viewMatrix * pos;
-    if(lightExits2 == 1){
+    //    gl_Position = getRotationMatrix(45)*model*projectMatrix* viewMatrix*vec4(vPos,1.0);
+
+    gl_Position = (model)*projectMatrix* viewMatrix * pos;
+//    gl_Position *= screenRes.x/screenRes.y; //T~T
+    if (lightExits2 == 1){
         vec3 pointLightPosition = vPos;
         FragPos = vec3(model * vec4(vPos, 1.0));
         Normal = mat3(transpose(inverse(model))) * anormal;

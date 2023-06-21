@@ -95,6 +95,8 @@ void main(){
         if (LightSource == 1){
             vec3 result = (ambient)*objectColor;
             FragColor = vec4(result, 1.0)*texture(tSample, tCoord);
+//            FragColor *= screenRes.x/screenRes.y; //needed so stuff stays consistent
+
 
         } else {
             vec3 result = (diffuse+ambient+specular)*objectColor;
@@ -106,8 +108,11 @@ void main(){
         if(textureExists == 0){
             vec4 color = texture(tSample, tCoord);
             FragColor = c*color;
+
         }else if(textureExists == 1){
             FragColor = vec4(color_of_sprite,1.0);
+//            FragColor *= screenRes.x/screenRes.y; //needed so stuff stays consistent
+
         }else{
 
         }

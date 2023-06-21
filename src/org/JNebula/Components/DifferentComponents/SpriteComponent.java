@@ -9,6 +9,7 @@ import com.jogamp.opengl.util.texture.Texture;
 import org.JNebula.Tooling.Colors;
 import org.JNebula.Tooling.SpriteSheetList;
 import org.JNebula.Tooling.LoadShader;
+import org.JNebula.Tooling.Window;
 import org.JNebula.math.Vector3;
 import org.joml.Vector3f;
 
@@ -150,10 +151,10 @@ public class SpriteComponent extends iComponent {
         };
         this.textureID = 0;
         scaleXY(100, 100);
-        if(scaleHeight != 0){
+        if (scaleHeight != 0) {
             scaleY(scaleHeight);
         }
-        if(scaleWidth != 0){
+        if (scaleWidth != 0) {
             scaleX(scaleWidth);
         }
         loadTexture();
@@ -333,7 +334,7 @@ public class SpriteComponent extends iComponent {
     }
 
     public Vector3[] getVecticesAsVector() {
-        if(vertices == null){
+        if (vertices == null) {
             return new Vector3[4];
         }
         Vector3[] vertix = new Vector3[4];

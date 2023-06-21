@@ -5,8 +5,11 @@ import com.jogamp.opengl.awt.GLJPanel;
 import com.jogamp.opengl.util.FPSAnimator;
 import org.JNebula.Components.iComponent;
 import org.JNebula.GameObjects.GameRenderer;
+import org.JNebula.math.Vector3;
 
 import javax.swing.*;
+import java.awt.*;
+import java.util.Vector;
 
 
 /**
@@ -17,45 +20,14 @@ import javax.swing.*;
  */
 public class Window {
     public static FPSAnimator animator;
+    public static Vector3 screenRes;
     public static float deltaTime;
-
-    public Window(int width, int height, String title, GameRenderer renderer) {
-        final GLProfile glProfile = GLProfile.getDefault();
-        final GLCapabilities glCapabilities = new GLCapabilities(glProfile);
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-
-                JFrame jFrame = new JFrame(title);
-                jFrame.setSize(width, height);
-//                jFrame.addKeyListener(renderer);
-
-                GLJPanel glJPanel = new GLJPanel(glCapabilities);
-                glJPanel.addKeyListener(renderer);
-                glJPanel.addMouseListener(new Input());
-
-                animator = new FPSAnimator(glJPanel, 60);
-                glJPanel.addGLEventListener(renderer);
-                glJPanel.setSize(jFrame.getSize());
-
-                jFrame.getContentPane().add(glJPanel);
-
-                jFrame.setVisible(true);
-
-                jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                animator.start();
-
-
-            }
-        });
-
-    }
-
     public static void InitWindow(int width, int height, String title, GLEventListener renderer){
         final GLProfile glProfile = GLProfile.getDefault();
         final GLCapabilities glCapabilities = new GLCapabilities(glProfile);
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-
+//                screenRes = new Vector3(width,height);
                 JFrame jFrame = new JFrame(title);
                 jFrame.setSize(width, height);
                 jFrame.addKeyListener(new Input());
