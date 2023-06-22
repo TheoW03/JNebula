@@ -5,6 +5,7 @@ import de.javagl.obj.Obj;
 import org.JNebula.ObjectEditor.ObjectEditorJSON;
 import org.JNebula.Tooling.Window;
 import org.JNebula.math.Vector3;
+import org.json.JSONObject;
 
 import java.io.*;
 
@@ -25,7 +26,7 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         render3D();
-      
+
     }
 
     public  static void render3D(){
