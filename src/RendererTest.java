@@ -75,7 +75,7 @@ public class RendererTest implements GLEventListener {
 //
 
 //        test.AddComponent(new CameraComponent(new Vector3(0, 0, 0), gl));
-        test.AddComponent(new TransformComponent(new Vector3(20, 0, 0)));
+        test.AddComponent(new TransformComponent(new Vector3(100, 100, 0)));
 
 
 //        test.AddComponent(new PhysicsComponent(new Vector3(-1,0.5f),-0.05f, test.GetCompenent(TransformComponent.class).location));

@@ -28,6 +28,7 @@ public class Renderer4 extends GameRenderer {
     float i = 0;
     GL2 gl;
     Matrix4f m;
+
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
         gl = glAutoDrawable.getGL().getGL2();
@@ -96,26 +97,61 @@ public class Renderer4 extends GameRenderer {
         gl.glFlush(); // Flush the rendering pipeline
     }
 
+
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
         gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear color and depth buffers
 
+        i += 0.01f;
         float[] colors = {
-                0.0f, 1.0f, 0.0f,
+                // Front face (red)
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
                 1.0f, 0.0f, 0.0f,
+                1.0f, 0.0f, 0.0f,
+
+                // Back face (green)
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f,
+                1.0f, 0.0f, 0.0f,
+                1.0f,0.0f,0.0f,
+
+                // Top face (blue)
                 0.0f, 0.0f, 1.0f,
-                1.0f, 1.0f, 0.0f,
+                0.0f, 0.0f, 1.0f,
+                0.0f, 0.0f, 1.0f,
+                1.0f, 0.0f, 0.0f,
+
+                // Bottom face (yellow)
+                1.0f, 0.0f, 0.0f,
+                1.0f, 0.0f, 0.0f,
+                1.0f, 0.0f, 0.0f,
+                1.0f, 0.0f, 0.0f,
+
+
+                // Left face (purple)
                 1.0f, 0.0f, 1.0f,
-                1.0f, 0.0f, 1.0f
+                1.0f, 0.0f, 1.0f,
+                1.0f, 0.0f, 1.0f,
+                1.0f, 0.0f, 1.0f,
+
+                // Right face (orange)
+                1.0f, 0.5f, 0.0f,
+                1.0f, 0.5f, 0.0f,
+                1.0f, 0.5f, 0.0f,
+                1.0f, 0.5f, 0.0f
         };
+        System.out.println(colors.length);
 //        renderCube();
 
         float[] vertices = {
                 // Front face
                 -0.5f, -0.5f, 0.5f,
-                0.5f, -0.5f, 0.5f,
                 0.5f, 0.5f, 0.5f,
+                0.5f, -0.5f, 0.5f,
                 -0.5f, 0.5f, 0.5f,
+
                 // Back face
                 0.5f, -0.5f, -0.5f,
                 -0.5f, -0.5f, -0.5f,
@@ -146,28 +182,51 @@ public class Renderer4 extends GameRenderer {
                 0.5f, 0.5f, 0.5f,
                 0.5f, 0.5f, -0.5f
         };
+        System.out.println(vertices.length);
+//        int[] indices = {
+//                0, 1, 3,
+//                3, 1, 0,
+//                4, 5, 7,
+//                7, 5, 6,
+//                8, 9, 11,
+//                11, 9, 10,
+//                12, 13, 15,
+//                15, 13, 14,
+//                16, 17, 19,
+//                19, 17, 18,
+//                20, 21, 23,
+//                23, 21, 22
+//        };
         int[] indices = {
                 // Front face
                 0, 1, 2,
-                2, 3, 0,
+                0, 3, 1,
                 // Back face
                 4, 5, 6,
-                6, 7, 4,
+                4, 7, 5,
                 // Top face
                 8, 9, 10,
-                10, 11, 8,
+                8, 11, 9,
                 // Bottom face
                 12, 13, 14,
-                14, 15, 12,
+                12, 15, 13,
                 // Left face
                 16, 17, 18,
-                18, 19, 16,
+                16, 19, 17,
                 // Right face
                 20, 21, 22,
-                22, 23, 20
+                20, 23, 21
         };
+//        int[] indices = {
+//                // Front face
+//                0,1,2,
+//                3,2,0,3,1,
+//
+////                // Back face
+//                2,4,2,1,4,0,1,7,2,4,0,8,6,5,0,6,4,7
+//        };
         int[] nonOverlappingIndices = new int[indices.length];
-        int[] vertexOffsets = { 0, 4, 8, 12, 16, 20 };
+        int[] vertexOffsets = {0, 4, 8, 12, 16, 20};
 
 
         LoadShader l = new LoadShader();
@@ -180,41 +239,46 @@ public class Renderer4 extends GameRenderer {
         int location = gl.glGetAttribLocation(shaderP, "position");
         int color = gl.glGetAttribLocation(shaderP, "color");
 
-        int rot = gl.glGetUniformLocation(shaderP,"rot");
+        int rot = gl.glGetUniformLocation(shaderP, "rot");
         int[] buffers = new int[3];
 //        Matrix4f m = new Matrix4f();
 //        m.identity();
-        m.rotate(0.05f,1,0,0);
-        m.rotate(0.05f,0,0,1);
-        m.rotate(0.005f,0,1,0);
-        l.sendMartices(m,(GL4) gl,rot);
+        m.rotate(0.05f, 1, 0, 0);
+        m.rotate(-0.05f, 0, 0, 1);
+        m.rotate(0.05f, 0, 1, 0);
+        l.sendMartices(m, (GL4) gl, rot);
         gl.glGenBuffers(buffers.length, buffers, 0);
 
+        //mem error somewhere :')
 
         gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
 
         // Copy vertex data to GPU
 
-        gl.glBufferData(GL_ARRAY_BUFFER,  vertices.length * 24, FloatBuffer.wrap(vertices), GL_STATIC_DRAW);
+        gl.glBufferData(GL_ARRAY_BUFFER, vertices.length*4, FloatBuffer.wrap(vertices), GL_STATIC_DRAW);
 
         // Set up vertex attribute pointer
         gl.glVertexAttribPointer(location, 3, GL_FLOAT, false, 0, 0);
         gl.glEnableVertexAttribArray(location);
 
 
+        gl.glBindBuffer(GL_ARRAY_BUFFER,0);
+//        gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
         gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[1]);
-        gl.glBufferData(GL_ARRAY_BUFFER,  colors.length * 24, FloatBuffer.wrap(colors), GL_STATIC_DRAW);
+        gl.glBufferData(GL_ARRAY_BUFFER, colors.length*12,FloatBuffer.wrap(colors), GL_STATIC_DRAW);
 
         gl.glVertexAttribPointer(color, 3, GL_FLOAT, false, 0, 0);
         gl.glEnableVertexAttribArray(color);
 
         gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[2]);
 
-        gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 6, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+        gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length*6, IntBuffer.wrap(indices), GL_STATIC_DRAW);
 
 
         gl.glDrawElements(GL_TRIANGLE_STRIP, indices.length, GL_UNSIGNED_INT, 0); //learn to make dynamic
 
+        gl.glBindBuffer(GL_ARRAY_BUFFER,0);
+        gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
     }
 }
