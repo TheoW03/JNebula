@@ -166,6 +166,10 @@ public class Renderer4 extends GameRenderer {
                 20, 21, 22,
                 22, 23, 20
         };
+        int[] nonOverlappingIndices = new int[indices.length];
+        int[] vertexOffsets = { 0, 4, 8, 12, 16, 20 };
+
+
         LoadShader l = new LoadShader();
         int shaderP;
         try {
@@ -182,6 +186,7 @@ public class Renderer4 extends GameRenderer {
 //        m.identity();
         m.rotate(0.05f,1,0,0);
         m.rotate(0.05f,0,0,1);
+        m.rotate(0.005f,0,1,0);
         l.sendMartices(m,(GL4) gl,rot);
         gl.glGenBuffers(buffers.length, buffers, 0);
 

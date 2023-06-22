@@ -48,11 +48,11 @@ public class RendererTest implements GLEventListener {
         gl.glEnable(GL.GL_BLEND);
         gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
         ObjectEditorJSON js = new ObjectEditorJSON("src/ObjectEditorJSON/TestObject.json");
-        list = js.objects;
+//        list = js.objects;
 //        System.exit(0);
-//        list =  new ArrayList<>();
+        list =  new ArrayList<>();
         c = new InitObjects();
-//        SpriteSheetList s1 = new SpriteSheetList("src/sprites/sprite_sheet.jpg", "jpg", 1, 5, 64, 64, 7);
+        SpriteSheetList s1 = new SpriteSheetList("src/sprites/sprite_sheet.jpg", "jpg", 1, 5, 64, 64, 7);
 //        try {
 //            SpriteSheetList s2 = new SpriteSheetList("src/sprites/sprite_sheet.jpg", "jpg",1,5);
 //        } catch (IOException e) {
@@ -69,7 +69,7 @@ public class RendererTest implements GLEventListener {
 //        test.AddComponent(new SpriteComponent(s1.getSection(1,3), s1,15, gl));
 //        test.AddComponent(new RenderCompenent(Colors.RED));
 //        test.AddComponent(new SpriteComponent("src/sprites/test.jpg","jpg",null));
-//        test.AddComponent(new SpriteComponent(s1,20, null));
+        test.AddComponent(new SpriteComponent(s1,20, null));
 //        test.AddComponent(new GizmosCompenent(test.GetCompenent(SpriteComponent.class)));
 //        test.GetCompenent(SpriteComponent.class).scale(200);
 //

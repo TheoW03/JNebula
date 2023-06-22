@@ -418,16 +418,12 @@ public class SpriteComponent extends iComponent {
             int location = gl.glGetUniformLocation(shaderProgram, "textureExists");
             gl.glUniform1f(location, 0);
         }
-//        textureCoords = spriteTexCoords[(int) currentFrame];
-        if (currentFrame > spriteTexCoords.length) {
+
+        if (currentFrame >= spriteTexCoords.length) {
             currentFrame = 0;
+
         }
-        try {
-            textureCoords = spriteTexCoords[(int) currentFrame];
-        } catch (ArrayIndexOutOfBoundsException e) {
-            currentFrame = 0;
-            textureCoords = spriteTexCoords[(int) currentFrame];
-        }
+        textureCoords = spriteTexCoords[(int) currentFrame];
         int[] buffers = new int[3];
         this.indices = new int[]{0, 2, 1,
                 1, 3, 2,
