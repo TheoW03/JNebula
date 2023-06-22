@@ -11,11 +11,11 @@ public class Vector3 {
 
     public float x, y, z;
 
-    public static Vector3 up = new Vector3(0,1,0);
-    public static Vector3 down = new Vector3(0,-1,0);
-    public static Vector3 right = new Vector3(1,0,0);
-    public static Vector3 left = new Vector3(-1,0,0);
-    public static Vector3 zero = new Vector3(0,0,0); //zero vector >:3 sends shivers
+    public final static Vector3 up = new Vector3(0,1,0);
+    public final static Vector3 down = new Vector3(0,-1,0);
+    public final static Vector3 right = new Vector3(1,0,0);
+    public final static Vector3 left = new Vector3(-1,0,0);
+    public final static Vector3 zero = new Vector3(0,0,0); //zero vector >:3 sends shivers
     public Vector3(float x, float y, float z) {
         this.x = x;
         this.y = y;
