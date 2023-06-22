@@ -135,25 +135,7 @@ public class GameObject {
 //                    gl.glDrawElements(GL_LINE_LOOP, 3, GL_UNSIGNED_INT, 0);
 //                    gl.glPolygonMode(GL_BACK, GL_LINES);
                 }
-                if (GetCompenent(GizmosCompenent.class) != null) {
-                    indices = GetCompenent(GizmosCompenent.class).indicies;
-                    int[] buffers = new int[1];
-                    System.out.println("gizmos render 1st");
-                    gl.glGenBuffers(1, buffers, 0);
-//                    gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL_LINES);
-                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
-                    gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 6L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
-                    gl.glDrawElements(GL_LINE_LOOP, 7, GL_UNSIGNED_INT, 0); //learn to make dynamic
-//                    if(i == 2){
-//                        gl.glDrawElements(GL_TRIANGLE_STRIP, 7, GL_UNSIGNED_INT, 0); //learn to make dynamic
-//
-//                    }else {
-//                        gl.glDrawElements(GL_LINE_LOOP, 7, GL_UNSIGNED_INT, 0); //learn to make dynamic
-//
-//                    }
-//                    gl.glDrawElements(GL_TRIANGLE_STRIP, 12, GL_UNSIGNED_INT, 0); //learn to make dynamic
-//                    gl.glDrawElements(GL_LINE_LOOP, 3, GL_UNSIGNED_INT, 0);
-                }
+
                 if (compenets.get(i) instanceof PhysicsComponent) {
                     GetCompenent(TransformComponent.class).location = ((PhysicsComponent) compenets.get(i)).vectorPosition;
                 }
@@ -174,7 +156,7 @@ public class GameObject {
     }
 
     public void start(float dt, GL4 gl) {
-        ArrayList<GizmosCompenent> c = new ArrayList<>();
+
 
         if (this.isActive) {
 

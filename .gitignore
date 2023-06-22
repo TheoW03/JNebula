@@ -1,6 +1,7 @@
 # Project exclude paths
 /out/
 *.log
+/src/TestStuff/
 /.gradle/buildOutputCleanup/buildOutputCleanup.lock
 /.gradle/buildOutputCleanup/cache.properties
 /build/classes/java/main/org/NayaEngine/Tooling/Camera.class
@@ -53,7 +54,7 @@
 /build/classes/java/main/renderer.class
 /build/classes/java/main/Renderer2.class
 /build/classes/java/main/Renderer4.class
-/build/classes/java/main/RendererTest.class
+/build/classes/java/main/TestStuff.RendererTest.class
 /.gradle/8.0/fileHashes/resourceHashesCache.bin
 /.gradle/8.0/checksums/sha1-checksums.bin
 /build/classes/java/main/org/NayaEngine/Tooling/Shaders.class

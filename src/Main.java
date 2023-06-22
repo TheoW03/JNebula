@@ -1,11 +1,8 @@
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import de.javagl.obj.Obj;
+import TestStuff.Renderer4;
+import TestStuff.RendererTest;
 import org.JNebula.ObjectEditor.ObjectEditorJSON;
 import org.JNebula.Tooling.Window;
-import org.JNebula.math.Vector3;
-import org.json.JSONObject;
 
 import java.io.*;
 
