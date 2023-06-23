@@ -22,7 +22,8 @@ public class Window {
     public static FPSAnimator animator;
     public static Vector3 screenRes;
     public static float deltaTime;
-    public static void InitWindow(int width, int height, String title, GLEventListener renderer){
+
+    public static void InitWindow(int width, int height, String title, GLEventListener renderer) {
         final GLProfile glProfile = GLProfile.getDefault();
         final GLCapabilities glCapabilities = new GLCapabilities(glProfile);
         SwingUtilities.invokeLater(new Runnable() {
@@ -39,7 +40,8 @@ public class Window {
                 animator = new FPSAnimator(glJPanel, 60);
                 glJPanel.addGLEventListener(renderer);
                 glJPanel.setSize(jFrame.getSize());
-
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                screenRes = new Vector3(screenSize.width, screenSize.height);
                 jFrame.getContentPane().add(glJPanel);
 
                 jFrame.setVisible(true);
@@ -51,6 +53,7 @@ public class Window {
             }
         });
     }
+
     public static void printFrameRate() {
 
         deltaTime = 0.1f;
@@ -60,8 +63,9 @@ public class Window {
         System.out.println("FPS: " + frames);
 
     }
-    public static void setBGColor(Colors c){
-        iComponent.gl.glClearColor(c.r2,c.b2,c.g2,0.0f);
+
+    public static void setBGColor(Colors c) {
+        iComponent.gl.glClearColor(c.r2, c.b2, c.g2, 0.0f);
 
     }
 }

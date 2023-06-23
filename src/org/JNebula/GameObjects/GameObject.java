@@ -155,6 +155,13 @@ public class GameObject {
 
     }
 
+    private void sendUtilVars(GL4 gl, int shader){
+        int iRes = gl.glGetUniformLocation(shader,"");
+        int iTime = gl.glGetUniformLocation(shader,"");
+        int deltaTime = gl.glGetUniformLocation(shader,"");
+
+    }
+
     public void start(float dt, GL4 gl) {
 
 

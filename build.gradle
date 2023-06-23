@@ -22,8 +22,8 @@ dependencies {
     implementation group: 'org.jogamp.jogl', name: 'jogl-all', version: '2.3.2'
 
     //JSON parser and loader
-    implementation 'org.json:json:20211205'
-    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'org.json:json:20230227'
+    implementation 'com.google.code.gson:gson:2.10.1'
 
 
     //GUI dependecies.
