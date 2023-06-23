@@ -5,11 +5,13 @@ layout (location = 1) in vec3 color; // the color variable has attribute positio
 
 uniform mat4 model;
 uniform mat4 rot;
+out vec4 FragCoord;
 out vec3 SH_color;
 
 
 void main(){
     vec4 l = rot*vec4(position, 1.0);
     gl_Position = l;
+    FragCoord = gl_Position;
     SH_color = color;
 }

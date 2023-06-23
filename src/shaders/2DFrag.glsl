@@ -9,8 +9,8 @@ in vec4 lightSourcelocation;
 uniform sampler2D tSample;
 
 uniform vec2 iResolution;
-uniform vec2 iTime;
-uniform vec2 deltaTime;
+uniform float iTime;
+uniform float deltaTime;
 
 uniform float Lightexists = 0;
 uniform float LightSource = 0;
@@ -69,7 +69,16 @@ Ray[4] rays(){
     rays[3] = Ray(camera_pos, normalize(tr - camera_pos));
     return rays;
 }
+vec4 mainImage(  vec2 fragCoord)
+{
 
+    vec2 uv = fragCoord.xy;
+    vec2 pos = (uv.xy-0.5);
+    vec2 cir = ((pos.xy*pos.xy+sin(uv.x*18.0+iTime)/25.0*sin(uv.y*7.0+iTime*1.5)/1.0)+uv.x*sin(iTime)/16.0+uv.y*sin(iTime*1.2)/16.0);
+    float circles = (sqrt(abs(cir.x+cir.y*0.5)*25.0)*5.0);
+    vec4 fragColor = vec4(sin(circles*1.25+2.0),abs(sin(circles*1.0-1.0)-cos(circles)),abs(sin(circles)*1.0),1.0);
+    return fragColor;
+}
 void main(){
 
 

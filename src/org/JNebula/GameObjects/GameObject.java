@@ -84,10 +84,10 @@ public class GameObject {
         int iRes = gl.glGetUniformLocation(shader, "iResolution");
         gl.glUniform2f(iRes, Window.screenRes.x, Window.screenRes.y);
         int iTime = gl.glGetUniformLocation(shader, "iTime");
-        gl.glUniform2f(iTime, time,0);
+        gl.glUniform1f(iTime, time);
         int deltaTime = gl.glGetUniformLocation(shader, "deltaTime");
-        gl.glUniform2f(deltaTime, 1.5f,0);
-        time++;
+        gl.glUniform1f(deltaTime, 1.5f);
+        time += 1;
     }
 
     public void update(float dt, GL4 gl) {
