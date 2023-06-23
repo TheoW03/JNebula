@@ -1,4 +1,4 @@
-# JNebula 2D v1.0.0
+# JNebula v1.0.0
 
 a component based graphics engine
 coded in java 
