@@ -123,7 +123,7 @@ public class StarterCode extends GameRenderer {
 
 # Documentation
 
-* <a href = https://github.com/TheoW03/JNebula/tree/master/src/org/JNebula/Docs>Documentation</a>
+* <a href = https://github.com/TheoW03/JNebula/tree/master/src/org/JNebula/Docs>Documentation v1.0.0 </a>
 
 
 
