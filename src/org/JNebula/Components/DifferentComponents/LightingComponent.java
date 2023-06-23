@@ -2,7 +2,7 @@ package org.JNebula.Components.DifferentComponents;
 
 
 import org.JNebula.Components.iComponent;
-import org.JNebula.Tooling.LoadShader;
+import org.JNebula.Tooling.Shader;
 import org.JNebula.math.Vector3;
 import org.JNebula.math.VectorMath;
 
@@ -76,7 +76,7 @@ public class LightingComponent extends iComponent {
     float i2 = 1.0f;
 
     @Override
-    public void sendtoGPU(int shaderProgram, LoadShader sh) {
+    public void sendtoGPU(int shaderProgram, Shader sh) {
         int[] buffers = new int[2];
         if (source != null) {
             if (source.gameObject.GetCompenent(TransformComponent.class) == null || source.gameObject.GetCompenent(CameraComponent.class) == null) {

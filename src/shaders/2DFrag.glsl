@@ -8,6 +8,10 @@ in vec2 toLight;
 in vec4 lightSourcelocation;
 uniform sampler2D tSample;
 
+uniform vec2 iResolution;
+uniform vec2 iTime;
+uniform vec2 deltaTime;
+
 uniform float Lightexists = 0;
 uniform float LightSource = 0;
 uniform float fColor;

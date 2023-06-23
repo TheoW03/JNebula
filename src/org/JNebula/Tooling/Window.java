@@ -22,6 +22,7 @@ public class Window {
     public static FPSAnimator animator;
     public static Vector3 screenRes;
     public static float deltaTime;
+    public static float time;
 
     public static void InitWindow(int width, int height, String title, GLEventListener renderer) {
         final GLProfile glProfile = GLProfile.getDefault();
@@ -45,6 +46,7 @@ public class Window {
                 jFrame.getContentPane().add(glJPanel);
 
                 jFrame.setVisible(true);
+
 
                 jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 animator.start();

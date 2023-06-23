@@ -8,8 +8,7 @@ import org.JNebula.Components.iComponent;
 import com.jogamp.opengl.util.texture.Texture;
 import org.JNebula.Tooling.Colors;
 import org.JNebula.Tooling.SpriteSheetList;
-import org.JNebula.Tooling.LoadShader;
-import org.JNebula.Tooling.Window;
+import org.JNebula.Tooling.Shader;
 import org.JNebula.math.Vector3;
 import org.joml.Vector3f;
 
@@ -409,7 +408,7 @@ public class SpriteComponent extends iComponent {
      * @param sh
      */
     @Override
-    public void sendtoGPU(int shaderProgram, LoadShader sh) {
+    public void sendtoGPU(int shaderProgram, Shader sh) {
         System.out.println("send to sprite GPU");
         if (this.texture == null) {
             int location = gl.glGetUniformLocation(shaderProgram, "textureExists");

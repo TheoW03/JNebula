@@ -4,7 +4,7 @@ package org.JNebula.Components;
 import com.jogamp.opengl.GL4;
 import org.JNebula.Components.DifferentComponents.ColliderComponent;
 import org.JNebula.GameObjects.GameObject;
-import org.JNebula.Tooling.LoadShader;
+import org.JNebula.Tooling.Shader;
 
 /**
  * @author Theo willis
@@ -22,7 +22,7 @@ public abstract class iComponent {
     public void update(float dt){
 
     }
-    public void sendtoGPU(int shaderProgram, LoadShader sh){
+    public void sendtoGPU(int shaderProgram, Shader sh){
 
     }
     public void Collides(ColliderComponent c){

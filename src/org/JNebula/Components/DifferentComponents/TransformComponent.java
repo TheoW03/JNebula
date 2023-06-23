@@ -2,7 +2,7 @@ package org.JNebula.Components.DifferentComponents;
 
 import org.JNebula.Components.iComponent;
 import org.JNebula.Tooling.Camera;
-import org.JNebula.Tooling.LoadShader;
+import org.JNebula.Tooling.Shader;
 import org.JNebula.math.Vector3;
 import org.joml.Matrix4f;
 
@@ -61,7 +61,7 @@ public class TransformComponent extends iComponent {
 
     }
     @Override
-    public void sendtoGPU(int shaderProgram, LoadShader sh) {
+    public void sendtoGPU(int shaderProgram, Shader sh) {
         if (rotation == null) {
             rotation = new Matrix4f();
             rotation.identity();
@@ -70,8 +70,8 @@ public class TransformComponent extends iComponent {
         int rotationMatrix = gl.glGetUniformLocation(shaderProgram, "rot");
 
         Matrix4f m = initModel(location);
-        sh.sendMartices(rotation, gl, rotationMatrix);
-        sh.sendMartices(m, gl, modelMartrix);
+        sh.sendMatrices(rotation, gl, rotationMatrix);
+        sh.sendMatrices(m, gl, modelMartrix);
 
     }
 }

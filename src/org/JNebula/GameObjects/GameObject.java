@@ -3,7 +3,8 @@ package org.JNebula.GameObjects;
 import com.jogamp.opengl.GL4;
 import org.JNebula.Components.DifferentComponents.*;
 import org.JNebula.Components.iComponent;
-import org.JNebula.Tooling.LoadShader;
+import org.JNebula.Tooling.Shader;
+import org.JNebula.Tooling.Window;
 
 import java.nio.IntBuffer;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class GameObject {
     public TransformComponent transform;
 
     public boolean isActive = true;
+    public float time;
 
     public static GL4 gl;
 
@@ -74,12 +76,24 @@ public class GameObject {
 
     }
 
+    private void sendUtilVars(GL4 gl, int shader) {
+        int iRes = gl.glGetUniformLocation(shader, "iResolution");
+        gl.glUniform2f(iRes, Window.screenRes.x, Window.screenRes.y);
+        int iTime = gl.glGetUniformLocation(shader, "iTime");
+        gl.glUniform2f(iTime, time,0);
+        int deltaTime = gl.glGetUniformLocation(shader, "deltaTime");
+        gl.glUniform2f(deltaTime, 1.5f,0);
+        time++;
+    }
+
     public void update(float dt, GL4 gl) {
         if (isActive) {
-            LoadShader sh = new LoadShader();
+
+            Shader sh = new Shader();
 //        gl.glClear(GL.GL_COLOR_BUFFER_BIT); // Clear the color buffer to the clear color
             indices = new int[3];
             int shP = sh.shaderCompile(gl);
+            sendUtilVars(gl,shP);
             for (int i = 0; i < compenets.size(); i++) {
                 compenets.get(i).update(dt);
                 compenets.get(i).sendtoGPU(shP, sh);
@@ -155,19 +169,13 @@ public class GameObject {
 
     }
 
-    private void sendUtilVars(GL4 gl, int shader){
-        int iRes = gl.glGetUniformLocation(shader,"");
-        int iTime = gl.glGetUniformLocation(shader,"");
-        int deltaTime = gl.glGetUniformLocation(shader,"");
-
-    }
 
     public void start(float dt, GL4 gl) {
 
 
         if (this.isActive) {
 
-            LoadShader sh = new LoadShader();
+            Shader sh = new Shader();
             int shP = sh.shaderCompile(gl);
             indices = new int[3];
             System.out.println("a: " + compenets.size());

@@ -20,7 +20,7 @@ import java.io.*;
  * ~ project outline here ~
  * @Javadoc
  */
-public class LoadShader {
+public class Shader {
 
     public String vertexSource, fragSource;
     /**
@@ -48,8 +48,8 @@ public class LoadShader {
             return loadShaders(vertexSource,fragSource,gl);
         }
         try {
-            vertexSource = processShader("VertexSprite.glsl");
-            fragSource = processShader("SpriteFrag.glsl");
+            vertexSource = processShader("2DVertex.glsl");
+            fragSource = processShader("2DFrag.glsl");
         } catch (IOException ignored) {
 
             return 0;
@@ -134,7 +134,7 @@ public class LoadShader {
 
     }
 
-    public void sendMartices(Matrix4f matrice, GL4 gl, int matricLocation) {
+    public void sendMatrices(Matrix4f matrice, GL4 gl, int matricLocation) {
         FloatBuffer matBufferM = Buffers.newDirectFloatBuffer(1024);
         matrice.get(matBufferM);
 //        c.initModel(new Vector3(0,0,0)).get(matBufferM);

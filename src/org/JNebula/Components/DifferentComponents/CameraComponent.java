@@ -2,7 +2,7 @@ package org.JNebula.Components.DifferentComponents;
 
 import org.JNebula.Components.iComponent;
 import org.JNebula.Tooling.Camera;
-import org.JNebula.Tooling.LoadShader;
+import org.JNebula.Tooling.Shader;
 import org.JNebula.math.Vector3;
 
 
@@ -22,11 +22,11 @@ public class CameraComponent extends iComponent {
     }
 
     @Override
-    public void sendtoGPU(int shaderProgram, LoadShader sh) {
+    public void sendtoGPU(int shaderProgram, Shader sh) {
         int matriceLocation = gl.glGetUniformLocation(shaderProgram, "viewMatrix");
         int projectionLocation = gl.glGetUniformLocation(shaderProgram, "projectMatrix");
-        sh.sendMartices(camera.viewMatrix(),gl,matriceLocation);
-        sh.sendMartices(camera.getProjection(),gl,projectionLocation);
+        sh.sendMatrices(camera.viewMatrix(),gl,matriceLocation);
+        sh.sendMatrices(camera.getProjection(),gl,projectionLocation);
     }
     public void zoom(float zoomfactor){
         this.camera.zoom(zoomfactor);
