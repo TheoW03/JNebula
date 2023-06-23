@@ -3,7 +3,7 @@ package org.JNebula.GameObjects;
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
-import org.JNebula.Components.iComponent;
+import org.JNebula.Components.Component;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -24,7 +24,7 @@ public abstract class GameRenderer implements GLEventListener, KeyListener {
     public void init(GLAutoDrawable glAutoDrawable) {
 
         gl = (GL4) glAutoDrawable.getGL();
-        iComponent.gl = gl;
+        Component.gl = gl;
         GameObject.gl = gl;
         gameObjectArrayList = new ArrayList<>();
         Init = new InitObjects();
@@ -36,7 +36,7 @@ public abstract class GameRenderer implements GLEventListener, KeyListener {
 
     public void display(GLAutoDrawable glAutoDrawable){
         gl = (GL4) glAutoDrawable.getGL();
-        iComponent.gl = gl;
+        Component.gl = gl;
         GameObject.gl = gl;
     }
 

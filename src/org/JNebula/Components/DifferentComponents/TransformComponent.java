@@ -1,6 +1,6 @@
 package org.JNebula.Components.DifferentComponents;
 
-import org.JNebula.Components.iComponent;
+import org.JNebula.Components.Component;
 import org.JNebula.Tooling.Camera;
 import org.JNebula.Tooling.Shader;
 import org.JNebula.math.Vector3;
@@ -13,7 +13,7 @@ import org.joml.Matrix4f;
  * ~ project outline here ~
  * @Javadoc
  */
-public class TransformComponent extends iComponent {
+public class TransformComponent extends Component {
 
     public Camera camera;
     public Vector3 location;

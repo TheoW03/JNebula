@@ -1,7 +1,7 @@
 package org.JNebula.Components.DifferentComponents;
 
 
-import org.JNebula.Components.iComponent;
+import org.JNebula.Components.Component;
 import org.JNebula.Tooling.Shader;
 import org.JNebula.math.Vector3;
 import org.JNebula.math.VectorMath;
@@ -19,7 +19,7 @@ import static com.jogamp.opengl.GL.*;
  */
 
 
-public class LightingComponent extends iComponent {
+public class LightingComponent extends Component {
 
     public float intensity;
     public float[] lightColor;

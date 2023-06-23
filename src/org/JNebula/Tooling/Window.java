@@ -3,13 +3,11 @@ package org.JNebula.Tooling;
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.awt.GLJPanel;
 import com.jogamp.opengl.util.FPSAnimator;
-import org.JNebula.Components.iComponent;
-import org.JNebula.GameObjects.GameRenderer;
+import org.JNebula.Components.Component;
 import org.JNebula.math.Vector3;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Vector;
 
 
 /**
@@ -67,7 +65,7 @@ public class Window {
     }
 
     public static void setBGColor(Colors c) {
-        iComponent.gl.glClearColor(c.r2, c.b2, c.g2, 0.0f);
+        Component.gl.glClearColor(c.r2, c.b2, c.g2, 0.0f);
 
     }
 }

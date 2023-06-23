@@ -2,10 +2,12 @@ package org.JNebula.GameObjects;
 
 import com.jogamp.opengl.GL4;
 import org.JNebula.Components.DifferentComponents.*;
-import org.JNebula.Components.iComponent;
+import org.JNebula.Components.Component;
 import org.JNebula.Tooling.Shader;
 import org.JNebula.Tooling.Window;
+import org.JNebula.math.Vector3;
 
+import java.awt.*;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
 
@@ -21,7 +23,7 @@ import static com.jogamp.opengl.GL.*;
 public class GameObject {
     public int[] indices;
 
-    public ArrayList<iComponent> compenets;
+    public ArrayList<Component> compenets;
     public String name;
     public TransformComponent transform;
 
@@ -36,11 +38,11 @@ public class GameObject {
         this.name = name;
     }
 
-    public <T extends iComponent> T GetCompenent(Class<T> compenet) {
+    public <T extends Component> T GetCompenent(Class<T> compenet) {
         if (compenets == null) {
             compenets = new ArrayList<>();
         }
-        for (iComponent c : compenets) {
+        for (Component c : compenets) {
             if (compenet.isAssignableFrom(c.getClass())) {
                 return compenet.cast(c);
             }
@@ -49,7 +51,7 @@ public class GameObject {
     }
 
 
-    public <T extends iComponent> T RemoveCompenent(Class<T> compenet) {
+    public <T extends Component> T RemoveCompenent(Class<T> compenet) {
         if (compenets == null) {
             compenets = new ArrayList<>();
         }
@@ -63,7 +65,7 @@ public class GameObject {
     }
 
 
-    public void AddComponent(iComponent component) {
+    public void AddComponent(Component component) {
         if (compenets == null) {
             compenets = new ArrayList<>();
         }
@@ -77,6 +79,8 @@ public class GameObject {
     }
 
     private void sendUtilVars(GL4 gl, int shader) {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Window.screenRes = new Vector3(screenSize.width, screenSize.height);
         int iRes = gl.glGetUniformLocation(shader, "iResolution");
         gl.glUniform2f(iRes, Window.screenRes.x, Window.screenRes.y);
         int iTime = gl.glGetUniformLocation(shader, "iTime");
@@ -218,7 +222,7 @@ public class GameObject {
     }
 
 
-    public void GetCompenentList(String name, iComponent compenet) {
+    public void GetCompenentList(String name, Component compenet) {
 
     }
 

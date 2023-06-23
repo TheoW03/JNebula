@@ -6,7 +6,7 @@ import com.jogamp.opengl.util.FPSAnimator;
 import org.JNebula.Components.DifferentComponents.CameraComponent;
 import org.JNebula.Components.DifferentComponents.ColliderComponent;
 import org.JNebula.Components.DifferentComponents.TransformComponent;
-import org.JNebula.Components.iComponent;
+import org.JNebula.Components.Component;
 import org.JNebula.math.Vector3;
 
 import java.util.*;
@@ -27,7 +27,7 @@ public class InitObjects {
     private GL4 gl;
     public InitObjects() {
         mainCamera = new CameraComponent(new Vector3(0,0,0));
-        this.gl = iComponent.gl;
+        this.gl = Component.gl;
         GameObject.gl = gl;
 //        this.fpsAnimator = fpsAnimator;
     }

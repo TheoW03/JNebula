@@ -1,16 +1,12 @@
 package org.JNebula.ObjectEditor;
 
 import com.google.gson.Gson;
-import org.JNebula.Components.DifferentComponents.SpriteComponent;
-import org.JNebula.Components.iComponent;
+import org.JNebula.Components.Component;
 import org.JNebula.GameObjects.GameObject;
-import org.JNebula.Tooling.SceneObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -73,7 +69,7 @@ public class ObjectEditorJSON {
             for (int c = 0; c < components.length(); c++) {
                 String obj = components.getJSONObject(c).get("component_name").toString();
                 try {
-                    Class<? extends iComponent> clazz = (Class<? extends iComponent>) Class.forName(obj);
+                    Class<? extends Component> clazz = (Class<? extends Component>) Class.forName(obj);
                     Object object = gson.fromJson(String.valueOf(components.getJSONObject(c)), clazz);
                     assert gameObject != null;
                     gameObject.AddComponent(clazz.cast(object));

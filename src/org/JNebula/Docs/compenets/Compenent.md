@@ -1,4 +1,4 @@
-# iComponent
+# Component
 
 
 ``GL4 gl`` this is the openGL context.
@@ -11,9 +11,9 @@ gets called at the start frame. with dt as delta time
 `` public void update(float dt) ``
 gets called at every frame. dt as delta time
 ----
-`` public void sendtoGPU(int shaderProgram, loadShader sh)`` this is meant for if you have shaders. its what you call to send
-the uniform vars stuff to the GPU
+`` public void sendtoGPU(int shaderProgram, loadShader sh)``  sends stuff to GLSL, 
+shader. 
 
 ---
-if you want custom scripts. have it inherit this
+if you want custom scripts. have it in-herit this
 

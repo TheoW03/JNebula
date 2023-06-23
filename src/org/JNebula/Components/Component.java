@@ -12,7 +12,7 @@ import org.JNebula.Tooling.Shader;
  * ~ project outline here ~
  * @Javadoc
  */
-public abstract class iComponent {
+public abstract class Component {
     public GameObject gameObject;
 //    public GL4 gl;
     public static GL4 gl;

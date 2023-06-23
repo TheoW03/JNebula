@@ -1,6 +1,6 @@
 package org.JNebula.Components.DifferentComponents;
 
-import org.JNebula.Components.iComponent;
+import org.JNebula.Components.Component;
 import org.JNebula.math.Ray;
 import org.JNebula.math.Vector3;
 import org.joml.Vector2f;
@@ -12,7 +12,7 @@ import org.joml.Vector2f;
  * ~ project outline here ~
  * @Javadoc
  */
-public class ColliderComponent extends iComponent {
+public class ColliderComponent extends Component {
     public float width, height;
 
     public boolean showHitBox ;

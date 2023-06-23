@@ -1,6 +1,6 @@
 package org.JNebula.Components.DifferentComponents;
 
-import org.JNebula.Components.iComponent;
+import org.JNebula.Components.Component;
 import org.JNebula.math.Vector3;
 import org.joml.Vector3f;
 
@@ -10,7 +10,7 @@ import org.joml.Vector3f;
  * ~ project outline here ~
  * @Javadoc
  */
-public class PhysicsComponent extends iComponent {
+public class PhysicsComponent extends Component {
     public Vector3 startingV;
     public Vector3 vectorPosition;
     private Vector3 position;

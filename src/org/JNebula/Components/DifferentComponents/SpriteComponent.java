@@ -4,7 +4,7 @@ import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.texture.TextureData;
 import com.jogamp.opengl.util.texture.TextureIO;
-import org.JNebula.Components.iComponent;
+import org.JNebula.Components.Component;
 import com.jogamp.opengl.util.texture.Texture;
 import org.JNebula.Tooling.Colors;
 import org.JNebula.Tooling.SpriteSheetList;
@@ -31,7 +31,7 @@ import static com.jogamp.opengl.GL.GL_CLAMP_TO_EDGE;
  * ~ project outline here ~
  * @Javadoc
  */
-public class SpriteComponent extends iComponent {
+public class SpriteComponent extends Component {
 
     String file;
     public boolean wireFrame = false;
