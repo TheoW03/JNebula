@@ -96,7 +96,7 @@ public class GameObject {
             Shader sh = new Shader();
 //        gl.glClear(GL.GL_COLOR_BUFFER_BIT); // Clear the color buffer to the clear color
             indices = new int[3];
-            int shP = sh.shaderCompile(gl);
+            int shP = sh.load2DShaders(gl);
             sendUtilVars(gl,shP);
             for (int i = 0; i < compenets.size(); i++) {
                 compenets.get(i).update(dt);
@@ -180,7 +180,7 @@ public class GameObject {
         if (this.isActive) {
 
             Shader sh = new Shader();
-            int shP = sh.shaderCompile(gl);
+            int shP = sh.load2DShaders(gl);
             indices = new int[3];
             System.out.println("a: " + compenets.size());
 

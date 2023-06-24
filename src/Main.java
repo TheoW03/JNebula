@@ -22,7 +22,7 @@ import java.io.*;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        render2D();
+        render3D();
 
     }
 

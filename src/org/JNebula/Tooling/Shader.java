@@ -26,12 +26,14 @@ public class Shader {
 
     public String vertexSource, fragSource;
 
+
     /**
-     * @return shader content
+     * functionaled my code :sunglasses:
      */
-    public String processShader(String fileName) throws IOException {
-        String file = "src/shaders/" + fileName;
+    public static Function<String, String> getShaderString = ((String fileName) -> {
+
         StringBuilder t = new StringBuilder();
+        String file = "src/shaders/" + fileName;
         try {
             ArrayList<String> a = (ArrayList<String>) Files.readAllLines(Path.of(file), StandardCharsets.UTF_8);
             a.forEach(contents -> {
@@ -42,33 +44,15 @@ public class Shader {
             e.printStackTrace();
             System.exit(1);
         }
-
         return t.toString();
-    }
+    });
 
-    public int shaderCompile(GL4 gl) {
+    public int load2DShaders(GL4 gl) {
         if (vertexSource != null && fragSource != null) {
             return loadShaders(vertexSource, fragSource, gl);
         }
-
-        //lambda. gotta use it more.
-        Function<String, String> javaIsCrap = ( (String filename) -> {
-            StringBuilder t = new StringBuilder();
-            String file = "src/shaders/" + filename;
-            try {
-                ArrayList<String> a = (ArrayList<String>) Files.readAllLines(Path.of(file), StandardCharsets.UTF_8);
-                a.forEach(contents -> {
-                    t.append(contents);
-                    t.append("\n");
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.exit(1);
-            }
-            return t.toString();
-        });
-        vertexSource = javaIsCrap.apply("2DVertex.glsl");
-        fragSource = javaIsCrap.apply("2DFrag.glsl");
+        vertexSource = getShaderString.apply("2DVertex.glsl");
+        fragSource = getShaderString.apply("2DFrag.glsl");
         return loadShaders(vertexSource, fragSource, gl);
     }
 
