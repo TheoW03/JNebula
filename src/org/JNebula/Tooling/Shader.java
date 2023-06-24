@@ -12,6 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.io.*;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 
 /**
@@ -23,6 +25,7 @@ import java.io.*;
 public class Shader {
 
     public String vertexSource, fragSource;
+
     /**
      * @return shader content
      */
@@ -36,46 +39,46 @@ public class Shader {
                 t.append("\n");
             });
         } catch (IOException e) {
-            System.err.println("didnt load");
-            return "error getting file";
+            e.printStackTrace();
+            System.exit(1);
         }
 
         return t.toString();
     }
 
     public int shaderCompile(GL4 gl) {
-        if(vertexSource != null && fragSource != null){
-            return loadShaders(vertexSource,fragSource,gl);
+        if (vertexSource != null && fragSource != null) {
+            return loadShaders(vertexSource, fragSource, gl);
         }
-        try {
-            vertexSource = processShader("2DVertex.glsl");
-            fragSource = processShader("2DFrag.glsl");
-        } catch (IOException ignored) {
 
-            return 0;
-        }
+        //lambda. gotta use it more.
+        Function<String, String> javaIsCrap = ( (String filename) -> {
+            StringBuilder t = new StringBuilder();
+            String file = "src/shaders/" + filename;
+            try {
+                ArrayList<String> a = (ArrayList<String>) Files.readAllLines(Path.of(file), StandardCharsets.UTF_8);
+                a.forEach(contents -> {
+                    t.append(contents);
+                    t.append("\n");
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.exit(1);
+            }
+            return t.toString();
+        });
+        vertexSource = javaIsCrap.apply("2DVertex.glsl");
+        fragSource = javaIsCrap.apply("2DFrag.glsl");
         return loadShaders(vertexSource, fragSource, gl);
     }
 
 
-    public int addFragShader(){
+    public int addFragShader() {
         return 0;
     }
+
     public int loadShaders(String vertexShaderS, String fragShader, GL4 gl2) {
 
-        //duke mwean UwU
-        if (vertexShaderS.equals("error getting file") ||
-                fragShader.equals("error getting file")) {
-            System.out.println("didnt compile");
-            return 0;
-        }
-
-        // OHIO boss :kekw:
-//        if (vertexShaderS.length() == "error getting file".length() ||
-//                fragShader.length() == "error getting file".length()) {
-//            System.out.println("didnt compile");
-//            return 0;
-//        }
         int shaderProgram = gl2.glCreateProgram();
         int vertexShader = gl2.glCreateShader(GL2.GL_VERTEX_SHADER);
         gl2.glShaderSource(vertexShader, 1, new String[]{vertexShaderS}, null);
