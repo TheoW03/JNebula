@@ -46,6 +46,7 @@ public class SpriteComponent extends Component {
 
         public SpriteComponentBuilder(SpriteComponent spriteComponent) {
             this.spriteComponent = spriteComponent;
+            spriteComponent.textureID = 0;
             spriteComponent.vertices = new float[][]{
                     {-1.0f, -1.0f, 0.0f},
                     {1.0f, -1.0f, 0.0f},
