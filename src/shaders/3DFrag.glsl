@@ -19,7 +19,7 @@ void mainImage(  vec2 fragCoord)
     d = cos(d) * sin(d) * SH_color.x;
     float d2 = cos(d) * sin(d) * SH_color.y;
     float d3 = cos(d) * SH_color.z;
-    FragColor = vec4(-d,-d2,d3,1.0);
+    FragColor = vec4(d,d2,d3,1.0);
 }
 void main()
 {

@@ -12,7 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.io.*;
-import java.util.function.Consumer;
 import java.util.function.Function;
 
 
@@ -47,21 +46,17 @@ public class Shader {
         return t.toString();
     });
 
+
     public int load2DShaders(GL4 gl) {
         if (vertexSource != null && fragSource != null) {
-            return loadShaders(vertexSource, fragSource, gl);
+            return compileShaders(vertexSource, fragSource, gl);
         }
         vertexSource = getShaderString.apply("2DVertex.glsl");
         fragSource = getShaderString.apply("2DFrag.glsl");
-        return loadShaders(vertexSource, fragSource, gl);
+        return compileShaders(vertexSource, fragSource, gl);
     }
 
-
-    public int addFragShader() {
-        return 0;
-    }
-
-    public int loadShaders(String vertexShaderS, String fragShader, GL4 gl2) {
+    public int compileShaders(String vertexShaderS, String fragShader, GL4 gl2) {
 
         int shaderProgram = gl2.glCreateProgram();
         int vertexShader = gl2.glCreateShader(GL2.GL_VERTEX_SHADER);

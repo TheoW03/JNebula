@@ -2,6 +2,7 @@
 /out/
 *.log
 /src/TestStuff/
+/src/ObjectEditorJSON/*.json
 /.gradle/buildOutputCleanup/buildOutputCleanup.lock
 /.gradle/buildOutputCleanup/cache.properties
 /build/classes/java/main/org/NayaEngine/Tooling/Camera.class
