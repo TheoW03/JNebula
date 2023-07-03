@@ -1,9 +1,9 @@
-# JNebula v1.0.0
+# JNebula v1.0.0 in-dev
 
 a component based graphics engine
 coded in java 
 
-<p>coded by: TheoW03 and T-A-B</p>
+<p>coded by: TheoW03 </p>
 
 
 # Getting Started
@@ -125,5 +125,7 @@ public class StarterCode extends GameRenderer {
 
 * <a href = https://github.com/TheoW03/JNebula/tree/master/src/org/JNebula/Docs>Documentation v1.0.0 </a>
 
+# attributes
 
+Thank you to T-A-B for adding a gradle build system. 
 

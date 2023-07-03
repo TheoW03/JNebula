@@ -1,5 +1,6 @@
 package org.JNebula.Components.DifferentComponents;
 
+import TestStuff.SpriteFactory;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.texture.TextureData;
@@ -13,6 +14,7 @@ import org.JNebula.math.Vector3;
 import org.joml.Vector3f;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -32,6 +34,49 @@ import static com.jogamp.opengl.GL.GL_CLAMP_TO_EDGE;
  * @Javadoc
  */
 public class SpriteComponent extends Component {
+
+    public SpriteComponent() {
+
+    }
+    public static SpriteComponentBuilder SpriteInstance() {
+        return new SpriteComponentBuilder(new SpriteComponent());
+    }
+    public static class SpriteComponentBuilder {
+        private SpriteComponent spriteComponent;
+
+        public SpriteComponentBuilder(SpriteComponent spriteComponent) {
+            this.spriteComponent = spriteComponent;
+            spriteComponent.vertices = new float[][]{
+                    {-1.0f, -1.0f, 0.0f},
+                    {1.0f, -1.0f, 0.0f},
+                    {-1.0f, 1.0f, 0.0f},
+                    {1.0f, 1.0f, 0.0f}
+            };
+//            spriteComponent.scaleXY(100,100);
+        }
+
+        public SpriteComponentBuilder addColor(Colors colors) {
+            spriteComponent.color = colors;
+            gl.glEnable(GL.GL_BLEND);
+            gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
+            return this;
+        }
+
+        public SpriteComponentBuilder addTexture(String file, String type) {
+            spriteComponent.file = file;
+            spriteComponent.type = type;
+            return this;
+        }
+
+        public SpriteComponentBuilder wireFrame(boolean wireFrame) {
+            spriteComponent.wireFrame = wireFrame;
+            return this;
+        }
+
+        public SpriteComponent build() {
+            return spriteComponent;
+        }
+    }
 
     String file;
     public boolean wireFrame = false;
@@ -53,6 +98,9 @@ public class SpriteComponent extends Component {
     public Colors color;
     public float[] defualtVertices;
     float[][] vertices;
+
+
+
 
 
     /**
@@ -106,6 +154,8 @@ public class SpriteComponent extends Component {
     public SpriteComponent(float[] textureCoords, SpriteSheetList spriteSheetList, Colors c) {
         this.color = c;
         this.texture = spriteSheetList.texture;
+        spriteTexCoords = new float[1][textureCoords.length];
+        spriteTexCoords[0] = textureCoords;
         this.textureID = 0;
     }
 
@@ -124,12 +174,14 @@ public class SpriteComponent extends Component {
 
     @Override
     public void init(float dt) {
-        this.vertices = new float[][]{
-                {-1.0f, -1.0f, 0.0f},
-                {1.0f, -1.0f, 0.0f},
-                {-1.0f, 1.0f, 0.0f},
-                {1.0f, 1.0f, 0.0f}
-        };
+        if(this.vertices == null){
+            this.vertices = new float[][]{
+                    {-1.0f, -1.0f, 0.0f},
+                    {1.0f, -1.0f, 0.0f},
+                    {-1.0f, 1.0f, 0.0f},
+                    {1.0f, 1.0f, 0.0f}
+            };
+        }
         if (spriteTexCoords == null) {
             textureCoords = new float[]{
                     0.0f, 0.0f,           // Bottom-left texture coordinate

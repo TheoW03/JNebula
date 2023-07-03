@@ -1,6 +1,7 @@
 # Project exclude paths
 /out/
 *.log
+Main.java
 /src/TestStuff/
 /src/ObjectEditorJSON/*.json
 /.gradle/buildOutputCleanup/buildOutputCleanup.lock
