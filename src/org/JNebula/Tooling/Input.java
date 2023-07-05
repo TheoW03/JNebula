@@ -59,7 +59,7 @@ public class Input extends MouseInputAdapter implements KeyListener {
         return false;
     }
 
-    public static boolean getMouseCode(int mouseCode) {
+    public static boolean getMouse(int mouseCode) {
         if (mouseCode >= 0 && mouseCode < mouseButtons.length) {
             return mouseButtons[mouseCode];
         }

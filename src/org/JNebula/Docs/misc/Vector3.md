@@ -17,5 +17,6 @@
 
 ```public float magnitude()``` length SQRT(x^2+y^2+z^2)
 
+
 ```public Vector3 unitVector()``` a vector Such that its length = 1, found by scaling 1/magnitude
 
