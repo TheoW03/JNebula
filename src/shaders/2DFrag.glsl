@@ -83,6 +83,12 @@ vec4 mainImage(  vec2 fragCoord)
 void main(){
 
 
+    #if defined(EFFECT_SHADER)
+        effectShader(deltaTime);
+    #endif
+
+
+
     if (Lightexists == 1){
         //        float ambientS = 0.1;
 

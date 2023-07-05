@@ -12,10 +12,13 @@ gets called at the start frame. with dt as delta time
 `` public void update(float dt) ``
 gets called at every frame. dt as delta time
 
-<br>
-`` public void sendtoGPU(int shaderProgram, loadShader sh)``  sends stuff to GLSL, 
+
+
+`` public void sendtoGPU(int shaderProgram, loadShader sh) ``  
+
+sends stuff to GLSL, 
 shader. 
-<br>
+
 
 
 if you want custom scripts. have it in-herit this
