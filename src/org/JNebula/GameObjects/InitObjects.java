@@ -58,9 +58,9 @@ public class InitObjects {
             if(object.get(i).GetCompenent(TransformComponent.class) == null){
                 object.get(i).AddComponent(new TransformComponent(new Vector3(0,0,0)));
             }
+
             System.out.println(object.get(i).toString());
             System.out.println(object.get(i).isActive);
-
             if (!first) {
                 object.get(i).start(dt, gl);
 
@@ -68,11 +68,11 @@ public class InitObjects {
                 object.get(i).update(dt, gl);
                 System.out.println(object.get(i).name);
             }
+
             dtAtEnd = System.currentTimeMillis();
-            dt = (float) (dtAtEnd - dtAtStart) /1000;
+            dt = (float) (dtAtEnd - dtAtStart) / 1000;
             System.out.println("dt: "+dt);
             Window.deltaTime = dt;
-//            System.exit(1);
 
         }
 

@@ -42,6 +42,12 @@ struct Light {
     vec3 color;
     float intensity;
 };
+struct util_effectShader{
+    vec2 iResolution;
+    float iTime;
+    float deltaTime;
+
+};
 struct Ray {
     vec3 origin;
     vec3 direction;
@@ -52,7 +58,7 @@ struct renderedObject{
 };
 
 vec4 calcLight(Light light){
-    return vec4(0,0,0,0);
+    return vec4(0, 0, 0, 0);
 }
 Ray[4] rays(){
 
@@ -70,21 +76,27 @@ Ray[4] rays(){
     rays[3] = Ray(camera_pos, normalize(tr - camera_pos));
     return rays;
 }
-vec4 mainImage(  vec2 fragCoord)
+vec4 mainImage(vec2 fragCoord)
 {
 
     vec2 uv = fragCoord.xy;
     vec2 pos = (uv.xy-0.5);
     vec2 cir = ((pos.xy*pos.xy+sin(uv.x*18.0+iTime)/25.0*sin(uv.y*7.0+iTime*1.5)/1.0)+uv.x*sin(iTime)/16.0+uv.y*sin(iTime*1.2)/16.0);
     float circles = (sqrt(abs(cir.x+cir.y*0.5)*25.0)*5.0);
-    vec4 fragColor = vec4(sin(circles*1.25+2.0),abs(sin(circles*1.0-1.0)-cos(circles)),abs(sin(circles)*1.0),1.0);
+    vec4 fragColor = vec4(sin(circles*1.25+2.0), abs(sin(circles*1.0-1.0)-cos(circles)), abs(sin(circles)*1.0), 1.0);
     return fragColor;
 }
 void main(){
 
+    vec3 effect_shderOut = vec3(0, 0, 0);
 
+    //this is for Effect shaders :D i finally adding support :3
     #if defined(EFFECT_SHADER)
-        effectShader(deltaTime);
+    util_effectShader a;
+    a.deltaTime = deltaTime;
+    a.iResolution = iResolution;
+    a.iTime = iTime;
+    effect_shderOut =  effectShader();
     #endif
 
 
@@ -115,7 +127,7 @@ void main(){
         if (LightSource == 1){
             vec3 result = (ambient)*objectColor;
             FragColor = vec4(result, 1.0)*texture(tSample, tCoord);
-//            FragColor *= screenRes.x/screenRes.y; //needed so stuff stays consistent
+            //            FragColor *= screenRes.x/screenRes.y; //needed so stuff stays consistent
 
 
         } else {
@@ -124,16 +136,16 @@ void main(){
 
         }
     } else {
-        vec4 c = vec4(color_of_sprite,1.0);
-        if(textureExists == 0){
+        vec4 c = vec4(color_of_sprite, 1.0);
+        if (textureExists == 0){
             vec4 color = texture(tSample, tCoord);
             FragColor = c*color;
 
-        }else if(textureExists == 1){
-            FragColor = vec4(color_of_sprite,1.0);
-//            FragColor *= screenRes.x/screenRes.y; //needed so stuff stays consistent
+        } else if (textureExists == 1){
+            FragColor = vec4(color_of_sprite, 1.0);
+            //            FragColor *= screenRes.x/screenRes.y; //needed so stuff stays consistent
 
-        }else{
+        } else {
 
         }
 

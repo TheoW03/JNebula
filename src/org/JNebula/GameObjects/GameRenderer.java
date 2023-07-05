@@ -38,6 +38,7 @@ public abstract class GameRenderer implements GLEventListener, KeyListener {
         gl = (GL4) glAutoDrawable.getGL();
         Component.gl = gl;
         GameObject.gl = gl;
+        System.out.println("in game renderer");
     }
 
     @Override

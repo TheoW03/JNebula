@@ -23,9 +23,9 @@ public class CameraComponent extends Component {
 
     @Override
     public void sendtoGPU(int shaderProgram, Shader sh) {
-        int matriceLocation = gl.glGetUniformLocation(shaderProgram, "viewMatrix");
+        int matricesLocation = gl.glGetUniformLocation(shaderProgram, "viewMatrix");
         int projectionLocation = gl.glGetUniformLocation(shaderProgram, "projectMatrix");
-        sh.sendMatrices(camera.viewMatrix(),gl,matriceLocation);
+        sh.sendMatrices(camera.viewMatrix(),gl,matricesLocation);
         sh.sendMatrices(camera.getProjection(),gl,projectionLocation);
     }
     public void zoom(float zoomfactor){
