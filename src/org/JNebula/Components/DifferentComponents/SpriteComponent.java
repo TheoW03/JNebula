@@ -69,6 +69,15 @@ public class SpriteComponent extends Component {
             return this;
         }
 
+
+        //im trying ill implement later.
+        public static class SpriteSheetBuilder extends SpriteComponentBuilder{
+            public SpriteSheetBuilder(SpriteComponent a){
+                super(a);
+            }
+
+        }
+
         public SpriteComponentBuilder wireFrame(boolean wireFrame) {
             spriteComponent.wireFrame = wireFrame;
             return this;

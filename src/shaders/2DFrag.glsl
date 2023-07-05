@@ -7,6 +7,7 @@ in vec2 tCoord;
 in vec2 toLight;
 in vec4 lightSourcelocation;
 uniform sampler2D tSample;
+#define PI 3.1415
 
 uniform vec2 iResolution;
 uniform float iTime;

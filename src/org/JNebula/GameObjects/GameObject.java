@@ -84,10 +84,10 @@ public class GameObject {
         int iRes = gl.glGetUniformLocation(shader, "iResolution");
         gl.glUniform2f(iRes, Window.screenRes.x, Window.screenRes.y);
         int iTime = gl.glGetUniformLocation(shader, "iTime");
-        gl.glUniform1f(iTime, time);
+        gl.glUniform1f(iTime,time );
         int deltaTime = gl.glGetUniformLocation(shader, "deltaTime");
-        gl.glUniform1f(deltaTime, 1.5f);
-        time += 1;
+        gl.glUniform1f(deltaTime, Window.deltaTime);
+        time++; //change to fixed time later.
     }
 
     public void update(float dt, GL4 gl) {
@@ -147,7 +147,7 @@ public class GameObject {
 
 
 //                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-                    System.out.println("sprite render 1st");
+
 
 //                    gl.glDrawElements(GL_TRIANGLE_STRIP, 12, GL_UNSIGNED_INT, 0); //learn to make dynamic
 //                    gl.glDrawElements(GL_LINE_LOOP, 3, GL_UNSIGNED_INT, 0);
@@ -160,11 +160,7 @@ public class GameObject {
 
 
             }
-            if (GetCompenent(SpriteComponent.class) != null) {
-                System.out.println("render");
 
-
-            }
 //            gl.glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
 //
 //            gl.glBindBuffer(GL_ARRAY_BUFFER, 0);

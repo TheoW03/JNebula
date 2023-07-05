@@ -7,8 +7,12 @@ import org.JNebula.Components.DifferentComponents.CameraComponent;
 import org.JNebula.Components.DifferentComponents.ColliderComponent;
 import org.JNebula.Components.DifferentComponents.TransformComponent;
 import org.JNebula.Components.Component;
+import org.JNebula.Tooling.Window;
 import org.JNebula.math.Vector3;
 
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 
 import static com.jogamp.opengl.fixedfunc.GLLightingFunc.GL_LIGHTING;
@@ -36,11 +40,15 @@ public class InitObjects {
 
 
     public void InstantiateObjects(List<GameObject> object) {
+
         ArrayList<GameObject> hasCollison = new ArrayList<>();
         gl.glEnable(GL_LIGHTING);
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);// Clear the color buffer to the clear color
-
+        long dtAtStart;
+        long dtAtEnd;
+        float dt = 0;
         for (int i = 0; i < object.size(); i++) {
+            dtAtStart = System.currentTimeMillis();
             if(object.get(i).GetCompenent(CameraComponent.class) == null){
                 object.get(i).AddComponent(mainCamera);
             }
@@ -54,12 +62,16 @@ public class InitObjects {
             System.out.println(object.get(i).isActive);
 
             if (!first) {
-                object.get(i).start(0.1f, gl);
+                object.get(i).start(dt, gl);
 
             } else {
-                object.get(i).update(0.1f, gl);
+                object.get(i).update(dt, gl);
                 System.out.println(object.get(i).name);
             }
+            dtAtEnd = System.currentTimeMillis();
+            dt = (float) (dtAtEnd - dtAtStart) /1000;
+            System.out.println("dt: "+dt);
+            Window.deltaTime = dt;
 //            System.exit(1);
 
         }

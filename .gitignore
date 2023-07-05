@@ -2,6 +2,7 @@
 /out/
 *.log
 Main.java
+/src/models/
 /src/TestStuff/
 /src/ObjectEditorJSON/*.json
 /.gradle/buildOutputCleanup/buildOutputCleanup.lock
