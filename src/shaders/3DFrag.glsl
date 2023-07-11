@@ -16,16 +16,21 @@ out vec4 FragColor;
 
 void mainImage(  vec2 fragCoord)
 {
-    vec2 uv = (fragCoord);
-    float d= length(uv) * (iTime);
-    d = cos(d) * sin(d) * SH_color.x;
-    float d2 = cos(d) * sin(d) * SH_color.y;
-    float d3 = cos(d) * SH_color.z;
-    FragColor = vec4(d,d2,d3,1.0);
+    vec2 uv = (fragCoord*2.0-1.0);
+
+    // Time varying pixel color
+
+    float d = length(uv);
+    d = sin(d*8.0+iTime)/8.0;
+
+    d = abs(d);
+
+    // Output to screen
+    FragColor = vec4(uv,d,1.0);
 }
 void main()
 {
-//    vec2 fragCoord = vec2(FragCoord.x, FragCoord.y);
+    vec2 fragCoord = vec2(FragCoord.x, FragCoord.y);
 //    mainImage(fragCoord);
     FragColor = vec4(SH_color,1.0);
 

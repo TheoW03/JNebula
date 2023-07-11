@@ -1,4 +1,3 @@
-#version 430 core
 
 in vec3 FragPos;
 in vec3 Normal;
@@ -42,12 +41,12 @@ struct Light {
     vec3 color;
     float intensity;
 };
-struct util_effectShader{
-    vec2 iResolution;
-    float iTime;
-    float deltaTime;
-
-};
+//struct util_effectShader{
+//    vec2 iResolution;
+//    float iTime;
+//    float deltaTime;
+//
+//};
 struct Ray {
     vec3 origin;
     vec3 direction;

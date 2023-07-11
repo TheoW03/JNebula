@@ -1,10 +1,12 @@
 package org.JNebula.Tooling;
 
 import com.jogamp.common.nio.Buffers;
+import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GL4;
 import org.joml.Matrix4f;
 
+import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.charset.StandardCharsets;
@@ -13,6 +15,9 @@ import java.nio.file.Path;
 import java.util.*;
 import java.io.*;
 import java.util.function.Function;
+import java.util.function.Supplier;
+
+import static java.lang.System.exit;
 
 
 /**
@@ -23,7 +28,101 @@ import java.util.function.Function;
  */
 public class Shader {
 
+
+    private final String fragShdaer2D = "src/shaders/2DFrag.glsl";
+    public final String vertexShader2D = "src/shaders/2DVertex.glsl";
+    private final String fragShdaer3D = "src/shaders/3DFrag.glsl";
+    public final String vertexShader3D = "src/shaders/3DVertex.glsl";
+
+    public static ArrayList<String> effectShaders2D = new ArrayList<>();
+    public static ArrayList<String> effectShaders3D = new ArrayList<>();
+
+
     public String vertexSource, fragSource;
+    public String effectShader2D;
+    public String effectShader3D;
+    public Function<GL4, Integer> compile2DShaders = (GL4 gl) -> {
+        // Your logic here
+        StringBuilder fragShader = new StringBuilder();
+        StringBuilder vertexShader = new StringBuilder();
+        ArrayList<String> a = new ArrayList<>();
+
+        fragShader.append("#version 430 core\n");
+        fragShader.append("struct util_effectShader{ \n" +
+                "    vec2 iResolution;\n" +
+                "    float iTime;\n" +
+                "    float deltaTime;\n" +
+                "\n" +
+                "}; \n");
+        for (String s : effectShaders2D) {
+            try {
+                a = (ArrayList<String>) Files.readAllLines(Path.of(s), StandardCharsets.UTF_8);
+                a.forEach(contents -> {
+                    fragShader.append(contents);
+                    fragShader.append("\n");
+                });
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        try {
+            a = (ArrayList<String>) Files.readAllLines(Path.of(fragShdaer2D), StandardCharsets.UTF_8);
+            a.forEach(contents -> {
+                fragShader.append(contents);
+                fragShader.append("\n");
+            });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("frag: " + fragShader.toString());
+
+        try {
+            a = (ArrayList<String>) Files.readAllLines(Path.of(vertexShader2D), StandardCharsets.UTF_8);
+            a.forEach(contents -> {
+                vertexShader.append(contents);
+                vertexShader.append("\n");
+            });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return compileShaders(vertexShader.toString(), fragShader.toString(), gl);
+
+    };
+    public Function<GL4, Integer> compile3DShaders = (GL4 gl) -> {
+        // Your logic here
+        StringBuilder fragShader = new StringBuilder();
+        StringBuilder vertexShader = new StringBuilder();
+        effectShaders3D.add(fragShdaer3D);
+        for (int i = 0; i < effectShaders3D.size(); i++) {
+            ArrayList<String> a = null;
+            try {
+                a = (ArrayList<String>) Files.readAllLines(Path.of(effectShaders3D.get(i)), StandardCharsets.UTF_8);
+                a.forEach(contents -> {
+                    fragShader.append(contents);
+                    fragShader.append("\n");
+                });
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        ArrayList<String> a;
+        try {
+            a = (ArrayList<String>) Files.readAllLines(Path.of(vertexShader3D), StandardCharsets.UTF_8);
+            a.forEach(contents -> {
+                vertexShader.append(contents);
+                vertexShader.append("\n");
+            });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return compileShaders(vertexShader.toString(), fragShader.toString(), gl);
+    };
 
 
     /**
@@ -41,19 +140,30 @@ public class Shader {
             });
         } catch (IOException e) {
             e.printStackTrace();
-            System.exit(1);
+            exit(1);
         }
         return t.toString();
     });
 
 
     public int load2DShaders(GL4 gl) {
-        if (vertexSource != null && fragSource != null) {
-            return compileShaders(vertexSource, fragSource, gl);
-        }
-        vertexSource = getShaderString.apply("2DVertex.glsl");
-        fragSource = getShaderString.apply("2DFrag.glsl");
-        return compileShaders(vertexSource, fragSource, gl);
+        return compile2DShaders.apply(gl);
+//        if (vertexSource != null && fragSource != null) {
+//            return compileShaders(vertexSource, fragSource, gl);
+//        }
+//        vertexSource = getShaderString.apply("2DVertex.glsl");
+//        fragSource = getShaderString.apply("2DFrag.glsl");
+//        return compileShaders(vertexSource, fragSource, gl);
+    }
+
+    public int load3DShaders(GL4 gl) {
+        return compile3DShaders.apply(gl);
+//        if (vertexSource != null && fragSource != null) {
+//            return compileShaders(vertexSource, fragSource, gl);
+//        }
+//        vertexSource = getShaderString.apply("2DVertex.glsl");
+//        fragSource = getShaderString.apply("2DFrag.glsl");
+//        return compileShaders(vertexSource, fragSource, gl);
     }
 
     public int compileShaders(String vertexShaderS, String fragShader, GL4 gl2) {
