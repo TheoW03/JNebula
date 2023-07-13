@@ -35,7 +35,8 @@ public class DemoRenderer extends GameRenderer implements KeyListener {
         ball.AddComponent(new SpriteComponent(new Colors(1, 1, 1)));
         paddle1.AddComponent(new SpriteComponent("src/DemoGame/assets/paddle_asset.PNG", "png", null));
         paddle2.AddComponent(new SpriteComponent("src/DemoGame/assets/paddle_asset.PNG", "png", null));
-        Init = new InitObjects();
+
+
         gameObjectArrayList.add(paddle1);
         gameObjectArrayList.add(paddle2);
         gameObjectArrayList.add(ball);
@@ -57,13 +58,13 @@ public class DemoRenderer extends GameRenderer implements KeyListener {
 
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
-        Init.InstantiateObjects(gameObjectArrayList);
+        InitObjects.InstantiateObjects(gameObjectArrayList);
 
         if(Input.getKey(KeyEvent.VK_S)){
             paddle1.transform.transform(Vector3.down);
         }
         if(Input.getKey(KeyEvent.VK_W)){
-            paddle1.transform.transform(Vector3.up);
+            InitObjects.Find("paddle1").transform.transform(Vector3.up);
         }
         if(Input.getKey(KeyEvent.VK_DOWN)){
             paddle2.transform.transform(Vector3.down);

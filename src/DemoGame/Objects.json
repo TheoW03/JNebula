@@ -1,8 +1,62 @@
 [
   {
-
+    "name": "paddle1",
+    "isActive": true,
+    "components": [
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.TransformComponent",
+        "location": {
+          "x": 170,
+          "y": 100,
+          "z": 0
+        }
+      },
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.SpriteComponent",
+        "file": "src/DemoGame/assets/paddle_asset.PNG",
+        "type": "png"
+      }
+    ]
   },
   {
-
+    "name": "paddle2",
+    "isActive": true,
+    "components": [
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.TransformComponent",
+        "location": {
+          "x": 30,
+          "y": 100,
+          "z": 0
+        }
+      },
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.SpriteComponent",
+        "file": "src/DemoGame/assets/paddle_asset.PNG",
+        "type": "jpg"
+      }
+    ]
+  },
+  {
+    "name": "ball",
+    "isActive": true,
+    "components": [
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.TransformComponent",
+        "location": {
+          "x": 100,
+          "y": 100,
+          "z": 0
+        }
+      },
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.SpriteComponent",
+        "color": {
+          "r2": 1,
+          "g2": 1,
+          "b2": 1
+        }
+      }
+    ]
   }
 ]

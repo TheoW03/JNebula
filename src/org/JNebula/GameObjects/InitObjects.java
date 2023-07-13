@@ -25,22 +25,35 @@ import static com.jogamp.opengl.fixedfunc.GLLightingFunc.GL_LIGHTING;
  * @Javadoc
  */
 public class InitObjects {
-    public boolean first = false;
+    private static boolean first = false;
     private FPSAnimator fpsAnimator;
     public static CameraComponent mainCamera;
     private GL4 gl;
+
+    private static ArrayList<GameObject> objectList = new ArrayList<>();
+
     public InitObjects() {
-        mainCamera = new CameraComponent(new Vector3(0,0,0));
-        this.gl = Component.gl;
-        GameObject.gl = gl;
+
 //        this.fpsAnimator = fpsAnimator;
     }
 
 
+    public static GameObject Find(String nameP) {
+        for (int i = 0; i < objectList.size(); i++) {
+            if (objectList.get(i).name.equals(nameP)) {
+                return objectList.get(i);
 
+            }
+        }
+        return null;
+    }
 
-    public void InstantiateObjects(List<GameObject> object) {
-
+    public static void InstantiateObjects(ArrayList<GameObject> object) {
+        if (mainCamera == null) {
+            mainCamera = new CameraComponent(new Vector3(0, 0, 0));
+        }
+        GL4 gl = Component.gl;
+        objectList = object;
         ArrayList<GameObject> hasCollison = new ArrayList<>();
         gl.glEnable(GL_LIGHTING);
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);// Clear the color buffer to the clear color
@@ -49,14 +62,14 @@ public class InitObjects {
         float dt = 0;
         for (int i = 0; i < object.size(); i++) {
             dtAtStart = System.currentTimeMillis();
-            if(object.get(i).GetCompenent(CameraComponent.class) == null){
+            if (object.get(i).GetCompenent(CameraComponent.class) == null) {
                 object.get(i).AddComponent(mainCamera);
             }
-            if(object.get(i).GetCompenent(ColliderComponent.class) != null){
+            if (object.get(i).GetCompenent(ColliderComponent.class) != null) {
                 hasCollison.add(object.get(i));
             }
-            if(object.get(i).GetCompenent(TransformComponent.class) == null){
-                object.get(i).AddComponent(new TransformComponent(new Vector3(0,0,0)));
+            if (object.get(i).GetCompenent(TransformComponent.class) == null) {
+                object.get(i).AddComponent(new TransformComponent(new Vector3(0, 0, 0)));
             }
 
             System.out.println(object.get(i).toString());
@@ -71,7 +84,7 @@ public class InitObjects {
 
             dtAtEnd = System.currentTimeMillis();
             dt = (float) (dtAtEnd - dtAtStart) / 1000;
-            System.out.println("dt: "+dt);
+            System.out.println("dt: " + dt);
             Window.deltaTime = dt;
 
         }
@@ -99,7 +112,6 @@ public class InitObjects {
 //        }
         first = true;
     }
-
 
 
 }

@@ -14,8 +14,8 @@ out vec3 SH_color;
 
 void main(){
     vec4 l = vec4(position, 1.0);
-    gl_Position = 0.5f*rot*l;
+    gl_Position = 0.25 *l;
     FragCoord =  gl_Position;
-    SH_color = color;
-//    SH_color = vec3(0,1,0);
+//    SH_color = color;
+    SH_color = vec3(0,1,0);
 }

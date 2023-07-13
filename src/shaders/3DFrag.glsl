@@ -30,7 +30,7 @@ void mainImage(  vec2 fragCoord)
 }
 void main()
 {
-    vec2 fragCoord = vec2(FragCoord.x, FragCoord.y);
+//    vec2 fragCoord = vec2(FragCoord.x, FragCoord.y);
 //    mainImage(fragCoord);
     FragColor = vec4(SH_color,1.0);
 
