@@ -14,7 +14,6 @@ import org.JNebula.Tooling.Shader;
  */
 public abstract class Component {
     public GameObject gameObject;
-//    public GL4 gl;
     public static GL4 gl;
     public void init(float dt){
 

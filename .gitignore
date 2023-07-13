@@ -4,6 +4,8 @@
 Main.java
 /src/models/
 /src/sprites/
+3DFrag.glsl
+3DVertex.glsl
 /src/TestStuff/
 /src/ObjectEditorJSON/*.json
 /.gradle/buildOutputCleanup/buildOutputCleanup.lock
