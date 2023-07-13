@@ -38,9 +38,14 @@ public class InitObjects {
     }
 
 
-    public static GameObject Find(String nameP) {
+    /**
+     *
+     * @param name finds game object with similar name. will return null if non existant.
+     * @return
+     */
+    public static GameObject Find(String name) {
         for (int i = 0; i < objectList.size(); i++) {
-            if (objectList.get(i).name.equals(nameP)) {
+            if (objectList.get(i).name.equals(name)) {
                 return objectList.get(i);
 
             }

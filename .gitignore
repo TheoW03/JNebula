@@ -3,6 +3,7 @@
 *.log
 Main.java
 /src/models/
+/src/sprites/
 /src/TestStuff/
 /src/ObjectEditorJSON/*.json
 /.gradle/buildOutputCleanup/buildOutputCleanup.lock
