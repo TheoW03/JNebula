@@ -75,7 +75,7 @@ public class Shader {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("frag: " + fragShader.toString());
+
 
         try {
             a = (ArrayList<String>) Files.readAllLines(Path.of(vertexShader2D), StandardCharsets.UTF_8);
@@ -171,7 +171,6 @@ public class Shader {
         int shaderProgram = gl2.glCreateProgram();
         int vertexShader = gl2.glCreateShader(GL2.GL_VERTEX_SHADER);
         gl2.glShaderSource(vertexShader, 1, new String[]{vertexShaderS}, null);
-        System.out.println(vertexShader);
         gl2.glCompileShader(vertexShader);
         int[] sucess = new int[1];
 //        int sucess = 0;

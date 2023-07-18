@@ -61,7 +61,6 @@ public class SpriteSheetList {
                         leftX, topY,
                         rightX, topY
                 };
-                System.out.println("textureds");
                 spriteTexCoords[i2] = textureCoords;
                 spriteX += spriteWidth - offset;
                 if (spriteX >= width) {
