@@ -3,8 +3,7 @@
 This lets you check for collisions
 
 
-<details>
-<summary><b>Vars</b></summary>
+
 
 ---
 
@@ -14,11 +13,10 @@ shows the hitbox of the collider
 
 ---
 
-</details>
 
 
-<details>
-<summary><b>Methods</b></summary>
+
+
 
 ----
 ``public boolean isCollided(ColliderCompenet collider)``
@@ -42,4 +40,4 @@ returns either true or false
 
 it will default to false or
 if you didn't define the ray in constructor
-</details>
+

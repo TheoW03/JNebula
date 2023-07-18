@@ -13,13 +13,9 @@ lets you do a transformation.
 (see Vector3 for the different transformation directions)
 
 
-```public void rotateContinuously(float angle)```
-
-lets you do multiple Rotations (it uses a rotation matrix)
+```public void rotateContinuously(float angle)``` lets you do multiple Rotations (it uses a rotation matrix)
 
 
 
-```public void rotate(float angle)```
-
-lets you do single Rotatios (it uses a rotation matrix)
+```public void rotate(float angle)``` lets you do a single Rotations (it uses a rotation matrix)
 

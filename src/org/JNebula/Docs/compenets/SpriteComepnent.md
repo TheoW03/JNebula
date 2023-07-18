@@ -20,7 +20,7 @@ render 2d animation
 
 
 
-methods
+
 ---
 
  ```   public void scaleX(float sx);```

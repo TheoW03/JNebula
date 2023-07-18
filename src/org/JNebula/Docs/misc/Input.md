@@ -1,4 +1,4 @@
-# input
+# Input
 
 ``
 public static Vector3 mouseLocation;``

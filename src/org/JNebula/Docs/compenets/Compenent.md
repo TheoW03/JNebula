@@ -14,12 +14,8 @@ gets called at every frame. dt as delta time
 
 
 
-`` public void sendtoGPU(int shaderProgram, loadShader sh) ``  
-
-sends stuff to GLSL, 
+`` public void sendtoGPU(int shaderProgram, loadShader sh) `` sends stuff to GLSL, 
 shader. 
 
 
-
-if you want custom scripts. have it in-herit this
-
+`` public void Collides(GameObject other)`` this method is called when collided
