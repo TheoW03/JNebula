@@ -126,7 +126,8 @@ public class StarterCode extends GameRenderer {
 
 * <a href = https://github.com/TheoW03/JNebula/tree/master/src/org/JNebula/Docs>Documentation v1.0.0 </a>
 
-# attributes
+# contributors
 
-Thank you to T-A-B for adding a gradle build system. 
+T-A-B
+
 
