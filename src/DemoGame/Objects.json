@@ -14,7 +14,11 @@
       {
         "component_name": "org.JNebula.Components.DifferentComponents.SpriteComponent",
         "file": "src/DemoGame/assets/paddle_asset.PNG",
-        "type": "png"
+        "type": "png",
+        "scaleWidth": 0.25
+      },
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.ColliderComponent"
       }
     ]
   },
@@ -33,7 +37,11 @@
       {
         "component_name": "org.JNebula.Components.DifferentComponents.SpriteComponent",
         "file": "src/DemoGame/assets/paddle_asset.PNG",
-        "type": "jpg"
+        "type": "jpg",
+        "scaleWidth": 0.25
+      },
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.ColliderComponent"
       }
     ]
   },
@@ -55,7 +63,13 @@
           "r2": 1,
           "g2": 1,
           "b2": 1
-        }
+
+        },
+        "scaleHeight": 0.2,
+        "scaleWidth": 0.2
+      },
+      {
+        "component_name": "org.JNebula.Components.DifferentComponents.ColliderComponent"
       }
     ]
   }

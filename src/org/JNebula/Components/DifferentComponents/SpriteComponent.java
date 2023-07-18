@@ -103,7 +103,7 @@ public class SpriteComponent extends Component {
     private int FPS = 0;
     public int numOfVertices;
 
-    public int scaleHeight, scaleWidth;
+    public float scaleHeight, scaleWidth;
 
     public Colors color;
     public float[] defualtVertices;
@@ -216,6 +216,7 @@ public class SpriteComponent extends Component {
             scaleY(scaleHeight);
         }
         if (scaleWidth != 0) {
+            System.out.println();
             scaleX(scaleWidth);
         }
         loadTexture();

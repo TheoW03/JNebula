@@ -65,6 +65,8 @@ public class GameObject {
     }
 
 
+
+
     public void AddComponent(Component component) {
         if (compenets == null) {
             compenets = new ArrayList<>();
@@ -89,7 +91,11 @@ public class GameObject {
         gl.glUniform1f(deltaTime, Window.deltaTime);
         time++; //change to fixed time later.
     }
-
+    public void Collides(ColliderComponent other){
+        for(int i = 0; i < compenets.size();i++){
+            compenets.get(i).Collides(other);
+        }
+    }
     public void update(float dt, GL4 gl) {
         if (isActive) {
 
@@ -169,6 +175,9 @@ public class GameObject {
 
     }
 
+    public void collisonLoop(ArrayList<GameObject> colliderCom,ArrayList<GameObject> data){
+
+    }
 
     public void start(float dt, GL4 gl) {
 

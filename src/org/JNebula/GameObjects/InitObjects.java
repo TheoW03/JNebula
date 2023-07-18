@@ -39,7 +39,6 @@ public class InitObjects {
 
 
     /**
-     *
      * @param name finds game object with similar name. will return null if non existant.
      * @return
      */
@@ -51,6 +50,30 @@ public class InitObjects {
             }
         }
         return null;
+    }
+
+    private void combinationUtil(ArrayList<GameObject> arr, ArrayList<GameObject> colliderComponents, int start,
+                                int index) {
+        // Current combination is ready to be printed, print it
+        if (index == 2) {
+
+            if (colliderComponents.get(0).GetCompenent(ColliderComponent.class)
+                    .isCollided(colliderComponents.get(1).GetCompenent(ColliderComponent.class))
+            ) {
+                colliderComponents.get(0).Collides(colliderComponents.get(1).GetCompenent(ColliderComponent.class));
+                colliderComponents.get(1).Collides(colliderComponents.get(0).GetCompenent(ColliderComponent.class));
+            }
+            return;
+        }
+
+        // replace index with all possible elements. The condition
+        // "end-i+1 >= r-index" makes sure that including one element
+        // at index will make a combination with remaining elements
+        // at remaining positions
+        for (int i = start; i <= (arr.size() - 1) && (arr.size() - 1) - i + 1 >= 2 - index; i++) {
+            colliderComponents.add(arr.get(i));
+            combinationUtil(arr, colliderComponents, i + 1, index + 1);
+        }
     }
 
     public static void InstantiateObjects(ArrayList<GameObject> object) {
