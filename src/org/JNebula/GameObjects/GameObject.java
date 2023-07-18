@@ -27,6 +27,8 @@ public class GameObject {
     public String name;
     public TransformComponent transform;
 
+    public String tag;
+
     public boolean isActive = true;
     public float time;
 
@@ -36,6 +38,12 @@ public class GameObject {
         compenets = new ArrayList<>();
 
         this.name = name;
+    }
+    public GameObject(String name, String tag) {
+        compenets = new ArrayList<>();
+
+        this.name = name;
+        this.tag = tag;
     }
 
     public <T extends Component> T GetCompenent(Class<T> compenet) {
@@ -91,7 +99,7 @@ public class GameObject {
         gl.glUniform1f(deltaTime, Window.deltaTime);
         time++; //change to fixed time later.
     }
-    public void Collides(ColliderComponent other){
+    public void Collides(GameObject other){
         for(int i = 0; i < compenets.size();i++){
             compenets.get(i).Collides(other);
         }

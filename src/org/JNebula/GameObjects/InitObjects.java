@@ -60,8 +60,8 @@ public class InitObjects {
             if (colliderComponents.get(0).GetCompenent(ColliderComponent.class)
                     .isCollided(colliderComponents.get(1).GetCompenent(ColliderComponent.class))
             ) {
-                colliderComponents.get(0).Collides(colliderComponents.get(1).GetCompenent(ColliderComponent.class));
-                colliderComponents.get(1).Collides(colliderComponents.get(0).GetCompenent(ColliderComponent.class));
+                colliderComponents.get(0).Collides(colliderComponents.get(1));
+                colliderComponents.get(1).Collides(colliderComponents.get(0));
             }
             return;
         }

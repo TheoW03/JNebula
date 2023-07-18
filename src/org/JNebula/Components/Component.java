@@ -24,7 +24,7 @@ public abstract class Component {
     public void sendtoGPU(int shaderProgram, Shader sh){
 
     }
-    public void Collides(ColliderComponent c){
+    public void Collides(GameObject other){
 
     }
 

@@ -1,4 +1,4 @@
-# JNebula v1.0.0 in-dev
+# JNebula v1.0.0 In-Dev
 
 a component based graphics engine
 coded in java 
@@ -30,7 +30,6 @@ public class Main {
 your renderer class
 ```JAVA
 public class StarterCode extends GameRenderer {
-    public InitObjects initObject;
     
     //if you use the object editor it requires Scene object.java
     //runs 1st frame
@@ -46,7 +45,8 @@ public class StarterCode extends GameRenderer {
     //runs every frame. 
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
-        Init.InstantiateObjects(gameObjectArrayList); //inits list
+        InitObjects.InstantiateObjects(gameObjectArrayList); //inits list
+        GameObject render1Instance = InitObjects.Find("render1");
     }
 }
 
@@ -58,7 +58,8 @@ public class StarterCode extends GameRenderer {
 
 <summary><b> JSON editor</b></summary>
 
-warning: The JSON editor isnt fully functional and may have some bugs.
+warning: The JSON editor isn't fully functional and may have some bugs. or some specific test cases where 
+its unusable. 
 
 ```JSON
 [

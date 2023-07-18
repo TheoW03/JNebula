@@ -95,7 +95,7 @@ void main(){
     a.deltaTime = deltaTime;
     a.iResolution = iResolution;
     a.iTime = iTime;
-    effect_shderOut =  effectShader();
+    effect_shderOut =  effectShader(a);
     #endif
 
 
