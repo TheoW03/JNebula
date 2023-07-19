@@ -32,52 +32,11 @@ public class DemoRenderer extends GameRenderer implements KeyListener {
         gameObjectArrayList = a.objects;
 
     }
-
-    Vector3 bt = Vector3.left;
-
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
         InitObjects.InstantiateObjects(gameObjectArrayList);
 
-//        if(Input.getKey(KeyEvent.VK_S)){
-//            Objects.requireNonNull(InitObjects.Find("paddle2")).transform.transform(Vector3.down);
-//        }
-//        if(Input.getKey(KeyEvent.VK_W)){
-//            Objects.requireNonNull(InitObjects.Find("paddle2")).transform.transform(Vector3.up);
-//        }
-//        if(Input.getKey(KeyEvent.VK_DOWN)){
-//            Objects.requireNonNull(InitObjects.Find("paddle1")).transform.transform(Vector3.down);
-//        }
-//        if(Input.getKey(KeyEvent.VK_UP)){
-//            Objects.requireNonNull(InitObjects.Find("paddle1")).transform.transform(Vector3.up);
-//        }
-        if(Input.getKey(KeyEvent.VK_SPACE)){
-            Objects.requireNonNull(InitObjects.Find("ball")).transform.location = new Vector3(100,100);
-        }
-
-//        if (Objects.requireNonNull(InitObjects.Find("paddle2")).
-//                GetCompenent(ColliderComponent.class).isCollided(Objects.requireNonNull(InitObjects.Find("paddle1")).
-//                        GetCompenent(ColliderComponent.class))) {
-//            float min = -0.5f;
-//            float max = 0.5f;
-//            float randomNum = (float) (Math.random() * (max - min) + min);
-//            bt = new Vector3(1, randomNum);
-//        }
-//        if (Objects.requireNonNull(InitObjects.Find("paddle1")).GetCompenent(ColliderComponent.class).isCollided(InitObjects.Find("ball").GetCompenent(ColliderComponent.class))) {
-//            float min = -0.5f;
-//            float max = 0.5f;
-//            float randomNum = (float) (Math.random() * (max - min) + min);
-//            bt = new Vector3(-1, randomNum);
-//        }
-//        if (Objects.requireNonNull(InitObjects.Find("ball")).transform.location.y > 200) {
-//            bt = new Vector3(bt.x, -bt.y);
-//        }
-//        if (Objects.requireNonNull(InitObjects.Find("ball")).transform.location.y < 0) {
-//            bt = new Vector3(bt.x, bt.y);
-//        }
-
     }
-
 
 
 }

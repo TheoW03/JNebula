@@ -57,7 +57,6 @@ public class ColliderComponent extends Component {
         Vector2f c = new Vector2f(center.x, center.y);
         Vector2f size2 = new Vector2f(size.x, size.y);
         Vector2f offset = calcOffset(p1, c, size2);
-        System.out.println(offset);
         return offset.max(new Vector2f(0, 0)).length();
     }
 
@@ -68,7 +67,7 @@ public class ColliderComponent extends Component {
         Vector2f size2 = new Vector2f(size.x, size.y);
         Vector2f offset = calcOffset(p1, c, size2);
         float usignedDIst = offset.max(new Vector2f(0, 0)).length();
-        System.out.println("usigned dist" + usignedDIst);
+
         Vector2f signedDIst = offset.max(offset.min(new Vector2f(0, 0)));
         Vector2f output = signedDIst.add(new Vector2f(usignedDIst, usignedDIst));
         return new Vector3(output.x, output.y);
@@ -79,7 +78,6 @@ public class ColliderComponent extends Component {
      * @return this does the raymarch distance algorithm.
      */
     public boolean isCollided(ColliderComponent collider) {
-        System.out.println("is collided");
 //        Vector3 location1 = this.gameObject.transform.location;
         Vector3 location2 = collider.gameObject.transform.location;
         Vector3[] location1 = this.gameObject.GetComponent(SpriteComponent.class).getCenterPoints();
@@ -101,7 +99,6 @@ public class ColliderComponent extends Component {
         Vector3 location2 = collider.gameObject.GetComponent(TransformComponent.class).location;
         Vector3 size = collider.gameObject.GetComponent(SpriteComponent.class).get_size();
         ray.origin = this.gameObject.GetComponent(TransformComponent.class).location;
-        System.out.println(ray.getEndPoint());
         Vector3 origin = ray.origin;
         Vector3 direction = ray.dir.unitVector();
         Vector2f s = new Vector2f(origin.x,origin.y);
@@ -144,7 +141,6 @@ public class ColliderComponent extends Component {
 //            if(getDist(new Vector3(x,y),location2,size) == 0){
 //                return true;
 //            }
-            System.out.println(new Vector3(x,y));
             dist = Math.sqrt((x - s.x)*(x - s.x) + (y - s.y)*(y - s.y));
 
         }
@@ -153,7 +149,6 @@ public class ColliderComponent extends Component {
     private void checkUnsignedDist(ColliderComponent collider){
         Vector3 location1 = this.gameObject.GetComponent(TransformComponent.class).location;
         Vector3 location2 = collider.gameObject.GetComponent(TransformComponent.class).location;
-        System.out.println("checks: "+getUSdist(location2,location2,collider.gameObject.GetComponent(SpriteComponent.class).get_size()));
 
     }
 //    public boolean rayCollide(ColliderComponent collider){
@@ -178,7 +173,6 @@ public class ColliderComponent extends Component {
                 collider.width * 2 / 100);
         float y2 = Math.min(location1.y + size.y * 2 / 100, location2.y +
                 collider.height * 2 / 100);
-        System.out.println(x1 + " " + y1 + " " + x2 + " " + y2);
         if ((x2 * width - x1 > 0 && y2 * height - y1 > 0)) {
             return true;
         } else {
