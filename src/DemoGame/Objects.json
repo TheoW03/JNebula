@@ -19,6 +19,9 @@
       },
       {
         "component_name": "org.JNebula.Components.DifferentComponents.ColliderComponent"
+      },
+      {
+        "component_name": "DemoGame.PaddleComponent1"
       }
     ]
   },
@@ -42,6 +45,9 @@
       },
       {
         "component_name": "org.JNebula.Components.DifferentComponents.ColliderComponent"
+      },
+      {
+        "component_name": "DemoGame.PaddleComponent2"
       }
     ]
   },
@@ -70,6 +76,10 @@
       },
       {
         "component_name": "org.JNebula.Components.DifferentComponents.ColliderComponent"
+      },
+      {
+        "component_name":"DemoGame.BallComponent"
+
       }
     ]
   }

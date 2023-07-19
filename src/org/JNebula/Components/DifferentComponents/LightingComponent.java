@@ -79,16 +79,16 @@ public class LightingComponent extends Component {
     public void sendtoGPU(int shaderProgram, Shader sh) {
         int[] buffers = new int[2];
         if (source != null) {
-            if (source.gameObject.GetCompenent(TransformComponent.class) == null || source.gameObject.GetCompenent(CameraComponent.class) == null) {
+            if (source.gameObject.GetComponent(TransformComponent.class) == null || source.gameObject.GetComponent(CameraComponent.class) == null) {
                 this.lightLocation = new Vector3(0, 0, 0);
                 this.cameraPos = new Vector3(0, 0, 0);
             } else {
-                this.lightLocation = source.gameObject.GetCompenent(TransformComponent.class).location;
-                this.cameraPos = source.gameObject.GetCompenent(CameraComponent.class).cameralocation;
+                this.lightLocation = source.gameObject.GetComponent(TransformComponent.class).location;
+                this.cameraPos = source.gameObject.GetComponent(CameraComponent.class).cameralocation;
             }
         } else {
-            this.lightLocation = this.gameObject.GetCompenent(TransformComponent.class).location;
-            this.cameraPos = this.gameObject.GetCompenent(CameraComponent.class).cameralocation;
+            this.lightLocation = this.gameObject.GetComponent(TransformComponent.class).location;
+            this.cameraPos = this.gameObject.GetComponent(CameraComponent.class).cameralocation;
         }
 
         gl.glGenBuffers(2, buffers, 0);
@@ -113,7 +113,7 @@ public class LightingComponent extends Component {
         if (source == null) {
             gl.glUniform1f(lightSource, 1.0f);
         }
-        Vector3 a = gameObject.GetCompenent(TransformComponent.class).location;
+        Vector3 a = gameObject.GetComponent(TransformComponent.class).location;
         gl.glUniform3f(lightPosition, lightLocation.x, lightLocation.y, 0);
 
         i2++;
@@ -122,11 +122,11 @@ public class LightingComponent extends Component {
 //        }else if(a.x > 200){
 //            i2 = -1.0f;
 //        }
-        gameObject.GetCompenent(TransformComponent.class).location = a;
+        gameObject.GetComponent(TransformComponent.class).location = a;
         gl.glUniform1f(strengthL, this.strength);
         VectorMath v = new VectorMath();
         float[] normals;
-        normals = v.vectorNormals(this.gameObject.GetCompenent(SpriteComponent.class).getVecticesAsVector());
+        normals = v.vectorNormals(this.gameObject.GetComponent(SpriteComponent.class).getVecticesAsVector());
         int normalLoc = gl.glGetAttribLocation(shaderProgram, "anormal");
         gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
         gl.glBufferData(GL_ARRAY_BUFFER, normals.length * 4L, FloatBuffer.wrap(normals), GL_STATIC_DRAW);

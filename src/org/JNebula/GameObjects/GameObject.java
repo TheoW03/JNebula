@@ -46,7 +46,7 @@ public class GameObject {
         this.tag = tag;
     }
 
-    public <T extends Component> T GetCompenent(Class<T> compenet) {
+    public <T extends Component> T GetComponent(Class<T> compenet) {
         if (compenets == null) {
             compenets = new ArrayList<>();
         }
@@ -100,8 +100,8 @@ public class GameObject {
         time++; //change to fixed time later.
     }
     public void Collides(GameObject other){
-        for(int i = 0; i < compenets.size();i++){
-            compenets.get(i).Collides(other);
+        for (Component compenet : compenets) {
+            compenet.Collides(other);
         }
     }
     public void update(float dt, GL4 gl) {
@@ -115,9 +115,9 @@ public class GameObject {
             for (int i = 0; i < compenets.size(); i++) {
                 compenets.get(i).update(dt);
                 compenets.get(i).sendtoGPU(shP, sh);
-                if (GetCompenent(SpriteComponent.class) != null) {
+                if (GetComponent(SpriteComponent.class) != null) {
                     System.out.println("update: " + this.name);
-                    indices = GetCompenent(SpriteComponent.class).indices;
+                    indices = GetComponent(SpriteComponent.class).indices;
                     int[] buffers = new int[1];
                     gl.glGenBuffers(1, buffers, 0);
 //                    gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL_LINES);
@@ -138,8 +138,8 @@ public class GameObject {
 //                    gl.glGenBuffers(1, buffers, 0);
 
 //                    gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL_LINES);
-                    if (GetCompenent(ColliderComponent.class) != null) {
-                        if (GetCompenent(ColliderComponent.class).showHitBox) {
+                    if (GetComponent(ColliderComponent.class) != null) {
+                        if (GetComponent(ColliderComponent.class).showHitBox) {
                             int colorLocation = gl.glGetUniformLocation(shP, "color_of_sprite");
                             int location = gl.glGetUniformLocation(shP, "textureExists");
                             gl.glUniform1f(location, 1);
@@ -147,13 +147,13 @@ public class GameObject {
 //                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
 //                    gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 6L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
                             gl.glDrawElements(GL_LINE_LOOP, 7, GL_UNSIGNED_INT, 0); //learn to make dynamic
-                            if (GetCompenent(SpriteComponent.class).color == null) {
+                            if (GetComponent(SpriteComponent.class).color == null) {
                                 gl.glUniform3f(colorLocation, 1, 1, 1);
                             } else {
-                                gl.glUniform3f(colorLocation, GetCompenent(SpriteComponent.class).color.r2,
-                                        GetCompenent(SpriteComponent.class).color.g2, GetCompenent(SpriteComponent.class).color.b2);
+                                gl.glUniform3f(colorLocation, GetComponent(SpriteComponent.class).color.r2,
+                                        GetComponent(SpriteComponent.class).color.g2, GetComponent(SpriteComponent.class).color.b2);
                             }
-                            if (GetCompenent(SpriteComponent.class).texture != null) {
+                            if (GetComponent(SpriteComponent.class).texture != null) {
                                 gl.glUniform1f(location, 0);
                             }
                         }
@@ -169,7 +169,7 @@ public class GameObject {
                 }
 
                 if (compenets.get(i) instanceof PhysicsComponent) {
-                    GetCompenent(TransformComponent.class).location = ((PhysicsComponent) compenets.get(i)).vectorPosition;
+                    GetComponent(TransformComponent.class).location = ((PhysicsComponent) compenets.get(i)).vectorPosition;
                 }
 
 
@@ -201,7 +201,7 @@ public class GameObject {
                 compenets.get(i).init(dt);
                 compenets.get(i).sendtoGPU(shP, sh);
                 if (compenets.get(i) instanceof SpriteComponent) {
-                    indices = GetCompenent(SpriteComponent.class).indices;
+                    indices = GetComponent(SpriteComponent.class).indices;
                     int[] buffers = new int[1];
                     gl.glGenBuffers(1, buffers, 0);
                     gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
@@ -217,7 +217,7 @@ public class GameObject {
 //                    gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
 //                }
                 if (compenets.get(i) instanceof PhysicsComponent) {
-                    GetCompenent(TransformComponent.class).location = ((PhysicsComponent) compenets.get(i)).vectorPosition;
+                    GetComponent(TransformComponent.class).location = ((PhysicsComponent) compenets.get(i)).vectorPosition;
                 }
 
 

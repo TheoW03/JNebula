@@ -52,16 +52,17 @@ public class InitObjects {
         return null;
     }
 
-    private void combinationUtil(ArrayList<GameObject> arr, ArrayList<GameObject> colliderComponents, int start,
+    private static void combinationUtil(ArrayList<GameObject> arr, GameObject[] colliderComponents, int start,
                                 int index) {
         // Current combination is ready to be printed, print it
         if (index == 2) {
 
-            if (colliderComponents.get(0).GetCompenent(ColliderComponent.class)
-                    .isCollided(colliderComponents.get(1).GetCompenent(ColliderComponent.class))
+            if (colliderComponents[0].GetComponent(ColliderComponent.class)
+                    .isCollided(colliderComponents[1].GetComponent(ColliderComponent.class))
             ) {
-                colliderComponents.get(0).Collides(colliderComponents.get(1));
-                colliderComponents.get(1).Collides(colliderComponents.get(0));
+                colliderComponents[0].Collides(colliderComponents[1]);
+                colliderComponents[1].Collides(colliderComponents[0]);
+
             }
             return;
         }
@@ -71,7 +72,7 @@ public class InitObjects {
         // at index will make a combination with remaining elements
         // at remaining positions
         for (int i = start; i <= (arr.size() - 1) && (arr.size() - 1) - i + 1 >= 2 - index; i++) {
-            colliderComponents.add(arr.get(i));
+            colliderComponents[index] = arr.get(i);
             combinationUtil(arr, colliderComponents, i + 1, index + 1);
         }
     }
@@ -90,13 +91,15 @@ public class InitObjects {
         float dt = 0;
         for (int i = 0; i < object.size(); i++) {
             dtAtStart = System.currentTimeMillis();
-            if (object.get(i).GetCompenent(CameraComponent.class) == null) {
+            if (object.get(i).GetComponent(CameraComponent.class) == null) {
                 object.get(i).AddComponent(mainCamera);
             }
-            if (object.get(i).GetCompenent(ColliderComponent.class) != null) {
+            if (object.get(i).GetComponent(ColliderComponent.class) != null) {
+                System.out.println("added collison");
+
                 hasCollison.add(object.get(i));
             }
-            if (object.get(i).GetCompenent(TransformComponent.class) == null) {
+            if (object.get(i).GetComponent(TransformComponent.class) == null) {
                 object.get(i).AddComponent(new TransformComponent(new Vector3(0, 0, 0)));
             }
 
@@ -116,6 +119,8 @@ public class InitObjects {
             Window.deltaTime = dt;
 
         }
+        GameObject data[]=new GameObject[3];
+        combinationUtil(hasCollison,data,0,0);
 
 
 //        for (int i = 0; i < object.size(); i++) {

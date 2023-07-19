@@ -38,12 +38,12 @@ public class ColliderComponent extends Component {
 
     @Override
     public void init(float dt) {
-        hitBox = gameObject.GetCompenent(SpriteComponent.class).vertices;
+        hitBox = gameObject.GetComponent(SpriteComponent.class).vertices;
     }
 
     @Override
     public void update(float dt) {
-        hitBox = gameObject.GetCompenent(SpriteComponent.class).vertices;
+        hitBox = gameObject.GetComponent(SpriteComponent.class).vertices;
     }
 
     private Vector2f calcOffset(Vector2f p, Vector2f center, Vector2f size) {
@@ -82,9 +82,9 @@ public class ColliderComponent extends Component {
         System.out.println("is collided");
 //        Vector3 location1 = this.gameObject.transform.location;
         Vector3 location2 = collider.gameObject.transform.location;
-        Vector3[] location1 = this.gameObject.GetCompenent(SpriteComponent.class).getCenterPoints();
+        Vector3[] location1 = this.gameObject.GetComponent(SpriteComponent.class).getCenterPoints();
 //        Vector3[] location2 = collider.gameObject.GetCompenent(SpriteComponent.class).getCenterPoints();
-        Vector3 size1 = collider.gameObject.GetCompenent(SpriteComponent.class).get_size();
+        Vector3 size1 = collider.gameObject.GetComponent(SpriteComponent.class).get_size();
         for (Vector3 vector3 : location1) {
             if (getDist(vector3, location2, size1) < 1) {
                 return true;
@@ -98,9 +98,9 @@ public class ColliderComponent extends Component {
         if(ray == null){
             return false;
         }
-        Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
-        Vector3 size = collider.gameObject.GetCompenent(SpriteComponent.class).get_size();
-        ray.origin = this.gameObject.GetCompenent(TransformComponent.class).location;
+        Vector3 location2 = collider.gameObject.GetComponent(TransformComponent.class).location;
+        Vector3 size = collider.gameObject.GetComponent(SpriteComponent.class).get_size();
+        ray.origin = this.gameObject.GetComponent(TransformComponent.class).location;
         System.out.println(ray.getEndPoint());
         Vector3 origin = ray.origin;
         Vector3 direction = ray.dir.unitVector();
@@ -151,9 +151,9 @@ public class ColliderComponent extends Component {
         return false;
     }
     private void checkUnsignedDist(ColliderComponent collider){
-        Vector3 location1 = this.gameObject.GetCompenent(TransformComponent.class).location;
-        Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
-        System.out.println("checks: "+getUSdist(location2,location2,collider.gameObject.GetCompenent(SpriteComponent.class).get_size()));
+        Vector3 location1 = this.gameObject.GetComponent(TransformComponent.class).location;
+        Vector3 location2 = collider.gameObject.GetComponent(TransformComponent.class).location;
+        System.out.println("checks: "+getUSdist(location2,location2,collider.gameObject.GetComponent(SpriteComponent.class).get_size()));
 
     }
 //    public boolean rayCollide(ColliderComponent collider){
@@ -169,9 +169,9 @@ public class ColliderComponent extends Component {
 //        return getDist(location1, location2, size) == 0;
 //    }
     public boolean isCollided2(ColliderComponent collider) {
-        Vector3 location1 = this.gameObject.GetCompenent(TransformComponent.class).location;
-        Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
-        Vector3 size = collider.gameObject.GetCompenent(SpriteComponent.class).get_size();
+        Vector3 location1 = this.gameObject.GetComponent(TransformComponent.class).location;
+        Vector3 location2 = collider.gameObject.GetComponent(TransformComponent.class).location;
+        Vector3 size = collider.gameObject.GetComponent(SpriteComponent.class).get_size();
         float x1 = Math.max(location1.x, location2.x);
         float y1 = Math.max(location1.y, location2.y);
         float x2 = Math.min(location1.x + size.x * 2 / 100, location2.x +
