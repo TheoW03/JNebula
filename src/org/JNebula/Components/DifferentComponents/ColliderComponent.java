@@ -151,18 +151,6 @@ public class ColliderComponent extends Component {
         Vector3 location2 = collider.gameObject.GetComponent(TransformComponent.class).location;
 
     }
-//    public boolean rayCollide(ColliderComponent collider){
-//        if(ray == null){
-//            return false;
-//        }
-//        ray.origin = this.gameObject.GetCompenent(TransformComponent.class).location;
-//        Vector3 location1 = this.ray.getEndPoint();
-//        Vector3 location2 = collider.gameObject.GetCompenent(TransformComponent.class).location;
-//        Vector3 size = new Vector3(0, ray.length);
-//        System.out.println(location1);
-//        System.out.println("dist: "+getDist(location1, location2, size));
-//        return getDist(location1, location2, size) == 0;
-//    }
     public boolean isCollided2(ColliderComponent collider) {
         Vector3 location1 = this.gameObject.GetComponent(TransformComponent.class).location;
         Vector3 location2 = collider.gameObject.GetComponent(TransformComponent.class).location;

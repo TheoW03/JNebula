@@ -23,7 +23,7 @@ import static com.jogamp.opengl.GL.*;
 public class GameObject {
     public int[] indices;
 
-    public ArrayList<Component> compenets;
+    public ArrayList<Component> components;
     public String name;
     public TransformComponent transform;
 
@@ -35,22 +35,22 @@ public class GameObject {
     public static GL4 gl;
 
     public GameObject(String name) {
-        compenets = new ArrayList<>();
+        components = new ArrayList<>();
 
         this.name = name;
     }
     public GameObject(String name, String tag) {
-        compenets = new ArrayList<>();
+        components = new ArrayList<>();
 
         this.name = name;
         this.tag = tag;
     }
 
     public <T extends Component> T GetComponent(Class<T> compenet) {
-        if (compenets == null) {
-            compenets = new ArrayList<>();
+        if (components == null) {
+            components = new ArrayList<>();
         }
-        for (Component c : compenets) {
+        for (Component c : components) {
             if (compenet.isAssignableFrom(c.getClass())) {
                 return compenet.cast(c);
             }
@@ -60,12 +60,12 @@ public class GameObject {
 
 
     public <T extends Component> T RemoveCompenent(Class<T> compenet) {
-        if (compenets == null) {
-            compenets = new ArrayList<>();
+        if (components == null) {
+            components = new ArrayList<>();
         }
-        for (int i = 0; i < compenets.size(); i++) {
-            if (compenet.isAssignableFrom(compenets.get(i).getClass())) {
-                return compenet.cast(compenets.remove(i));
+        for (int i = 0; i < components.size(); i++) {
+            if (compenet.isAssignableFrom(components.get(i).getClass())) {
+                return compenet.cast(components.remove(i));
             }
 
         }
@@ -76,14 +76,14 @@ public class GameObject {
 
 
     public void AddComponent(Component component) {
-        if (compenets == null) {
-            compenets = new ArrayList<>();
+        if (components == null) {
+            components = new ArrayList<>();
         }
         if (component instanceof TransformComponent) {
             transform = (TransformComponent) component;
         }
         component.gameObject = this;
-        compenets.add(component);
+        components.add(component);
 
 
     }
@@ -100,7 +100,7 @@ public class GameObject {
         time++; //change to fixed time later.
     }
     public void Collides(GameObject other){
-        for (Component compenet : compenets) {
+        for (Component compenet : components) {
             compenet.Collides(other);
         }
     }
@@ -112,9 +112,9 @@ public class GameObject {
             indices = new int[3];
             int shP = sh.load2DShaders(gl);
             sendUtilVars(gl,shP);
-            for (int i = 0; i < compenets.size(); i++) {
-                compenets.get(i).update(dt);
-                compenets.get(i).sendtoGPU(shP, sh);
+            for (int i = 0; i < components.size(); i++) {
+                components.get(i).update(dt);
+                components.get(i).sendtoGPU(shP, sh);
                 if (GetComponent(SpriteComponent.class) != null) {
                     System.out.println("update: " + this.name);
                     indices = GetComponent(SpriteComponent.class).indices;
@@ -168,8 +168,8 @@ public class GameObject {
 //                    gl.glPolygonMode(GL_BACK, GL_LINES);
                 }
 
-                if (compenets.get(i) instanceof PhysicsComponent) {
-                    GetComponent(TransformComponent.class).location = ((PhysicsComponent) compenets.get(i)).vectorPosition;
+                if (components.get(i) instanceof PhysicsComponent) {
+                    GetComponent(TransformComponent.class).location = ((PhysicsComponent) components.get(i)).vectorPosition;
                 }
 
 
@@ -195,12 +195,12 @@ public class GameObject {
             Shader sh = new Shader();
             int shP = sh.load2DShaders(gl);
             indices = new int[3];
-            System.out.println("a: " + compenets.size());
+            System.out.println("a: " + components.size());
 
-            for (int i = 0; i < compenets.size(); i++) {
-                compenets.get(i).init(dt);
-                compenets.get(i).sendtoGPU(shP, sh);
-                if (compenets.get(i) instanceof SpriteComponent) {
+            for (int i = 0; i < components.size(); i++) {
+                components.get(i).init(dt);
+                components.get(i).sendtoGPU(shP, sh);
+                if (components.get(i) instanceof SpriteComponent) {
                     indices = GetComponent(SpriteComponent.class).indices;
                     int[] buffers = new int[1];
                     gl.glGenBuffers(1, buffers, 0);
@@ -216,8 +216,8 @@ public class GameObject {
 //                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
 //                    gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
 //                }
-                if (compenets.get(i) instanceof PhysicsComponent) {
-                    GetComponent(TransformComponent.class).location = ((PhysicsComponent) compenets.get(i)).vectorPosition;
+                if (components.get(i) instanceof PhysicsComponent) {
+                    GetComponent(TransformComponent.class).location = ((PhysicsComponent) components.get(i)).vectorPosition;
                 }
 
 

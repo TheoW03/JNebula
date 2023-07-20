@@ -51,6 +51,16 @@ public class InitObjects {
         }
         return null;
     }
+    public ArrayList<GameObject> FindByTag(String tag){
+        ArrayList<GameObject> list = new ArrayList<>();
+        for (int i = 0; i < objectList.size(); i++) {
+            if (objectList.get(i).tag.equals(tag)) {
+                list.add(objectList.get(i));
+
+            }
+        }
+        return list;
+    }
 
     private static void combinationUtil(ArrayList<GameObject> arr, GameObject[] colliderComponents, int start,
                                 int index) {
