@@ -3,6 +3,7 @@
 *.log
 Main.java
 /src/models/
+src/InfinityTrain/*.java
 /src/sprites/
 3DFrag.glsl
 3DVertex.glsl
