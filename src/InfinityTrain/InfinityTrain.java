@@ -17,7 +17,12 @@ import java.io.*;
 public class InfinityTrain {
 
 
+    /**
+     *
+     * @param args Ig you found my wierd fan game lul :3 enjoy.
+     */
+
     public static void main(String[] args) {
-        Window.InitWindow(640, 480, "JNebula", new DemoRenderer());
+        Window.InitWindow(640, 480, "JNebula Demo 2: good guys popping bad guys", new InfinityTRainRender());
     }
 }
