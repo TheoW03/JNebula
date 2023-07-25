@@ -26,10 +26,13 @@ import java.util.Objects;
  * @Javadoc
  */
 public class DemoRenderer extends GameRenderer  {
-
-
     @Override
     public void start(float dt, GL2 gl) {
-
     }
+
+    @Override
+    public void update(float dt, GL2 gl) {
+    }
+
+
 }
