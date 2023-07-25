@@ -104,12 +104,15 @@ public class StarterCode extends GameRenderer {
     //if you use the object editor it requires Scene object.java
     //runs 1st frame
     @Override
-    public void init(GLAutoDrawable glAutoDrawable) {
-        
+    public void start(GL gl, float dt){         
+
     }
     //runs every frame. 
     @Override
-    public void display(GLAutoDrawable glAutoDrawable) {
+    public void update(GL gl, float dt){
+        GameObject render1Instance = InitObjects.Find("render1");
+
+
     }
 }
 ```

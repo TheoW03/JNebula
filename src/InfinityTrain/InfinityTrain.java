@@ -19,6 +19,6 @@ public class InfinityTrain {
 
     public static void main(String[] args) {
         Window.InitWindow(640, 480, "JNebula Demo 2: good guys popping bad guys", new infinityTrainRender(),
-                "");
+                "src/InfinityTrain/InfinityTrain.json");
     }
 }

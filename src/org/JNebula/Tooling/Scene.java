@@ -12,6 +12,8 @@ import org.JNebula.GameObjects.InitObjects;
 import org.JNebula.ObjectEditor.ObjectEditorJSON;
 import org.JNebula.math.Vector3;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static org.JNebula.Components.Component.gl;
@@ -64,6 +66,8 @@ public class Scene implements GLEventListener {
         long dtAtEnd = System.currentTimeMillis();
 
         deltaTime = (float) (dtAtEnd - dtAtStart) / 1000;
+        System.out.println("dt1: "+dtAtStart);
+        System.out.println("dt1: "+dtAtEnd);
     }
 
     @Override
@@ -126,5 +130,18 @@ public class Scene implements GLEventListener {
             }
         }
 
+    }
+    public static void printFPS(){
+        float FPS = 1000/deltaTime;
+        System.out.println("\n");
+        System.out.println("\n");
+        System.out.println("\n");
+        System.out.println("======================");
+        System.out.println("FPS: "+FPS);
+        System.out.println("DT: "+deltaTime);
+        System.out.println("==================");
+        System.out.println("\n");
+        System.out.println("\n");
+        System.out.println("\n");
     }
 }

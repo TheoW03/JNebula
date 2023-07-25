@@ -46,9 +46,10 @@ public class Vector3 {
         return new Vector3(x * (1 / mag), y * (1 / mag), z * (1 / mag));
     }
 
-    public void scaleXY(int scale) {
+    public Vector3 scaleXY(float scale) {
         x *= scale;
         y *= scale;
+        return this;
     }
 
     public void add(Vector3 b){
@@ -62,13 +63,15 @@ public class Vector3 {
 
     }
 
-    public void scaleX(int scale) {
+    public Vector3 scaleX(float scale) {
         x *= scale;
+        return this;
 
     }
 
-    public void scaleY(int scale) {
+    public Vector3 scaleY(float scale) {
         y *= scale;
+        return this;
     }
 
     /**

@@ -20,6 +20,7 @@ public class PaddleComponent2 extends Component {
         }
         if(Input.getKey(KeyEvent.VK_S)){
             gameObject.transform.transform(Vector3.down);
+
         }
     }
 }
