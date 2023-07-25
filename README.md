@@ -34,7 +34,7 @@ public class StarterCode extends GameRenderer {
     //if you use the object editor it requires Scene object.java
     //runs 1st frame
     @Override
-    public void start(GL gl, float dt){
+    public void start(float dt, GL2 gl){
         GameObject obj = new GameObject("starterObj"); // you can name it what you want
         obj.AddComponent(new CameraComponent(new Vector3(0,0,0))); //not required if you dont add it will default to 0,0
         obj.AddComponent(new SpriteComponents("sprite.png","png",null)); //the null is a color
@@ -43,7 +43,7 @@ public class StarterCode extends GameRenderer {
     }
     //runs every frame. 
     @Override
-    public void update(GL gl, float dt){
+    public void update(float dt, GL2 gl){
         GameObject render1Instance = InitObjects.Find("render1");
     }
 }
@@ -104,12 +104,12 @@ public class StarterCode extends GameRenderer {
     //if you use the object editor it requires Scene object.java
     //runs 1st frame
     @Override
-    public void start(GL gl, float dt){         
+    public void start(float dt, GL2 gl){       
 
     }
     //runs every frame. 
     @Override
-    public void update(GL gl, float dt){
+    public void update(float dt, GL2 gl){
         GameObject render1Instance = InitObjects.Find("render1");
 
 
