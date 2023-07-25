@@ -30,9 +30,10 @@ public class Main {
 your renderer class
 ```JAVA
 public class StarterCode extends GameRenderer {
-    
-    //if you use the object editor it requires Scene object.java
-    //runs 1st frame
+
+    //runs 1st frame. 
+    //dt: delta time
+    //GL2: OpenGL context
     @Override
     public void start(float dt, GL2 gl){
         GameObject obj = new GameObject("starterObj"); // you can name it what you want
@@ -41,7 +42,9 @@ public class StarterCode extends GameRenderer {
         obj.AddComponent(new TransformComponent(new Vector3(0,0,0)));
         Scene.InstantiateObject(obj);
     }
-    //runs every frame. 
+    //runs 1st frame. 
+    //dt: delta time
+    //GL2: OpenGL context
     @Override
     public void update(float dt, GL2 gl){
         GameObject render1Instance = InitObjects.Find("render1");
@@ -101,13 +104,16 @@ public class Main {
 public class StarterCode extends GameRenderer {
     public InitObjects initObject;
 
-    //if you use the object editor it requires Scene object.java
-    //runs 1st frame
+    //runs 1st frame. 
+    //dt: delta time
+    //GL2: OpenGL context
     @Override
     public void start(float dt, GL2 gl){       
 
     }
     //runs every frame. 
+    // dt: delta time
+    //GL2: OpenGL context
     @Override
     public void update(float dt, GL2 gl){
         GameObject render1Instance = InitObjects.Find("render1");
