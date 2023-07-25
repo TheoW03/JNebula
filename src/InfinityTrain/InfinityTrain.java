@@ -1,11 +1,6 @@
 package InfinityTrain;
 
-import DemoGame.DemoRenderer;
-import TestStuff.RendererTest2D;
 import org.JNebula.Tooling.Window;
-
-import java.util.*;
-import java.io.*;
 
 
 /**
@@ -23,6 +18,7 @@ public class InfinityTrain {
      */
 
     public static void main(String[] args) {
-        Window.InitWindow(640, 480, "JNebula Demo 2: good guys popping bad guys", new InfinityTRainRender());
+        Window.InitWindow(640, 480, "JNebula Demo 2: good guys popping bad guys", new infinityTrainRender(),
+                "");
     }
 }

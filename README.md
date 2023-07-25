@@ -20,7 +20,7 @@ import org.JNebula.GameObjects.GameRenderer;
 public class Main {
     public static void main(String[] args) throws IOException {
         GameRenderer starterCode = new StarterCode(); //for step 3 if you get a not defined error then
-        Window.InitWindow(640, 480, "example window", starterCode);
+        Window.InitWindow(640, 480, "example window", starterCode,"");
     }
 }
 
@@ -34,18 +34,16 @@ public class StarterCode extends GameRenderer {
     //if you use the object editor it requires Scene object.java
     //runs 1st frame
     @Override
-    public void init(GLAutoDrawable glAutoDrawable) {
-        super.init(glAutoDrawable); 
+    public void start(GL gl, float dt){
         GameObject obj = new GameObject("starterObj"); // you can name it what you want
         obj.AddComponent(new CameraComponent(new Vector3(0,0,0))); //not required if you dont add it will default to 0,0
         obj.AddComponent(new SpriteComponents("sprite.png","png",null)); //the null is a color
         obj.AddComponent(new TransformComponent(new Vector3(0,0,0)));
-        gameObjectArrayList.add(obj);
+        Scene.InstantiateObject(obj);
     }
     //runs every frame. 
     @Override
-    public void display(GLAutoDrawable glAutoDrawable) {
-        InitObjects.InstantiateObjects(gameObjectArrayList); //inits list
+    public void update(GL gl, float dt){
         GameObject render1Instance = InitObjects.Find("render1");
     }
 }
@@ -92,7 +90,7 @@ import org.JNebula.GameObjects.GameRenderer;
 public class Main {
     public static void main(String[] args) throws IOException {
         GameRenderer starterCode = new StarterCode(); //for step 3 if you get a not defined error then
-        Window.InitWindow(640, 480, "example window", starterCode);
+        Window.InitWindow(640, 480, "example window", starterCode, "${PATH TO JSON}");
     }
 }
 
@@ -107,14 +105,11 @@ public class StarterCode extends GameRenderer {
     //runs 1st frame
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
-        super.init(glAutoDrawable);
-        ObjectEditorJSON js = new ObjectEditorJSON("${PATH TO JSON}"); //JSON code
-        gameObjectArrayList = js.objects;
+        
     }
     //runs every frame. 
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
-        Init.InstantiateObjects(gameObjectArrayList); //inits list
     }
 }
 ```

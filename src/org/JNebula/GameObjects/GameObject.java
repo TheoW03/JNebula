@@ -3,6 +3,7 @@ package org.JNebula.GameObjects;
 import com.jogamp.opengl.GL4;
 import org.JNebula.Components.DifferentComponents.*;
 import org.JNebula.Components.Component;
+import org.JNebula.Tooling.Scene;
 import org.JNebula.Tooling.Shader;
 import org.JNebula.Tooling.Window;
 import org.JNebula.math.Vector3;
@@ -96,7 +97,7 @@ public class GameObject {
         int iTime = gl.glGetUniformLocation(shader, "iTime");
         gl.glUniform1f(iTime,time );
         int deltaTime = gl.glGetUniformLocation(shader, "deltaTime");
-        gl.glUniform1f(deltaTime, Window.deltaTime);
+        gl.glUniform1f(deltaTime, Scene.deltaTime);
         time++; //change to fixed time later.
     }
     public void Collides(GameObject other){

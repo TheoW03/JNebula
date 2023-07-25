@@ -87,7 +87,7 @@ public class InitObjects {
         }
     }
 
-    public static void InstantiateObjects(ArrayList<GameObject> object) {
+    public static void InstantiateObjects(ArrayList<GameObject> object, float dt) {
         if (mainCamera == null) {
             mainCamera = new CameraComponent(new Vector3(0, 0, 0));
         }
@@ -95,12 +95,8 @@ public class InitObjects {
         objectList = object;
         ArrayList<GameObject> hasCollison = new ArrayList<>();
         gl.glEnable(GL_LIGHTING);
-        gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);// Clear the color buffer to the clear color
-        long dtAtStart;
-        long dtAtEnd;
-        float dt = 0;
         for (int i = 0; i < object.size(); i++) {
-            dtAtStart = System.currentTimeMillis();
+//            dtAtStart = System.currentTimeMillis();
             if (object.get(i).GetComponent(CameraComponent.class) == null) {
                 object.get(i).AddComponent(mainCamera);
             }
@@ -123,13 +119,10 @@ public class InitObjects {
                 System.out.println(object.get(i).name);
             }
 
-            dtAtEnd = System.currentTimeMillis();
-            dt = (float) (dtAtEnd - dtAtStart) / 1000;
             System.out.println("dt: " + dt);
-            Window.deltaTime = dt;
 
         }
-        GameObject data[]=new GameObject[3];
+        GameObject[] data =new GameObject[3];
         combinationUtil(hasCollison,data,0,0);
 
 

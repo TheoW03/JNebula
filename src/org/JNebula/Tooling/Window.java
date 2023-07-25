@@ -4,6 +4,7 @@ import com.jogamp.opengl.*;
 import com.jogamp.opengl.awt.GLJPanel;
 import com.jogamp.opengl.util.FPSAnimator;
 import org.JNebula.Components.Component;
+import org.JNebula.GameObjects.GameRenderer;
 import org.JNebula.math.Vector3;
 
 import javax.swing.*;
@@ -19,10 +20,10 @@ import java.awt.*;
 public class Window {
     public static FPSAnimator animator;
     public static Vector3 screenRes;
-    public static float deltaTime;
+
     public static float time;
 
-    public static void InitWindow(int width, int height, String title, GLEventListener renderer) {
+    public static void InitWindow(int width, int height, String title, GameRenderer renderer, String JSONPath) {
         final GLProfile glProfile = GLProfile.getDefault();
         final GLCapabilities glCapabilities = new GLCapabilities(glProfile);
         SwingUtilities.invokeLater(new Runnable() {
@@ -37,7 +38,9 @@ public class Window {
                 glJPanel.addMouseListener(new Input());
 
                 animator = new FPSAnimator(glJPanel, 60);
-                glJPanel.addGLEventListener(renderer);
+                Scene s = new Scene(renderer, JSONPath);
+
+                glJPanel.addGLEventListener(s);
                 glJPanel.setSize(jFrame.getSize());
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                 screenRes = new Vector3(screenSize.width, screenSize.height);
@@ -56,11 +59,11 @@ public class Window {
 
     public static void printFrameRate() {
 
-        deltaTime = 0.1f;
-        int frames = Window.animator.getFPS();
-        System.out.println("DT: " + deltaTime);
-        double fps = (double) frames / ((double) deltaTime / 1000000000.0);
-        System.out.println("FPS: " + frames);
+//        deltaTime = 0.1f;
+//        int frames = Window.animator.getFPS();
+//        System.out.println("DT: " + deltaTime);
+//        double fps = (double) frames / ((double) deltaTime / 1000000000.0);
+//        System.out.println("FPS: " + frames);
 
     }
 
