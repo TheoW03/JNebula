@@ -1,9 +1,6 @@
 package org.JNebula.Tooling;
 
-import com.jogamp.opengl.GL;
-import com.jogamp.opengl.GL4;
-import com.jogamp.opengl.GLAutoDrawable;
-import com.jogamp.opengl.GLEventListener;
+import com.jogamp.opengl.*;
 import org.JNebula.Components.Component;
 import org.JNebula.Components.DifferentComponents.TransformComponent;
 import org.JNebula.GameObjects.GameObject;
@@ -50,7 +47,7 @@ public class Scene implements GLEventListener {
         gl = (GL4) glAutoDrawable.getGL();
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
         InitObjects.InstantiateObjects(objectList, deltaTime);
-        g.start(0, glAutoDrawable.getGL());
+        g.start(deltaTime, (GL2)glAutoDrawable.getGL());
         long dtAtEnd = System.currentTimeMillis();
         deltaTime = (float) (dtAtEnd - dtAtStart) / 1000;
     }
@@ -59,15 +56,12 @@ public class Scene implements GLEventListener {
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
         long dtAtStart = System.currentTimeMillis();
-        gl = (GL4) glAutoDrawable.getGL();
+        GL2 gl = (GL2) glAutoDrawable.getGL();
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
         InitObjects.InstantiateObjects(objectList, deltaTime);
-        g.update(0, glAutoDrawable.getGL());
+        g.update(deltaTime, gl);
         long dtAtEnd = System.currentTimeMillis();
-
         deltaTime = (float) (dtAtEnd - dtAtStart) / 1000;
-        System.out.println("dt1: "+dtAtStart);
-        System.out.println("dt1: "+dtAtEnd);
     }
 
     @Override
@@ -133,15 +127,10 @@ public class Scene implements GLEventListener {
     }
     public static void printFPS(){
         float FPS = 1000/deltaTime;
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("======================");
         System.out.println("FPS: "+FPS);
         System.out.println("DT: "+deltaTime);
-        System.out.println("==================");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
+    }
+    public static float getFPS(){
+        return 1000/deltaTime;
     }
 }

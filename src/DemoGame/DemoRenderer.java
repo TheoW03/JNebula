@@ -1,6 +1,7 @@
 package DemoGame;
 
 import com.jogamp.opengl.GL;
+import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import org.JNebula.Components.DifferentComponents.ColliderComponent;
 import org.JNebula.Components.DifferentComponents.SpriteComponent;
@@ -24,14 +25,11 @@ import java.util.Objects;
  * ~ project outline here ~
  * @Javadoc
  */
-public class DemoRenderer extends GameRenderer implements KeyListener {
-    @Override
-    public void start(float dt, GL gl) {
-    }
+public class DemoRenderer extends GameRenderer  {
+
 
     @Override
-    public void update(float dt, GL gl) {
+    public void start(float dt, GL2 gl) {
+
     }
-
-
 }

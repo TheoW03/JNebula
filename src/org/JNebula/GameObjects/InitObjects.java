@@ -94,7 +94,7 @@ public class InitObjects {
         GL4 gl = Component.gl;
         objectList = object;
         ArrayList<GameObject> hasCollison = new ArrayList<>();
-        gl.glEnable(GL_LIGHTING);
+//        gl.glEnable(GL_LIGHTING);
         for (int i = 0; i < object.size(); i++) {
 //            dtAtStart = System.currentTimeMillis();
             if (object.get(i).GetComponent(CameraComponent.class) == null) {

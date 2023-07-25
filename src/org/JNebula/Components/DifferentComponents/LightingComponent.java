@@ -10,6 +10,7 @@ import java.nio.FloatBuffer;
 import java.util.Arrays;
 
 import static com.jogamp.opengl.GL.*;
+import static com.jogamp.opengl.fixedfunc.GLLightingFunc.GL_LIGHTING;
 
 /**
  * @author Theo willis
@@ -53,7 +54,7 @@ public class LightingComponent extends Component {
 
     @Override
     public void init(float dt) {
-
+        gl.glEnable(GL_LIGHTING);
     }
 
     @Override
@@ -69,7 +70,7 @@ public class LightingComponent extends Component {
 
     @Override
     public void update(float dt) {
-
+        gl.glEnable(GL_LIGHTING);
 
     }
 

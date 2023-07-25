@@ -27,7 +27,6 @@ public class PaddleComponent1 extends Component {
             gameObject.transform.transform(Vector3.down);
 
         }
-        Scene.printFPS();
 
     }
 }

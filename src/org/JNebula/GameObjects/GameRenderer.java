@@ -1,9 +1,6 @@
 package org.JNebula.GameObjects;
 
-import com.jogamp.opengl.GL;
-import com.jogamp.opengl.GL4;
-import com.jogamp.opengl.GLAutoDrawable;
-import com.jogamp.opengl.GLEventListener;
+import com.jogamp.opengl.*;
 import org.JNebula.Components.Component;
 
 import java.awt.event.KeyEvent;
@@ -19,10 +16,14 @@ import java.util.*;
  */
 public abstract class GameRenderer implements KeyListener, GLEventListener {
 
-    public void start(float dt, GL gl){
+
+
+    public  void start(float dt, GL2 gl){
 
     }
-    public void update(float dt, GL gl){
+
+
+    public void update(float dt, GL2 gl){
 
     }
 
@@ -38,12 +39,6 @@ public abstract class GameRenderer implements KeyListener, GLEventListener {
 //        GameObject.gl = gl;
 //        gameObjectArrayList = new ArrayList<>();
 //        Init = new InitObjects();
-    }
-    public void start(GL gl, float dt){
-
-    }
-    public void update(GL gl, float dt){
-
     }
 
     public  void dispose(GLAutoDrawable glAutoDrawable){
