@@ -115,7 +115,7 @@ public class GameObject {
             sendUtilVars(gl,shP);
             for (int i = 0; i < componentList.size(); i++) {
                 componentList.get(i).update(dt);
-                componentList.get(i).sendtoGPU(shP, sh);
+                componentList.get(i).sendToGPU(shP, sh);
                 if (GetComponent(SpriteComponent.class) != null) {
                     System.out.println("update: " + this.name);
                     indices = GetComponent(SpriteComponent.class).indices;
@@ -200,7 +200,7 @@ public class GameObject {
 
             for (int i = 0; i < componentList.size(); i++) {
                 componentList.get(i).init(dt);
-                componentList.get(i).sendtoGPU(shP, sh);
+                componentList.get(i).sendToGPU(shP, sh);
                 if (componentList.get(i) instanceof SpriteComponent) {
                     indices = GetComponent(SpriteComponent.class).indices;
                     int[] buffers = new int[1];

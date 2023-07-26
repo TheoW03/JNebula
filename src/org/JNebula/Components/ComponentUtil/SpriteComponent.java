@@ -469,7 +469,7 @@ public class SpriteComponent extends Component {
      * @param sh
      */
     @Override
-    public void sendtoGPU(int shaderProgram, Shader sh) {
+    public void sendToGPU(int shaderProgram, Shader sh) {
         System.out.println("send to sprite GPU");
         if (this.texture == null) {
             int location = gl.glGetUniformLocation(shaderProgram, "textureExists");

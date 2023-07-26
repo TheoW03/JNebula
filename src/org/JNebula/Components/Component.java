@@ -20,7 +20,7 @@ public abstract class Component {
     public void update(float dt){
 
     }
-    public void sendtoGPU(int shaderProgram, Shader sh){
+    public void sendToGPU(int shaderProgram, Shader sh){
 
     }
     public void Collides(GameObject other){

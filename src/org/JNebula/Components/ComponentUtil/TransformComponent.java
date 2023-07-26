@@ -61,7 +61,7 @@ public class TransformComponent extends Component {
 
     }
     @Override
-    public void sendtoGPU(int shaderProgram, Shader sh) {
+    public void sendToGPU(int shaderProgram, Shader sh) {
         if (rotation == null) {
             rotation = new Matrix4f();
             rotation.identity();

@@ -20,6 +20,5 @@ public class infinityTrainRender extends GameRenderer {
 
     @Override
     public void update(float dt, GL2 gl) {
-        System.out.println("works renderer");
     }
 }

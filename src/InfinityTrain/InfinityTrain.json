@@ -1,26 +1,25 @@
 [
   {
-    "name": "paddle1",
+    "name": "badguy",
     "isActive": true,
     "components": [
       {
         "component_name": "org.JNebula.Components.ComponentUtil.TransformComponent",
         "location": {
-          "x": 0,
+          "x": 59,
           "y": 100,
           "z": 0
         }
       },
       {
         "component_name": "org.JNebula.Components.ComponentUtil.SpriteComponent",
-        "file": "src/DemoGame/assets/paddle_asset.PNG",
-        "type": "png",
-        "scaleWidth": 0.25
+        "file": "src/InfinityTrain/assets/badguy.jpg",
+        "type": "jpg"
       }
     ]
   },
   {
-    "name": "paddle1",
+    "name": "goodguy",
     "isActive": true,
     "components": [
       {
@@ -33,9 +32,8 @@
       },
       {
         "component_name": "org.JNebula.Components.ComponentUtil.SpriteComponent",
-        "file": "src/DemoGame/assets/paddle_asset.PNG",
-        "type": "png",
-        "scaleWidth": 0.25
+        "file": "src/InfinityTrain/assets/goodguy.jpg",
+        "type": "jpg"
       }
     ]
   }

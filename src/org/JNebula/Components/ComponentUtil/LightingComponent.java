@@ -77,7 +77,7 @@ public class LightingComponent extends Component {
     float i2 = 1.0f;
 
     @Override
-    public void sendtoGPU(int shaderProgram, Shader sh) {
+    public void sendToGPU(int shaderProgram, Shader sh) {
         int[] buffers = new int[2];
         if (source != null) {
             if (source.gameObject.GetComponent(TransformComponent.class) == null || source.gameObject.GetComponent(CameraComponent.class) == null) {
