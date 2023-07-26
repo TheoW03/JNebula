@@ -1,7 +1,7 @@
 package org.JNebula.GameObjects;
 
 import com.jogamp.opengl.GL4;
-import org.JNebula.Components.DifferentComponents.*;
+import org.JNebula.Components.ComponentUtil.*;
 import org.JNebula.Components.Component;
 import org.JNebula.Tooling.Scene;
 import org.JNebula.Tooling.Shader;

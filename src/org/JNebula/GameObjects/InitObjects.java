@@ -1,21 +1,14 @@
 package org.JNebula.GameObjects;
 
-import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.util.FPSAnimator;
-import org.JNebula.Components.DifferentComponents.CameraComponent;
-import org.JNebula.Components.DifferentComponents.ColliderComponent;
-import org.JNebula.Components.DifferentComponents.TransformComponent;
+import org.JNebula.Components.ComponentUtil.CameraComponent;
+import org.JNebula.Components.ComponentUtil.ColliderComponent;
+import org.JNebula.Components.ComponentUtil.TransformComponent;
 import org.JNebula.Components.Component;
-import org.JNebula.Tooling.Window;
 import org.JNebula.math.Vector3;
 
-import javax.swing.Timer;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.*;
-
-import static com.jogamp.opengl.fixedfunc.GLLightingFunc.GL_LIGHTING;
 
 
 /**

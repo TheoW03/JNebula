@@ -4,7 +4,7 @@
     "isActive": true,
     "components": [
       {
-        "component_name": "org.JNebula.Components.DifferentComponents.TransformComponent",
+        "component_name": "org.JNebula.Components.ComponentUtil.TransformComponent",
         "location": {
           "x": 170,
           "y": 100,
@@ -12,13 +12,13 @@
         }
       },
       {
-        "component_name": "org.JNebula.Components.DifferentComponents.SpriteComponent",
+        "component_name": "org.JNebula.Components.ComponentUtil.SpriteComponent",
         "file": "src/DemoGame/assets/paddle_asset.PNG",
         "type": "png",
         "scaleWidth": 0.25
       },
       {
-        "component_name": "org.JNebula.Components.DifferentComponents.ColliderComponent"
+        "component_name": "org.JNebula.Components.ComponentUtil.ColliderComponent"
       },
       {
         "component_name": "DemoGame.PaddleComponent1"
@@ -30,7 +30,7 @@
     "isActive": true,
     "components": [
       {
-        "component_name": "org.JNebula.Components.DifferentComponents.TransformComponent",
+        "component_name": "org.JNebula.Components.ComponentUtil.TransformComponent",
         "location": {
           "x": 30,
           "y": 100,
@@ -38,13 +38,13 @@
         }
       },
       {
-        "component_name": "org.JNebula.Components.DifferentComponents.SpriteComponent",
+        "component_name": "org.JNebula.Components.ComponentUtil.SpriteComponent",
         "file": "src/DemoGame/assets/paddle_asset.PNG",
         "type": "jpg",
         "scaleWidth": 0.25
       },
       {
-        "component_name": "org.JNebula.Components.DifferentComponents.ColliderComponent"
+        "component_name": "org.JNebula.Components.ComponentUtil.ColliderComponent"
       },
       {
         "component_name": "DemoGame.PaddleComponent2"
@@ -56,7 +56,7 @@
     "isActive": true,
     "components": [
       {
-        "component_name": "org.JNebula.Components.DifferentComponents.TransformComponent",
+        "component_name": "org.JNebula.Components.ComponentUtil.TransformComponent",
         "location": {
           "x": 100,
           "y": 100,
@@ -64,7 +64,7 @@
         }
       },
       {
-        "component_name": "org.JNebula.Components.DifferentComponents.SpriteComponent",
+        "component_name": "org.JNebula.Components.ComponentUtil.SpriteComponent",
         "color": {
           "r2": 1,
           "g2": 1,
@@ -75,7 +75,7 @@
         "scaleWidth": 0.2
       },
       {
-        "component_name": "org.JNebula.Components.DifferentComponents.ColliderComponent"
+        "component_name": "org.JNebula.Components.ComponentUtil.ColliderComponent"
       },
       {
         "component_name":"DemoGame.BallComponent"

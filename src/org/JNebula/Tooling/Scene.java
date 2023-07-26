@@ -1,16 +1,13 @@
 package org.JNebula.Tooling;
 
 import com.jogamp.opengl.*;
-import org.JNebula.Components.Component;
-import org.JNebula.Components.DifferentComponents.TransformComponent;
+import org.JNebula.Components.ComponentUtil.TransformComponent;
 import org.JNebula.GameObjects.GameObject;
 import org.JNebula.GameObjects.GameRenderer;
 import org.JNebula.GameObjects.InitObjects;
 import org.JNebula.ObjectEditor.ObjectEditorJSON;
 import org.JNebula.math.Vector3;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static org.JNebula.Components.Component.gl;

@@ -102,8 +102,6 @@ public class Main {
 
 ```JAVA
 public class StarterCode extends GameRenderer {
-    public InitObjects initObject;
-
     //runs 1st frame. 
     //dt: delta time
     //GL2: OpenGL context

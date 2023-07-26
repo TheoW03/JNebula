@@ -1,6 +1,5 @@
-package org.JNebula.Components.DifferentComponents;
+package org.JNebula.Components.ComponentUtil;
 
-import DemoGame.BallComponent;
 import org.JNebula.Components.Component;
 import org.JNebula.Tooling.Camera;
 import org.JNebula.Tooling.Shader;

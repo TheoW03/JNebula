@@ -1,6 +1,5 @@
-package org.JNebula.Components.DifferentComponents;
+package org.JNebula.Components.ComponentUtil;
 
-import TestStuff.SpriteFactory;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.texture.TextureData;
@@ -14,7 +13,6 @@ import org.JNebula.math.Vector3;
 import org.joml.Vector3f;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;

@@ -2,6 +2,8 @@ package InfinityTrain;
 
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
+import org.JNebula.Components.ComponentUtil.SpriteComponent;
+import org.JNebula.GameObjects.GameObject;
 import org.JNebula.GameObjects.GameRenderer;
 
 /**
@@ -12,9 +14,12 @@ import org.JNebula.GameObjects.GameRenderer;
  */
 public class infinityTrainRender extends GameRenderer {
     @Override
-    public void update(float dt, GL2 gl) {
-        gl.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-        gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
+    public void start(float dt, GL2 gl) {
 
+    }
+
+    @Override
+    public void update(float dt, GL2 gl) {
+        System.out.println("works renderer");
     }
 }

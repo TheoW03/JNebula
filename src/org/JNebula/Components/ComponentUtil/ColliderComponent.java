@@ -1,4 +1,4 @@
-package org.JNebula.Components.DifferentComponents;
+package org.JNebula.Components.ComponentUtil;
 
 import org.JNebula.Components.Component;
 import org.JNebula.math.Ray;
