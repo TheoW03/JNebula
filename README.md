@@ -138,7 +138,8 @@ T-A-B
 
 ---
 
-I encourage you all to leave feedback in the issue page, greatly appreciated.  
+I encourage you all to leave feedback in the issue page, or discussion, greatly appreciated.  
 
 https://github.com/TheoW03/JNebula/issues
 
+https://github.com/TheoW03/JNebula/discussions
