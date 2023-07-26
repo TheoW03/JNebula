@@ -32,7 +32,10 @@ public class Scene implements GLEventListener {
         objectList = new ArrayList<>();
         this.JSONPath = JSONPath;
     }
-
+    public Scene(String JSONPath) {
+        objectList = new ArrayList<>();
+        this.JSONPath = JSONPath;
+    }
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
 
@@ -44,7 +47,10 @@ public class Scene implements GLEventListener {
         gl = (GL4) glAutoDrawable.getGL();
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
         InitObjects.InstantiateObjects(objectList, deltaTime);
-        g.start(deltaTime, (GL2)glAutoDrawable.getGL());
+        if(g != null){
+            g.start(deltaTime, (GL2)glAutoDrawable.getGL());
+        }
+
         long dtAtEnd = System.currentTimeMillis();
         deltaTime = (float) (dtAtEnd - dtAtStart) / 1000;
     }
@@ -56,7 +62,10 @@ public class Scene implements GLEventListener {
         GL2 gl = (GL2) glAutoDrawable.getGL();
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
         InitObjects.InstantiateObjects(objectList, deltaTime);
-        g.update(deltaTime, gl);
+        if(g != null){
+            g.update(deltaTime, gl);
+        }
+
         long dtAtEnd = System.currentTimeMillis();
         deltaTime = (float) (dtAtEnd - dtAtStart) / 1000;
     }

@@ -56,6 +56,39 @@ public class Window {
             }
         });
     }
+    public static void InitWindow(int width, int height, String title, String JSONPath) {
+        final GLProfile glProfile = GLProfile.getDefault();
+        final GLCapabilities glCapabilities = new GLCapabilities(glProfile);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+//                screenRes = new Vector3(width,height);
+                JFrame jFrame = new JFrame(title);
+                jFrame.setSize(width, height);
+                jFrame.addKeyListener(new Input());
+
+                GLJPanel glJPanel = new GLJPanel(glCapabilities);
+                glJPanel.addKeyListener(new Input());
+                glJPanel.addMouseListener(new Input());
+
+                animator = new FPSAnimator(glJPanel, 60);
+                Scene s = new Scene(JSONPath);
+
+                glJPanel.addGLEventListener(s);
+                glJPanel.setSize(jFrame.getSize());
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                screenRes = new Vector3(screenSize.width, screenSize.height);
+                jFrame.getContentPane().add(glJPanel);
+
+                jFrame.setVisible(true);
+
+
+                jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                animator.start();
+
+
+            }
+        });
+    }
 
     public static void printFrameRate() {
 

@@ -11,7 +11,7 @@ import org.JNebula.Tooling.Window;
 public class DemoMain {
 
     public static void main(String[] args) {
-        Window.InitWindow(640, 480, "JNebula Demo 1: Pong", new DemoRenderer(),
+        Window.InitWindow(640, 480, "JNebula Demo 1: Pong",
                 "src/DemoGame/Objects.json");
     }
 }
