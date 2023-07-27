@@ -1,4 +1,4 @@
-package DemoGame;
+package DemoGames.Pong;
 
 import org.JNebula.Components.Component;
 import org.JNebula.GameObjects.GameObject;

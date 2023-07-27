@@ -13,7 +13,7 @@
       },
       {
         "component_name": "org.JNebula.Components.ComponentUtil.SpriteComponent",
-        "file": "src/DemoGame/assets/paddle_asset.PNG",
+        "file": "src/DemoGames/Pong/assets/paddle_asset.PNG",
         "type": "png",
         "scaleWidth": 0.25
       },
@@ -21,7 +21,7 @@
         "component_name": "org.JNebula.Components.ComponentUtil.ColliderComponent"
       },
       {
-        "component_name": "DemoGame.PaddleComponent1"
+        "component_name": "DemoGames.Pong.PaddleComponent1"
       }
     ]
   },
@@ -39,7 +39,7 @@
       },
       {
         "component_name": "org.JNebula.Components.ComponentUtil.SpriteComponent",
-        "file": "src/DemoGame/assets/paddle_asset.PNG",
+        "file": "src/DemoGames/Pong/assets/paddle_asset.PNG",
         "type": "jpg",
         "scaleWidth": 0.25
       },
@@ -47,7 +47,7 @@
         "component_name": "org.JNebula.Components.ComponentUtil.ColliderComponent"
       },
       {
-        "component_name": "DemoGame.PaddleComponent2"
+        "component_name": "DemoGames.Pong.PaddleComponent2"
       }
     ]
   },
@@ -78,7 +78,7 @@
         "component_name": "org.JNebula.Components.ComponentUtil.ColliderComponent"
       },
       {
-        "component_name":"DemoGame.BallComponent"
+        "component_name":"DemoGames.Pong.BallComponent"
 
       }
     ]

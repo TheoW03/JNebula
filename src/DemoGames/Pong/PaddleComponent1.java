@@ -1,4 +1,4 @@
-package DemoGame;
+package DemoGames.Pong;
 
 import org.JNebula.Components.Component;
 import org.JNebula.Tooling.Input;
@@ -13,14 +13,16 @@ import java.awt.event.KeyEvent;
  * ~ project outline here ~
  * @Javadoc
  */
-public class PaddleComponent2 extends Component {
+public class PaddleComponent1 extends Component {
+    @Override
     public void update(float dt) {
-        if(Input.getKey(KeyEvent.VK_W)){
+        if(Input.getKey(KeyEvent.VK_UP)){
             gameObject.transform.transform(Vector3.up);
         }
-        if(Input.getKey(KeyEvent.VK_S)){
+        if(Input.getKey(KeyEvent.VK_DOWN)){
             gameObject.transform.transform(Vector3.down);
 
         }
+
     }
 }

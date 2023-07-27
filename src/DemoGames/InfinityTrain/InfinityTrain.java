@@ -1,4 +1,4 @@
-package InfinityTrain;
+package DemoGames.InfinityTrain;
 
 import org.JNebula.Tooling.Window;
 
@@ -14,10 +14,12 @@ public class InfinityTrain {
 
     /**
      * @param args Ig you found my wierd fan game lul :3 enjoy.
+     *             It's supposed to be tulips game from the 1st episode of infinity train
+     *             and display the engines skill at rendering multiple sprites
      */
 
     public static void main(String[] args) {
         Window.InitWindow(640, 480, "JNebula Demo 2: good guys popping bad guys",
-                "src/InfinityTrain/InfinityTrain.json");
+                "src/DemoGames/InfinityTrain/InfinityTrain.json");
     }
 }

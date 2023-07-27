@@ -1,14 +1,10 @@
-package DemoGame;
+package DemoGames.Pong;
 
 import org.JNebula.Components.Component;
-import org.JNebula.GameObjects.InitObjects;
 import org.JNebula.Tooling.Input;
-import org.JNebula.Tooling.Scene;
-import org.JNebula.Tooling.Window;
 import org.JNebula.math.Vector3;
 
 import java.awt.event.KeyEvent;
-import java.util.Objects;
 
 
 /**
@@ -17,16 +13,14 @@ import java.util.Objects;
  * ~ project outline here ~
  * @Javadoc
  */
-public class PaddleComponent1 extends Component {
-    @Override
+public class PaddleComponent2 extends Component {
     public void update(float dt) {
-        if(Input.getKey(KeyEvent.VK_UP)){
+        if(Input.getKey(KeyEvent.VK_W)){
             gameObject.transform.transform(Vector3.up);
         }
-        if(Input.getKey(KeyEvent.VK_DOWN)){
+        if(Input.getKey(KeyEvent.VK_S)){
             gameObject.transform.transform(Vector3.down);
 
         }
-
     }
 }
