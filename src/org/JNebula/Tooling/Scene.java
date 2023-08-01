@@ -46,13 +46,14 @@ public class Scene implements GLEventListener {
         }
         gl = (GL4) glAutoDrawable.getGL();
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
-        InitObjects.InstantiateObjects(objectList, deltaTime);
+
         if(g != null){
             g.start(deltaTime, (GL2)glAutoDrawable.getGL());
         }
-
+        InitObjects.InstantiateObjects(objectList, deltaTime);
         long dtAtEnd = System.currentTimeMillis();
         deltaTime = (float) (dtAtEnd - dtAtStart) / 1000;
+
     }
 
 

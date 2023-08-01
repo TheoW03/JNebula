@@ -1,4 +1,5 @@
 # Project exclude paths
+
 /out/
 *.log
 Main.java
@@ -7,6 +8,7 @@ src/InfinityTrain/*.java
 /src/sprites/
 3DFrag.glsl
 3DVertex.glsl
+/src/sounds/
 /src/TestStuff/
 /src/ObjectEditorJSON/*.json
 /.gradle/buildOutputCleanup/buildOutputCleanup.lock
