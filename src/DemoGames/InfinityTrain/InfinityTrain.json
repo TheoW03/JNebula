@@ -13,8 +13,8 @@
       },
       {
         "component_name": "org.JNebula.Components.ComponentUtil.SpriteComponent",
-        "file": "src/DemoGames/InfinityTrain//assets/badguy.jpg",
-        "type": "jpg"
+        "file": "src/DemoGames/InfinityTrain//assets/badguy.png",
+        "type": "png"
       }
     ]
   },
