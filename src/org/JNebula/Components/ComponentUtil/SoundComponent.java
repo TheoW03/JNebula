@@ -1,14 +1,10 @@
 package org.JNebula.Components.ComponentUtil;
 
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.Player;
 import org.JNebula.Components.Component;
 
-import javax.print.attribute.standard.Media;
-import java.util.*;
-import java.io.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 
 
 /**
@@ -24,25 +20,41 @@ public class SoundComponent extends Component {
     public boolean loop;
     public boolean mute;
 
-    private ExecutorService threadPool;
 
     public boolean pause;
 
     public boolean playAtStart;
 
-    private Player player;
+    private Clip clip;
+
+    //WIP. I cant find a frame work for this.
 
     public SoundComponent(String file) {
         this.file = file;
         this.playAtStart = true;
         this.loop = true;
+        try {
 
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File(file));
+            clip = AudioSystem.getClip();
+            clip.open(audioIn);
+
+        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public void play() {
+        clip.start();
+    }
+    public void clipStop(){
+        clip.stop();
     }
 
     @Override
     public void init(float dt) {
-
-
 
 
     }
@@ -51,9 +63,7 @@ public class SoundComponent extends Component {
     public void update(float dt) {
 
 
-
     }
-
 
 
 }

@@ -35,14 +35,10 @@ dependencies {
     implementation group: 'de.javagl', name: 'obj', version: '0.4.0'
 
 //Thanks for using https://jar-download.com
-    implementation group: 'com.github.fracpete', name: 'musicg', version: '1.4.2.1'
-    implementation 'com.github.biconou:AudioPlayer:0.2.5'
-    implementation 'com.github.biconou:AudioPlayer:0.2.5'
-    implementation 'com.github.biconou:AudioPlayer:0.2.5'
-    implementation 'com.github.biconou:AudioPlayer:0.2.5'
-    implementation 'com.tagtraum:audioplayer4j-x86_64-macos:0.9.4'
-    implementation 'com.github.biconou:AudioPlayer:0.2.5'
+    implementation 'org.urish.openal:java-openal:1.0.0'
+
 //Thanks for using https://jar-download.com
+
 
 
 }
