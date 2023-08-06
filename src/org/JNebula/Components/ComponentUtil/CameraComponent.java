@@ -22,10 +22,6 @@ public class CameraComponent extends Component {
         this.cameralocation = cameraLocation;
     }
 
-    public void zoom(float zoomfactor) {
-        this.camera.zoom(zoomfactor);
-
-    }
 
     @Override
     public void sendToGPU(int shaderProgram, Shader sh) {

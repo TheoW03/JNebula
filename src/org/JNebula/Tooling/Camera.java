@@ -24,13 +24,7 @@ public class Camera {
         this.view = new Matrix4f();
         initMatrix();
     }
-    public void zoom(float zoomFactor){
-        Matrix4f scaleMatrix4f = new Matrix4f();
-        scaleMatrix4f.identity();
-        scaleMatrix4f.scale(zoomFactor);
-        projection.identity();
-        projection.ortho(0, (32.0f * 40.0f), 0.0f, (32.0f * 21.0f), 1.0f, 100.0f).mul(scaleMatrix4f);
-    }
+
 
     public void initMatrix() {
         projection.identity(); //this is like n*1
