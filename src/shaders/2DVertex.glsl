@@ -46,8 +46,11 @@ void main() {
     pos = rot*pos;
     //    gl_Position = getRotationMatrix(45)*model*projectMatrix* viewMatrix*vec4(vPos,1.0);
 
+
     gl_Position = (model)*projectMatrix* viewMatrix * pos;
-//    gl_Position *= screenRes.x/screenRes.y; //T~T
+
+
+    //    gl_Position *= screenRes.x/screenRes.y; //T~T
     if (lightExits2 == 1){
         vec3 pointLightPosition = vPos;
         FragPos = vec3(model * vec4(vPos, 1.0));

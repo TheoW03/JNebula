@@ -1,21 +1,18 @@
 package org.JNebula.Tooling;
 
 import com.jogamp.common.nio.Buffers;
-import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GL4;
 import org.joml.Matrix4f;
 
-import java.lang.reflect.Array;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
-import java.io.*;
+import java.util.ArrayList;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 import static java.lang.System.exit;
 
