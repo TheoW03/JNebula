@@ -130,7 +130,7 @@ public class StarterCode extends GameRenderer {
 
 # Demo 
 
-* <a href = https://github.com/TheoW03/JNebula/tree/master/src/DemoGame> Demo v1.0.0 </a>
+* <a href = https://github.com/TheoW03/JNebula/tree/master/src/DemoGames/Pong> Demo v1.0.0 </a>
 
 # Contributors
 
