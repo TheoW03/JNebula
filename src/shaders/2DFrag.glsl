@@ -36,45 +36,7 @@ uniform float lightIntensity;
 
 out vec4 FragColor;
 
-struct Light {
-    vec3 position;
-    vec3 color;
-    float intensity;
-};
-//struct util_effectShader{
-//    vec2 iResolution;
-//    float iTime;
-//    float deltaTime;
-//
-//};
-struct Ray {
-    vec3 origin;
-    vec3 direction;
-};
-struct renderedObject{
-    vec3 textureCoords;
-    vec4 color;
-};
 
-vec4 calcLight(Light light){
-    return vec4(0, 0, 0, 0);
-}
-Ray[4] rays(){
-
-    // Define the corners of the square in camera space
-    vec3 bl = vec3(-1.0, -1.0, 0.0);
-    vec3 br = vec3(1.0, -1.0, 0.0);
-    vec3 tl = vec3(-1.0, 1.0, 0.0);
-    vec3 tr = vec3(1.0, 1.0, 0.0);
-
-    // Generate rays for each corner of the square
-    Ray rays[4];
-    rays[0] = Ray(camera_pos, normalize(bl - camera_pos));
-    rays[1] = Ray(camera_pos, normalize(br - camera_pos));
-    rays[2] = Ray(camera_pos, normalize(tl - camera_pos));
-    rays[3] = Ray(camera_pos, normalize(tr - camera_pos));
-    return rays;
-}
 vec4 mainImage(vec2 fragCoord)
 {
 
@@ -117,17 +79,9 @@ void main(){
         vec3 ambient = strength * lightColor;
         vec3 specular = specularStrength * spec * lightColor;
 
-        //        vec3 result = ambient * objectColor;
-        //        vec4 color = texture(tSample, tCoord)+vec4(result,1.0);
-        //        if (color.a < 0.1){
-        //            discard;
-        //        }
-
         if (LightSource == 1){
             vec3 result = (ambient)*objectColor;
             FragColor = vec4(result, 1.0)*texture(tSample, tCoord);
-            //            FragColor *= screenRes.x/screenRes.y; //needed so stuff stays consistent
-
 
         } else {
             vec3 result = (diffuse+ambient+specular)*objectColor;
@@ -142,7 +96,6 @@ void main(){
 
         } else if (textureExists == 1){
             FragColor = vec4(color_of_sprite, 1.0);
-            //            FragColor *= screenRes.x/screenRes.y; //needed so stuff stays consistent
 
         } else {
 
@@ -150,16 +103,5 @@ void main(){
 
     }
 
-    //    color *= vec4(lightColor,1.0);
-
-    //
-
-
-    //    vec2 distance = location - tCoord;
-
-    //    float raidalFallof = pow(1.0 - distance,2.0);
-    //    float angularFalloff = smoothstep()
-
-    //    vec3 color = vec3(texture(tSample, tCoord).r, texture(tSample, tCoord).g, texture(tSample, tCoord).b);
 
 }

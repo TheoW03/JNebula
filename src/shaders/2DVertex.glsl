@@ -25,22 +25,7 @@ out vec3 FragPos;
 out vec3 Normal;// Normal of the vertex in world space
 out vec4 lightSourcelocation;
 
-//mat4 getRotationMatrix(float angle) {
-//    float c = cos(radians(angle));
-//    float s = sin(radians(angle));
-//    return mat4(c, -s, 0.0, 0.0,
-//                s, c, 0.0, 0.0,
-//                0.0, 0.0, 1.0, 0.0,
-//                0.0, 0.0, 0.0, 1.0);
-//}
-//temp commenr
 
-//float signedDst(vec3 point, vec3 center, vec3 size){
-//    vec3 offset = abs(point-center) - size;
-//    float unsignedDst = magnitude(max(offset,0));
-//    float signedDst = max(min(offset,0),0);
-//    return unsignedDst+signedDst;
-//}
 void main() {
     vec4 pos = vec4(vPos, 1.0);
     pos = rot*pos;
