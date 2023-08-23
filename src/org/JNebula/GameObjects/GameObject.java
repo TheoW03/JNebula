@@ -210,8 +210,8 @@ public class GameObject {
 
                 }
 
-//                if (compenets.get(i) instanceof SpriteComponent) {
-//                    indices = ((SpriteComponent) compenets.get(i)).indices;
+//                if (components.get(i) instanceof SpriteComponent) {
+//                    indices = ((SpriteComponent) components.get(i)).indices;
 //                    int[] buffers = new int[1];
 //                    gl.glGenBuffers(1, buffers, 0);
 //                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
@@ -241,8 +241,8 @@ public class GameObject {
     }
 
     public String toString() {
-//        if(compenets != null){
-//            return name+" "+ Arrays.toString(compenets.toArray());
+//        if(components != null){
+//            return name+" "+ Arrays.toString(components.toArray());
 //        }
 //        return name;
         return name;
