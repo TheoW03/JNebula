@@ -77,19 +77,11 @@ public class Vector3 {
     /**
      * @return
      */
-    public float mangitude() {
-        return (float) Math.sqrt(this.x * this.x + this.y * this.y);
-    }
 
     @Override
     public String toString() {
-        return "Vector3{" +
-                "x=" + x +
-                ", y=" + y +
-                ", z=" + z +
-                '}';
+        return "Vector3{"+"x="+x+", y="+y+", z="+z+'}';
     }
-
     public float getX() {
         return x;
     }
