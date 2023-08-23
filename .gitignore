@@ -11,6 +11,6 @@ src/InfinityTrain/*.java
 /src/sounds/
 /src/TestStuff/
 /src/ObjectEditorJSON/*.json
-/.gradle/*
-/build/*
-/gradle/*
+/.gradle
+/build
+/gradle
