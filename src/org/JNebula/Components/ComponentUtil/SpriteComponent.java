@@ -331,9 +331,9 @@ public class SpriteComponent extends Component {
         Vector3f[] a = getVecticesAsVector();
         float centerX = 0;
         float centerY = 0;
-        for (int i = 0; i < a.length; i++) {
-            centerX += a[i].x;
-            centerY += a[i].y;
+        for (Vector3f vector3f : a) {
+            centerX += vector3f.x;
+            centerY += vector3f.y;
         }
         centerX /= 4;
         centerY /= 4;
@@ -346,10 +346,8 @@ public class SpriteComponent extends Component {
         System.out.println("file: " + file);
         System.out.println("load texture");
         if (file != null) {
-
             if (this.texture == null) {
                 try {
-
                     gl.glEnable(GL.GL_BLEND);
                     gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
                     TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File(file), true, type);
@@ -359,24 +357,20 @@ public class SpriteComponent extends Component {
                         System.err.println("Error loading texture");
                         return;
                     }
+                } catch (IOException ignored) {
 
-//                    System.exit(1);
-                } catch (IOException e) {
                 }
             }
             setHeight();
-
         }
 
         System.out.println(width);
         System.out.println("width: " + height);
 
-        assert texture != null;
         if (this.texture != null) {
             texture.bind(gl);
             this.textureID = texture.getTextureObject();
             System.out.println(textureID);
-// Set texture parameters
             gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
             gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
             gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -470,11 +464,10 @@ public class SpriteComponent extends Component {
     @Override
     public void sendToGPU(int shaderProgram, Shader sh) {
         System.out.println("send to sprite GPU");
+        int location = gl.glGetUniformLocation(shaderProgram, "textureExists");
         if (this.texture == null) {
-            int location = gl.glGetUniformLocation(shaderProgram, "textureExists");
             gl.glUniform1f(location, 1);
         } else {
-            int location = gl.glGetUniformLocation(shaderProgram, "textureExists");
             gl.glUniform1f(location, 0);
         }
 
@@ -492,13 +485,13 @@ public class SpriteComponent extends Component {
         gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
         gl.glBufferData(GL_ARRAY_BUFFER, oneDto2D(vertices).length * 4L + textureCoords.length * 4L, null, GL_STATIC_DRAW);
 
-        gl.glBufferSubData(GL_ARRAY_BUFFER, 0, oneDto2D(vertices).length * 4, FloatBuffer.wrap(oneDto2D(vertices)));
+        gl.glBufferSubData(GL_ARRAY_BUFFER, 0, oneDto2D(vertices).length * 4L, FloatBuffer.wrap(oneDto2D(vertices)));
         gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
 
-        gl.glBufferSubData(GL_ARRAY_BUFFER, oneDto2D(vertices).length * 4, textureCoords.length * 4, FloatBuffer.wrap(textureCoords));
+        gl.glBufferSubData(GL_ARRAY_BUFFER, oneDto2D(vertices).length * 4L, textureCoords.length * 4L, FloatBuffer.wrap(textureCoords));
         gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[2]);
 
-        gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+        gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
 
         int positionAttrib = gl.glGetAttribLocation(shaderProgram, "vPos");
         System.out.println("pos: " + positionAttrib);
@@ -524,11 +517,9 @@ public class SpriteComponent extends Component {
 
         gl.glActiveTexture(GL_TEXTURE0);
         gl.glBindTexture(GL_TEXTURE_2D, textureID);
-//        gl.glEnable(GL.GL_BLEND);
-//        gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
         int textureSamplerLoc = gl.glGetUniformLocation(shaderProgram, "tSample");
         System.out.println("texture: " + textureSamplerLoc);
-// Wrap frame counter around at end of animation
+        // Wrap frame counter around at end of animation
         if (currentFrame >= spriteTexCoords.length) {
             currentFrame = 0;
         }

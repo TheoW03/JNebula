@@ -16,7 +16,7 @@ import java.util.Arrays;
 
 public class VectorMath {
 
-    public final static Vector3f UP = new Vector3f(0, 1, 0);
+    public final static Vector3f UP = new Vector3f(0, 1, 0); // NOTE: These are moved from the Vector3 class, might want to move these later
     public final static Vector3f DOWN = new Vector3f(0, -1, 0);
     public final static Vector3f RIGHT = new Vector3f(1, 0, 0);
     public final static Vector3f LEFT = new Vector3f(-1, 0, 0);
