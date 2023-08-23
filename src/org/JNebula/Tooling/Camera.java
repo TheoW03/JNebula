@@ -1,6 +1,5 @@
 package org.JNebula.Tooling;
 
-import org.JNebula.math.Vector3;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
@@ -16,9 +15,9 @@ public class Camera {
     private Matrix4f projection, view;
 
     private Matrix4f ortho;
-    private Vector3 location;
+    private Vector3f location;
 
-    public Camera(Vector3 location) {
+    public Camera(Vector3f location) {
         this.location = location;
         this.projection = new Matrix4f();
         this.view = new Matrix4f();

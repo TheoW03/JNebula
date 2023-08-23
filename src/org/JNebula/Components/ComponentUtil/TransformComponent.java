@@ -3,8 +3,8 @@ package org.JNebula.Components.ComponentUtil;
 import org.JNebula.Components.Component;
 import org.JNebula.Tooling.Camera;
 import org.JNebula.Tooling.Shader;
-import org.JNebula.math.Vector3;
 import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
 
 /**
@@ -16,11 +16,11 @@ import org.joml.Matrix4f;
 public class TransformComponent extends Component {
 
     public Camera camera;
-    public Vector3 location;
+    public Vector3f location;
     public Matrix4f rotation;
 
-    public TransformComponent(Vector3 location) {
-        camera = new Camera(new Vector3(0, 0, 0));
+    public TransformComponent(Vector3f location) {
+        camera = new Camera(new Vector3f(0, 0, 0));
         this.location = location;
 
     }
@@ -35,7 +35,7 @@ public class TransformComponent extends Component {
 
     }
 
-    public void transform(Vector3 transform) {
+    public void transform(Vector3f transform) {
         location.x += transform.x;
         location.y += transform.y;
     }
@@ -53,7 +53,7 @@ public class TransformComponent extends Component {
         rotation.rotate(angle, 0, 0, 1);
 
     }
-    private Matrix4f initModel(Vector3 location){
+    private Matrix4f initModel(Vector3f location){
         Matrix4f modelViewMatrix = new Matrix4f();
         modelViewMatrix.identity();
 

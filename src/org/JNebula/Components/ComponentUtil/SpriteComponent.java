@@ -9,7 +9,6 @@ import com.jogamp.opengl.util.texture.Texture;
 import org.JNebula.Tooling.Colors;
 import org.JNebula.Tooling.SpriteSheetList;
 import org.JNebula.Tooling.Shader;
-import org.JNebula.math.Vector3;
 import org.joml.Vector3f;
 
 import javax.swing.*;
@@ -258,7 +257,7 @@ public class SpriteComponent extends Component {
 
 
     public void scaleX(float sx) {
-        Vector3[] mv = getVecticesAsVector();
+        Vector3f[] mv = getVecticesAsVector();
         float centerX = (vertices[0][0] + vertices[1][0] + vertices[2][0] + vertices[3][0]) / 4.0f; // Calculate center point
         float[][] scaleMatrix = {
                 {sx, 0.0f, 0.0f},
@@ -292,13 +291,13 @@ public class SpriteComponent extends Component {
         System.out.println("after set height in scale y");
     }
 
-    public Vector3 get_size() {
+    public Vector3f get_size() {
         System.out.println("w: " + width + " " + height);
-        return new Vector3(width, height);
+        return new Vector3f(width, height, 0);
     }
 
     public void setHeight() {
-        Vector3[] a = getVecticesAsVector();
+        Vector3f[] a = getVecticesAsVector();
         float[] v1 = vertices[0];
         float[] v2 = vertices[1];
         float[] v3 = vertices[2];
@@ -313,14 +312,14 @@ public class SpriteComponent extends Component {
     /**
      * @return
      */
-    public Vector3[] getCenterPoints() {
+    public Vector3f[] getCenterPoints() {
         setHeight();
-        Vector3 a = this.gameObject.transform.location;
-        Vector3[] centPoints = new Vector3[5];
-        centPoints[0] = new Vector3((a.x + (width / 2)), (a.y + (height / 2)));
-        centPoints[1] = new Vector3((a.x - (width / 2)), (a.y + (height / 2)));
-        centPoints[2] = new Vector3((a.x - (width / 2)), (a.y - (height / 2)));
-        centPoints[3] = new Vector3((a.x + (width / 2)), (a.y - (height / 2))); // D:
+        Vector3f a = this.gameObject.transform.location;
+        Vector3f[] centPoints = new Vector3f[5];
+        centPoints[0] = new Vector3f((a.x + (width / 2)), (a.y + (height / 2)), 0);
+        centPoints[1] = new Vector3f((a.x - (width / 2)), (a.y + (height / 2)), 0);
+        centPoints[2] = new Vector3f((a.x - (width / 2)), (a.y - (height / 2)), 0);
+        centPoints[3] = new Vector3f((a.x + (width / 2)), (a.y - (height / 2)), 0); // D:
         centPoints[4] = a;
         System.out.println(Arrays.toString(centPoints));
         System.out.println(a);
@@ -328,8 +327,8 @@ public class SpriteComponent extends Component {
         return centPoints;
     }
 
-    public Vector3 getCenter() {
-        Vector3[] a = getVecticesAsVector();
+    public Vector3f getCenter() {
+        Vector3f[] a = getVecticesAsVector();
         float centerX = 0;
         float centerY = 0;
         for (int i = 0; i < a.length; i++) {
@@ -339,7 +338,7 @@ public class SpriteComponent extends Component {
         centerX /= 4;
         centerY /= 4;
 
-        return new Vector3(centerX, centerY);
+        return new Vector3f(centerX, centerY, 0);
     }
 
     private void loadTexture() {
@@ -389,17 +388,17 @@ public class SpriteComponent extends Component {
 
     }
 
-    public Vector3 get_sV() {
-        return new Vector3(width, height);
+    public Vector3f get_sV() {
+        return new Vector3f(width, height, 0);
     }
 
-    public Vector3[] getVecticesAsVector() {
+    public Vector3f[] getVecticesAsVector() {
         if (vertices == null) {
-            return new Vector3[4];
+            return new Vector3f[4];
         }
-        Vector3[] vertix = new Vector3[4];
+        Vector3f[] vertix = new Vector3f[4];
         for (int r = 0; r < vertices.length; r++) {
-            vertix[r] = new Vector3(vertices[r][0], vertices[r][1], vertices[r][2]);
+            vertix[r] = new Vector3f(vertices[r][0], vertices[r][1], vertices[r][2]);
         }
         return vertix;
     }

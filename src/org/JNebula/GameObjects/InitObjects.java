@@ -6,7 +6,7 @@ import org.JNebula.Components.ComponentUtil.CameraComponent;
 import org.JNebula.Components.ComponentUtil.ColliderComponent;
 import org.JNebula.Components.ComponentUtil.TransformComponent;
 import org.JNebula.Components.Component;
-import org.JNebula.math.Vector3;
+import org.joml.Vector3f;
 
 import java.util.*;
 
@@ -82,7 +82,7 @@ public class InitObjects {
 
     public static void InstantiateObjects(ArrayList<GameObject> object, float dt) {
         if (mainCamera == null) {
-            mainCamera = new CameraComponent(new Vector3(0, 0, 0));
+            mainCamera = new CameraComponent(new Vector3f(0, 0, 0));
         }
         GL4 gl = Component.gl;
         objectList = object;
@@ -99,7 +99,7 @@ public class InitObjects {
                 hasCollison.add(object.get(i));
             }
             if (object.get(i).GetComponent(TransformComponent.class) == null) {
-                object.get(i).AddComponent(new TransformComponent(new Vector3(0, 0, 0)));
+                object.get(i).AddComponent(new TransformComponent(new Vector3f(0, 0, 0)));
             }
 
             System.out.println(object.get(i).toString());

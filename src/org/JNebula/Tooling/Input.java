@@ -1,7 +1,7 @@
 package org.JNebula.Tooling;
 
 
-import org.JNebula.math.Vector3;
+import org.joml.Vector3f;
 
 import javax.swing.event.MouseInputAdapter;
 import java.awt.event.KeyEvent;
@@ -22,7 +22,7 @@ public class Input extends MouseInputAdapter implements KeyListener {
 
     private static boolean[] mouseButtons = new boolean[4];
 
-    public static Vector3 mouseLocation = new Vector3(0,0);
+    public static Vector3f mouseLocation = new Vector3f(0,0,0);
 
     public Input() {
 
@@ -77,7 +77,7 @@ public class Input extends MouseInputAdapter implements KeyListener {
     @Override
     public void mousePressed(MouseEvent e) {
         int mouseButton = e.getButton();
-        mouseLocation = new Vector3(e.getX(), e.getY());
+        mouseLocation = new Vector3f(e.getX(), e.getY(), 0);
         if (mouseButton >= 0 && mouseButton < mouseButtons.length) {
             mouseButtons[mouseButton] = true;
 

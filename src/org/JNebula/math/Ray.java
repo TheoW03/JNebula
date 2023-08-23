@@ -1,6 +1,8 @@
 package org.JNebula.math;
 
 
+import org.joml.Vector3f;
+
 /**
  * @author Theo willis
  * @version 1.0.0
@@ -8,27 +10,27 @@ package org.JNebula.math;
  * @Javadoc
  */
 public class Ray {
-    public Vector3 dir, origin;
+    public Vector3f dir, origin;
     public float length;
 
-    public Ray(Vector3 dir, Vector3 origin, float length) {
+    public Ray(Vector3f dir, Vector3f origin, float length) {
         this.dir = dir;
         this.origin = origin;
         this.length = length;
     }
-    public Ray(Vector3 dir, Vector3 origin) {
+    public Ray(Vector3f dir, Vector3f origin) {
         this.dir = dir;
         this.origin = origin;
     }
 
-    public Ray(Vector3 dir, float length) {
+    public Ray(Vector3f dir, float length) {
         this.dir = dir;
         this.length = length;
     }
 
-    public Vector3 getEndPoint() {
-        Vector3 add = new Vector3((length) * dir.x, (length) * dir.y);
+    public Vector3f getEndPoint() {
+        Vector3f add = new Vector3f((length) * dir.x, (length) * dir.y, 0);
 
-        return new Vector3(add.x + origin.x, add.y + origin.y);
+        return new Vector3f(add.x + origin.x, add.y + origin.y, 0);
     }
 }

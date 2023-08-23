@@ -1,7 +1,6 @@
 package org.JNebula.Components.ComponentUtil;
 
 import org.JNebula.Components.Component;
-import org.JNebula.math.Vector3;
 import org.joml.Vector3f;
 
 /**
@@ -11,16 +10,16 @@ import org.joml.Vector3f;
  * @Javadoc
  */
 public class PhysicsComponent extends Component {
-    public Vector3 startingV;
-    public Vector3 vectorPosition;
-    private Vector3 position;
+    public Vector3f startingV;
+    public Vector3f vectorPosition;
+    private Vector3f position;
     public boolean veloLock;
     public float ROC;
-    public Vector3 transformVector;
+    public Vector3f transformVector;
 
-    public  Vector3 forceVector;
-    public Vector3 dir;
-    public PhysicsComponent(Vector3 startingV, float ROC, Vector3 position, Vector3 dir) {
+    public  Vector3f forceVector;
+    public Vector3f dir;
+    public PhysicsComponent(Vector3f startingV, float ROC, Vector3f position, Vector3f dir) {
         this.dir = dir;
         this.position = position;
         this.startingV = startingV;

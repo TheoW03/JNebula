@@ -2,8 +2,8 @@ package org.JNebula.Components.ComponentUtil;
 
 import org.JNebula.Components.Component;
 import org.JNebula.math.Ray;
-import org.JNebula.math.Vector3;
 import org.joml.Vector2f;
+import org.joml.Vector3f;
 
 
 /**
@@ -52,7 +52,7 @@ public class ColliderComponent extends Component {
         return o3.sub(size);
     }
 
-    private float getDist(Vector3 p, Vector3 center, Vector3 size) {
+    private float getDist(Vector3f p, Vector3f center, Vector3f size) {
         Vector2f p1 = new Vector2f(p.x, p.y);
         Vector2f c = new Vector2f(center.x, center.y);
         Vector2f size2 = new Vector2f(size.x, size.y);
@@ -61,7 +61,7 @@ public class ColliderComponent extends Component {
     }
 
 
-    private Vector3 getUSdist(Vector3 p, Vector3 center, Vector3 size) {
+    private Vector3f getUSdist(Vector3f p, Vector3f center, Vector3f size) {
         Vector2f p1 = new Vector2f(p.x, p.y);
         Vector2f c = new Vector2f(center.x, center.y);
         Vector2f size2 = new Vector2f(size.x, size.y);
@@ -70,7 +70,7 @@ public class ColliderComponent extends Component {
 
         Vector2f signedDIst = offset.max(offset.min(new Vector2f(0, 0)));
         Vector2f output = signedDIst.add(new Vector2f(usignedDIst, usignedDIst));
-        return new Vector3(output.x, output.y);
+        return new Vector3f(output.x, output.y, 0);
     }
 
     /**
@@ -79,11 +79,11 @@ public class ColliderComponent extends Component {
      */
     public boolean isCollided(ColliderComponent collider) {
 //        Vector3 location1 = this.gameObject.transform.location;
-        Vector3 location2 = collider.gameObject.transform.location;
-        Vector3[] location1 = this.gameObject.GetComponent(SpriteComponent.class).getCenterPoints();
+        Vector3f location2 = collider.gameObject.transform.location;
+        Vector3f[] location1 = this.gameObject.GetComponent(SpriteComponent.class).getCenterPoints();
 //        Vector3[] location2 = collider.gameObject.GetCompenent(SpriteComponent.class).getCenterPoints();
-        Vector3 size1 = collider.gameObject.GetComponent(SpriteComponent.class).get_size();
-        for (Vector3 vector3 : location1) {
+        Vector3f size1 = collider.gameObject.GetComponent(SpriteComponent.class).get_size();
+        for (Vector3f vector3 : location1) {
             if (getDist(vector3, location2, size1) < 1) {
                 return true;
             }
@@ -96,11 +96,11 @@ public class ColliderComponent extends Component {
         if(ray == null){
             return false;
         }
-        Vector3 location2 = collider.gameObject.GetComponent(TransformComponent.class).location;
-        Vector3 size = collider.gameObject.GetComponent(SpriteComponent.class).get_size();
+        Vector3f location2 = collider.gameObject.GetComponent(TransformComponent.class).location;
+        Vector3f size = collider.gameObject.GetComponent(SpriteComponent.class).get_size();
         ray.origin = this.gameObject.GetComponent(TransformComponent.class).location;
-        Vector3 origin = ray.origin;
-        Vector3 direction = ray.dir.unitVector();
+        Vector3f origin = ray.origin;
+        Vector3f direction = ray.dir.normalize();
         Vector2f s = new Vector2f(origin.x,origin.y);
         Vector2f d = new Vector2f(direction.x,direction.y);
         int x = (int) Math.floor(s.x);
@@ -147,14 +147,14 @@ public class ColliderComponent extends Component {
         return false;
     }
     private void checkUnsignedDist(ColliderComponent collider){
-        Vector3 location1 = this.gameObject.GetComponent(TransformComponent.class).location;
-        Vector3 location2 = collider.gameObject.GetComponent(TransformComponent.class).location;
+        Vector3f location1 = this.gameObject.GetComponent(TransformComponent.class).location;
+        Vector3f location2 = collider.gameObject.GetComponent(TransformComponent.class).location;
 
     }
     public boolean isCollided2(ColliderComponent collider) {
-        Vector3 location1 = this.gameObject.GetComponent(TransformComponent.class).location;
-        Vector3 location2 = collider.gameObject.GetComponent(TransformComponent.class).location;
-        Vector3 size = collider.gameObject.GetComponent(SpriteComponent.class).get_size();
+        Vector3f location1 = this.gameObject.GetComponent(TransformComponent.class).location;
+        Vector3f location2 = collider.gameObject.GetComponent(TransformComponent.class).location;
+        Vector3f size = collider.gameObject.GetComponent(SpriteComponent.class).get_size();
         float x1 = Math.max(location1.x, location2.x);
         float y1 = Math.max(location1.y, location2.y);
         float x2 = Math.min(location1.x + size.x * 2 / 100, location2.x +
