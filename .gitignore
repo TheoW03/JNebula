@@ -13,3 +13,4 @@ src/InfinityTrain/*.java
 /src/ObjectEditorJSON/*.json
 /.gradle/*
 /build/*
+/gradle/*
