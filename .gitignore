@@ -81,3 +81,4 @@ src/InfinityTrain/*.java
 /build/classes/java/main/org/NayaEngine/Tooling/Window$1.class
 /build/classes/java/main/org/NayaEngine/Tooling/Window$2.class
 /build/classes/java/main/org/NayaEngine/Tooling/Window.class
+/build/*
