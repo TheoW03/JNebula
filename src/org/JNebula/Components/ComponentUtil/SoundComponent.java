@@ -15,8 +15,6 @@ import java.io.IOException;
  */
 public class SoundComponent extends Component {
     public String file;
-
-
     public boolean loop;
     public boolean mute;
 

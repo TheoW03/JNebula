@@ -40,7 +40,6 @@ public class PhysicsComponent extends Component {
             return;
         }
 
-
         if(startingV.y > 0){
             startingV.y += ROC;
 
