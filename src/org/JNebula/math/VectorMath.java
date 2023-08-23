@@ -40,8 +40,8 @@ public class VectorMath {
         float[] tempList = new float[vertices.length];
         Vector3 a = new Vector3(list[0].x - list[2].x, list[0].y - list[2].y, 0);
         Vector3 b = new Vector3(list[1].x - list[3].x, list[1].y - list[3].y, 0);
-        System.out.println(a.toString());
-        System.out.println(b.toString());
+        System.out.println(a);
+        System.out.println(b);
         /* visualizing cross product AxB
         |i    j   k|
         |a.x a.y a.z| =
@@ -50,7 +50,7 @@ public class VectorMath {
                         ((a.z)(b.y)-(a.y)(b.z))i + ((a.x)(b.z)-(b.x)(a.z))j + ((a.x)(b.z)-(a.z)(b.x))k
          */
         Vector3 cross = new Vector3(a.y*b.x,a.x*b.y);
-        System.out.println(cross.toString());
+        System.out.println(cross);
         float mag = cross.magnitude();
         if (mag == 1.0f || mag == 0.0f) {
 
