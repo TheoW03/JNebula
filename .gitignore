@@ -14,3 +14,7 @@ src/InfinityTrain/*.java
 /.gradle
 /build
 /gradle
+*.class
+*.bin
+*.lock
+*.lock

@@ -136,6 +136,8 @@ public class StarterCode extends GameRenderer {
 
 T-A-B
 
+June
+
 ---
 
 I encourage you all to leave feedback in the issue page, or discussion, greatly appreciated.  
