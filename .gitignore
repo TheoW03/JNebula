@@ -2,6 +2,7 @@
 
 /out/
 *.log
+/.gradle/
 Main.java
 /src/models/
 src/InfinityTrain/*.java
@@ -11,7 +12,7 @@ src/InfinityTrain/*.java
 /src/sounds/
 /src/TestStuff/
 /src/ObjectEditorJSON/*.json
-/.gradle
+/.gradle/8.2
 /build
 /gradle
 *.class
