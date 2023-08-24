@@ -15,6 +15,8 @@ import org.joml.Vector3f;
 public class ColliderComponent extends Component {
     public float width, height;
 
+
+
     public boolean showHitBox;
     public Ray[] list;
     public Ray ray;
