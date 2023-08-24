@@ -2,7 +2,8 @@ package DemoGames.Pong;
 
 import org.JNebula.Components.Component;
 import org.JNebula.Tooling.Input;
-import org.JNebula.math.Vector3;
+import org.JNebula.math.VectorMath;
+import org.joml.Vector3f;
 
 import java.awt.event.KeyEvent;
 
@@ -16,10 +17,10 @@ import java.awt.event.KeyEvent;
 public class PaddleComponent2 extends Component {
     public void update(float dt) {
         if(Input.getKey(KeyEvent.VK_W)){
-            gameObject.transform.transform(Vector3.up);
+            gameObject.transform.transform(VectorMath.UP);
         }
         if(Input.getKey(KeyEvent.VK_S)){
-            gameObject.transform.transform(Vector3.down);
+            gameObject.transform.transform(VectorMath.DOWN);
 
         }
     }

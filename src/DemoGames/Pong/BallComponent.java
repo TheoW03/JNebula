@@ -4,7 +4,8 @@ import org.JNebula.Components.Component;
 import org.JNebula.GameObjects.GameObject;
 import org.JNebula.GameObjects.InitObjects;
 import org.JNebula.Tooling.Input;
-import org.JNebula.math.Vector3;
+import org.JNebula.math.VectorMath;
+import org.joml.Vector3f;
 
 import java.awt.event.KeyEvent;
 import java.util.*;
@@ -17,12 +18,12 @@ import java.util.*;
  * @Javadoc
  */
 public class BallComponent extends Component {
-    Vector3 bt = Vector3.left;
+    Vector3f bt = VectorMath.LEFT;
     @Override
     public void update(float dt) {
         Objects.requireNonNull(InitObjects.Find("ball")).transform.transform(bt);
         if(Input.getKey(KeyEvent.VK_SPACE)){
-            gameObject.transform.location = new Vector3(100,100);
+            gameObject.transform.location = new Vector3f(100,100, 0);
         }
     }
 
@@ -32,13 +33,13 @@ public class BallComponent extends Component {
             float min = -0.5f;
             float max = 0.5f;
             float randomNum = (float) (Math.random() * (max - min) + min);
-            bt = new Vector3(1, randomNum);
+            bt = new Vector3f(1, randomNum, 0);
         }
         if (other.name.equals("paddle1")) {
             float min = -0.5f;
             float max = 0.5f;
             float randomNum = (float) (Math.random() * (max - min) + min);
-            bt = new Vector3(-1, randomNum);
+            bt = new Vector3f(-1, randomNum, 0);
         }
     }
 }

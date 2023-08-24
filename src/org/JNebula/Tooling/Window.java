@@ -5,7 +5,7 @@ import com.jogamp.opengl.awt.GLJPanel;
 import com.jogamp.opengl.util.FPSAnimator;
 import org.JNebula.Components.Component;
 import org.JNebula.GameObjects.GameRenderer;
-import org.JNebula.math.Vector3;
+import org.joml.Vector3f;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +19,7 @@ import java.awt.*;
  */
 public class Window {
     public static FPSAnimator animator;
-    public static Vector3 screenRes;
+    public static Vector3f screenRes;
 
     public static float time;
 
@@ -43,7 +43,7 @@ public class Window {
                 glJPanel.addGLEventListener(s);
                 glJPanel.setSize(jFrame.getSize());
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-                screenRes = new Vector3(screenSize.width, screenSize.height);
+                screenRes = new Vector3f(screenSize.width, screenSize.height, 0);
                 jFrame.getContentPane().add(glJPanel);
 
                 jFrame.setVisible(true);
@@ -76,7 +76,7 @@ public class Window {
                 glJPanel.addGLEventListener(s);
                 glJPanel.setSize(jFrame.getSize());
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-                screenRes = new Vector3(screenSize.width, screenSize.height);
+                screenRes = new Vector3f(screenSize.width, screenSize.height, 0);
                 jFrame.getContentPane().add(glJPanel);
 
                 jFrame.setVisible(true);

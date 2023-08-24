@@ -6,7 +6,7 @@ import org.JNebula.Components.Component;
 import org.JNebula.Tooling.Scene;
 import org.JNebula.Tooling.Shader;
 import org.JNebula.Tooling.Window;
-import org.JNebula.math.Vector3;
+import org.joml.Vector3f;
 
 import java.awt.*;
 import java.nio.IntBuffer;
@@ -91,7 +91,7 @@ public class GameObject {
 
     private void sendUtilVars(GL4 gl, int shader) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Window.screenRes = new Vector3(screenSize.width, screenSize.height);
+        Window.screenRes = new Vector3f(screenSize.width, screenSize.height, 0);
         int iRes = gl.glGetUniformLocation(shader, "iResolution");
         gl.glUniform2f(iRes, Window.screenRes.x, Window.screenRes.y);
         int iTime = gl.glGetUniformLocation(shader, "iTime");
@@ -210,8 +210,8 @@ public class GameObject {
 
                 }
 
-//                if (compenets.get(i) instanceof SpriteComponent) {
-//                    indices = ((SpriteComponent) compenets.get(i)).indices;
+//                if (components.get(i) instanceof SpriteComponent) {
+//                    indices = ((SpriteComponent) components.get(i)).indices;
 //                    int[] buffers = new int[1];
 //                    gl.glGenBuffers(1, buffers, 0);
 //                    gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
@@ -241,8 +241,8 @@ public class GameObject {
     }
 
     public String toString() {
-//        if(compenets != null){
-//            return name+" "+ Arrays.toString(compenets.toArray());
+//        if(components != null){
+//            return name+" "+ Arrays.toString(components.toArray());
 //        }
 //        return name;
         return name;

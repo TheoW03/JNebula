@@ -3,7 +3,7 @@ package org.JNebula.Components.ComponentUtil;
 import org.JNebula.Components.Component;
 import org.JNebula.Tooling.Camera;
 import org.JNebula.Tooling.Shader;
-import org.JNebula.math.Vector3;
+import org.joml.Vector3f;
 
 
 /**
@@ -15,9 +15,9 @@ import org.JNebula.math.Vector3;
 public class CameraComponent extends Component {
 
     public Camera camera;
-    public Vector3 cameralocation;
+    public Vector3f cameralocation;
 
-    public CameraComponent(Vector3 cameraLocation) {
+    public CameraComponent(Vector3f cameraLocation) {
         this.camera = new Camera(cameraLocation);
         this.cameralocation = cameraLocation;
     }

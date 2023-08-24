@@ -6,7 +6,7 @@ import org.JNebula.GameObjects.GameObject;
 import org.JNebula.GameObjects.GameRenderer;
 import org.JNebula.GameObjects.InitObjects;
 import org.JNebula.ObjectEditor.ObjectEditorJSON;
-import org.JNebula.math.Vector3;
+import org.joml.Vector3f;
 
 import java.util.*;
 
@@ -110,7 +110,7 @@ public class Scene implements GLEventListener {
         objectList.add(gameObject);
     }
 
-    public static void InstantiateObject(GameObject gameObject, Vector3 location) {
+    public static void InstantiateObject(GameObject gameObject, Vector3f location) {
         while (Find(gameObject.name) != null) {
             gameObject.name += "(Clone)";
         }

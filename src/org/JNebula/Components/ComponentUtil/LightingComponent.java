@@ -3,8 +3,8 @@ package org.JNebula.Components.ComponentUtil;
 
 import org.JNebula.Components.Component;
 import org.JNebula.Tooling.Shader;
-import org.JNebula.math.Vector3;
 import org.JNebula.math.VectorMath;
+import org.joml.Vector3f;
 
 import java.nio.FloatBuffer;
 import java.util.Arrays;
@@ -25,7 +25,8 @@ public class LightingComponent extends Component {
     public float intensity;
     public float[] lightColor;
     public float strength;
-    public Vector3 lightLocation, cameraPos;
+    public Vector3f lightLocation;
+    public Vector3f cameraPos;
     public LightingComponent source;
 
     public LightingComponent(float intensity,
@@ -81,8 +82,8 @@ public class LightingComponent extends Component {
         int[] buffers = new int[2];
         if (source != null) {
             if (source.gameObject.GetComponent(TransformComponent.class) == null || source.gameObject.GetComponent(CameraComponent.class) == null) {
-                this.lightLocation = new Vector3(0, 0, 0);
-                this.cameraPos = new Vector3(0, 0, 0);
+                this.lightLocation = new Vector3f(0, 0, 0);
+                this.cameraPos = new Vector3f(0, 0, 0);
             } else {
                 this.lightLocation = source.gameObject.GetComponent(TransformComponent.class).location;
                 this.cameraPos = source.gameObject.GetComponent(CameraComponent.class).cameralocation;
@@ -114,7 +115,7 @@ public class LightingComponent extends Component {
         if (source == null) {
             gl.glUniform1f(lightSource, 1.0f);
         }
-        Vector3 a = gameObject.GetComponent(TransformComponent.class).location;
+        Vector3f a = gameObject.GetComponent(TransformComponent.class).location;
         gl.glUniform3f(lightPosition, lightLocation.x, lightLocation.y, 0);
 
         i2++;
