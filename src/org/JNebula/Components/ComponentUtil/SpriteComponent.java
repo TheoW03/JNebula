@@ -2,13 +2,13 @@ package org.JNebula.Components.ComponentUtil;
 
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GLProfile;
+import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureData;
 import com.jogamp.opengl.util.texture.TextureIO;
 import org.JNebula.Components.Component;
-import com.jogamp.opengl.util.texture.Texture;
 import org.JNebula.Tooling.Colors;
-import org.JNebula.Tooling.SpriteSheetList;
 import org.JNebula.Tooling.Shader;
+import org.JNebula.Tooling.SpriteSheetList;
 import org.joml.Vector3f;
 
 import javax.swing.*;
@@ -21,7 +21,6 @@ import java.nio.IntBuffer;
 import java.util.Arrays;
 
 import static com.jogamp.opengl.GL.*;
-import static com.jogamp.opengl.GL.GL_CLAMP_TO_EDGE;
 
 
 /**
@@ -35,9 +34,11 @@ public class SpriteComponent extends Component {
     public SpriteComponent() {
 
     }
+
     public static SpriteComponentBuilder SpriteInstance() {
         return new SpriteComponentBuilder(new SpriteComponent());
     }
+
     public static class SpriteComponentBuilder {
         private SpriteComponent spriteComponent;
 
@@ -68,8 +69,8 @@ public class SpriteComponent extends Component {
 
 
         //im trying ill implement later.
-        public static class SpriteSheetBuilder extends SpriteComponentBuilder{
-            public SpriteSheetBuilder(SpriteComponent a){
+        public static class SpriteSheetBuilder extends SpriteComponentBuilder {
+            public SpriteSheetBuilder(SpriteComponent a) {
                 super(a);
             }
 
@@ -105,9 +106,6 @@ public class SpriteComponent extends Component {
     public Colors color;
     public float[] defualtVertices;
     float[][] vertices;
-
-
-
 
 
     /**
@@ -181,7 +179,7 @@ public class SpriteComponent extends Component {
 
     @Override
     public void init(float dt) {
-        if(this.vertices == null){
+        if (this.vertices == null) {
             this.vertices = new float[][]{
                     {-1.0f, -1.0f, 0.0f},
                     {1.0f, -1.0f, 0.0f},
@@ -463,7 +461,7 @@ public class SpriteComponent extends Component {
      */
     @Override
     public void sendToGPU(int shaderProgram, Shader sh) {
-        System.out.println("send to sprite GPU");
+//        System.out.println("send to sprite GPU");
         int location = gl.glGetUniformLocation(shaderProgram, "textureExists");
         if (this.texture == null) {
             gl.glUniform1f(location, 1);
@@ -471,41 +469,7 @@ public class SpriteComponent extends Component {
             gl.glUniform1f(location, 0);
         }
 
-        if (currentFrame >= spriteTexCoords.length) {
-            currentFrame = 0;
-
-        }
-        textureCoords = spriteTexCoords[(int) currentFrame];
-        int[] buffers = new int[3];
-        this.indices = new int[]{0, 2, 1,
-                1, 3, 2,
-                1, 2, 3};
-        gl.glGenBuffers(3, buffers, 0);
         gl.glEnable(GL_TEXTURE_2D);
-        gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
-        gl.glBufferData(GL_ARRAY_BUFFER, oneDto2D(vertices).length * 4L + textureCoords.length * 4L, null, GL_STATIC_DRAW);
-
-        gl.glBufferSubData(GL_ARRAY_BUFFER, 0, oneDto2D(vertices).length * 4L, FloatBuffer.wrap(oneDto2D(vertices)));
-        gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
-
-        gl.glBufferSubData(GL_ARRAY_BUFFER, oneDto2D(vertices).length * 4L, textureCoords.length * 4L, FloatBuffer.wrap(textureCoords));
-        gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[2]);
-
-        gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 4L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
-
-        int positionAttrib = gl.glGetAttribLocation(shaderProgram, "vPos");
-        System.out.println("pos: " + positionAttrib);
-        gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
-        gl.glEnableVertexAttribArray(positionAttrib);
-        gl.glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, false, 0, 0);
-
-        gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
-        gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
-        int texCoordAttrib = gl.glGetAttribLocation(shaderProgram, "vTex");
-        System.out.println("vtex : " + texCoordAttrib);
-        gl.glEnableVertexAttribArray(texCoordAttrib);
-        gl.glVertexAttribPointer(texCoordAttrib, 2, GL_FLOAT, false, 0, oneDto2D(vertices).length * 4L);
-        gl.glBindBuffer(GL_ARRAY_BUFFER, 0);
         int colorLocation = gl.glGetUniformLocation(shaderProgram, "color_of_sprite");
         if (color != null) {
             gl.glUniform3f(colorLocation, color.r2, color.g2, color.b2);
@@ -513,6 +477,32 @@ public class SpriteComponent extends Component {
             gl.glUniform3f(colorLocation, 1, 1, 1);
 
         }
+
+        textureCoords = spriteTexCoords[(int) currentFrame];
+
+        //TODO: right to the simple version.
+        int[] buffers = new int[3];
+        gl.glGenBuffers(3, buffers, 0);
+        int positionAttrib = gl.glGetAttribLocation(shaderProgram, "vPos");
+        int texCoordAttrib = gl.glGetAttribLocation(shaderProgram, "vTex");
+        this.indices = new int[]{0, 2, 1,
+                1, 3, 2,
+                1, 2, 3};
+        if (currentFrame >= spriteTexCoords.length) {
+            currentFrame = 0;
+
+        }
+        gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
+        gl.glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, false, 0, 0);
+        gl.glEnableVertexAttribArray(positionAttrib);
+        gl.glBufferData(GL_ARRAY_BUFFER, oneDto2D(vertices).length * 4L, FloatBuffer.wrap(oneDto2D(vertices)), GL_STATIC_DRAW);
+
+        gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[1]);
+        gl.glVertexAttribPointer(texCoordAttrib, 2, GL_FLOAT, false, 0, 0);
+        gl.glEnableVertexAttribArray(texCoordAttrib);
+        gl.glBufferData(GL_ARRAY_BUFFER, textureCoords.length * 4L, FloatBuffer.wrap(textureCoords), GL_STATIC_DRAW);
+        gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[2]);
+        gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 6L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
 
 
         gl.glActiveTexture(GL_TEXTURE0);

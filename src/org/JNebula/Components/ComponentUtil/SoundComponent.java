@@ -51,17 +51,5 @@ public class SoundComponent extends Component {
         clip.stop();
     }
 
-    @Override
-    public void init(float dt) {
-
-
-    }
-
-    @Override
-    public void update(float dt) {
-
-
-    }
-
 
 }
