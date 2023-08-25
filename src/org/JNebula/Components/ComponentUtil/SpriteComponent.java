@@ -480,7 +480,6 @@ public class SpriteComponent extends Component {
 
         textureCoords = spriteTexCoords[(int) currentFrame];
 
-        //TODO: right to the simple version.
         int[] buffers = new int[3];
         gl.glGenBuffers(3, buffers, 0);
         int positionAttrib = gl.glGetAttribLocation(shaderProgram, "vPos");
@@ -492,19 +491,24 @@ public class SpriteComponent extends Component {
             currentFrame = 0;
 
         }
+        //verticies
         gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
         gl.glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, false, 0, 0);
         gl.glEnableVertexAttribArray(positionAttrib);
         gl.glBufferData(GL_ARRAY_BUFFER, oneDto2D(vertices).length * 4L, FloatBuffer.wrap(oneDto2D(vertices)), GL_STATIC_DRAW);
 
+
+        //texture coords
         gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[1]);
         gl.glVertexAttribPointer(texCoordAttrib, 2, GL_FLOAT, false, 0, 0);
         gl.glEnableVertexAttribArray(texCoordAttrib);
         gl.glBufferData(GL_ARRAY_BUFFER, textureCoords.length * 4L, FloatBuffer.wrap(textureCoords), GL_STATIC_DRAW);
+
+        //indicies
         gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[2]);
         gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 6L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
 
-
+        //sample texture
         gl.glActiveTexture(GL_TEXTURE0);
         gl.glBindTexture(GL_TEXTURE_2D, textureID);
         int textureSamplerLoc = gl.glGetUniformLocation(shaderProgram, "tSample");
