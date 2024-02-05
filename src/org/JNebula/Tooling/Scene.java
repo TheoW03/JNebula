@@ -32,10 +32,12 @@ public class Scene implements GLEventListener {
         objectList = new ArrayList<>();
         this.JSONPath = JSONPath;
     }
+
     public Scene(String JSONPath) {
         objectList = new ArrayList<>();
         this.JSONPath = JSONPath;
     }
+
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
 
@@ -47,8 +49,8 @@ public class Scene implements GLEventListener {
         gl = (GL4) glAutoDrawable.getGL();
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
 
-        if(g != null){
-            g.start(deltaTime, (GL2)glAutoDrawable.getGL());
+        if (g != null) {
+            g.start(deltaTime, (GL2) glAutoDrawable.getGL());
         }
         InitObjects.InstantiateObjects(objectList, deltaTime);
         long dtAtEnd = System.currentTimeMillis();
@@ -63,7 +65,7 @@ public class Scene implements GLEventListener {
         GL2 gl = (GL2) glAutoDrawable.getGL();
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
         InitObjects.InstantiateObjects(objectList, deltaTime);
-        if(g != null){
+        if (g != null) {
             g.update(deltaTime, gl);
         }
 
@@ -82,7 +84,7 @@ public class Scene implements GLEventListener {
 
     }
 
-    public static GameObject Find(String name) {
+    public GameObject Find(String name) {
         for (int i = 0; i < objectList.size(); i++) {
             if (objectList.get(i).name.equals(name)) {
                 return objectList.get(i);
@@ -92,7 +94,7 @@ public class Scene implements GLEventListener {
         return null;
     }
 
-    public static ArrayList<GameObject> FindByTag(String tag) {
+    public ArrayList<GameObject> FindByTag(String tag) {
         ArrayList<GameObject> list = new ArrayList<>();
         for (int i = 0; i < objectList.size(); i++) {
             if (objectList.get(i).tag.equals(tag)) {
@@ -103,14 +105,14 @@ public class Scene implements GLEventListener {
         return list;
     }
 
-    public static void InstantiateObject(GameObject gameObject) {
+    public void InstantiateObject(GameObject gameObject) {
         while (Find(gameObject.name) != null) {
             gameObject.name += "(Clone)";
         }
         objectList.add(gameObject);
     }
 
-    public static void InstantiateObject(GameObject gameObject, Vector3f location) {
+    public void InstantiateObject(GameObject gameObject, Vector3f location) {
         while (Find(gameObject.name) != null) {
             gameObject.name += "(Clone)";
         }
@@ -123,7 +125,7 @@ public class Scene implements GLEventListener {
 
     }
 
-    public static void DestroyObject(GameObject gameObject) {
+    public void DestroyObject(GameObject gameObject) {
         for (int i = 0; i < objectList.size(); i++) {
             if (gameObject.name.equals(objectList.get(i).name)) {
                 objectList.remove(i);
@@ -132,12 +134,15 @@ public class Scene implements GLEventListener {
         }
 
     }
-    public static void printFPS(){
-        float FPS = 1000/deltaTime;
-        System.out.println("FPS: "+FPS);
-        System.out.println("DT: "+deltaTime);
+
+    public  void printFPS() {
+        float FPS = 1000 / deltaTime;
+        System.out.println("FPS: " + FPS);
+        System.out.println("DT: " + deltaTime);
     }
-    public static float getFPS(){
-        return 1000/deltaTime;
+
+    public  float getFPS() {
+        return 1000 / deltaTime;
+
     }
 }
