@@ -9,6 +9,7 @@ import org.joml.Vector3f;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 
 /**
@@ -40,14 +41,13 @@ public class Window {
                 animator = new FPSAnimator(glJPanel, 60);
                 Scene s = new Scene(renderer, JSONPath);
 
-                glJPanel.addGLEventListener(s);
+//                glJPanel.addGLEventListener(s);
                 glJPanel.setSize(jFrame.getSize());
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                 screenRes = new Vector3f(screenSize.width, screenSize.height, 0);
                 jFrame.getContentPane().add(glJPanel);
 
                 jFrame.setVisible(true);
-
 
                 jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 animator.start();
@@ -56,7 +56,8 @@ public class Window {
             }
         });
     }
-    public static void InitWindow(int width, int height, String title, String JSONPath) {
+
+    public static void InitWindow(int width, int height, String title, ArrayList<Scene> scenes) {
         final GLProfile glProfile = GLProfile.getDefault();
         final GLCapabilities glCapabilities = new GLCapabilities(glProfile);
         SwingUtilities.invokeLater(new Runnable() {
@@ -71,8 +72,8 @@ public class Window {
                 glJPanel.addMouseListener(new Input());
 
                 animator = new FPSAnimator(glJPanel, 60);
-                Scene s = new Scene(JSONPath);
-
+//                Scene s = new Scene(JSONPath);
+                Renderer s = new Renderer(scenes.get(0), scenes);
                 glJPanel.addGLEventListener(s);
                 glJPanel.setSize(jFrame.getSize());
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -80,7 +81,6 @@ public class Window {
                 jFrame.getContentPane().add(glJPanel);
 
                 jFrame.setVisible(true);
-
 
                 jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 animator.start();

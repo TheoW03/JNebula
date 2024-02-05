@@ -18,11 +18,11 @@ import java.util.*;
  * @Javadoc
  */
 public class InitObjects {
-    private static boolean first = false;
+    public static boolean first = false;
     private FPSAnimator fpsAnimator;
     public static CameraComponent mainCamera;
     private GL4 gl;
-
+    public static int frames = 0;
     private static ArrayList<GameObject> objectList = new ArrayList<>();
 
     public InitObjects() {
@@ -44,7 +44,8 @@ public class InitObjects {
         }
         return null;
     }
-    public ArrayList<GameObject> FindByTag(String tag){
+
+    public ArrayList<GameObject> FindByTag(String tag) {
         ArrayList<GameObject> list = new ArrayList<>();
         for (int i = 0; i < objectList.size(); i++) {
             if (objectList.get(i).tag.equals(tag)) {
@@ -56,7 +57,7 @@ public class InitObjects {
     }
 
     private static void combinationUtil(ArrayList<GameObject> arr, GameObject[] colliderComponents, int start,
-                                int index) {
+                                        int index) {
         // Current combination is ready to be printed, print it
         if (index == 2) {
 
@@ -106,17 +107,21 @@ public class InitObjects {
             System.out.println(object.get(i).isActive);
             if (!first) {
                 object.get(i).start(dt, gl);
-
             } else {
                 object.get(i).update(dt, gl);
-                System.out.println(object.get(i).name);
+//                System.out.println(object.get(i).name);
             }
 
             System.out.println("dt: " + dt);
 
         }
-        GameObject[] data =new GameObject[3];
-        combinationUtil(hasCollison,data,0,0);
+        if (frames >= 0) {
+            first = true;
+        }
+
+        GameObject[] data = new GameObject[3];
+        frames++;
+        combinationUtil(hasCollison, data, 0, 0);
 
 
 //        for (int i = 0; i < object.size(); i++) {
@@ -139,7 +144,7 @@ public class InitObjects {
 //            }
 
 //        }
-        first = true;
+
     }
 
 

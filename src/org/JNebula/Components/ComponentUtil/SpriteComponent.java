@@ -489,7 +489,6 @@ public class SpriteComponent extends Component {
                 1, 2, 3};
         if (currentFrame >= spriteTexCoords.length) {
             currentFrame = 0;
-
         }
         //verticies
         gl.glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);

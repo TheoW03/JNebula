@@ -1,6 +1,9 @@
 package DemoGames.Pong;
 
+import org.JNebula.Tooling.Scene;
 import org.JNebula.Tooling.Window;
+
+import java.util.ArrayList;
 
 /**
  * @author Theo willis
@@ -11,7 +14,9 @@ import org.JNebula.Tooling.Window;
 public class DemoMain {
 
     public static void main(String[] args) {
-        Window.InitWindow(640, 480, "JNebula Demo 1: Pong",
-                "src/DemoGames/Pong/Objects.json");
+        ArrayList<Scene> scenes = new ArrayList<>();
+        scenes.add(new Scene("src/DemoGames/Pong/Objects.json"));
+        scenes.add(new Scene("src/DemoGames/Pong/Scene2.json"));
+        Window.InitWindow(640, 480, "JNebula Demo 1: Pong", scenes);
     }
 }

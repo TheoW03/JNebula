@@ -1,0 +1,86 @@
+[
+  {
+    "name": "paddle1",
+    "isActive": true,
+    "components": [
+      {
+        "component_name": "org.JNebula.Components.ComponentUtil.TransformComponent",
+        "location": {
+          "x": 170,
+          "y": 100,
+          "z": 0
+        }
+      },
+      {
+        "component_name": "org.JNebula.Components.ComponentUtil.SpriteComponent",
+        "file": "src/DemoGames/Pong/assets/paddle_asset.PNG",
+        "type": "png",
+        "scaleWidth": 0.25
+      },
+      {
+        "component_name": "org.JNebula.Components.ComponentUtil.ColliderComponent"
+      },
+      {
+        "component_name": "DemoGames.Pong.PaddleComponent1"
+      }
+    ]
+  },
+  {
+    "name": "paddle2",
+    "isActive": true,
+    "components": [
+      {
+        "component_name": "org.JNebula.Components.ComponentUtil.TransformComponent",
+        "location": {
+          "x": 30,
+          "y": 100,
+          "z": 0
+        }
+      },
+      {
+        "component_name": "org.JNebula.Components.ComponentUtil.SpriteComponent",
+        "file": "src/DemoGames/Pong/assets/paddle_asset.PNG",
+        "type": "jpg",
+        "scaleWidth": 0.25
+      },
+      {
+        "component_name": "org.JNebula.Components.ComponentUtil.ColliderComponent"
+      },
+      {
+        "component_name": "DemoGames.Pong.PaddleComponent2"
+      }
+    ]
+  },
+  {
+    "name": "ball",
+    "isActive": true,
+    "components": [
+      {
+        "component_name": "org.JNebula.Components.ComponentUtil.TransformComponent",
+        "location": {
+          "x": 100,
+          "y": 100,
+          "z": 0
+        }
+      },
+      {
+        "component_name": "org.JNebula.Components.ComponentUtil.SpriteComponent",
+        "color": {
+          "r2": 0,
+          "g2": 1,
+          "b2": 0
+
+        },
+        "scaleHeight": 0.2,
+        "scaleWidth": 0.2
+      },
+      {
+        "component_name": "org.JNebula.Components.ComponentUtil.ColliderComponent"
+      },
+      {
+        "component_name":"DemoGames.Pong.BallComponent"
+
+      }
+    ]
+  }
+]

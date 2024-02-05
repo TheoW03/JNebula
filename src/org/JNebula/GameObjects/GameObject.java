@@ -40,9 +40,9 @@ public class GameObject {
 
         this.name = name;
     }
+
     public GameObject(String name, String tag) {
         componentList = new ArrayList<>();
-
         this.name = name;
         this.tag = tag;
     }
@@ -74,8 +74,6 @@ public class GameObject {
     }
 
 
-
-
     public void AddComponent(Component component) {
         if (componentList == null) {
             componentList = new ArrayList<>();
@@ -95,16 +93,18 @@ public class GameObject {
         int iRes = gl.glGetUniformLocation(shader, "iResolution");
         gl.glUniform2f(iRes, Window.screenRes.x, Window.screenRes.y);
         int iTime = gl.glGetUniformLocation(shader, "iTime");
-        gl.glUniform1f(iTime,time );
+        gl.glUniform1f(iTime, time);
         int deltaTime = gl.glGetUniformLocation(shader, "deltaTime");
         gl.glUniform1f(deltaTime, Scene.deltaTime);
         time++; //change to fixed time later.
     }
-    public void Collides(GameObject other){
+
+    public void Collides(GameObject other) {
         for (Component compenet : componentList) {
             compenet.Collides(other);
         }
     }
+
     public void update(float dt, GL4 gl) {
         if (isActive) {
 
@@ -112,7 +112,7 @@ public class GameObject {
 //        gl.glClear(GL.GL_COLOR_BUFFER_BIT); // Clear the color buffer to the clear color
             indices = new int[3];
             int shP = sh.load2DShaders(gl);
-            sendUtilVars(gl,shP);
+            sendUtilVars(gl, shP);
             for (int i = 0; i < componentList.size(); i++) {
                 componentList.get(i).update(dt);
                 componentList.get(i).sendToGPU(shP, sh);
@@ -123,8 +123,10 @@ public class GameObject {
                     gl.glGenBuffers(1, buffers, 0);
 //                    gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL_LINES);
                     gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[0]);
-                    gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 6L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
-
+//                    System.out.println();
+                    if (indices != null) {
+                        gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.length * 6L, IntBuffer.wrap(indices), GL_STATIC_DRAW);
+                    }
                     gl.glDrawElements(GL_TRIANGLE_STRIP, 7, GL_UNSIGNED_INT, 0); //learn to make dynamic
 
 
@@ -184,7 +186,7 @@ public class GameObject {
 
     }
 
-    public void collisonLoop(ArrayList<GameObject> colliderCom,ArrayList<GameObject> data){
+    public void collisonLoop(ArrayList<GameObject> colliderCom, ArrayList<GameObject> data) {
 
     }
 
