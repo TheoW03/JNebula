@@ -17,8 +17,18 @@ import static org.JNebula.Components.Component.gl;
  */
 public class Renderer implements GLEventListener {
     private static Scene currentScene;
-    public ArrayList<GameObject> objectList;
     public float deltaTime;
+    private static ArrayList<Scene> scenes;
+
+    public Renderer(Scene mainScene, ArrayList<Scene> sceneList) {
+        currentScene = mainScene;
+        scenes = sceneList;
+
+    }
+
+    public Renderer(Scene mainScene) {
+        currentScene = mainScene;
+    }
 
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
@@ -26,7 +36,7 @@ public class Renderer implements GLEventListener {
 
         gl = (GL4) glAutoDrawable.getGL();
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
-        InitObjects.InstantiateObjects(objectList, deltaTime);
+        InitObjects.InstantiateObjects(currentScene.getObjectList(), deltaTime);
         long dtAtEnd = System.currentTimeMillis();
         deltaTime = (float) (dtAtEnd - dtAtStart) / 1000;
     }
@@ -37,7 +47,7 @@ public class Renderer implements GLEventListener {
         long dtAtStart = System.currentTimeMillis();
         GL2 gl = (GL2) glAutoDrawable.getGL();
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); // clears the screen with the background color
-        InitObjects.InstantiateObjects(objectList, deltaTime);
+        InitObjects.InstantiateObjects(currentScene.getObjectList(), deltaTime);
         long dtAtEnd = System.currentTimeMillis();
         deltaTime = (float) (dtAtEnd - dtAtStart) / 1000;
     }
@@ -73,13 +83,21 @@ public class Renderer implements GLEventListener {
 
     }
 
-    public void printFPS() {
+    public static void printFPS() {
         currentScene.printFPS();
 
     }
 
-    public float getFPS() {
+    public static float getFPS() {
         return currentScene.getFPS();
+    }
+
+    public static void SwitchScene(int num) {
+        currentScene = scenes.get(num);
+        currentScene.initObjectList();
+        InitObjects.first = false;
+        System.out.println("first: " + InitObjects.first);
+        InitObjects.frames = -1;
     }
 
 }
