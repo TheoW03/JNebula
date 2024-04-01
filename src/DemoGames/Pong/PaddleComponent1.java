@@ -19,7 +19,6 @@ public class PaddleComponent1 extends Component {
     public void update(float dt) {
         if (Input.getKey(KeyEvent.VK_UP)) {
             gameObject.transform.transform(VectorMath.UP);
-            Renderer.SwitchScene(0);
         }
         if (Input.getKey(KeyEvent.VK_DOWN)) {
             gameObject.transform.transform(VectorMath.DOWN);
