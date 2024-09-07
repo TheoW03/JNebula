@@ -117,7 +117,7 @@ public class GameObject {
                 componentList.get(i).update(dt);
                 componentList.get(i).sendToGPU(shP, sh);
                 if (GetComponent(SpriteComponent.class) != null) {
-                    System.out.println("update: " + this.name);
+//                    System.out.println("update: " + this.name);
                     indices = GetComponent(SpriteComponent.class).indices;
                     int[] buffers = new int[1];
                     gl.glGenBuffers(1, buffers, 0);
@@ -198,7 +198,7 @@ public class GameObject {
             Shader sh = new Shader();
             int shP = sh.load2DShaders(gl);
             indices = new int[3];
-            System.out.println("a: " + componentList.size());
+//            System.out.println("a: " + componentList.size());
 
             for (int i = 0; i < componentList.size(); i++) {
                 componentList.get(i).init(dt);

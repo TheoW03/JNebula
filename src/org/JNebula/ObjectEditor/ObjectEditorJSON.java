@@ -27,7 +27,7 @@ public class ObjectEditorJSON {
     public ObjectEditorJSON(String file) {
         StringBuilder t = new StringBuilder();
         try {
-            System.out.println("hi");
+//            System.out.println("hi");
 
             ArrayList<String> a = (ArrayList<String>) Files.readAllLines(Path.of(file), StandardCharsets.UTF_8);
             a.forEach(contents -> {
@@ -58,12 +58,12 @@ public class ObjectEditorJSON {
             try {
                 // Dynamically create an instance of the class
                 Class<?> clazz = Class.forName("org.JNebula.GameObjects.GameObject");
-                System.out.println(a);
+//                System.out.println(a);
                 Object object = gson.fromJson(String.valueOf(a), clazz);
 
                 gameObject = (GameObject) clazz.cast(object);
                 // Access object properties
-                System.out.println("object value: " + gameObject.toString());
+//                System.out.println("object value: " + gameObject.toString());
             } catch (ClassNotFoundException e) {
                 System.out.println("the class is not found");
             }

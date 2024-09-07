@@ -18,7 +18,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
-import java.util.Arrays;
 
 import static com.jogamp.opengl.GL.*;
 
@@ -127,7 +126,7 @@ public class SpriteComponent extends Component {
         this.color = c;
         this.file = file;
         this.type = type;
-        System.out.println(this.file);
+//        System.out.println(this.file);
 //        this.vertices = new float[][]{
 //                {-1.0f, -1.0f, 0.0f},
 //                {1.0f, -1.0f, 0.0f},
@@ -221,7 +220,7 @@ public class SpriteComponent extends Component {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     currentFrame++;
-                    System.out.println("current frame" + currentFrame);
+//                    System.out.println("current frame" + currentFrame);
                     if (currentFrame > spriteTexCoords.length) {
                         currentFrame = 0;
                     }
@@ -273,7 +272,7 @@ public class SpriteComponent extends Component {
 
     public void scaleY(float sy) {
         float centerY = (vertices[0][1] + vertices[1][1] + vertices[2][1] + vertices[3][1]) / 4.0f; // Calculate center point
-        System.out.println(Arrays.toString(vertices[0]) + " " + Arrays.toString(vertices[1]) + " " + Arrays.toString(vertices[2]));
+//        System.out.println(Arrays.toString(vertices[0]) + " " + Arrays.toString(vertices[1]) + " " + Arrays.toString(vertices[2]));
         float[][] scaleMatrix = {
                 {1.0f, 0.0f, 0.0f},
                 {0.0f, sy, 0.0f},
@@ -285,12 +284,12 @@ public class SpriteComponent extends Component {
             this.vertices[i][0] += centerY; // Translate back to original position
         }
         this.height *= sy;
-        System.out.println(Arrays.toString(vertices[0]) + " " + Arrays.toString(vertices[1]) + " " + Arrays.toString(vertices[2]));
-        System.out.println("after set height in scale y");
+//        System.out.println(Arrays.toString(vertices[0]) + " " + Arrays.toString(vertices[1]) + " " + Arrays.toString(vertices[2]));
+//        System.out.println("after set height in scale y");
     }
 
     public Vector3f get_size() {
-        System.out.println("w: " + width + " " + height);
+//        System.out.println("w: " + width + " " + height);
         return new Vector3f(width, height, 0);
     }
 
@@ -304,7 +303,7 @@ public class SpriteComponent extends Component {
         float height = new Vector3f(v1).distance(new Vector3f(v3));
         this.height = ((height / 10)) * 2;
         this.width = (((width / 10)));
-        System.out.println(height + " " + width);
+//        System.out.println(height + " " + width);
     }
 
     /**
@@ -319,8 +318,8 @@ public class SpriteComponent extends Component {
         centPoints[2] = new Vector3f((a.x - (width / 2)), (a.y - (height / 2)), 0);
         centPoints[3] = new Vector3f((a.x + (width / 2)), (a.y - (height / 2)), 0); // D:
         centPoints[4] = a;
-        System.out.println(Arrays.toString(centPoints));
-        System.out.println(a);
+//        System.out.println(Arrays.toString(centPoints));
+//        System.out.println(a);
 
         return centPoints;
     }
@@ -341,8 +340,8 @@ public class SpriteComponent extends Component {
 
     private void loadTexture() {
         gl.glEnable(GL_TEXTURE_2D);
-        System.out.println("file: " + file);
-        System.out.println("load texture");
+//        System.out.println("file: " + file);
+//        System.out.println("load texture");
         if (file != null) {
             if (this.texture == null) {
                 try {
@@ -350,7 +349,7 @@ public class SpriteComponent extends Component {
                     gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
                     TextureData data = TextureIO.newTextureData(GLProfile.getDefault(), new File(file), true, type);
                     this.texture = TextureIO.newTexture(data);
-                    System.out.println("hi");
+//                    System.out.println("hi");
                     if (texture == null) {
                         System.err.println("Error loading texture");
                         return;
@@ -362,13 +361,13 @@ public class SpriteComponent extends Component {
             setHeight();
         }
 
-        System.out.println(width);
-        System.out.println("width: " + height);
+//        System.out.println(width);
+//        System.out.println("width: " + height);
 
         if (this.texture != null) {
             texture.bind(gl);
             this.textureID = texture.getTextureObject();
-            System.out.println(textureID);
+//            System.out.println(textureID);
             gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
             gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
             gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -402,7 +401,7 @@ public class SpriteComponent extends Component {
 
     @Override
     public void update(float dt) {
-        System.out.println("update works :D");
+//        System.out.println("update works :D");
 
     }
 
@@ -511,7 +510,7 @@ public class SpriteComponent extends Component {
         gl.glActiveTexture(GL_TEXTURE0);
         gl.glBindTexture(GL_TEXTURE_2D, textureID);
         int textureSamplerLoc = gl.glGetUniformLocation(shaderProgram, "tSample");
-        System.out.println("texture: " + textureSamplerLoc);
+//        System.out.println("texture: " + textureSamplerLoc);
         // Wrap frame counter around at end of animation
         if (currentFrame >= spriteTexCoords.length) {
             currentFrame = 0;

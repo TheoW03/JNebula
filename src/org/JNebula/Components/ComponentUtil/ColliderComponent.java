@@ -5,6 +5,8 @@ import org.JNebula.math.Ray;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
+import java.util.Arrays;
+
 
 /**
  * @author Theo willis
@@ -16,11 +18,11 @@ public class ColliderComponent extends Component {
     public float width, height;
 
 
-
     public boolean showHitBox;
     public Ray[] list;
     public Ray ray;
     public float[][] hitBox;
+
     public ColliderComponent() {
 //        this.height = this.gameObject.GetCompenent(SpriteComponent.class).height;
 //        this.width = this.gameObject.GetCompenent(SpriteComponent.class).width;
@@ -31,10 +33,12 @@ public class ColliderComponent extends Component {
         this.width = colliderWidth;
 
     }
-    public ColliderComponent(Ray[] list){
+
+    public ColliderComponent(Ray[] list) {
         this.list = list;
     }
-    public ColliderComponent(Ray ray){
+
+    public ColliderComponent(Ray ray) {
         this.ray = ray;
     }
 
@@ -85,17 +89,22 @@ public class ColliderComponent extends Component {
         Vector3f[] location1 = this.gameObject.GetComponent(SpriteComponent.class).getCenterPoints();
 //        Vector3[] location2 = collider.gameObject.GetCompenent(SpriteComponent.class).getCenterPoints();
         Vector3f size1 = collider.gameObject.GetComponent(SpriteComponent.class).get_size();
-        for (Vector3f vector3 : location1) {
-            if (getDist(vector3, location2, size1) < 1) {
-                return true;
-            }
-        }
-        return  false;
+        return !Arrays.stream(location1)
+                .filter(vector3 -> getDist(vector3, location2, size1) < 1)
+                .toList()
+                .isEmpty();
+//        for (Vector3f vector3 : location1) {
+//            if (getDist(vector3, location2, size1) < 1) {
+//                return true;
+//            }
+//        }
+//        return  false;
 
 
     }
-    public boolean rayCollides(ColliderComponent collider){
-        if(ray == null){
+
+    public boolean rayCollides(ColliderComponent collider) {
+        if (ray == null) {
             return false;
         }
         Vector3f location2 = collider.gameObject.GetComponent(TransformComponent.class).location;
@@ -103,8 +112,8 @@ public class ColliderComponent extends Component {
         ray.origin = this.gameObject.GetComponent(TransformComponent.class).location;
         Vector3f origin = ray.origin;
         Vector3f direction = ray.dir.normalize();
-        Vector2f s = new Vector2f(origin.x,origin.y);
-        Vector2f d = new Vector2f(direction.x,direction.y);
+        Vector2f s = new Vector2f(origin.x, origin.y);
+        Vector2f d = new Vector2f(direction.x, direction.y);
         int x = (int) Math.floor(s.x);
         int y = (int) Math.floor(s.y);
         float tX, tY;
@@ -129,8 +138,8 @@ public class ColliderComponent extends Component {
             dTy = 1 / d.y;
         }
         double dist = 0;
-        while (dist < ray.length){
-            double tMin = Math.min(tX,tY);
+        while (dist < ray.length) {
+            double tMin = Math.min(tX, tY);
             // Check for intersection with each plane
             if (tX == tMin) {
                 x += stepX;
@@ -143,16 +152,18 @@ public class ColliderComponent extends Component {
 //            if(getDist(new Vector3(x,y),location2,size) == 0){
 //                return true;
 //            }
-            dist = Math.sqrt((x - s.x)*(x - s.x) + (y - s.y)*(y - s.y));
+            dist = Math.sqrt((x - s.x) * (x - s.x) + (y - s.y) * (y - s.y));
 
         }
         return false;
     }
-    private void checkUnsignedDist(ColliderComponent collider){
+
+    private void checkUnsignedDist(ColliderComponent collider) {
         Vector3f location1 = this.gameObject.GetComponent(TransformComponent.class).location;
         Vector3f location2 = collider.gameObject.GetComponent(TransformComponent.class).location;
 
     }
+
     public boolean isCollided2(ColliderComponent collider) {
         Vector3f location1 = this.gameObject.GetComponent(TransformComponent.class).location;
         Vector3f location2 = collider.gameObject.GetComponent(TransformComponent.class).location;

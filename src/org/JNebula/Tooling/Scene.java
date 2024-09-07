@@ -152,7 +152,7 @@ public class Scene {
         if (objectList == null || objectList.isEmpty()) {
             objectList = initObjectList();
         }
-        System.out.println(objectList.size());
+//        System.out.println(objectList.size());
         return objectList;
     }
 }

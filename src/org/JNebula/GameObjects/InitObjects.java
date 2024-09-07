@@ -95,7 +95,7 @@ public class InitObjects {
                 object.get(i).AddComponent(mainCamera);
             }
             if (object.get(i).GetComponent(ColliderComponent.class) != null) {
-                System.out.println("added collison");
+//                System.out.println("added collison");
 
                 hasCollison.add(object.get(i));
             }
@@ -103,8 +103,8 @@ public class InitObjects {
                 object.get(i).AddComponent(new TransformComponent(new Vector3f(0, 0, 0)));
             }
 
-            System.out.println(object.get(i).toString());
-            System.out.println(object.get(i).isActive);
+//            System.out.println(object.get(i).toString());
+//            System.out.println(object.get(i).isActive);
             if (!first) {
                 object.get(i).start(dt, gl);
             } else {
@@ -112,7 +112,7 @@ public class InitObjects {
 //                System.out.println(object.get(i).name);
             }
 
-            System.out.println("dt: " + dt);
+//            System.out.println("dt: " + dt);
 
         }
         if (frames >= 0) {

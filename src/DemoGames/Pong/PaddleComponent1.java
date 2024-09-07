@@ -2,7 +2,6 @@ package DemoGames.Pong;
 
 import org.JNebula.Components.Component;
 import org.JNebula.Tooling.Input;
-import org.JNebula.Tooling.Renderer;
 import org.JNebula.math.VectorMath;
 
 import java.awt.event.KeyEvent;
@@ -24,11 +23,11 @@ public class PaddleComponent1 extends Component {
             gameObject.transform.transform(VectorMath.DOWN);
 
         }
-        if (Input.getKey(KeyEvent.VK_1)) {
-            Renderer.SwitchScene(1);
-        } else if (Input.getKey(KeyEvent.VK_2)) {
-            Renderer.SwitchScene(0);
-        }
+//        if (Input.getKey(KeyEvent.VK_1)) {
+//            Renderer.SwitchScene(1);
+//        } else if (Input.getKey(KeyEvent.VK_2)) {
+//            Renderer.SwitchScene(0);
+//        }
 
 
     }

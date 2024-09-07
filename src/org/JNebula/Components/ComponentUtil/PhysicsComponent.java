@@ -26,7 +26,6 @@ public class PhysicsComponent extends Component {
         vectorPosition = position;
         this.ROC = ROC;
         this.veloLock = false;
-        System.out.println("constructor value: " + vectorPosition.y);
     }
 
 
@@ -55,7 +54,7 @@ public class PhysicsComponent extends Component {
         }
         Vector3f a = new Vector3f(startingV.x, startingV.y,0);
         a.mul(new Vector3f(dir.x,dir.y,0));
-        System.out.println(startingV);
+//        System.out.println(startingV);
         vectorPosition.y += a.y;
         vectorPosition.x += a.x;
     }

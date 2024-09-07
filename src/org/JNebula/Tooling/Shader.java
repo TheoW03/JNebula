@@ -14,8 +14,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.function.Function;
 
-import static java.lang.System.exit;
-
 
 /**
  * @author Theo willis
@@ -88,6 +86,7 @@ public class Shader {
         return compileShaders(vertexShader.toString(), fragShader.toString(), gl);
 
     };
+
     public Function<GL4, Integer> compile3DShaders = (GL4 gl) -> {
         // Your logic here
         StringBuilder fragShader = new StringBuilder();
@@ -125,24 +124,39 @@ public class Shader {
     /**
      * functionaled my code :sunglasses:
      */
-    public static Function<String, String> getShaderString = ((String fileName) -> {
+//    public static Function<String, String> getShaderString = ((String fileName) -> {
+//
+//        StringBuilder t = new StringBuilder();
+//        String file = "src/shaders/" + fileName;
+//        try {
+//            ArrayList<String> a = (ArrayList<String>) Files.readAllLines(Path.of(file), StandardCharsets.UTF_8);
+//            a.forEach(contents -> {
+//                t.append(contents);
+//                t.append("\n");
+//            });
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            exit(1);
+//        }
+//        return t.toString();
+//    });
+//
 
-        StringBuilder t = new StringBuilder();
-        String file = "src/shaders/" + fileName;
-        try {
-            ArrayList<String> a = (ArrayList<String>) Files.readAllLines(Path.of(file), StandardCharsets.UTF_8);
-            a.forEach(contents -> {
-                t.append(contents);
+    public static String getShaderString(String fileName){
+        var file = "src/shaders/" + fileName;
+        var t = new StringBuilder();
+        try{
+            Files.readAllLines(Path.of(file), StandardCharsets.UTF_8).stream().forEach(n ->{
+                t.append(n);
                 t.append("\n");
+
             });
-        } catch (IOException e) {
-            e.printStackTrace();
-            exit(1);
+        }catch (Exception e){
+
         }
         return t.toString();
-    });
 
-
+    }
     public int load2DShaders(GL4 gl) {
         return compile2DShaders.apply(gl);
 //        if (vertexSource != null && fragSource != null) {

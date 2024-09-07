@@ -96,7 +96,7 @@ public class Renderer implements GLEventListener {
         currentScene = scenes.get(num);
         currentScene.initObjectList();
         InitObjects.first = false;
-        System.out.println("first: " + InitObjects.first);
+//        System.out.println("first: " + InitObjects.first);
         InitObjects.frames = -1;
     }
 
